@@ -43,7 +43,7 @@ export class Header extends React.Component {
         <AppBar position="static">
           <Toolbar>
             <Typography className="header__typo" variant="headline" color="inherit">
-              <Link to="/todos" className="header__link">
+              <Link to="/trainings" className="header__link">
                 RepNote
               </Link>
             </Typography>
@@ -61,9 +61,17 @@ export class Header extends React.Component {
               open={Boolean(this.state.anchorEl)}
               onClose={this.handleClose}
             >
-              <MenuItem className="header__anchor" component={Link} to="/todos">Todos</MenuItem>
-              <MenuItem className="header__anchor" component={Link} to="/my-account">My account</MenuItem>
-              <MenuItem className="header__anchor" onClick={this.logout}>Logout</MenuItem>
+              {
+                this.props.isAuthenticated ? (
+                  <div>
+                    <MenuItem className="header__anchor" component={Link} to="/trainings">Trainings</MenuItem>
+                    <MenuItem className="header__anchor" component={Link} to="/my-account">My account</MenuItem>
+                    <MenuItem className="header__anchor" onClick={this.logout}>Logout</MenuItem>
+                  </div>
+                ) : (
+                  <MenuItem className="header__anchor" component={Link} to="/login">Login</MenuItem>
+                )
+              }
             </Menu>
           </Toolbar>
         </AppBar>
@@ -72,10 +80,14 @@ export class Header extends React.Component {
   }
 }
 
+const mapStateToProps = () => ({
+  isAuthenticated: !!localStorage.getItem('token')
+});
+
 const mapDispatchToProps = (dispatch) => ({
   logout: () => {
     dispatch(authActions.logout());
   }
 });
 
-export default connect(undefined, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

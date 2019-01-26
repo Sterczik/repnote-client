@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { SnackbarProvider } from 'material-ui-snackbar-redux';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import NormalRoute from './NormalRoute';
 
 // Home
 import HomePage from '../HomePage/index';
@@ -21,8 +22,10 @@ import ForgotPasswordPage from '../ForgotPasswordPage/index';
 import CheckEmail from '../ForgotPasswordPage/CheckEmail';
 import ResetPasswordPage from '../ResetPasswordPage/index';
 
-// Todos
-import TodosPage from '../TodosPage/index';
+// Training
+import TrainingsPage from '../TrainingsPage/index';
+import TrainingPage from '../TrainingPage/index';
+import CreateTrainingPage from '../CreateTrainingPage/index';
 
 // Others
 import NotFoundPage from '../NotFoundPage/index';
@@ -78,9 +81,17 @@ export default () => (
         path="/reset-password"
         component={ResetPasswordPage}
       />
+      <NormalRoute
+        path="/trainings"
+        component={TrainingsPage}
+      />
+      <PublicRoute
+        path="/trainings/:id"
+        component={TrainingPage}
+      />
       <PrivateRoute
-        path="/todos"
-        component={TodosPage}
+        path="/create-training"
+        component={CreateTrainingPage}
       />
       <Route component={NotFoundPage} />
     </Switch>

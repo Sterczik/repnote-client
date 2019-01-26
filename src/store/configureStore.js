@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import { snackbarReducer } from 'material-ui-snackbar-redux';
 
 import authReducer from '../containers/App/auth/reducer';
-import todosReducer from '../containers/TodosPage/reducer';
+import trainingsReducer from '../containers/App/trainings/reducer';
 
 /* eslint-disable no-underscore-dangle, indent */
 const composeEnhancers = process.env.NODE_ENV !== 'production'
@@ -21,7 +21,7 @@ export default () => {
   const store = createStore(
     combineReducers({
       auth: authReducer,
-      todos: todosReducer,
+      trainings: trainingsReducer,
       snackbar: snackbarReducer
     }),
     composeEnhancers(applyMiddleware(thunk))

@@ -30,9 +30,9 @@ ShallowWrapper {
               <Link
                 className="footer__link"
                 replace={false}
-                to="/todos"
+                to="/trainings"
               >
-                Todos
+                Trainings
               </Link>
             </WithStyles(ListItem)>
             <WithStyles(ListItem)
@@ -45,18 +45,6 @@ ShallowWrapper {
               >
                 Account
               </Link>
-            </WithStyles(ListItem)>
-            <WithStyles(ListItem)
-              className="footer__item"
-            >
-              <a
-                className="footer__link"
-                href="https://github.com/Sterczik/pern-rest-starter-client"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                GitHub
-              </a>
             </WithStyles(ListItem)>
           </WithStyles(List)>
         </div>
@@ -83,9 +71,9 @@ ShallowWrapper {
                 <Link
                   className="footer__link"
                   replace={false}
-                  to="/todos"
+                  to="/trainings"
                 >
-                  Todos
+                  Trainings
                 </Link>
               </WithStyles(ListItem)>
               <WithStyles(ListItem)
@@ -98,18 +86,6 @@ ShallowWrapper {
                 >
                   Account
                 </Link>
-              </WithStyles(ListItem)>
-              <WithStyles(ListItem)
-                className="footer__item"
-              >
-                <a
-                  className="footer__link"
-                  href="https://github.com/Sterczik/pern-rest-starter-client"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  GitHub
-                </a>
               </WithStyles(ListItem)>
             </WithStyles(List)>
           </div>,
@@ -135,9 +111,9 @@ ShallowWrapper {
                 <Link
                   className="footer__link"
                   replace={false}
-                  to="/todos"
+                  to="/trainings"
                 >
-                  Todos
+                  Trainings
                 </Link>
               </WithStyles(ListItem)>
               <WithStyles(ListItem)
@@ -150,18 +126,6 @@ ShallowWrapper {
                 >
                   Account
                 </Link>
-              </WithStyles(ListItem)>
-              <WithStyles(ListItem)
-                className="footer__item"
-              >
-                <a
-                  className="footer__link"
-                  href="https://github.com/Sterczik/pern-rest-starter-client"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  GitHub
-                </a>
               </WithStyles(ListItem)>
             </WithStyles(List)>,
           },
@@ -178,9 +142,9 @@ ShallowWrapper {
                   <Link
                     className="footer__link"
                     replace={false}
-                    to="/todos"
+                    to="/trainings"
                   >
-                    Todos
+                    Trainings
                   </Link>
                 </WithStyles(ListItem)>,
                 <WithStyles(ListItem)
@@ -193,18 +157,6 @@ ShallowWrapper {
                   >
                     Account
                   </Link>
-                </WithStyles(ListItem)>,
-                <WithStyles(ListItem)
-                  className="footer__item"
-                >
-                  <a
-                    className="footer__link"
-                    href="https://github.com/Sterczik/pern-rest-starter-client"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    GitHub
-                  </a>
                 </WithStyles(ListItem)>,
               ],
               "className": "footer__list",
@@ -219,9 +171,9 @@ ShallowWrapper {
                   "children": <Link
                     className="footer__link"
                     replace={false}
-                    to="/todos"
+                    to="/trainings"
                   >
-                    Todos
+                    Trainings
                   </Link>,
                   "className": "footer__item",
                 },
@@ -231,13 +183,13 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": "Todos",
+                    "children": "Trainings",
                     "className": "footer__link",
                     "replace": false,
-                    "to": "/todos",
+                    "to": "/trainings",
                   },
                   "ref": null,
-                  "rendered": "Todos",
+                  "rendered": "Trainings",
                   "type": [Function],
                 },
                 "type": [Function],
@@ -270,39 +222,6 @@ ShallowWrapper {
                   "ref": null,
                   "rendered": "Account",
                   "type": [Function],
-                },
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": <a
-                    className="footer__link"
-                    href="https://github.com/Sterczik/pern-rest-starter-client"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    GitHub
-                  </a>,
-                  "className": "footer__item",
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "GitHub",
-                    "className": "footer__link",
-                    "href": "https://github.com/Sterczik/pern-rest-starter-client",
-                    "rel": "noopener noreferrer",
-                    "target": "_blank",
-                  },
-                  "ref": null,
-                  "rendered": "GitHub",
-                  "type": "a",
                 },
                 "type": [Function],
               },
@@ -346,9 +265,9 @@ ShallowWrapper {
                 <Link
                   className="footer__link"
                   replace={false}
-                  to="/todos"
+                  to="/trainings"
                 >
-                  Todos
+                  Trainings
                 </Link>
               </WithStyles(ListItem)>
               <WithStyles(ListItem)
@@ -361,18 +280,6 @@ ShallowWrapper {
                 >
                   Account
                 </Link>
-              </WithStyles(ListItem)>
-              <WithStyles(ListItem)
-                className="footer__item"
-              >
-                <a
-                  className="footer__link"
-                  href="https://github.com/Sterczik/pern-rest-starter-client"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  GitHub
-                </a>
               </WithStyles(ListItem)>
             </WithStyles(List)>
           </div>
@@ -399,9 +306,9 @@ ShallowWrapper {
                   <Link
                     className="footer__link"
                     replace={false}
-                    to="/todos"
+                    to="/trainings"
                   >
-                    Todos
+                    Trainings
                   </Link>
                 </WithStyles(ListItem)>
                 <WithStyles(ListItem)
@@ -414,18 +321,6 @@ ShallowWrapper {
                   >
                     Account
                   </Link>
-                </WithStyles(ListItem)>
-                <WithStyles(ListItem)
-                  className="footer__item"
-                >
-                  <a
-                    className="footer__link"
-                    href="https://github.com/Sterczik/pern-rest-starter-client"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    GitHub
-                  </a>
                 </WithStyles(ListItem)>
               </WithStyles(List)>
             </div>,
@@ -451,9 +346,9 @@ ShallowWrapper {
                   <Link
                     className="footer__link"
                     replace={false}
-                    to="/todos"
+                    to="/trainings"
                   >
-                    Todos
+                    Trainings
                   </Link>
                 </WithStyles(ListItem)>
                 <WithStyles(ListItem)
@@ -466,18 +361,6 @@ ShallowWrapper {
                   >
                     Account
                   </Link>
-                </WithStyles(ListItem)>
-                <WithStyles(ListItem)
-                  className="footer__item"
-                >
-                  <a
-                    className="footer__link"
-                    href="https://github.com/Sterczik/pern-rest-starter-client"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    GitHub
-                  </a>
                 </WithStyles(ListItem)>
               </WithStyles(List)>,
             },
@@ -494,9 +377,9 @@ ShallowWrapper {
                     <Link
                       className="footer__link"
                       replace={false}
-                      to="/todos"
+                      to="/trainings"
                     >
-                      Todos
+                      Trainings
                     </Link>
                   </WithStyles(ListItem)>,
                   <WithStyles(ListItem)
@@ -509,18 +392,6 @@ ShallowWrapper {
                     >
                       Account
                     </Link>
-                  </WithStyles(ListItem)>,
-                  <WithStyles(ListItem)
-                    className="footer__item"
-                  >
-                    <a
-                      className="footer__link"
-                      href="https://github.com/Sterczik/pern-rest-starter-client"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      GitHub
-                    </a>
                   </WithStyles(ListItem)>,
                 ],
                 "className": "footer__list",
@@ -535,9 +406,9 @@ ShallowWrapper {
                     "children": <Link
                       className="footer__link"
                       replace={false}
-                      to="/todos"
+                      to="/trainings"
                     >
-                      Todos
+                      Trainings
                     </Link>,
                     "className": "footer__item",
                   },
@@ -547,13 +418,13 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "children": "Todos",
+                      "children": "Trainings",
                       "className": "footer__link",
                       "replace": false,
-                      "to": "/todos",
+                      "to": "/trainings",
                     },
                     "ref": null,
-                    "rendered": "Todos",
+                    "rendered": "Trainings",
                     "type": [Function],
                   },
                   "type": [Function],
@@ -586,39 +457,6 @@ ShallowWrapper {
                     "ref": null,
                     "rendered": "Account",
                     "type": [Function],
-                  },
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": <a
-                      className="footer__link"
-                      href="https://github.com/Sterczik/pern-rest-starter-client"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      GitHub
-                    </a>,
-                    "className": "footer__item",
-                  },
-                  "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "GitHub",
-                      "className": "footer__link",
-                      "href": "https://github.com/Sterczik/pern-rest-starter-client",
-                      "rel": "noopener noreferrer",
-                      "target": "_blank",
-                    },
-                    "ref": null,
-                    "rendered": "GitHub",
-                    "type": "a",
                   },
                   "type": [Function],
                 },

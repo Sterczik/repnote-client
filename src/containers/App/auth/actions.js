@@ -81,7 +81,7 @@ function login(email, password) {
             localStorage.setItem('token', JSON.stringify(data.user.token));
           }
           dispatch(loginSuccess(data.user));
-          history.push('/todos');
+          history.push('/trainings');
         } else {
           dispatch(loginFailure());
           dispatch(snackbar.show({

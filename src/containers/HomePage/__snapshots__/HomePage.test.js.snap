@@ -19,13 +19,13 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <HelmetWrapper
-          defaultTitle="REST Starter"
+          defaultTitle="RepNote"
           defer={true}
           encodeSpecialCharacters={true}
-          titleTemplate="REST Starter"
+          titleTemplate="RepNote"
         >
           <meta
-            content="REST Starter"
+            content="RepNote"
             name="description"
           />
         </HelmetWrapper>,
@@ -39,8 +39,8 @@ ShallowWrapper {
               className="hero__text"
             >
               <PageHeading
-                subtitle="A boilerplate for building React apps with REST backends"
-                title="React SPA Starter"
+                subtitle="Create your trainings and share them to people."
+                title="RepNote"
               />
               <Link
                 className="hero__link"
@@ -56,14 +56,6 @@ ShallowWrapper {
               >
                 Register
               </Link>
-              <a
-                className="hero__link"
-                href="https://github.com/Sterczik/pern-rest-starter-client"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View on GitHub
-              </a>
             </div>
           </div>
         </div>,
@@ -77,13 +69,13 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": <meta
-            content="REST Starter"
+            content="RepNote"
             name="description"
           />,
-          "defaultTitle": "REST Starter",
+          "defaultTitle": "RepNote",
           "defer": true,
           "encodeSpecialCharacters": true,
-          "titleTemplate": "REST Starter",
+          "titleTemplate": "RepNote",
         },
         "ref": null,
         "rendered": Object {
@@ -91,7 +83,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "content": "REST Starter",
+            "content": "RepNote",
             "name": "description",
           },
           "ref": null,
@@ -112,8 +104,8 @@ ShallowWrapper {
               className="hero__text"
             >
               <PageHeading
-                subtitle="A boilerplate for building React apps with REST backends"
-                title="React SPA Starter"
+                subtitle="Create your trainings and share them to people."
+                title="RepNote"
               />
               <Link
                 className="hero__link"
@@ -129,14 +121,6 @@ ShallowWrapper {
               >
                 Register
               </Link>
-              <a
-                className="hero__link"
-                href="https://github.com/Sterczik/pern-rest-starter-client"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View on GitHub
-              </a>
             </div>
           </div>,
           "className": "hero",
@@ -151,8 +135,8 @@ ShallowWrapper {
               className="hero__text"
             >
               <PageHeading
-                subtitle="A boilerplate for building React apps with REST backends"
-                title="React SPA Starter"
+                subtitle="Create your trainings and share them to people."
+                title="RepNote"
               />
               <Link
                 className="hero__link"
@@ -168,14 +152,6 @@ ShallowWrapper {
               >
                 Register
               </Link>
-              <a
-                className="hero__link"
-                href="https://github.com/Sterczik/pern-rest-starter-client"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View on GitHub
-              </a>
             </div>,
             "className": "hero__container",
           },
@@ -187,8 +163,8 @@ ShallowWrapper {
             "props": Object {
               "children": Array [
                 <PageHeading
-                  subtitle="A boilerplate for building React apps with REST backends"
-                  title="React SPA Starter"
+                  subtitle="Create your trainings and share them to people."
+                  title="RepNote"
                 />,
                 <Link
                   className="hero__link"
@@ -204,14 +180,6 @@ ShallowWrapper {
                 >
                   Register
                 </Link>,
-                <a
-                  className="hero__link"
-                  href="https://github.com/Sterczik/pern-rest-starter-client"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  View on GitHub
-                </a>,
               ],
               "className": "hero__text",
             },
@@ -222,8 +190,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "function",
                 "props": Object {
-                  "subtitle": "A boilerplate for building React apps with REST backends",
-                  "title": "React SPA Starter",
+                  "subtitle": "Create your trainings and share them to people.",
+                  "title": "RepNote",
                 },
                 "ref": null,
                 "rendered": null,
@@ -257,21 +225,6 @@ ShallowWrapper {
                 "rendered": "Register",
                 "type": [Function],
               },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "View on GitHub",
-                  "className": "hero__link",
-                  "href": "https://github.com/Sterczik/pern-rest-starter-client",
-                  "rel": "noopener noreferrer",
-                  "target": "_blank",
-                },
-                "ref": null,
-                "rendered": "View on GitHub",
-                "type": "a",
-              },
             ],
             "type": "div",
           },
@@ -290,13 +243,13 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <HelmetWrapper
-            defaultTitle="REST Starter"
+            defaultTitle="RepNote"
             defer={true}
             encodeSpecialCharacters={true}
-            titleTemplate="REST Starter"
+            titleTemplate="RepNote"
           >
             <meta
-              content="REST Starter"
+              content="RepNote"
               name="description"
             />
           </HelmetWrapper>,
@@ -310,8 +263,8 @@ ShallowWrapper {
                 className="hero__text"
               >
                 <PageHeading
-                  subtitle="A boilerplate for building React apps with REST backends"
-                  title="React SPA Starter"
+                  subtitle="Create your trainings and share them to people."
+                  title="RepNote"
                 />
                 <Link
                   className="hero__link"
@@ -327,14 +280,6 @@ ShallowWrapper {
                 >
                   Register
                 </Link>
-                <a
-                  className="hero__link"
-                  href="https://github.com/Sterczik/pern-rest-starter-client"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  View on GitHub
-                </a>
               </div>
             </div>
           </div>,
@@ -348,13 +293,13 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": <meta
-              content="REST Starter"
+              content="RepNote"
               name="description"
             />,
-            "defaultTitle": "REST Starter",
+            "defaultTitle": "RepNote",
             "defer": true,
             "encodeSpecialCharacters": true,
-            "titleTemplate": "REST Starter",
+            "titleTemplate": "RepNote",
           },
           "ref": null,
           "rendered": Object {
@@ -362,7 +307,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "content": "REST Starter",
+              "content": "RepNote",
               "name": "description",
             },
             "ref": null,
@@ -383,8 +328,8 @@ ShallowWrapper {
                 className="hero__text"
               >
                 <PageHeading
-                  subtitle="A boilerplate for building React apps with REST backends"
-                  title="React SPA Starter"
+                  subtitle="Create your trainings and share them to people."
+                  title="RepNote"
                 />
                 <Link
                   className="hero__link"
@@ -400,14 +345,6 @@ ShallowWrapper {
                 >
                   Register
                 </Link>
-                <a
-                  className="hero__link"
-                  href="https://github.com/Sterczik/pern-rest-starter-client"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  View on GitHub
-                </a>
               </div>
             </div>,
             "className": "hero",
@@ -422,8 +359,8 @@ ShallowWrapper {
                 className="hero__text"
               >
                 <PageHeading
-                  subtitle="A boilerplate for building React apps with REST backends"
-                  title="React SPA Starter"
+                  subtitle="Create your trainings and share them to people."
+                  title="RepNote"
                 />
                 <Link
                   className="hero__link"
@@ -439,14 +376,6 @@ ShallowWrapper {
                 >
                   Register
                 </Link>
-                <a
-                  className="hero__link"
-                  href="https://github.com/Sterczik/pern-rest-starter-client"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  View on GitHub
-                </a>
               </div>,
               "className": "hero__container",
             },
@@ -458,8 +387,8 @@ ShallowWrapper {
               "props": Object {
                 "children": Array [
                   <PageHeading
-                    subtitle="A boilerplate for building React apps with REST backends"
-                    title="React SPA Starter"
+                    subtitle="Create your trainings and share them to people."
+                    title="RepNote"
                   />,
                   <Link
                     className="hero__link"
@@ -475,14 +404,6 @@ ShallowWrapper {
                   >
                     Register
                   </Link>,
-                  <a
-                    className="hero__link"
-                    href="https://github.com/Sterczik/pern-rest-starter-client"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    View on GitHub
-                  </a>,
                 ],
                 "className": "hero__text",
               },
@@ -493,8 +414,8 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "function",
                   "props": Object {
-                    "subtitle": "A boilerplate for building React apps with REST backends",
-                    "title": "React SPA Starter",
+                    "subtitle": "Create your trainings and share them to people.",
+                    "title": "RepNote",
                   },
                   "ref": null,
                   "rendered": null,
@@ -527,21 +448,6 @@ ShallowWrapper {
                   "ref": null,
                   "rendered": "Register",
                   "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "View on GitHub",
-                    "className": "hero__link",
-                    "href": "https://github.com/Sterczik/pern-rest-starter-client",
-                    "rel": "noopener noreferrer",
-                    "target": "_blank",
-                  },
-                  "ref": null,
-                  "rendered": "View on GitHub",
-                  "type": "a",
                 },
               ],
               "type": "div",

@@ -20,7 +20,7 @@ export class HomePage extends React.Component {
             <div className="hero__text">
               <PageHeading
                 title="RepNote"
-                subtitle="A React app with REST backend"
+                subtitle="Create your trainings and share them to people."
               />
               <Link to="/login" className="hero__link">Login</Link>
               <Link to="/register" className="hero__link">Register</Link>

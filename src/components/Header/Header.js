@@ -65,6 +65,7 @@ export class Header extends React.Component {
                 this.props.isAuthenticated ? (
                   <div>
                     <MenuItem className="header__anchor" component={Link} to="/trainings">Trainings</MenuItem>
+                    <MenuItem className="header__anchor" component={Link} to="/create-training">Create Training</MenuItem>
                     <MenuItem className="header__anchor" component={Link} to="/my-account">My account</MenuItem>
                     <MenuItem className="header__anchor" onClick={this.logout}>Logout</MenuItem>
                   </div>

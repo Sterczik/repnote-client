@@ -7,7 +7,7 @@ import PageHeading from '../../components/PageHeading/PageHeading';
 export class RegisterConfirmPage extends React.Component {
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <Helmet
           titleTemplate="Register Confirm Page"
           defaultTitle="Register Confirm Page"
@@ -16,7 +16,7 @@ export class RegisterConfirmPage extends React.Component {
         </Helmet>
         <PageHeading title="Register Confirm" />
 
-        <Typography variant="subheading" color="inherit" class="text-center">
+        <Typography variant="subheading" color="inherit" className="text-center">
           Check out your email and confirm your new account. Click confirmation link to continue.
         </Typography>
       </div>

@@ -79,6 +79,7 @@ function login(email, password) {
         if (data.success) {
           if (data.user.token) {
             localStorage.setItem('token', JSON.stringify(data.user.token));
+            localStorage.setItem('id', JSON.stringify(data.user.id));
           }
           dispatch(loginSuccess(data.user));
           history.push('/trainings');

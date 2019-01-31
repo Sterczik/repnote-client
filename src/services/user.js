@@ -13,6 +13,7 @@ function getUrlParameter(name) {
 
 function logout() {
   localStorage.removeItem('token');
+  localStorage.removeItem('id');
 }
 
 function handleResponse(response) {

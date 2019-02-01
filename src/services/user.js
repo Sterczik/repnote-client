@@ -17,7 +17,7 @@ function logout() {
 }
 
 function handleResponse(response) {
-  if (response.response.status === 401) {
+  if (response && response.response && response.response.status === 401) {
     logout();
     window.location.reload(true);
     const error = (response && response.message) || response.statusText;

@@ -9,6 +9,7 @@ import { snackbarReducer } from 'material-ui-snackbar-redux';
 
 import authReducer from '../containers/App/auth/reducer';
 import trainingsReducer from '../containers/App/trainings/reducer';
+import trainingReducer from '../containers/App/training/reducer';
 
 /* eslint-disable no-underscore-dangle, indent */
 const composeEnhancers = process.env.NODE_ENV !== 'production'
@@ -22,6 +23,7 @@ export default () => {
     combineReducers({
       auth: authReducer,
       trainings: trainingsReducer,
+      training: trainingReducer,
       snackbar: snackbarReducer
     }),
     composeEnhancers(applyMiddleware(thunk))

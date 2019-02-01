@@ -24,8 +24,10 @@ import ResetPasswordPage from '../ResetPasswordPage/index';
 
 // Training
 import TrainingsPage from '../TrainingsPage/index';
+import MyTrainingsPage from '../MyTrainingsPage/index';
 import TrainingPage from '../TrainingPage/index';
 import CreateTrainingPage from '../CreateTrainingPage/index';
+import EditTrainingPage from '../EditTrainingPage/index';
 
 // Others
 import NotFoundPage from '../NotFoundPage/index';
@@ -82,16 +84,26 @@ export default () => (
         component={ResetPasswordPage}
       />
       <NormalRoute
+        exact
         path="/trainings"
         component={TrainingsPage}
       />
-      <PublicRoute
+      <NormalRoute
+        exact
         path="/trainings/:id"
         component={TrainingPage}
       />
       <PrivateRoute
+        path="/my-trainings"
+        component={MyTrainingsPage}
+      />
+      <PrivateRoute
         path="/create-training"
         component={CreateTrainingPage}
+      />
+      <PrivateRoute
+        path="/trainings/:id/edit"
+        component={EditTrainingPage}
       />
       <Route component={NotFoundPage} />
     </Switch>

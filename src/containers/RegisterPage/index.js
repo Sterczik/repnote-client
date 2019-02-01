@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { withFormik, Form } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 import validationSchema from './validationSchema';
 
 import PageHeading from '../../components/PageHeading/PageHeading';
@@ -76,6 +78,14 @@ const RegisterPage = ({
         <Button type="submit" color="secondary">Register</Button>
       </div>
     </Form>
+    <div>
+      <PageHeading subtitle="You already have an account?" />
+      <Typography variant="subheading" color="primary" className="text-center">
+        <Link to="/login">
+          Login
+        </Link>
+      </Typography>
+    </div>
   </div>
 );
 

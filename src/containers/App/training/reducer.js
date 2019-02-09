@@ -6,11 +6,11 @@ export default (state = trainingReducerDefaultState, action) => {
   switch (action.type) {
     // Get Training
     case trainingConstants.GET_TRAINING_IN_PROCESS:
-      return {};
+      return state;
     case trainingConstants.GET_TRAINING_SUCCESS:
       return action.training;
     case trainingConstants.GET_TRAINING_FAILURE:
-      return {};
+      return state;
     // Remove Training
     case trainingConstants.REMOVE_TRAINING_IN_PROCESS:
       return state;

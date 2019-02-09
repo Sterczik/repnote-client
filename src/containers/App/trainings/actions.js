@@ -2,7 +2,7 @@ import axios from 'axios';
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux';
 import { authHeader } from '../../../helpers/auth-header';
 import { userService } from '../../../services/user';
-import { history } from '../../../helpers/history';
+// import { history } from '../../../helpers/history';
 import { trainingsConstants } from './constants';
 import { baseUrl } from '../../../helpers/baseUrl';
 
@@ -114,7 +114,7 @@ export function createTraining(trainingData) {
       .then((res) => {
         const training = res.data;
         dispatch(createTrainingSuccess(training));
-        history.push('/my-trainings');
+        window.location = '/my-trainings';
         dispatch(snackbar.show({
           message: 'You successfully added your Training.'
         }));

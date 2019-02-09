@@ -111,7 +111,7 @@ export class EditTrainingPage extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.editTraining(this.state);
+    this.props.editTraining(this.state, this.props.match.params.id);
   }
 
   render() {

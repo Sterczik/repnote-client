@@ -42,7 +42,7 @@ export function getTraining(id) {
   };
 }
 
-export function editTraining(trainingData) {
+export function editTraining(trainingData, id) {
   const editTrainingInProcess = () => ({
     type: trainingConstants.EDIT_TRAINING_IN_PROCESS
   });
@@ -68,13 +68,13 @@ export function editTraining(trainingData) {
       headers: authHeader()
     };
 
-    return axios.put(`${baseUrl}/api/trainings/${trainingData.id}`, data,  options)
+    return axios.put(`${baseUrl}/api/trainings/${id}`, data,  options)
       .then((res) => {
         const training = res.data;
         dispatch(editTrainingSuccess(training));
         history.push('/my-trainings');
         dispatch(snackbar.show({
-          message: 'You successfully removed your Training.'
+          message: 'You successfully edited your Training.'
         }));
       })
       .catch((error) => {

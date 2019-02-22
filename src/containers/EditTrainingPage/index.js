@@ -3,8 +3,11 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import {
+  StyledCard,
+  StyledCardContent
+} from '../../assets/styles/components/Card/card';
+
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import HttpsIcon from '@material-ui/icons/Https';
@@ -126,8 +129,8 @@ export class EditTrainingPage extends React.Component {
         <PageHeading title="Edit your training" />
         {
           this.state.exercises ? (
-            <Card className="card">
-              <CardContent className="card__content">
+            <StyledCard className="card">
+              <StyledCardContent className="card__content">
                 <ValidatorForm
                   className="card__form--training"
                   onSubmit={this.handleSubmit}
@@ -176,8 +179,8 @@ export class EditTrainingPage extends React.Component {
                         </Typography>
                       ) : (
                         this.state.exercises.map((exercise, index) => (
-                          <Card key={index} className="card">
-                            <CardContent className="card__content">
+                          <StyledCard key={index} className="card">
+                            <StyledCardContent className="card__content">
                               <TextValidator
                                 name={`exercise-${index}`}
                                 label="Exercise name"
@@ -237,8 +240,8 @@ export class EditTrainingPage extends React.Component {
                                 </div>
                               </div>
                               <Button type="button" color="secondary" onClick={() => this.removeExercise(index)}>Remove Exercise</Button>
-                            </CardContent>
-                          </Card>
+                            </StyledCardContent>
+                          </StyledCard>
                         ))
                       )
                     }
@@ -254,8 +257,8 @@ export class EditTrainingPage extends React.Component {
                     <Button type="submit" color="secondary">Save training</Button>
                   </div>
                 </ValidatorForm>
-              </CardContent>
-            </Card>
+              </StyledCardContent>
+            </StyledCard>
           ) : null
         }
       </div>

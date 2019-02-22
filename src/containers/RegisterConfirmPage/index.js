@@ -1,27 +1,33 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Typography from '@material-ui/core/Typography';
 
+import {
+  StyledHero,
+  HeroGhost
+} from '../../assets/styles/components/Hero/hero';
+
+import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
 
-export class RegisterConfirmPage extends React.Component {
-  render() {
-    return (
-      <div className="container">
-        <Helmet
-          titleTemplate="Register Confirm Page"
-          defaultTitle="Register Confirm Page"
-        >
-          <meta name="description" content="Register Confirm Page" />
-        </Helmet>
-        <PageHeading title="Register Confirm" />
-
-        <Typography variant="subheading" color="inherit" className="text-center">
-          Check out your email and confirm your new account. Click confirmation link to continue.
-        </Typography>
-      </div>
-    );
-  }
-}
+export const RegisterConfirmPage = () => (
+  <React.Fragment>
+    <Helmet
+      titleTemplate="Register Confirm"
+      defaultTitle="Register Confirm"
+    >
+      <meta name="description" content="Register Confirm" />
+    </Helmet>
+    <StyledHero>
+      <Container centerVertically={true}>
+        <HeroGhost fullWidth={true}>
+          <PageHeading
+            title="Register Confirm"
+            subtitle="Check out your email and confirm your new account. Click confirmation link to continue."
+          />
+        </HeroGhost>
+      </Container>
+    </StyledHero>
+  </React.Fragment>
+);
 
 export default RegisterConfirmPage;

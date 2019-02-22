@@ -1,11 +1,13 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+
+import { StyledHeader, HeaderTypo, HeaderLink } from '../../assets/styles/components/Header/header';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -39,14 +41,14 @@ export class Header extends React.Component {
 
   render() {
     return (
-      <div className="header">
+      <StyledHeader>
         <AppBar position="static">
           <Toolbar>
-            <Typography className="header__typo" variant="headline" color="inherit">
-              <Link to="/trainings" className="header__link">
+            <HeaderTypo variant="headline" color="inherit">
+              <HeaderLink to="/trainings">
                 RepNote
-              </Link>
-            </Typography>
+              </HeaderLink>
+            </HeaderTypo>
             <IconButton
               aria-owns={this.state.anchorEl ? 'menu-appbar' : undefined}
               aria-haspopup="true"
@@ -64,20 +66,20 @@ export class Header extends React.Component {
               {
                 this.props.isAuthenticated ? (
                   <div>
-                    <MenuItem className="header__anchor" component={Link} to="/trainings">Trainings</MenuItem>
-                    <MenuItem className="header__anchor" component={Link} to="/my-trainings">My trainings</MenuItem>
-                    <MenuItem className="header__anchor" component={Link} to="/create-training">Create Training</MenuItem>
-                    <MenuItem className="header__anchor" component={Link} to="/my-account">My account</MenuItem>
-                    <MenuItem className="header__anchor" onClick={this.logout}>Logout</MenuItem>
+                    <MenuItem component={Link} to="/trainings">Trainings</MenuItem>
+                    <MenuItem component={Link} to="/my-trainings">My trainings</MenuItem>
+                    <MenuItem component={Link} to="/create-training">Create Training</MenuItem>
+                    <MenuItem component={Link} to="/my-account">My account</MenuItem>
+                    <MenuItem onClick={this.logout}>Logout</MenuItem>
                   </div>
                 ) : (
-                  <MenuItem className="header__anchor" component={Link} to="/login">Login</MenuItem>
+                  <MenuItem component={Link} to="/login">Login</MenuItem>
                 )
               }
             </Menu>
           </Toolbar>
         </AppBar>
-      </div>
+      </StyledHeader>
     );
   }
 }

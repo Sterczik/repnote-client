@@ -1,7 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Normalize } from 'styled-normalize';
 import { Switch, Route } from 'react-router-dom';
 import { SnackbarProvider } from 'material-ui-snackbar-redux';
+import GlobalStyles from '../../assets/styles/core/global/global';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import NormalRoute from './NormalRoute';
@@ -34,78 +36,82 @@ import NotFoundPage from '../NotFoundPage/index';
 
 export default () => (
   <React.Fragment>
-    <Helmet
-      titleTemplate="App"
-      defaultTitle="App"
-    >
-      <meta name="description" content="App" />
-    </Helmet>
-    <SnackbarProvider SnackbarProps={{ autoHideDuration: 3500, anchorOrigin: { vertical: 'top', horizontal: 'right' } }} />
-    <Switch>
-      <PublicRoute
-        exact
-        path="/"
-        component={HomePage}
-      />
-      <PublicRoute
-        path="/register"
-        component={RegisterPage}
-      />
-      <PublicRoute
-        path="/register-confirm"
-        component={RegisterConfirmPage}
-      />
-      <PublicRoute
-        path="/register-failure"
-        component={RegisterFailurePage}
-      />
-      <PublicRoute
-        path="/login"
-        component={LoginPage}
-      />
-      <PrivateRoute
-        path="/my-account"
-        component={AccountPage}
-      />
-      <PrivateRoute
-        path="/change-password"
-        component={ChangePasswordPage}
-      />
-      <PublicRoute
-        path="/forgot-password"
-        component={ForgotPasswordPage}
-      />
-      <PublicRoute
-        path="/check-email"
-        component={CheckEmail}
-      />
-      <PublicRoute
-        path="/reset-password"
-        component={ResetPasswordPage}
-      />
-      <NormalRoute
-        exact
-        path="/trainings"
-        component={TrainingsPage}
-      />
-      <NormalRoute
-        exact
-        path="/trainings/:id"
-        component={TrainingPage}
-      />
-      <PrivateRoute
-        path="/my-trainings"
-        component={MyTrainingsPage}
-      />
-      <PrivateRoute
-        path="/create-training"
-        component={CreateTrainingPage}
-      />
-      <PrivateRoute
-        path="/trainings/:id/edit"
-        component={EditTrainingPage}
-      />
-      <Route component={NotFoundPage} />
-    </Switch>
+    <Normalize />
+    <GlobalStyles />
+    <div>
+      <Helmet
+        titleTemplate="App"
+        defaultTitle="App"
+      >
+        <meta name="description" content="App" />
+      </Helmet>
+      <SnackbarProvider SnackbarProps={{ autoHideDuration: 3500, anchorOrigin: { vertical: 'top', horizontal: 'right' } }} />
+      <Switch>
+        <PublicRoute
+          exact
+          path="/"
+          component={HomePage}
+        />
+        <PublicRoute
+          path="/register"
+          component={RegisterPage}
+        />
+        <PublicRoute
+          path="/register-confirm"
+          component={RegisterConfirmPage}
+        />
+        <PublicRoute
+          path="/register-failure"
+          component={RegisterFailurePage}
+        />
+        <PublicRoute
+          path="/login"
+          component={LoginPage}
+        />
+        <PrivateRoute
+          path="/my-account"
+          component={AccountPage}
+        />
+        <PrivateRoute
+          path="/change-password"
+          component={ChangePasswordPage}
+        />
+        <PublicRoute
+          path="/forgot-password"
+          component={ForgotPasswordPage}
+        />
+        <PublicRoute
+          path="/check-email"
+          component={CheckEmail}
+        />
+        <PublicRoute
+          path="/reset-password"
+          component={ResetPasswordPage}
+        />
+        <NormalRoute
+          exact
+          path="/trainings"
+          component={TrainingsPage}
+        />
+        <NormalRoute
+          exact
+          path="/trainings/:id"
+          component={TrainingPage}
+        />
+        <PrivateRoute
+          path="/my-trainings"
+          component={MyTrainingsPage}
+        />
+        <PrivateRoute
+          path="/create-training"
+          component={CreateTrainingPage}
+        />
+        <PrivateRoute
+          path="/trainings/:id/edit"
+          component={EditTrainingPage}
+        />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </div>
   </React.Fragment>
 );

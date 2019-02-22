@@ -1,32 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-
-import PageHeading from '../../components/PageHeading/PageHeading';
+import Hero from '../../components/Hero/Hero';
 
 export class HomePage extends React.Component {
   render() {
     return (
       <div>
         <Helmet
-          titleTemplate="RepNote"
-          defaultTitle="RepNote"
+          titleTemplate="RepNote - Create your trainings"
+          defaultTitle="RepNote - Create your trainings"
         >
-          <meta name="description" content="RepNote" />
+          <meta name="description" content="RepNote - Create your trainings" />
         </Helmet>
 
-        <div className="hero">
-          <div className="hero__container">
-            <div className="hero__text">
-              <PageHeading
-                title="RepNote"
-                subtitle="Create your trainings and share them to people."
-              />
-              <Link to="/login" className="hero__link">Login</Link>
-              <Link to="/register" className="hero__link">Register</Link>
-            </div>
-          </div>
-        </div>
+        <Hero />
       </div>
     );
   }

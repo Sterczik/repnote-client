@@ -1,23 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { List, ListItem } from '@material-ui/core';
+import {
+  StyledFooter,
+  FooterContainer,
+  FooterList,
+  FooterListItem,
+  FooterLink
+} from '../../assets/styles/components/Footer/footer';
 
 export const Footer = () => (
-  <footer className="footer">
-    <div className="container footer__container">
+  <StyledFooter>
+    <FooterContainer>
       <div>
-        <List className="footer__list">
-          <ListItem className="footer__item">
-            <Link to="/trainings" className="footer__link">Trainings</Link>
-          </ListItem>
-          <ListItem className="footer__item">
-            <Link to="/my-account" className="footer__link">Account</Link>
-          </ListItem>
-        </List>
+        <FooterList>
+          <FooterListItem>
+            <FooterLink to="/trainings">Trainings</FooterLink>
+          </FooterListItem>
+          <FooterListItem>
+            <FooterLink to="/my-account">Account</FooterLink>
+          </FooterListItem>
+        </FooterList>
       </div>
       <div>2018</div>
-    </div>
-  </footer>
+    </FooterContainer>
+  </StyledFooter>
 );
 
 export default Footer;

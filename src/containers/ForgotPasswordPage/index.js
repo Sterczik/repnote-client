@@ -1,11 +1,20 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { withFormik, Form } from 'formik';
+import { withFormik } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import validationSchema from './validationSchema';
 
+import {
+  StyledHero,
+  HeroGhost
+} from '../../assets/styles/components/Hero/hero';
+import {
+  StyledForm,
+} from '../../assets/styles/components/Form/form';
+
+import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { authActions } from '../App/auth/actions';
 
@@ -17,29 +26,35 @@ const ForgotPasswordPage = ({
 }) => (
   <div>
     <Helmet
-      titleTemplate="Forgot Password Page"
-      defaultTitle="Forgot Password Page"
+      titleTemplate="Forgot Password"
+      defaultTitle="Forgot Password"
     >
-      <meta name="description" content="Forgot Password Page" />
+      <meta name="description" content="Forgot Password" />
     </Helmet>
-    <PageHeading title="Forgot Password" />
-    <Form className="form">
-      <TextField
-        id="email"
-        name="email"
-        label="Email"
-        type="email"
-        value={values.email}
-        onChange={handleChange}
-        margin="normal"
-        fullWidth
-        helperText={touched.email ? errors.email : ''}
-        error={touched.email && Boolean(errors.email)}
-      />
-      <div>
-        <Button type="submit" color="secondary">Submit</Button>
-      </div>
-    </Form>
+    <StyledHero>
+      <Container centerVertically={true}>
+        <HeroGhost>
+          <PageHeading title="Forgot Password" />
+          <StyledForm>
+            <TextField
+              id="email"
+              name="email"
+              label="Email"
+              type="email"
+              value={values.email}
+              onChange={handleChange}
+              margin="normal"
+              fullWidth
+              helperText={touched.email ? errors.email : ''}
+              error={touched.email && Boolean(errors.email)}
+            />
+            <div>
+              <Button type="submit" color="secondary">Submit</Button>
+            </div>
+          </StyledForm>
+        </HeroGhost>
+      </Container>
+    </StyledHero>
   </div>
 );
 

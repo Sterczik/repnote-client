@@ -1,8 +1,9 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import { StyledPageHeading } from '../../assets/styles/components/PageHeading/pageHeading';
 
 const PageHeading = ({ title, subtitle }) => (
-  <div className="page-heading">
+  <StyledPageHeading>
     <Typography variant="display2" color="inherit">
       { title }
     </Typography>
@@ -11,7 +12,7 @@ const PageHeading = ({ title, subtitle }) => (
         { subtitle }
       </Typography>
     ) : null }
-  </div>
+  </StyledPageHeading>
 );
 
 export default PageHeading;

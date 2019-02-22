@@ -9,7 +9,6 @@ import { history } from './helpers/history';
 
 import * as serviceWorker from './serviceWorker';
 
-import 'normalize.css/normalize.css';
 import './assets/styles/styles.scss';
 
 const initialState = {};

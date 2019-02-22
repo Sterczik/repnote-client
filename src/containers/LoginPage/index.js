@@ -1,13 +1,23 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { withFormik, Form } from 'formik';
+import { withFormik } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import validationSchema from './validationSchema';
 
+import {
+  StyledHero,
+  HeroGhost
+} from '../../assets/styles/components/Hero/hero';
+import {
+  StyledForm,
+  FormButtons
+} from '../../assets/styles/components/Form/form';
+
+import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { authActions } from '../App/auth/actions';
 
@@ -24,47 +34,53 @@ const LoginPage = ({
     >
       <meta name="description" content="Login" />
     </Helmet>
-    <PageHeading title="Login" />
-    <Form className="form">
-      <TextField
-        id="email"
-        name="email"
-        label="Email"
-        type="email"
-        value={values.email}
-        onChange={handleChange}
-        margin="normal"
-        fullWidth
-        helperText={touched.email ? errors.email : ''}
-        error={touched.email && Boolean(errors.email)}
-      />
-      <TextField
-        id="password"
-        name="password"
-        label="Password"
-        type="password"
-        value={values.password}
-        onChange={handleChange}
-        margin="normal"
-        fullWidth
-        helperText={touched.password ? errors.password : ''}
-        error={touched.password && Boolean(errors.password)}
-      />
-      <div className="form__buttons">
-        <Button type="submit" color="secondary">Login</Button>
-        <Link to="/forgot-password">
-          Forgot password
-        </Link>
-      </div>
-    </Form>
-    <div>
-      <PageHeading subtitle="You have no account?" />
-      <Typography variant="subheading" color="primary" className="text-center">
-        <Link to="/register">
-          Register
-        </Link>
-      </Typography>
-    </div>
+    <StyledHero>
+      <Container centerVertically={true}>
+        <HeroGhost>
+          <PageHeading title="Login" />
+          <StyledForm>
+            <TextField
+              id="email"
+              name="email"
+              label="Email"
+              type="email"
+              value={values.email}
+              onChange={handleChange}
+              margin="normal"
+              fullWidth
+              helperText={touched.email ? errors.email : ''}
+              error={touched.email && Boolean(errors.email)}
+            />
+            <TextField
+              id="password"
+              name="password"
+              label="Password"
+              type="password"
+              value={values.password}
+              onChange={handleChange}
+              margin="normal"
+              fullWidth
+              helperText={touched.password ? errors.password : ''}
+              error={touched.password && Boolean(errors.password)}
+            />
+            <FormButtons>
+              <Button type="submit" color="secondary">Login</Button>
+              <Link to="/forgot-password">
+                Forgot password
+              </Link>
+            </FormButtons>
+          </StyledForm>
+          <div>
+            <PageHeading subtitle="You have no account?" />
+            <Typography variant="subheading" color="primary" className="text-center">
+              <Link to="/register">
+                Register
+              </Link>
+            </Typography>
+          </div>
+        </HeroGhost>
+      </Container>
+    </StyledHero>
   </div>
 );
 

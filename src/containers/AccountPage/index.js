@@ -4,21 +4,32 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 
+import { Main } from '../../assets/styles/core/global/mainContainer';
+import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { authActions } from '../App/auth/actions';
 
 export const AccountPage = ({ logout }) => (
   <React.Fragment>
     <Helmet
-      titleTemplate="My Account Page"
-      defaultTitle="My Account Page"
+      titleTemplate="My Account"
+      defaultTitle="My Account"
     >
-      <meta name="description" content="My Account Page" />
+      <meta name="description" content="My Account" />
     </Helmet>
-    <PageHeading title="My Account" />
+    <Main>
+      <Container>
+        <PageHeading title="My Account" />
 
-    <Link to="/change-password">Change Password</Link>
-    <Button type="button" onClick={logout} color="primary">Logout</Button>
+        <Button
+          component={Link}
+          color="primary"
+          variant="contained"
+          to="/change-password"
+        >Change Password</Button>
+        <Button type="button" onClick={logout} color="secondary" variant="contained">Logout</Button>
+      </Container>
+    </Main>
   </React.Fragment>
 );
 

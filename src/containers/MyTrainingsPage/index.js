@@ -6,6 +6,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
+import { Main } from '../../assets/styles/core/global/mainContainer';
+import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
 
 import {
@@ -28,30 +30,32 @@ export class MyTrainingsPage extends React.Component {
         </Helmet>
         <PageHeading title="Trainings" />
 
-        <div>
-          {
-            this.props.trainings.length === 0 ? (
-              <Card className="card">
-                <CardContent className="card__content">
-                  <Typography variant="title" color="inherit">
-                    No trainings
-                  </Typography>
-                </CardContent>
-              </Card>
-            ) : (
-              this.props.trainings.map((training) => (
-                <Card key={training.id} className="card">
+        <Main>
+          <Container>
+            {
+              this.props.trainings.length === 0 ? (
+                <Card className="card">
                   <CardContent className="card__content">
-                    <PageHeading title={ training.name } subtitle={`By: ${training.user.name}`} />
-                    <Typography variant="title" color="primary" className="card__text">
-                      <Link to={'/trainings/' + training.id} className="hero__link">Go to training</Link>
+                    <Typography variant="title" color="inherit">
+                      No trainings
                     </Typography>
                   </CardContent>
                 </Card>
-              ))
-            )
-          }
-        </div>
+              ) : (
+                this.props.trainings.map((training) => (
+                  <Card key={training.id} className="card">
+                    <CardContent className="card__content">
+                      <PageHeading title={ training.name } subtitle={`By: ${training.user.name}`} />
+                      <Typography variant="title" color="primary" className="card__text">
+                        <Link to={'/trainings/' + training.id} className="hero__link">Go to training</Link>
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                ))
+              )
+            }
+          </Container>
+        </Main>
       </React.Fragment>
     );
   }

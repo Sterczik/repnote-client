@@ -17,6 +17,8 @@ import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 
+import { Main } from '../../assets/styles/core/global/mainContainer';
+import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
 
 import {
@@ -119,149 +121,154 @@ export class EditTrainingPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Helmet
           titleTemplate="Register"
           defaultTitle="Register"
         >
           <meta name="description" content="Register" />
         </Helmet>
-        <PageHeading title="Edit your training" />
-        {
-          this.state.exercises ? (
-            <StyledCard className="card">
-              <StyledCardContent className="card__content">
-                <ValidatorForm
-                  className="card__form--training"
-                  onSubmit={this.handleSubmit}
-                >
-                  <div className="card__form__row">
-                    <Typography variant="title" color="inherit" className="text-center">
-                      Training name
-                    </Typography>
-                    <TextValidator
-                      name="name"
-                      label="Training name"
-                      type="text"
-                      value={this.state.name}
-                      onChange={this.handleChange}
-                      fullWidth
-                      validators={['required']}
-                      errorMessages={[
-                        'Training name is required',
-                      ]}
-                    />
-                  </div>
-                  <div className="card__form__row card__form__row--center">
-                    <Typography variant="title" color="inherit" className="text-center">
-                      Training status - {this.state.private ? 'Private' : 'Public'}
-                    </Typography>
-                    <Tooltip title="Change Status">
-                      <IconButton aria-label="Change Status" color="primary" type="submit" className="card__icon" onClick={() => this.changeStatus()}>
-                        { this.state.private ? (
-                          <HttpsIcon />
-                        ) : (
-                          <LanguageIcon />
-                        )}
-                      </IconButton>
-                    </Tooltip>
-                  </div>
-                  <div className="card__form__row card__form__row--center">
-                    <Typography variant="title" color="inherit" className="text-center">
-                      Exercises
-                    </Typography>
-                  </div>
-                  <div className="card__form__row">
-                    {
-                      this.state.exercises && this.state.exercises.length === 0 ? (
+
+        <Main>
+          <Container>
+            <PageHeading title="Edit your training" />
+            {
+              this.state.exercises ? (
+                <StyledCard className="card">
+                  <StyledCardContent className="card__content">
+                    <ValidatorForm
+                      className="card__form--training"
+                      onSubmit={this.handleSubmit}
+                    >
+                      <div className="card__form__row">
                         <Typography variant="title" color="inherit" className="text-center">
-                          No exercises yet
+                          Training name
                         </Typography>
-                      ) : (
-                        this.state.exercises.map((exercise, index) => (
-                          <StyledCard key={index} className="card">
-                            <StyledCardContent className="card__content">
-                              <TextValidator
-                                name={`exercise-${index}`}
-                                label="Exercise name"
-                                type="text"
-                                value={this.state.exercises[index].name}
-                                onChange={e => this.handleChangeExercise(index, e)}
-                                fullWidth
-                                validators={['required']}
-                                errorMessages={[
-                                  'Exercise name is required'
-                                ]}
-                              />
-                              <div className="card__form__row card__form__row--center">
-                                {
-                                  exercise.rounds.length === 0 ? (
-                                    null
-                                  ) : (
-                                    exercise.rounds.map((round, indexRound) => (
-                                      <div key={indexRound} className="card__form__round">
-                                        <TextValidator
-                                          name={`round-${index}-weight`}
-                                          label="Round weight"
-                                          type="number"
-                                          value={this.state.exercises[index].rounds[indexRound].weight}
-                                          onChange={e => this.handleChangeRound(index, indexRound, e, 'weight')}
-                                          fullWidth
-                                          validators={['required']}
-                                          errorMessages={[
-                                            'Round weight is required'
-                                          ]}
-                                        />
-                                        <TextValidator
-                                          name={`round-${index}-reps`}
-                                          label="Round reps"
-                                          type="number"
-                                          value={this.state.exercises[index].rounds[indexRound].reps}
-                                          onChange={e => this.handleChangeRound(index, indexRound, e, 'reps')}
-                                          fullWidth
-                                          validators={['required']}
-                                          errorMessages={[
-                                            'Round reps is required'
-                                          ]}
-                                        />
-                                        <div className="card__icons">
-                                          <Tooltip title="Delete">
-                                            <IconButton color="primary" className="card__icon" onClick={() => this.removeRound(index, indexRound)}>
-                                              <DeleteIcon />
-                                            </IconButton>
-                                          </Tooltip>
-                                        </div>
-                                      </div>
-                                    ))
-                                  )
-                                }
-                                <div className="card__form__round card__form__round--center">
-                                  <Button type="button" color="primary" onClick={() => this.addRound(index)}>Add Round</Button>
-                                </div>
-                              </div>
-                              <Button type="button" color="secondary" onClick={() => this.removeExercise(index)}>Remove Exercise</Button>
-                            </StyledCardContent>
-                          </StyledCard>
-                        ))
-                      )
-                    }
-                  </div>
-                  <div className="card__form__row card__form__row--center card__form__row--no-margin">
-                    <Tooltip title="Add Exercise">
-                      <IconButton aria-label="Add Exercise" color="primary" type="submit" className="card__icon" onClick={() => this.addExercise()}>
-                        <AddCircleIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </div>
-                  <div className="card__form__row card__form__row--center">
-                    <Button type="submit" color="secondary">Save training</Button>
-                  </div>
-                </ValidatorForm>
-              </StyledCardContent>
-            </StyledCard>
-          ) : null
-        }
-      </div>
+                        <TextValidator
+                          name="name"
+                          label="Training name"
+                          type="text"
+                          value={this.state.name}
+                          onChange={this.handleChange}
+                          fullWidth
+                          validators={['required']}
+                          errorMessages={[
+                            'Training name is required',
+                          ]}
+                        />
+                      </div>
+                      <div className="card__form__row card__form__row--center">
+                        <Typography variant="title" color="inherit" className="text-center">
+                          Training status - {this.state.private ? 'Private' : 'Public'}
+                        </Typography>
+                        <Tooltip title="Change Status">
+                          <IconButton aria-label="Change Status" color="primary" type="submit" className="card__icon" onClick={() => this.changeStatus()}>
+                            { this.state.private ? (
+                              <HttpsIcon />
+                            ) : (
+                              <LanguageIcon />
+                            )}
+                          </IconButton>
+                        </Tooltip>
+                      </div>
+                      <div className="card__form__row card__form__row--center">
+                        <Typography variant="title" color="inherit" className="text-center">
+                          Exercises
+                        </Typography>
+                      </div>
+                      <div className="card__form__row">
+                        {
+                          this.state.exercises && this.state.exercises.length === 0 ? (
+                            <Typography variant="title" color="inherit" className="text-center">
+                              No exercises yet
+                            </Typography>
+                          ) : (
+                            this.state.exercises.map((exercise, index) => (
+                              <StyledCard key={index} className="card">
+                                <StyledCardContent className="card__content">
+                                  <TextValidator
+                                    name={`exercise-${index}`}
+                                    label="Exercise name"
+                                    type="text"
+                                    value={this.state.exercises[index].name}
+                                    onChange={e => this.handleChangeExercise(index, e)}
+                                    fullWidth
+                                    validators={['required']}
+                                    errorMessages={[
+                                      'Exercise name is required'
+                                    ]}
+                                  />
+                                  <div className="card__form__row card__form__row--center">
+                                    {
+                                      exercise.rounds.length === 0 ? (
+                                        null
+                                      ) : (
+                                        exercise.rounds.map((round, indexRound) => (
+                                          <div key={indexRound} className="card__form__round">
+                                            <TextValidator
+                                              name={`round-${index}-weight`}
+                                              label="Round weight"
+                                              type="number"
+                                              value={this.state.exercises[index].rounds[indexRound].weight}
+                                              onChange={e => this.handleChangeRound(index, indexRound, e, 'weight')}
+                                              fullWidth
+                                              validators={['required']}
+                                              errorMessages={[
+                                                'Round weight is required'
+                                              ]}
+                                            />
+                                            <TextValidator
+                                              name={`round-${index}-reps`}
+                                              label="Round reps"
+                                              type="number"
+                                              value={this.state.exercises[index].rounds[indexRound].reps}
+                                              onChange={e => this.handleChangeRound(index, indexRound, e, 'reps')}
+                                              fullWidth
+                                              validators={['required']}
+                                              errorMessages={[
+                                                'Round reps is required'
+                                              ]}
+                                            />
+                                            <div className="card__icons">
+                                              <Tooltip title="Delete">
+                                                <IconButton color="primary" className="card__icon" onClick={() => this.removeRound(index, indexRound)}>
+                                                  <DeleteIcon />
+                                                </IconButton>
+                                              </Tooltip>
+                                            </div>
+                                          </div>
+                                        ))
+                                      )
+                                    }
+                                    <div className="card__form__round card__form__round--center">
+                                      <Button type="button" color="primary" onClick={() => this.addRound(index)}>Add Round</Button>
+                                    </div>
+                                  </div>
+                                  <Button type="button" color="secondary" onClick={() => this.removeExercise(index)}>Remove Exercise</Button>
+                                </StyledCardContent>
+                              </StyledCard>
+                            ))
+                          )
+                        }
+                      </div>
+                      <div className="card__form__row card__form__row--center card__form__row--no-margin">
+                        <Tooltip title="Add Exercise">
+                          <IconButton aria-label="Add Exercise" color="primary" type="submit" className="card__icon" onClick={() => this.addExercise()}>
+                            <AddCircleIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </div>
+                      <div className="card__form__row card__form__row--center">
+                        <Button type="submit" color="secondary">Save training</Button>
+                      </div>
+                    </ValidatorForm>
+                  </StyledCardContent>
+                </StyledCard>
+              ) : null
+            }
+          </Container>
+        </Main>
+      </React.Fragment>
     );
   }
 }

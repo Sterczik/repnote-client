@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 
 const StyledHeader = styled.div`
-  flex-grow: 1;
+  
 `
 
 const HeaderTypo = styled(Typography)`

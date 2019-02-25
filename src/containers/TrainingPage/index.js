@@ -12,6 +12,8 @@ import LanguageIcon from '@material-ui/icons/Language';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import { Main } from '../../assets/styles/core/global/mainContainer';
+import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
 
 import {
@@ -35,59 +37,63 @@ export class TrainingPage extends React.Component {
           <meta name="description" content="Training" />
         </Helmet>
         
-        { this.props.training.id ? (
-          <div>
-            <Card className="card">
-              <CardContent className="card__content">
-                <PageHeading title={ this.props.training.name } subtitle={`By: ${this.props.training.user.name}`} />
+        <Main>
+          <Container>
+            { this.props.training.id ? (
+              <div>
+                <Card className="card">
+                  <CardContent className="card__content">
+                    <PageHeading title={ this.props.training.name } subtitle={`By: ${this.props.training.user.name}`} />
 
-                <Typography variant="title" color="primary" className="card__text">
-                    Ćwiczenia
-                </Typography>
-                <ol className="training__numered">
-                { this.props.training.exercises.map((exercise) => (
-                  <React.Fragment key={exercise.id}>
-                    <li>{ exercise.name }</li>
-                    { exercise.rounds.map((round) => (
-                      <ul key={round.id} className="training__unnumbered">
-                        <li>Weight: { round.weight }</li>
-                        <li>Reps: { round.reps }</li>
-                      </ul>
+                    <Typography variant="title" color="primary" className="card__text">
+                        Ćwiczenia
+                    </Typography>
+                    <ol className="training__numered">
+                    { this.props.training.exercises.map((exercise) => (
+                      <React.Fragment key={exercise.id}>
+                        <li>{ exercise.name }</li>
+                        { exercise.rounds.map((round) => (
+                          <ul key={round.id} className="training__unnumbered">
+                            <li>Weight: { round.weight }</li>
+                            <li>Reps: { round.reps }</li>
+                          </ul>
+                        )) }
+                      </React.Fragment>
                     )) }
-                  </React.Fragment>
-                )) }
-                </ol>
+                    </ol>
 
-                { String(this.props.id) === String(this.props.training.user.id) ? (
-                  <div className="card__icons">
-                    <Tooltip title="Delete">
-                      <IconButton color="primary" className="card__icon" onClick={() => this.props.removeTraining(this.props.training.id)}>
-                        <DeleteIcon />
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title="Change Status">
-                      <IconButton aria-label="Change Status" color="primary" type="submit" className="card__icon" onClick={() => this.props.switchTrainingStatus(this.props.training.id)}>
-                        { this.props.training.private ? (
-                          <HttpsIcon />
-                        ) : (
-                          <LanguageIcon />
-                        )}
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title="Edit">
-                      <IconButton component={Link} to={'/trainings/' + this.props.training.id + '/edit'} color="primary" className="card__icon">
-                        <CreateIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </div>
-                  ) : null
-                }
-              </CardContent>
-            </Card>
-          </div>
-        ) : (
-          <div>Loading</div>
-        ) }
+                    { String(this.props.id) === String(this.props.training.user.id) ? (
+                      <div className="card__icons">
+                        <Tooltip title="Delete">
+                          <IconButton color="primary" className="card__icon" onClick={() => this.props.removeTraining(this.props.training.id)}>
+                            <DeleteIcon />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Change Status">
+                          <IconButton aria-label="Change Status" color="primary" type="submit" className="card__icon" onClick={() => this.props.switchTrainingStatus(this.props.training.id)}>
+                            { this.props.training.private ? (
+                              <HttpsIcon />
+                            ) : (
+                              <LanguageIcon />
+                            )}
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Edit">
+                          <IconButton component={Link} to={'/trainings/' + this.props.training.id + '/edit'} color="primary" className="card__icon">
+                            <CreateIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </div>
+                      ) : null
+                    }
+                  </CardContent>
+                </Card>
+              </div>
+            ) : (
+              <div>Loading</div>
+            ) }
+          </Container>
+        </Main>
       </React.Fragment>
     );
   }

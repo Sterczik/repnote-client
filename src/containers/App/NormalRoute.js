@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import { MainContainer } from '../../assets/styles/core/global/mainContainer';
 
 export const NormalRoute = ({
   component: Component,
@@ -10,11 +11,11 @@ export const NormalRoute = ({
   <Route
     {...rest}
     component={props => (
-      <React.Fragment>
+      <MainContainer>
         <Header />
         <Component {...props} />
         <Footer />
-      </React.Fragment>
+      </MainContainer>
     )}
   />
 );

@@ -221,11 +221,54 @@ function resetPassword(newPassword, newPasswordConfirm) {
   };
 }
 
+function getProfile() {
+  const getProfileInProcess = () => ({
+    type: authConstants.GET_PROFILE_IN_PROCESS
+  });
+
+  const getProfileSuccess = (userInfo) => ({
+    type: authConstants.GET_PROFILE_SUCCESS,
+    userInfo
+  });
+
+  const getProfileFailure = (error) => ({
+    type: authConstants.GET_PROFILE_FAILURE,
+    error
+  });
+
+  return (dispatch) => {
+    dispatch(getProfileInProcess());
+
+    userService.getProfile()
+      .then((res) => {
+        const data = res.data;
+        if (data.success) {
+          dispatch(getProfileSuccess(data.userInfo));
+          dispatch(snackbar.show({
+            message: data.message
+          }));
+        } else {
+          dispatch(getProfileFailure());
+          dispatch(snackbar.show({
+            message: data.errors.message
+          }));
+        }
+      })
+      .catch((error) => {
+        dispatch(getProfileFailure(error));
+        dispatch(snackbar.show({
+          message: 'Something went wrong!'
+        }));
+      });
+  };
+}
+
 export const authActions = {
   logout,
   register,
   login,
   changePassword,
   forgotPassword,
-  resetPassword
+  resetPassword,
+  getProfile
 };

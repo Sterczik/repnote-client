@@ -67,6 +67,13 @@ function resetPassword(newPassword, newPasswordConfirm) {
   return axios.post(`${baseUrl}/api/users/reset-password?token=${getUrlParameter('token')}`, { newPassword, newPasswordConfirm });
 }
 
+function getProfile() {
+  const options = {
+    headers: authHeader()
+  };
+  return axios.get(`${baseUrl}/api/users/profile`, options);
+}
+
 export const userService = {
   register,
   login,
@@ -74,5 +81,6 @@ export const userService = {
   logout,
   handleResponse,
   forgotPassword,
-  resetPassword
+  resetPassword,
+  getProfile
 };

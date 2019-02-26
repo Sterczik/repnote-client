@@ -4,11 +4,13 @@ const user = JSON.parse(localStorage.getItem('token'));
 const initialState = user ? {
   loggedIn: true,
   loggingIn: false,
-  user
+  user,
+  userInfo: {}
 } : {
   loggedIn: false,
   loggingIn: false,
   user: {},
+  userInfo: {},
   registerProcess: false
 };
 
@@ -64,6 +66,20 @@ export default (state = initialState, action) => {
         ...state,
         loggedIn: false,
         user: {}
+      };
+    case authConstants.GET_PROFILE_IN_PROCESS:
+      return {
+        ...state
+      };
+    case authConstants.GET_PROFILE_SUCCESS:
+      return {
+        ...state,
+        userInfo: action.userInfo
+      };
+    case authConstants.GET_PROFILE_FAILURE:
+      return {
+        ...state,
+        userInfo: {}
       };
     default:
       return state;

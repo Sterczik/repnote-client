@@ -164,3 +164,48 @@ export function switchTrainingStatus(id) {
       });
   };
 }
+
+export function createTraining(trainingData) {
+  const createTrainingInProcess = () => ({
+    type: trainingConstants.CREATE_TRAINING_IN_PROCESS
+  });
+
+  const createTrainingSuccess = (training) => ({
+    type: trainingConstants.CREATE_TRAINING_SUCCESS,
+    training
+  });
+
+  const createTrainingFailure = (error) => ({
+    type: trainingConstants.CREATE_TRAINING_FAILURE,
+    error
+  });
+
+  return (dispatch) => {
+    dispatch(createTrainingInProcess());
+
+    const data = JSON.stringify({
+      ...trainingData
+    });
+
+    const options = {
+      headers: authHeader()
+    };
+
+    return axios.post(`${baseUrl}/api/trainings/`, data, options)
+      .then((res) => {
+        const training = res.data;
+        history.push(`trainings/${training.id}`, { new: true });
+        dispatch(createTrainingSuccess(training));
+        dispatch(snackbar.show({
+          message: 'You successfully added your Training.'
+        }));
+      })
+      .catch((error) => {
+        userService.handleResponse(error);
+        dispatch(createTrainingFailure(error));
+        dispatch(snackbar.show({
+          message: 'Something went wrong!'
+        }));
+      });
+  };
+}

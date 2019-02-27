@@ -11,13 +11,6 @@ export default (state = trainingsReducerDefaultState, action) => {
       return action.trainings;
     case trainingsConstants.GET_TRAININGS_FAILURE:
       return [];
-    // Create Training
-    case trainingsConstants.CREATE_TRAINING_IN_PROCESS:
-      return state;
-    case trainingsConstants.CREATE_TRAINING_SUCCESS:
-      return [...state, action.training];
-    case trainingsConstants.CREATE_TRAINING_FAILURE:
-      return state;
     // Edit Training
     case trainingsConstants.EDIT_TRAINING_IN_PROCESS:
       return state;

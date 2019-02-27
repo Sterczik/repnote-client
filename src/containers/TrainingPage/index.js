@@ -24,7 +24,9 @@ import {
 
 export class TrainingPage extends React.Component {
   componentDidMount() {
-    this.props.getTraining(this.props.match.params.id);
+    if (!this.props.location.state) {
+      this.props.getTraining(this.props.match.params.id);
+    }
   }
 
   render() {

@@ -20,7 +20,7 @@ import PageHeading from '../../components/PageHeading/PageHeading';
 
 import {
   createTraining
-} from '../App/trainings/actions';
+} from '../App/training/actions';
 
 export class CreateTrainingPage extends React.Component {
   constructor(props) {

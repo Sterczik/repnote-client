@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import validationSchema from './validationSchema';
 
+import { Main } from '../../assets/styles/core/global/mainContainer';
+import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import { authActions } from '../App/auth/actions';
 
@@ -15,56 +17,61 @@ const ChangePasswordPage = ({
   touched,
   handleChange
 }) => (
-  <div>
+  <React.Fragment>
     <Helmet
       titleTemplate="Change Password Page"
       defaultTitle="Change Password Page"
     >
       <meta name="description" content="Change Password Page" />
     </Helmet>
-    <PageHeading title="Change Password" />
-    <Form className="form">
-      <TextField
-        id="oldPassword"
-        name="oldPassword"
-        label="Old password"
-        type="password"
-        value={values.oldPassword}
-        onChange={handleChange}
-        margin="normal"
-        fullWidth
-        helperText={touched.oldPassword ? errors.oldPassword : ''}
-        error={touched.oldPassword && Boolean(errors.oldPassword)}
-      />
-      <TextField
-        id="newPassword"
-        name="newPassword"
-        label="New password"
-        type="password"
-        value={values.newPassword}
-        onChange={handleChange}
-        margin="normal"
-        fullWidth
-        helperText={touched.newPassword ? errors.newPassword : ''}
-        error={touched.newPassword && Boolean(errors.newPassword)}
-      />
-      <TextField
-        id="newPasswordConfirm"
-        name="newPasswordConfirm"
-        label="New password"
-        type="password"
-        value={values.newPasswordConfirm}
-        onChange={handleChange}
-        margin="normal"
-        fullWidth
-        helperText={touched.newPasswordConfirm ? errors.newPasswordConfirm : ''}
-        error={touched.newPasswordConfirm && Boolean(errors.newPasswordConfirm)}
-      />
-      <div>
-        <Button type="submit" color="secondary">Submit</Button>
-      </div>
-    </Form>
-  </div>
+
+    <Main>
+      <Container>
+        <PageHeading title="Change Password" />
+        <Form className="form">
+          <TextField
+            id="oldPassword"
+            name="oldPassword"
+            label="Old password"
+            type="password"
+            value={values.oldPassword}
+            onChange={handleChange}
+            margin="normal"
+            fullWidth
+            helperText={touched.oldPassword ? errors.oldPassword : ''}
+            error={touched.oldPassword && Boolean(errors.oldPassword)}
+          />
+          <TextField
+            id="newPassword"
+            name="newPassword"
+            label="New password"
+            type="password"
+            value={values.newPassword}
+            onChange={handleChange}
+            margin="normal"
+            fullWidth
+            helperText={touched.newPassword ? errors.newPassword : ''}
+            error={touched.newPassword && Boolean(errors.newPassword)}
+          />
+          <TextField
+            id="newPasswordConfirm"
+            name="newPasswordConfirm"
+            label="New password"
+            type="password"
+            value={values.newPasswordConfirm}
+            onChange={handleChange}
+            margin="normal"
+            fullWidth
+            helperText={touched.newPasswordConfirm ? errors.newPasswordConfirm : ''}
+            error={touched.newPasswordConfirm && Boolean(errors.newPasswordConfirm)}
+          />
+          <div>
+            <Button type="submit" color="secondary">Submit</Button>
+          </div>
+        </Form>
+      </Container>
+    </Main>
+  </React.Fragment>
 );
 
 const ChangePasswordPageFormik = withFormik({

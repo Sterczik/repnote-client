@@ -9,8 +9,6 @@ import { history } from './helpers/history';
 
 import * as serviceWorker from './serviceWorker';
 
-import './assets/styles/styles.scss';
-
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('root');

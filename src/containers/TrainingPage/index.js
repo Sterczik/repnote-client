@@ -15,6 +15,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { Main } from '../../assets/styles/core/global/mainContainer';
 import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
+import {
+  TrainingNumbered,
+  TrainingUnnumbered
+} from '../../assets/styles/components/Training/training';
 
 import {
   getTraining,
@@ -50,19 +54,19 @@ export class TrainingPage extends React.Component {
                     <Typography variant="title" color="primary" className="card__text">
                         Ćwiczenia
                     </Typography>
-                    <ol className="training__numered">
+                    <TrainingNumbered>
                     { this.props.training.exercises.map((exercise) => (
                       <React.Fragment key={exercise.id}>
                         <li>{ exercise.name }</li>
                         { exercise.rounds.map((round) => (
-                          <ul key={round.id} className="training__unnumbered">
+                          <TrainingUnnumbered key={round.id}>
                             <li>Weight: { round.weight }</li>
                             <li>Reps: { round.reps }</li>
-                          </ul>
+                          </TrainingUnnumbered>
                         )) }
                       </React.Fragment>
                     )) }
-                    </ol>
+                    </TrainingNumbered>
 
                     { String(this.props.id) === String(this.props.training.user.id) ? (
                       <div className="card__icons">

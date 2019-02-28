@@ -2,7 +2,6 @@ import axios from 'axios';
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux';
 import { authHeader } from '../../../helpers/auth-header';
 import { userService } from '../../../services/user';
-// import { history } from '../../../helpers/history';
 import { trainingsConstants } from './constants';
 import { baseUrl } from '../../../helpers/baseUrl';
 
@@ -77,46 +76,6 @@ export function getMyTrainings() {
       .catch((error) => {
         userService.handleResponse(error);
         dispatch(getTrainingsFailure(error));
-        dispatch(snackbar.show({
-          message: 'Something went wrong!'
-        }));
-      });
-  };
-}
-
-export function editTraining(id, updates) {
-  const editTrainingInProcess = () => ({
-    type: trainingsConstants.EDIT_TRAINING_IN_PROCESS
-  });
-
-  const editTrainingSuccess = (trainingId, trainingUpdates) => ({
-    type: trainingsConstants.EDIT_TRAINING_SUCCESS,
-    id: trainingId,
-    updates: trainingUpdates
-  });
-
-  const editTrainingFailure = (error) => ({
-    type: trainingsConstants.EDIT_TRAINING_FAILURE,
-    error
-  });
-
-  return (dispatch) => {
-    dispatch(editTrainingInProcess());
-
-    const options = {
-      headers: authHeader()
-    };
-
-    return axios.put(`${baseUrl}/api/trainings/${id}`, { ...updates }, options)
-      .then(() => {
-        dispatch(editTrainingSuccess(id, updates));
-        dispatch(snackbar.show({
-          message: 'You successfully updated your Training.'
-        }));
-      })
-      .catch((error) => {
-        userService.handleResponse(error);
-        dispatch(editTrainingFailure(error));
         dispatch(snackbar.show({
           message: 'Something went wrong!'
         }));

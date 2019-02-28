@@ -279,7 +279,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getTraining: (id) => dispatch(getTraining(id)),
-  editTraining: (training) => dispatch(editTraining(training))
+  editTraining: (training, id) => dispatch(editTraining(training, id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditTrainingPage);

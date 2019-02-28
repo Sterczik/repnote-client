@@ -71,8 +71,8 @@ export function editTraining(trainingData, id) {
     return axios.put(`${baseUrl}/api/trainings/${id}`, data,  options)
       .then((res) => {
         const training = res.data;
+        history.push(`/trainings/${id}`, { new: true });
         dispatch(editTrainingSuccess(training));
-        history.push('/my-trainings');
         dispatch(snackbar.show({
           message: 'You successfully edited your Training.'
         }));

@@ -1,4 +1,5 @@
 import React from 'react';
+import MediaQuery from 'react-responsive';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -41,45 +42,47 @@ export class Header extends React.Component {
 
   render() {
     return (
-      <StyledHeader>
-        <AppBar position="static">
-          <Toolbar>
-            <HeaderTypo variant="headline" color="inherit">
-              <HeaderLink to="/trainings">
-                RepNote
-              </HeaderLink>
-            </HeaderTypo>
-            <IconButton
-              aria-owns={this.state.anchorEl ? 'menu-appbar' : undefined}
-              aria-haspopup="true"
-              onClick={this.handleClick}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            <Menu
-              id="simple-menu"
-              anchorEl={this.state.anchorEl}
-              open={Boolean(this.state.anchorEl)}
-              onClose={this.handleClose}
-            >
-              {
-                this.props.isAuthenticated ? (
-                  <div>
-                    <MenuItem component={Link} to="/trainings">Trainings</MenuItem>
-                    <MenuItem component={Link} to="/my-trainings">My trainings</MenuItem>
-                    <MenuItem component={Link} to="/create-training">Create Training</MenuItem>
-                    <MenuItem component={Link} to="/my-account">My account</MenuItem>
-                    <MenuItem onClick={this.logout}>Logout</MenuItem>
-                  </div>
-                ) : (
-                  <MenuItem component={Link} to="/login">Login</MenuItem>
-                )
-              }
-            </Menu>
-          </Toolbar>
-        </AppBar>
-      </StyledHeader>
+      <MediaQuery minDeviceWidth={1280}>
+        <StyledHeader>
+          <AppBar position="static">
+            <Toolbar>
+              <HeaderTypo variant="headline" color="inherit">
+                <HeaderLink to="/trainings">
+                  RepNote
+                </HeaderLink>
+              </HeaderTypo>
+              <IconButton
+                aria-owns={this.state.anchorEl ? 'menu-appbar' : undefined}
+                aria-haspopup="true"
+                onClick={this.handleClick}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={this.state.anchorEl}
+                open={Boolean(this.state.anchorEl)}
+                onClose={this.handleClose}
+              >
+                {
+                  this.props.isAuthenticated ? (
+                    <div>
+                      <MenuItem component={Link} to="/trainings">Trainings</MenuItem>
+                      <MenuItem component={Link} to="/my-trainings">My trainings</MenuItem>
+                      <MenuItem component={Link} to="/create-training">Create Training</MenuItem>
+                      <MenuItem component={Link} to="/my-account">My account</MenuItem>
+                      <MenuItem onClick={this.logout}>Logout</MenuItem>
+                    </div>
+                  ) : (
+                    <MenuItem component={Link} to="/login">Login</MenuItem>
+                  )
+                }
+              </Menu>
+            </Toolbar>
+          </AppBar>
+        </StyledHeader>
+      </MediaQuery>
     );
   }
 }

@@ -9,6 +9,8 @@ import { history } from './helpers/history';
 
 import * as serviceWorker from './serviceWorker';
 
+import 'typeface-roboto';
+
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('root');

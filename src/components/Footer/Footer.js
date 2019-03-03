@@ -14,6 +14,7 @@ import {
   FooterList,
   FooterListItem,
   FooterLink,
+  StyledBottomNavigationWrapper,
   StyledBottomNavigation
 } from '../../assets/styles/components/Footer/footer';
 
@@ -37,55 +38,57 @@ export const Footer = () => (
       </StyledFooter>
     </MediaQuery>
     <MediaQuery maxDeviceWidth={1280}>
-      <StyledBottomNavigation>
-        <BottomNavigationAction
-          showLabel
-          component={Link}
-          to="/trainings"
-          label="Trainings"
-          value="trainings"
-          icon={<StarBorderIcon />}
-        />
-        { isLogged ? (
-          <React.Fragment>
-            <BottomNavigationAction
-              showLabel
-              component={Link}
-              to="/my-trainings"
-              label="My Trainings"
-              value="myTrainings"
-              icon={<StarIcon />}
-            />
-            <BottomNavigationAction
-              showLabel
-              component={Link}
-              to="/create-training"
-              label="Create"
-              value="createTraining"
-              icon={<AddOutlinedIcon />}
-            />
-            <BottomNavigationAction
-              showLabel
-              component={Link}
-              to="/my-account"
-              label="Account"
-              value="myAccount"
-              icon={<PersonIcon />}
-            />
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <BottomNavigationAction
-              showLabel
-              component={Link}
-              to="/login"
-              label="Login"
-              value="login"
-              icon={<PersonIcon />}
-            />
-          </React.Fragment>
-        ) }
-      </StyledBottomNavigation>
+      <StyledBottomNavigationWrapper>
+        <StyledBottomNavigation>
+          <BottomNavigationAction
+            showLabel
+            component={Link}
+            to="/trainings"
+            label="Trainings"
+            value="trainings"
+            icon={<StarBorderIcon />}
+          />
+          { isLogged ? (
+            <React.Fragment>
+              <BottomNavigationAction
+                showLabel
+                component={Link}
+                to="/my-trainings"
+                label="My Trainings"
+                value="myTrainings"
+                icon={<StarIcon />}
+              />
+              <BottomNavigationAction
+                showLabel
+                component={Link}
+                to="/create-training"
+                label="Create"
+                value="createTraining"
+                icon={<AddOutlinedIcon />}
+              />
+              <BottomNavigationAction
+                showLabel
+                component={Link}
+                to="/my-account"
+                label="Account"
+                value="myAccount"
+                icon={<PersonIcon />}
+              />
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <BottomNavigationAction
+                showLabel
+                component={Link}
+                to="/login"
+                label="Login"
+                value="login"
+                icon={<PersonIcon />}
+              />
+            </React.Fragment>
+          ) }
+        </StyledBottomNavigation>
+      </StyledBottomNavigationWrapper>
     </MediaQuery>
   </React.Fragment>
 );

@@ -44,11 +44,16 @@ const StyledBottomNavigation = styled(BottomNavigation)`
   width: 100%;
 `
 
+const StyledBottomNavigationWrapper = styled.div`
+  margin-top: 76px;
+`
+
 export {
   StyledFooter,
   FooterContainer,
   FooterList,
   FooterListItem,
   FooterLink,
+  StyledBottomNavigationWrapper,
   StyledBottomNavigation
 }

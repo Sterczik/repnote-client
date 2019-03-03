@@ -28,12 +28,13 @@ export class AccountPage extends React.Component {
         <Main>
           <Container>
             <PageHeading title="My Account" />
-            <Card>
-              <CardContent>
-                <PageHeading title={ this.props.userInfo.name } subtitle={ this.props.userInfo.email } />
-              </CardContent>
-            </Card>
-    
+            { this.props.userInfo ? (
+              <Card>
+                <CardContent>
+                  <PageHeading title={ this.props.userInfo.name } subtitle={ this.props.userInfo.email } />
+                </CardContent>
+              </Card>
+            ) : null }
             <Button
               component={Link}
               color="primary"

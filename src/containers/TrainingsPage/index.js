@@ -1,14 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-
 import { Main } from '../../assets/styles/core/global/mainContainer';
 import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
+import TrainingInList from '../../components/TrainingInList/TrainingInList';
 
 import {
   getTrainings
@@ -34,24 +31,15 @@ export class TrainingsPage extends React.Component {
           <Container>
             {
               this.props.trainings.length === 0 ? (
-                <Card className="card">
-                  <CardContent className="card__content">
-                    <Typography variant="title" color="inherit">
-                      No trainings
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <Typography variant="title" color="inherit">
+                  No trainings
+                </Typography>
               ) : (
-                this.props.trainings.map((training) => (
-                  <Card key={training.id} className="card">
-                    <CardContent className="card__content">
-                      <PageHeading title={ training.name } subtitle={`By: ${training.user.name}`} />
-                      <Typography variant="title" color="primary" className="card__text">
-                        <Link to={'/trainings/' + training.id} className="hero__link">Go to training</Link>
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                ))
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                  { this.props.trainings.map((training) => (
+                    <TrainingInList key={training.id} training={training} />
+                  )) }
+                </div>
               )
             }
           </Container>

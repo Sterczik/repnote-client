@@ -1,19 +1,29 @@
 import styled from 'styled-components';
+import CardContent from '@material-ui/core/CardContent';
 
-const StyledTraining = styled.div`
-  
+const StyledTraining = styled(CardContent)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
 `
 
-const TrainingNumbered = styled.ol`
+const TrainingSection = styled.div`
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+`
+
+const TrainingExercise = styled.div`
   margin: 30px 0;
 `
 
-const TrainingUnnumbered = styled.ul`
+const TrainingRound = styled.div`
   margin: 10px 0;
 `
 
 export {
   StyledTraining,
-  TrainingNumbered,
-  TrainingUnnumbered
+  TrainingSection,
+  TrainingExercise,
+  TrainingRound
 }

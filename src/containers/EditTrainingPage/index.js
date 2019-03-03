@@ -1,18 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-
-import {
-  StyledCard,
-  StyledCardContent
-} from '../../assets/styles/components/Card/card';
+import { TextValidator } from 'react-material-ui-form-validator';
 
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import HttpsIcon from '@material-ui/icons/Https';
 import LanguageIcon from '@material-ui/icons/Language';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
@@ -20,6 +14,17 @@ import Button from '@material-ui/core/Button';
 import { Main } from '../../assets/styles/core/global/mainContainer';
 import { Container } from '../../assets/styles/core/global/container';
 import PageHeading from '../../components/PageHeading/PageHeading';
+
+import {
+  StyledCard,
+  StyledCardContent,
+  CardFormTraining,
+  CardFormRow,
+  CardFormRowCenter,
+  CardFormRound,
+  CardFormRoundCenter,
+  CardIcons
+} from '../../assets/styles/components/Card/card';
 
 import {
   getTraining,
@@ -32,24 +37,22 @@ export class EditTrainingPage extends React.Component {
     
     this.state = {
       name: '',
-      private: '',
+      private: false,
       exercises: []
     };
     
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
-  static getDerivedStateFromProps(nextProps, prevState) {
-    return {
-      name: nextProps.training.name,
-      private: nextProps.training.private,
-      exercises: nextProps.training.exercises
-    };
-  }
 
-  componentDidMount() {
-    this.props.getTraining(this.props.match.params.id);
+  async componentDidMount() {
+    await this.props.getTraining(this.props.match.params.id);
+
+    this.setState({
+      name: this.props.training.name,
+      private: this.props.training.private,
+      exercises: this.props.training.exercises
+    })
   }
 
   addExercise = (e) => {
@@ -123,10 +126,10 @@ export class EditTrainingPage extends React.Component {
     return (
       <React.Fragment>
         <Helmet
-          titleTemplate="Register"
-          defaultTitle="Register"
+          titleTemplate="Edit training"
+          defaultTitle="Edit training"
         >
-          <meta name="description" content="Register" />
+          <meta name="description" content="Edit training" />
         </Helmet>
 
         <Main>
@@ -134,16 +137,16 @@ export class EditTrainingPage extends React.Component {
             <PageHeading title="Edit your training" />
             {
               this.state.exercises ? (
-                <StyledCard className="card">
-                  <StyledCardContent className="card__content">
-                    <ValidatorForm
-                      className="card__form--training"
+                <StyledCard>
+                  <StyledCardContent>
+                    <CardFormTraining
                       onSubmit={this.handleSubmit}
                     >
-                      <div className="card__form__row">
+                      <CardFormRow>
                         <Typography variant="title" color="inherit" className="text-center">
                           Training name
                         </Typography>
+
                         <TextValidator
                           name="name"
                           label="Training name"
@@ -156,8 +159,8 @@ export class EditTrainingPage extends React.Component {
                             'Training name is required',
                           ]}
                         />
-                      </div>
-                      <div className="card__form__row card__form__row--center">
+                      </CardFormRow>
+                      <CardFormRowCenter>
                         <Typography variant="title" color="inherit" className="text-center">
                           Training status - {this.state.private ? 'Private' : 'Public'}
                         </Typography>
@@ -170,13 +173,13 @@ export class EditTrainingPage extends React.Component {
                             )}
                           </IconButton>
                         </Tooltip>
-                      </div>
-                      <div className="card__form__row card__form__row--center">
+                      </CardFormRowCenter>
+                      <CardFormRowCenter>
                         <Typography variant="title" color="inherit" className="text-center">
                           Exercises
                         </Typography>
-                      </div>
-                      <div className="card__form__row">
+                      </CardFormRowCenter>
+                      <CardFormRow>
                         {
                           this.state.exercises && this.state.exercises.length === 0 ? (
                             <Typography variant="title" color="inherit" className="text-center">
@@ -184,8 +187,8 @@ export class EditTrainingPage extends React.Component {
                             </Typography>
                           ) : (
                             this.state.exercises.map((exercise, index) => (
-                              <StyledCard key={index} className="card">
-                                <StyledCardContent className="card__content">
+                              <StyledCard key={index}>
+                                <StyledCardContent>
                                   <TextValidator
                                     name={`exercise-${index}`}
                                     label="Exercise name"
@@ -198,15 +201,15 @@ export class EditTrainingPage extends React.Component {
                                       'Exercise name is required'
                                     ]}
                                   />
-                                  <div className="card__form__row card__form__row--center">
+                                  <CardFormRowCenter>
                                     {
                                       exercise.rounds.length === 0 ? (
                                         null
                                       ) : (
                                         exercise.rounds.map((round, indexRound) => (
-                                          <div key={indexRound} className="card__form__round">
+                                          <CardFormRound key={indexRound}>
                                             <TextValidator
-                                              name={`round-${index}-weight`}
+                                              name={`round-${index}-${indexRound}-weight`}
                                               label="Round weight"
                                               type="number"
                                               value={this.state.exercises[index].rounds[indexRound].weight}
@@ -218,7 +221,7 @@ export class EditTrainingPage extends React.Component {
                                               ]}
                                             />
                                             <TextValidator
-                                              name={`round-${index}-reps`}
+                                              name={`round-${index}-${indexRound}-reps`}
                                               label="Round reps"
                                               type="number"
                                               value={this.state.exercises[index].rounds[indexRound].reps}
@@ -229,39 +232,35 @@ export class EditTrainingPage extends React.Component {
                                                 'Round reps is required'
                                               ]}
                                             />
-                                            <div className="card__icons">
+                                            <CardIcons>
                                               <Tooltip title="Delete">
                                                 <IconButton color="primary" className="card__icon" onClick={() => this.removeRound(index, indexRound)}>
                                                   <DeleteIcon />
                                                 </IconButton>
                                               </Tooltip>
-                                            </div>
-                                          </div>
+                                            </CardIcons>
+                                          </CardFormRound>
                                         ))
                                       )
                                     }
-                                    <div className="card__form__round card__form__round--center">
+                                    <CardFormRoundCenter>
                                       <Button type="button" color="primary" onClick={() => this.addRound(index)}>Add Round</Button>
-                                    </div>
-                                  </div>
+                                    </CardFormRoundCenter>
+                                  </CardFormRowCenter>
                                   <Button type="button" color="secondary" onClick={() => this.removeExercise(index)}>Remove Exercise</Button>
                                 </StyledCardContent>
                               </StyledCard>
                             ))
                           )
                         }
-                      </div>
-                      <div className="card__form__row card__form__row--center card__form__row--no-margin">
-                        <Tooltip title="Add Exercise">
-                          <IconButton aria-label="Add Exercise" color="primary" type="submit" className="card__icon" onClick={() => this.addExercise()}>
-                            <AddCircleIcon />
-                          </IconButton>
-                        </Tooltip>
-                      </div>
-                      <div className="card__form__row card__form__row--center">
+                      </CardFormRow>
+                      <CardFormRowCenter>
+                        <Button type="button" color="primary" onClick={() => this.addExercise()} disabled={this.state.exercises.length > 9 ? true : false}>Add Exercise</Button>
+                      </CardFormRowCenter>
+                      <CardFormRowCenter>
                         <Button type="submit" color="secondary">Save training</Button>
-                      </div>
-                    </ValidatorForm>
+                      </CardFormRowCenter>
+                    </CardFormTraining>
                   </StyledCardContent>
                 </StyledCard>
               ) : null

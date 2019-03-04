@@ -57,6 +57,10 @@ export class TrainingPage extends React.Component {
 
                       <TrainingSection>
                         <PageHeading title={ this.props.training.name } subtitle={`By: ${this.props.training.user.name}`} />
+
+                        <Typography variant="subheading" color="inherit" className="text-center">
+                          Category: {this.props.trainingCategory}
+                        </Typography>
                       </TrainingSection>
 
                       <TrainingSection>
@@ -130,6 +134,7 @@ export class TrainingPage extends React.Component {
 
 const mapStateToProps = (state) => ({
   training: state.training,
+  trainingCategory: state.training.category === 1 ? "Gym" : state.training.category === 2 ? "Calisthenics" : "Mixed",
   id: localStorage.getItem('id')
 });
 

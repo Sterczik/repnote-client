@@ -2,6 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { TextValidator } from 'react-material-ui-form-validator';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
 
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -37,6 +39,7 @@ export class CreateTrainingPage extends React.Component {
     this.state = {
       name: '',
       private: false,
+      category: 1,
       exercises: []
     };
 
@@ -146,6 +149,27 @@ export class CreateTrainingPage extends React.Component {
                         'Training name is required',
                       ]}
                     />
+                  </CardFormRow>
+                  <CardFormRow>
+                    <Typography variant="title" color="inherit" className="text-center">
+                      Training category
+                    </Typography>
+
+                    <InputLabel htmlFor="category">Category</InputLabel>
+                    <Select
+                      native
+                      fullWidth
+                      value={this.state.category}
+                      onChange={this.handleChange}
+                      inputProps={{
+                        name: 'category',
+                        id: 'category',
+                      }}
+                    >
+                      <option value={1}>Gym</option>
+                      <option value={2}>Calisthenics</option>
+                      <option value={3}>Mixed</option>
+                    </Select>
                   </CardFormRow>
                   <CardFormRowCenter>
                     <Typography variant="title" color="inherit" className="text-center">

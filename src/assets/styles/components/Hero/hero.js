@@ -21,6 +21,7 @@ const HeroContainer = styled.div`
 `
 
 const HeroGhost = styled.div`
+  margin: 10px 0;
   padding: 30px;
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.8);
@@ -36,12 +37,15 @@ const HeroGhost = styled.div`
 `
 
 const HeroText = styled.div`
-  width: 75%;
+  width: 85%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 30px 30px 0;
+  padding: 30px 15px 0;
+  @media (min-width: 360px) {
+    width: 75%;
+  }
 `
 
 const HeroHeading = styled.div`

@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import validationSchema from './validationSchema';
+import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 
 import {
   StyledHero,
@@ -78,6 +80,17 @@ const LoginPage = ({
               </Link>
             </Typography>
           </div>
+          <GoogleLogin
+            clientId="156518502870-pdubhnv4g7vasi3sjdjhkltt1t2s3nrs.apps.googleusercontent.com"
+            buttonText="Login"
+            onSuccess={(response) => this.socialLogin(response)}
+            onFailure={(error) => console.log(error)}
+          />
+          <FacebookLogin
+            appId="300111870657527"
+            // autoLoad={true}
+            fields="name,email,picture"
+            callback={(response) => this.socialLogin(response)} />
         </HeroGhost>
       </Container>
     </StyledHero>
@@ -98,7 +111,8 @@ const LoginPageFormik = withFormik({
 })(LoginPage);
 
 const mapDispatchToProps = (dispatch) => ({
-  login: (email, password) => dispatch(authActions.login(email, password))
+  login: (email, password) => dispatch(authActions.login(email, password)),
+  socialLogin: (response) => dispatch(authActions.login(response))
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPageFormik);

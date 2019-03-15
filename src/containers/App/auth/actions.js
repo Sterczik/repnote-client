@@ -99,6 +99,33 @@ function login(email, password) {
   };
 }
 
+function socialLogin(response) {
+  const socialLoginInProcess = (user) => ({
+    type: authConstants.LOGIN_IN_PROCESS,
+    user
+  });
+
+  const socialLoginSuccess = (user) => ({
+    type: authConstants.LOGIN_SUCCESS,
+    user
+  });
+
+  const socialLoginFailure = (error) => ({
+    type: authConstants.LOGIN_FAILURE,
+    error
+  });
+
+  return (dispatch) => {
+    dispatch(socialLoginInProcess({ }));
+
+    const token = response.Zi.access_token
+    userService.socialLogin(token)
+      .then(data => {
+        console.log(data)
+      })
+  };
+}
+
 function changePassword(oldPassword, newPassword, newPasswordConfirm) {
   const changePasswordInProcess = () => ({
     type: authConstants.CHANGE_PASSWORD_IN_PROCESS
@@ -267,6 +294,7 @@ export const authActions = {
   logout,
   register,
   login,
+  socialLogin,
   changePassword,
   forgotPassword,
   resetPassword,

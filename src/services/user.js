@@ -51,6 +51,20 @@ function login(email, password) {
     .then(res => res.json());
 }
 
+function socialLogin(response) {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    mode: 'no-cors',
+    body: JSON.stringify({
+      response
+    })
+  };
+  
+  return fetch(`${baseUrl}/api/authenticated/google`, requestOptions)
+    .then(res => res.text())
+}
+
 function changePassword(oldPassword, newPassword, newPasswordConfirm) {
   const body = JSON.stringify({ oldPassword, newPassword, newPasswordConfirm });
   const options = {
@@ -77,6 +91,7 @@ function getProfile() {
 export const userService = {
   register,
   login,
+  socialLogin,
   changePassword,
   logout,
   handleResponse,

@@ -45,13 +45,16 @@ function login(email, password) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({
+      email,
+      password
+    })
   };
   return fetch(`${baseUrl}/api/users/login`, requestOptions)
     .then(res => res.json());
 }
 
-function socialLogin(response) {
+function socialLogin(response, provider) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -61,8 +64,8 @@ function socialLogin(response) {
     })
   };
   
-  return fetch(`${baseUrl}/api/authenticated/google`, requestOptions)
-    .then(res => res.text())
+  return fetch(`${baseUrl}/api/authenticated/${provider}`, requestOptions)
+    .then(res => res.json());
 }
 
 function changePassword(oldPassword, newPassword, newPasswordConfirm) {

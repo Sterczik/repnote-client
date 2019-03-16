@@ -49,6 +49,24 @@ export default (state = initialState, action) => {
         loggedIn: false,
         user: {}
       };
+    case authConstants.SOCIAL_LOGIN_IN_PROCESS:
+      return {
+        loggingIn: true,
+        loggedIn: false,
+        user: {}
+      };
+    case authConstants.SOCIAL_LOGIN_SUCCESS:
+      return {
+        loggingIn: false,
+        loggedIn: true,
+        user: action.user
+      };
+    case authConstants.SOCIAL_LOGIN_FAILURE:
+      return {
+        loggingIn: false,
+        loggedIn: false,
+        user: {}
+      };
     case authConstants.CHANGE_PASSWORD_IN_PROCESS:
       return {
         ...state

@@ -99,30 +99,56 @@ function login(email, password) {
   };
 }
 
-function socialLogin(response) {
-  const socialLoginInProcess = (user) => ({
-    type: authConstants.LOGIN_IN_PROCESS,
-    user
+function socialLogin(response, provider) {
+  const socialLoginInProcess = () => ({
+    type: authConstants.SOCIAL_LOGIN_IN_PROCESS
   });
 
   const socialLoginSuccess = (user) => ({
-    type: authConstants.LOGIN_SUCCESS,
+    type: authConstants.SOCIAL_LOGIN_SUCCESS,
     user
   });
 
   const socialLoginFailure = (error) => ({
-    type: authConstants.LOGIN_FAILURE,
+    type: authConstants.SOCIAL_LOGIN_FAILURE,
     error
   });
 
   return (dispatch) => {
-    dispatch(socialLoginInProcess({ }));
+    dispatch(socialLoginInProcess());
 
-    const token = response.Zi.access_token
-    userService.socialLogin(token)
-      .then(data => {
+    let token = ''
+
+    if (provider === 'facebook') {
+      token = response.accessToken
+    }
+    if (provider === 'google') {
+      token = response.Zi.access_token
+    }
+
+    userService.socialLogin(token, provider)
+      .then((data) => {
         console.log(data)
+        if (data.success) {
+          if (data.user.token) {
+            localStorage.setItem('token', JSON.stringify(data.user.token));
+            localStorage.setItem('id', JSON.stringify(data.user.id));
+          }
+          dispatch(socialLoginSuccess(data.user));
+          history.push('/trainings');
+        } else {
+          dispatch(socialLoginFailure());
+          dispatch(snackbar.show({
+            message: data.errors.message
+          }));
+        }
       })
+      .catch((error) => {
+        dispatch(socialLoginFailure(error));
+        dispatch(snackbar.show({
+          message: 'Something went wrong'
+        }));
+      });
   };
 }
 

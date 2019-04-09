@@ -34,7 +34,7 @@ function register(email, name, password, passwordConfirm) {
       email, name, password, passwordConfirm
     })
   };
-  return fetch(`${baseUrl}/api/users/signup`, requestOptions)
+  return fetch(`${baseUrl}/api/app/users/register`, requestOptions)
     .then(res => res.json())
     .then(data => {
       return data;
@@ -47,7 +47,7 @@ function login(email, password) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
   };
-  return fetch(`${baseUrl}/api/users/login`, requestOptions)
+  return fetch(`${baseUrl}/api/app/users/login`, requestOptions)
     .then(res => res.json());
 }
 
@@ -56,22 +56,22 @@ function changePassword(oldPassword, newPassword, newPasswordConfirm) {
   const options = {
     headers: authHeader()
   };
-  return axios.put(`${baseUrl}/api/users/change-password`, body, options);
+  return axios.put(`${baseUrl}/api/app/users/change-password`, body, options);
 }
 
 function forgotPassword(email) {
-  return axios.post(`${baseUrl}/api/users/forgot-password`, { email });
+  return axios.post(`${baseUrl}/api/app/users/forgot-password`, { email });
 }
 
 function resetPassword(newPassword, newPasswordConfirm) {
-  return axios.post(`${baseUrl}/api/users/reset-password?token=${getUrlParameter('token')}`, { newPassword, newPasswordConfirm });
+  return axios.post(`${baseUrl}/api/app/users/reset-password?token=${getUrlParameter('token')}`, { newPassword, newPasswordConfirm });
 }
 
 function getProfile() {
   const options = {
     headers: authHeader()
   };
-  return axios.get(`${baseUrl}/api/users/profile`, options);
+  return axios.get(`${baseUrl}/api/app/users/profile`, options);
 }
 
 export const userService = {

@@ -77,11 +77,12 @@ function login(email, password) {
     userService.login(email, password)
       .then((data) => {
         if (data.success) {
-          if (data.user.token) {
-            localStorage.setItem('token', JSON.stringify(data.user.token));
+          if (data.token.token) {
+            localStorage.setItem('token', JSON.stringify(data.token.token));
+            localStorage.setItem('refreshToken', JSON.stringify(data.token.refreshToken));
             localStorage.setItem('id', JSON.stringify(data.user.id));
           }
-          dispatch(loginSuccess(data.user));
+          dispatch(loginSuccess(data));
           history.push('/trainings');
         } else {
           dispatch(loginFailure());

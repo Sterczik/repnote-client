@@ -6,7 +6,7 @@ import { authActions } from '../../containers/App/auth/actions';
 const Google = (props) => (
   <GoogleLogin
     clientId="156518502870-pdubhnv4g7vasi3sjdjhkltt1t2s3nrs.apps.googleusercontent.com"
-    buttonText="Login"
+    buttonText="Login with Google"
     onSuccess={(response) => props.socialLogin(response, 'google')}
     onFailure={(error) => console.log(error)}
   />

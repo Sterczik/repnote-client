@@ -62,7 +62,10 @@ export default (state = initialState, action) => {
       return {
         loggingIn: false,
         loggedIn: true,
-        user: action.user
+        user: {
+          ...action.token,
+          ...action.user
+        }
       };
     case authConstants.SOCIAL_LOGIN_FAILURE:
       return {

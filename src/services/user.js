@@ -14,6 +14,7 @@ function getUrlParameter(name) {
 function logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('id');
+  localStorage.removeItem('refreshToken');
 }
 
 function handleResponse(response) {
@@ -26,12 +27,12 @@ function handleResponse(response) {
   return response;
 }
 
-function register(email, name, password, passwordConfirm) {
+function register(email, name, password, password_confirmation) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      email, name, password, passwordConfirm
+      email, name, password, password_confirmation
     })
   };
   return fetch(`${baseUrl}/api/app/users/register`, requestOptions)
@@ -58,13 +59,12 @@ function socialLogin(response, provider) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    mode: 'no-cors',
     body: JSON.stringify({
       response
     })
   };
-  
-  return fetch(`${baseUrl}/api/authenticated/${provider}`, requestOptions)
+
+  return fetch(`${baseUrl}/api/app/users/authenticated/${provider}`, requestOptions)
     .then(res => res.json());
 }
 

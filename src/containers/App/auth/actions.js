@@ -40,9 +40,6 @@ function register(email, name, password, passwordConfirm) {
           history.push('/register-confirm');
         } else {
           dispatch(registerFailure());
-          dispatch(snackbar.show({
-            message: data.errors.message
-          }));
         }
       })
       .catch((error) => {
@@ -129,13 +126,13 @@ function socialLogin(response, provider) {
 
     userService.socialLogin(token, provider)
       .then((data) => {
-        console.log(data)
         if (data.success) {
-          if (data.user.token) {
-            localStorage.setItem('token', JSON.stringify(data.user.token));
+          if (data.token.token) {
+            localStorage.setItem('token', JSON.stringify(data.token.token));
+            localStorage.setItem('refreshToken', 'dummy');
             localStorage.setItem('id', JSON.stringify(data.user.id));
           }
-          dispatch(socialLoginSuccess(data.user));
+          dispatch(socialLoginSuccess(data));
           history.push('/trainings');
         } else {
           dispatch(socialLoginFailure());

@@ -40,9 +40,6 @@ function register(email, name, password, passwordConfirm) {
           history.push('/register-confirm');
         } else {
           dispatch(registerFailure());
-          dispatch(snackbar.show({
-            message: data.errors.message
-          }));
         }
       })
       .catch((error) => {
@@ -93,6 +90,59 @@ function login(email, password) {
       })
       .catch((error) => {
         dispatch(loginFailure(error));
+        dispatch(snackbar.show({
+          message: 'Something went wrong'
+        }));
+      });
+  };
+}
+
+function socialLogin(response, provider) {
+  const socialLoginInProcess = () => ({
+    type: authConstants.SOCIAL_LOGIN_IN_PROCESS
+  });
+
+  const socialLoginSuccess = (user) => ({
+    type: authConstants.SOCIAL_LOGIN_SUCCESS,
+    user
+  });
+
+  const socialLoginFailure = (error) => ({
+    type: authConstants.SOCIAL_LOGIN_FAILURE,
+    error
+  });
+
+  return (dispatch) => {
+    dispatch(socialLoginInProcess());
+
+    let token = ''
+
+    if (provider === 'facebook') {
+      token = response.accessToken
+    }
+    if (provider === 'google') {
+      token = response.Zi.access_token
+    }
+
+    userService.socialLogin(token, provider)
+      .then((data) => {
+        if (data.success) {
+          if (data.token.token) {
+            localStorage.setItem('token', JSON.stringify(data.token.token));
+            localStorage.setItem('refreshToken', 'dummy');
+            localStorage.setItem('id', JSON.stringify(data.user.id));
+          }
+          dispatch(socialLoginSuccess(data));
+          history.push('/trainings');
+        } else {
+          dispatch(socialLoginFailure());
+          dispatch(snackbar.show({
+            message: data.errors.message
+          }));
+        }
+      })
+      .catch((error) => {
+        dispatch(socialLoginFailure(error));
         dispatch(snackbar.show({
           message: 'Something went wrong'
         }));
@@ -268,6 +318,7 @@ export const authActions = {
   logout,
   register,
   login,
+  socialLogin,
   changePassword,
   forgotPassword,
   resetPassword,

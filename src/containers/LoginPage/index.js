@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import validationSchema from './validationSchema';
+import Google from '../../components/SocialLogin/Google';
+import Facebook from '../../components/SocialLogin/Facebook';
 
 import {
   StyledHero,
@@ -78,6 +80,12 @@ const LoginPage = ({
               </Link>
             </Typography>
           </div>
+          <div>
+            <Google />
+          </div>
+          <div>
+            <Facebook />
+          </div>
         </HeroGhost>
       </Container>
     </StyledHero>
@@ -98,7 +106,8 @@ const LoginPageFormik = withFormik({
 })(LoginPage);
 
 const mapDispatchToProps = (dispatch) => ({
-  login: (email, password) => dispatch(authActions.login(email, password))
+  login: (email, password) => dispatch(authActions.login(email, password)),
+  socialLogin: (response, provider) => dispatch(authActions.socialLogin(response, provider))
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPageFormik);

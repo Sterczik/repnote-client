@@ -27,7 +27,7 @@ export function getTraining(id) {
     const options = {
       headers: authHeader()
     };
-    return axios.get(`${baseUrl}/api/trainings/${id}`, options)
+    return axios.get(`${baseUrl}/api/app/trainings/${id}`, options)
       .then((res) => {
         const training = res.data;
         dispatch(getTrainingSuccess(training));
@@ -68,7 +68,7 @@ export function editTraining(trainingData, id) {
       headers: authHeader()
     };
 
-    return axios.put(`${baseUrl}/api/trainings/${id}`, data,  options)
+    return axios.put(`${baseUrl}/api/app/trainings/${id}`, data,  options)
       .then((res) => {
         const training = res.data;
         history.push(`/trainings/${id}`, { new: true });
@@ -109,7 +109,7 @@ export function removeTraining(id) {
       headers: authHeader()
     };
 
-    return axios.delete(`${baseUrl}/api/trainings/${id}`, options)
+    return axios.delete(`${baseUrl}/api/app/trainings/${id}`, options)
       .then((res) => {
         const training = res.data;
         dispatch(removeTrainingSuccess(training));
@@ -150,7 +150,7 @@ export function switchTrainingStatus(id) {
       headers: authHeader()
     };
 
-    return axios.put(`${baseUrl}/api/trainings/${id}/private-status`, {}, options)
+    return axios.put(`${baseUrl}/api/app/trainings/${id}/status`, {}, options)
       .then((res) => {
         const training = res.data;
         dispatch(switchTrainingStatusSuccess(training));
@@ -191,7 +191,7 @@ export function createTraining(trainingData) {
       headers: authHeader()
     };
 
-    return axios.post(`${baseUrl}/api/trainings/`, data, options)
+    return axios.post(`${baseUrl}/api/app/trainings/`, data, options)
       .then((res) => {
         const training = res.data;
         history.push(`trainings/${training.id}`, { new: true });

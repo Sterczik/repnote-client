@@ -26,7 +26,7 @@ export function getTrainings() {
     const options = {
       headers: authHeader()
     };
-    return axios.get(`${baseUrl}/api/trainings/`, options)
+    return axios.get(`${baseUrl}/api/app/trainings/`, options)
       .then((res) => {
         const trainings = res.data;
         dispatch(getTrainingsSuccess(trainings));
@@ -65,7 +65,7 @@ export function getMyTrainings() {
     const options = {
       headers: authHeader()
     };
-    return axios.get(`${baseUrl}/api/trainings/my`, options)
+    return axios.get(`${baseUrl}/api/app/trainings/my`, options)
       .then((res) => {
         const trainings = res.data;
         dispatch(getTrainingsSuccess(trainings));

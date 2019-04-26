@@ -61,6 +61,14 @@ export class TrainingPage extends React.Component {
                         <Typography variant="subheading" color="inherit" className="text-center">
                           Category: {this.props.trainingCategory}
                         </Typography>
+
+                        <Typography variant="subheading" color="inherit" className="text-center">
+                          Description: {this.props.training.description}
+                        </Typography>
+
+                        <Typography variant="subheading" color="inherit" className="text-center">
+                          Goal: {this.props.training.goal}
+                        </Typography>
                       </TrainingSection>
 
                       <TrainingSection>

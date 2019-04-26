@@ -39,6 +39,8 @@ export class EditTrainingPage extends React.Component {
     
     this.state = {
       name: '',
+      description: '',
+      goal: '',
       private: false,
       category: 1,
       exercises: []
@@ -53,6 +55,8 @@ export class EditTrainingPage extends React.Component {
 
     this.setState({
       name: this.props.training.name,
+      description: this.props.training.description,
+      goal: this.props.training.goal,
       private: this.props.training.private,
       category: this.props.training.category,
       exercises: this.props.training.exercises
@@ -184,6 +188,42 @@ export class EditTrainingPage extends React.Component {
                           <option value={2}>Calisthenics</option>
                           <option value={3}>Mixed</option>
                         </Select>
+                      </CardFormRow>
+                      <CardFormRow>
+                        <Typography variant="title" color="inherit" className="text-center">
+                          Training description
+                        </Typography>
+
+                        <TextValidator
+                          name="description"
+                          label="Training description"
+                          type="text"
+                          value={this.state.description}
+                          onChange={this.handleChange}
+                          fullWidth
+                          validators={['required']}
+                          errorMessages={[
+                            'Training description is required',
+                          ]}
+                        />
+                      </CardFormRow>
+                      <CardFormRow>
+                        <Typography variant="title" color="inherit" className="text-center">
+                          Training goal
+                        </Typography>
+
+                        <TextValidator
+                          name="goal"
+                          label="Training goal"
+                          type="text"
+                          value={this.state.goal}
+                          onChange={this.handleChange}
+                          fullWidth
+                          validators={['required']}
+                          errorMessages={[
+                            'Training goal is required',
+                          ]}
+                        />
                       </CardFormRow>
                       <CardFormRowCenter>
                         <Typography variant="title" color="inherit" className="text-center">

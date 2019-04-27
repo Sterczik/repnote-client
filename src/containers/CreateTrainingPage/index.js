@@ -293,7 +293,7 @@ export class CreateTrainingPage extends React.Component {
                                   )
                                 }
                                 <CardFormRoundCenter>
-                                  <Button type="button" color="primary" onClick={() => this.addRound(index)}>Add Round</Button>
+                                  <Button type="button" color="primary" onClick={() => this.addRound(index)} disabled={this.state.exercises[index].rounds.length >= 20 ? true : false}>Add Round</Button>
                                 </CardFormRoundCenter>
                               </CardFormRowCenter>
                               <Button type="button" color="secondary" onClick={() => this.removeExercise(index)}>Remove Exercise</Button>
@@ -304,7 +304,7 @@ export class CreateTrainingPage extends React.Component {
                     }
                   </CardFormRow>
                   <CardFormRowCenter>
-                    <Button type="button" color="primary" onClick={() => this.addExercise()} disabled={this.state.exercises.length > 9 ? true : false}>Add Exercise</Button>
+                    <Button type="button" color="primary" onClick={() => this.addExercise()} disabled={this.state.exercises.length >= 10 ? true : false}>Add Exercise</Button>
                   </CardFormRowCenter>
                   <CardFormRowCenter>
                     <Button type="submit" color="secondary">Save training</Button>

@@ -11,6 +11,10 @@ import * as serviceWorker from './serviceWorker';
 
 import 'typeface-roboto';
 
+import './assets/vendor/nucleo/css/nucleo.css';
+import './assets/vendor/font-awesome/css/font-awesome.min.css';
+import './assets/scss/argon-design-system-react.scss';
+
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('root');

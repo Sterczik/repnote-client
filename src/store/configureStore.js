@@ -3,20 +3,20 @@ import {
   combineReducers,
   applyMiddleware,
   compose
-} from 'redux';
-import thunk from 'redux-thunk';
-import { snackbarReducer } from 'material-ui-snackbar-redux';
+} from 'redux'
+import thunk from 'redux-thunk'
+import { snackbarReducer } from 'material-ui-snackbar-redux'
 
-import authReducer from '../containers/App/auth/reducer';
-import trainingsReducer from '../containers/App/trainings/reducer';
-import trainingReducer from '../containers/App/training/reducer';
+import authReducer from '../containers/App/auth/reducer'
+import trainingsReducer from '../containers/App/trainings/reducer'
+import trainingReducer from '../containers/App/training/reducer'
 
 /* eslint-disable no-underscore-dangle, indent */
 const composeEnhancers = process.env.NODE_ENV !== 'production'
 && typeof window === 'object'
 && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-  : compose;
+  : compose
 
 export default () => {
   const store = createStore(
@@ -27,7 +27,7 @@ export default () => {
       snackbar: snackbarReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
-  );
+  )
 
-  return store;
-};
+  return store
+}

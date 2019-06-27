@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import { routes } from '../routes'
 import getRoutes from '../helpers/getRoutes'
 import NotFoundPage from '../containers/NotFoundPage/index'
-import DemoNavbar from '../components/Navbars/DemoNavbar'
+import SimpleNavbar from '../components/Navbars/SimpleNavbar'
 import SimpleFooter from '../components/Footers/SimpleFooter'
 
 class Landing extends React.Component {
@@ -18,7 +18,7 @@ class Landing extends React.Component {
     if (getRoutes(routes, 'landing')) {
       return (
         <>
-          <DemoNavbar />
+          <SimpleNavbar />
           <main ref="main">
             <Switch>{getRoutes(routes, 'landing')}</Switch>
           </main>

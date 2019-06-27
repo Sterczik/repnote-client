@@ -5,7 +5,7 @@ import { routes } from '../routes'
 import getRoutes from '../helpers/getRoutes'
 import NotFoundPage from '../containers/NotFoundPage/index'
 import DemoNavbar from '../components/Navbars/DemoNavbar'
-import CardsFooter from '../components/Footers/CardsFooter'
+import SimpleFooter from '../components/Footers/SimpleFooter'
 
 class Landing extends React.Component {
   state = {}
@@ -22,7 +22,7 @@ class Landing extends React.Component {
           <main ref="main">
             <Switch>{getRoutes(routes, 'landing')}</Switch>
           </main>
-          <CardsFooter />
+          <SimpleFooter />
         </>
       )
     } else {

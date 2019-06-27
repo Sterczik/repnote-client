@@ -17,6 +17,8 @@ import './assets/scss/argon-design-system-react.scss'
 
 import LandingLayout from './layouts/Landing'
 import AuthLayout from './layouts/Auth'
+import AccountLayout from './layouts/Account'
+import TrainingsLayout from './layouts/Trainings'
 
 const initialState = {}
 const store = configureStore(initialState, history)
@@ -32,6 +34,8 @@ ReactDOM.render(
         <Switch>
           <Route path="/landing" render={props => <LandingLayout {...props} />} />
           <Route path="/auth" render={props => <AuthLayout {...props} />} />
+          <Route path="/account" render={props => <AccountLayout {...props} />} />
+          <Route path="/trainings" render={props => <TrainingsLayout {...props} />} />
           <Redirect from="/" to="/landing" />
         </Switch>
       </>

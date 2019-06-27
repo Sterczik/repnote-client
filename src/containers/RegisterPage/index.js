@@ -1,26 +1,28 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { withFormik } from 'formik';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
-import Typography from '@material-ui/core/Typography';
-import validationSchema from './validationSchema';
-import Google from '../../components/SocialLogin/Google';
-import Facebook from '../../components/SocialLogin/Facebook';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { connect } from 'react-redux'
+import { withFormik, Form as FormikForm } from 'formik'
+import validationSchema from './validationSchema'
+import Google from '../../components/SocialLogin/Google'
+import Facebook from '../../components/SocialLogin/Facebook'
 
 import {
-  StyledHero,
-  HeroGhost
-} from '../../assets/styles/components/Hero/hero';
-import {
-  StyledForm,
-} from '../../assets/styles/components/Form/form';
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  FormGroup,
+  Form,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col
+} from "reactstrap"
 
-import { Container } from '../../assets/styles/core/global/container';
-import PageHeading from '../../components/PageHeading/PageHeading';
-import { authActions } from '../App/auth/actions';
+import { authActions } from '../App/auth/actions'
 
 const RegisterPage = ({
   values,
@@ -35,82 +37,160 @@ const RegisterPage = ({
     >
       <meta name="description" content="Register" />
     </Helmet>
-    <StyledHero>
-      <Container centerVertically={true}>
-        <HeroGhost>
-          <PageHeading title="Register" />
-          <StyledForm>
-            <TextField
-              id="email"
-              name="email"
-              label="Email"
-              type="email"
-              value={values.email}
-              onChange={handleChange}
-              margin="normal"
-              fullWidth
-              helperText={touched.email ? errors.email : ''}
-              error={touched.email && Boolean(errors.email)}
-            />
-            <TextField
-              id="name"
-              name="name"
-              label="Your Name"
-              type="text"
-              value={values.name}
-              onChange={handleChange}
-              margin="normal"
-              fullWidth
-              helperText={touched.name ? errors.name : ''}
-              error={touched.name && Boolean(errors.name)}
-            />
-            <TextField
-              id="password"
-              name="password"
-              label="Password"
-              type="password"
-              value={values.password}
-              onChange={handleChange}
-              margin="normal"
-              fullWidth
-              helperText={touched.password ? errors.password : ''}
-              error={touched.password && Boolean(errors.password)}
-            />
-            <TextField
-              id="passwordConfirm"
-              name="passwordConfirm"
-              label="Password Confirmation"
-              type="password"
-              value={values.passwordConfirm}
-              onChange={handleChange}
-              margin="normal"
-              fullWidth
-              helperText={touched.passwordConfirm ? errors.passwordConfirm : ''}
-              error={touched.passwordConfirm && Boolean(errors.passwordConfirm)}
-            />
-            <div>
-              <Button type="submit" color="secondary">Register</Button>
-            </div>
-          </StyledForm>
-          <div>
-            <PageHeading subtitle="You already have an account?" />
-            <Typography variant="subheading" color="primary" className="text-center">
-              <Link to="/login">
-                Login
-              </Link>
-            </Typography>
-          </div>
-          <div>
-            <Google />
-          </div>
-          <div>
-            <Facebook />
-          </div>
-        </HeroGhost>
-      </Container>
-    </StyledHero>
+    <main>
+      <section className="section section-shaped section-lg">
+        <div className="shape shape-style-1 bg-gradient-default">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+        <Container className="pt-lg-md">
+          <Row className="justify-content-center">
+            <Col lg="5">
+              <Card className="bg-secondary shadow border-0">
+                <CardHeader className="bg-white pb-5">
+                  <div className="text-muted text-center mb-3">
+                    <small>Sign up with</small>
+                  </div>
+                  <div className="btn-wrapper text-center">
+                    <Facebook />
+                    <Google />
+                  </div>
+                </CardHeader>
+                <CardBody className="px-lg-5 py-lg-5">
+                  <div className="text-center text-muted mb-4">
+                    <small>Or sign up with credentials</small>
+                  </div>
+                  <FormikForm>
+                    <Form>
+                      <FormGroup>
+                        <InputGroup className="input-group-alternative mb-3">
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="ni ni-hat-3" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            placeholder="Name"
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={values.name}
+                            onChange={handleChange}
+                            // helperText={touched.name ? errors.name : ''}
+                            // error={touched.name && Boolean(errors.name)}
+                          />
+                        </InputGroup>
+                      </FormGroup>
+                      <FormGroup>
+                        <InputGroup className="input-group-alternative mb-3">
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="ni ni-email-83" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            placeholder="Email"
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={values.email}
+                            onChange={handleChange}
+                            // helperText={touched.email ? errors.email : ''}
+                            // error={touched.email && Boolean(errors.email)}
+                          />
+                        </InputGroup>
+                      </FormGroup>
+                      <FormGroup>
+                        <InputGroup className="input-group-alternative">
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="ni ni-lock-circle-open" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            placeholder="Password"
+                            type="password"
+                            autoComplete="off"
+                            id="password"
+                            name="password"
+                            value={values.password}
+                            onChange={handleChange}
+                            // helperText={touched.password ? errors.password : ''}
+                            // error={touched.password && Boolean(errors.password)}
+                          />
+                        </InputGroup>
+                      </FormGroup>
+                      <FormGroup>
+                        <InputGroup className="input-group-alternative">
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="ni ni-lock-circle-open" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            placeholder="Password Confirmation"
+                            type="password"
+                            autoComplete="off"
+                            id="passwordConfirm"
+                            name="passwordConfirm"
+                            value={values.passwordConfirm}
+                            onChange={handleChange}
+                            // helperText={touched.passwordConfirm ? errors.passwordConfirm : ''}
+                            // error={touched.passwordConfirm && Boolean(errors.passwordConfirm)}
+                          />
+                        </InputGroup>
+                      </FormGroup>
+                      <Row className="my-4">
+                        <Col xs="12">
+                          <div className="custom-control custom-control-alternative custom-checkbox">
+                            <input
+                              className="custom-control-input"
+                              id="customCheckRegister"
+                              type="checkbox"
+                            />
+                            <label
+                              className="custom-control-label"
+                              htmlFor="customCheckRegister"
+                            >
+                              <span>
+                                I agree with the{" "}
+                                <a
+                                  href="#pablo"
+                                  onClick={e => e.preventDefault()}
+                                >
+                                  Privacy Policy
+                                </a>
+                              </span>
+                            </label>
+                          </div>
+                        </Col>
+                      </Row>
+                      <div className="text-center">
+                        <Button
+                          className="mt-4"
+                          color="primary"
+                          type="submit"
+                        >
+                          Create account
+                        </Button>
+                      </div>
+                    </Form>
+                  </FormikForm>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </main>
   </div>
-);
+)
 
 const RegisterPageFormik = withFormik({
   mapPropsToValues() {
@@ -119,17 +199,17 @@ const RegisterPageFormik = withFormik({
       name: '',
       password: '',
       passwordConfirm: ''
-    };
+    }
   },
   validationSchema,
   handleSubmit(values, { props }) {
-    props.register(values.email, values.name, values.password, values.passwordConfirm);
+    props.register(values.email, values.name, values.password, values.passwordConfirm)
   }
-})(RegisterPage);
+})(RegisterPage)
 
 const mapDispatchToProps = (dispatch) => ({
   register: (email, name, password, passwordConfirm) => dispatch(authActions.register(email, name, password, passwordConfirm)),
   socialLogin: (response, provider) => dispatch(authActions.socialLogin(response, provider))
-});
+})
 
-export default connect(undefined, mapDispatchToProps)(RegisterPageFormik);
+export default connect(undefined, mapDispatchToProps)(RegisterPageFormik)

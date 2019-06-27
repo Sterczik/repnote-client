@@ -15,7 +15,6 @@ import Button from '@material-ui/core/Button';
 
 import { Main } from '../../assets/styles/core/global/mainContainer';
 import { Container } from '../../assets/styles/core/global/container';
-import PageHeading from '../../components/PageHeading/PageHeading';
 
 import {
   StyledCard,
@@ -142,7 +141,6 @@ export class EditTrainingPage extends React.Component {
 
         <Main>
           <Container>
-            <PageHeading title="Edit your training" />
             {
               this.state.exercises ? (
                 <StyledCard>

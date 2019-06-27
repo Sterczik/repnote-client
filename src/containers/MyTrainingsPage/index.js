@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import { Main } from '../../assets/styles/core/global/mainContainer';
 import { Container } from '../../assets/styles/core/global/container';
-import PageHeading from '../../components/PageHeading/PageHeading';
 import TrainingInList from '../../components/TrainingInList/TrainingInList';
 
 import {
@@ -25,7 +24,6 @@ export class MyTrainingsPage extends React.Component {
         >
           <meta name="description" content="All trainings" />
         </Helmet>
-        <PageHeading title="Trainings" />
 
         <Main>
           <Container>

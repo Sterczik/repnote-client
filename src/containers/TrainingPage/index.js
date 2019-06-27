@@ -12,7 +12,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 import { Main } from '../../assets/styles/core/global/mainContainer';
 import { Container } from '../../assets/styles/core/global/container';
-import PageHeading from '../../components/PageHeading/PageHeading';
 import {
   StyledTraining,
   TrainingSection,
@@ -56,7 +55,7 @@ export class TrainingPage extends React.Component {
                     <StyledTraining>
 
                       <TrainingSection>
-                        <PageHeading title={ this.props.training.name } subtitle={`By: ${this.props.training.user.name}`} />
+                      { this.props.training.name } - { this.props.training.user.name }
 
                         <Typography variant="subheading" color="inherit" className="text-center">
                           Category: {this.props.trainingCategory}

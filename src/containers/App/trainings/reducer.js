@@ -1,18 +1,18 @@
-import { trainingsConstants } from './constants';
+import { trainingsConstants } from './constants'
 
-const trainingsReducerDefaultState = [];
+const trainingsReducerDefaultState = []
 
 export default (state = trainingsReducerDefaultState, action) => {
   switch (action.type) {
     // Get Trainings
     case trainingsConstants.GET_TRAININGS_IN_PROCESS:
-      return [];
+      return []
     case trainingsConstants.GET_TRAININGS_SUCCESS:
-      return action.trainings;
+      return action.trainings
     case trainingsConstants.GET_TRAININGS_FAILURE:
-      return [];
+      return []
     // Default
     default:
-      return state;
+      return state
   }
-};
+}

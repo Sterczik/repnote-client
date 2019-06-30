@@ -1,22 +1,25 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { withFormik } from 'formik';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import validationSchema from './validationSchema';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { connect } from 'react-redux'
+import { withFormik, Form as FormikForm } from 'formik'
+import validationSchema from './validationSchema'
+import { authActions } from '../App/auth/actions'
 
 import {
-  StyledHero,
-  HeroGhost
-} from '../../assets/styles/components/Hero/hero';
-import {
-  StyledForm,
-} from '../../assets/styles/components/Form/form';
-
-import { Container } from '../../assets/styles/core/global/container';
-import PageHeading from '../../components/PageHeading/PageHeading';
-import { authActions } from '../App/auth/actions';
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  FormGroup,
+  Form,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col
+} from 'reactstrap'
 
 const ForgotPasswordPage = ({
   values,
@@ -31,47 +34,87 @@ const ForgotPasswordPage = ({
     >
       <meta name="description" content="Forgot Password" />
     </Helmet>
-    <StyledHero>
-      <Container centerVertically={true}>
-        <HeroGhost>
-          <PageHeading title="Forgot Password" />
-          <StyledForm>
-            <TextField
-              id="email"
-              name="email"
-              label="Email"
-              type="email"
-              value={values.email}
-              onChange={handleChange}
-              margin="normal"
-              fullWidth
-              helperText={touched.email ? errors.email : ''}
-              error={touched.email && Boolean(errors.email)}
-            />
-            <div>
-              <Button type="submit" color="secondary">Submit</Button>
-            </div>
-          </StyledForm>
-        </HeroGhost>
-      </Container>
-    </StyledHero>
+    <main>
+      <section className="section section-shaped section-lg">
+        <div className="shape shape-style-1 bg-gradient-default">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+        <Container className="pt-lg-md">
+          <Row className="justify-content-center">
+            <Col lg="5">
+              <Card className="bg-secondary shadow border-0">
+                <CardHeader className="bg-white pb-5">
+                  <div className="text-muted text-center mb-3">
+                    <small>Forgot password</small>
+                  </div>
+                </CardHeader>
+                <CardBody className="px-lg-5 py-lg-5">
+                  <div className="text-center text-muted mb-4">
+                    <small>Pass your email</small>
+                  </div>
+                  <FormikForm>
+                    <Form>
+                      <FormGroup className="mb-3">
+                        <InputGroup className="input-group-alternative">
+                          <InputGroupAddon addonType="prepend">
+                            <InputGroupText>
+                              <i className="ni ni-email-83" />
+                            </InputGroupText>
+                          </InputGroupAddon>
+                          <Input
+                            placeholder="Email"
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={values.email}
+                            onChange={handleChange}
+                            // helperText={touched.email ? errors.email : ''}
+                            // error={touched.email && Boolean(errors.email)}
+                          />
+                        </InputGroup>
+                      </FormGroup>
+                      <div className="text-center">
+                        <Button
+                          className="my-4"
+                          color="primary"
+                          type="submit"
+                        >
+                          Submit
+                        </Button>
+                      </div>
+                    </Form>
+                  </FormikForm>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </main>
   </div>
-);
+)
 
 const ForgotPasswordPageFormik = withFormik({
   mapPropsToValues() {
     return {
       email: ''
-    };
+    }
   },
   validationSchema,
   handleSubmit(values, { props }) {
-    props.forgotPassword(values.email);
+    props.forgotPassword(values.email)
   }
-})(ForgotPasswordPage);
+})(ForgotPasswordPage)
 
 const mapDispatchToProps = (dispatch) => ({
   forgotPassword: (email) => dispatch(authActions.forgotPassword(email))
-});
+})
 
-export default connect(undefined, mapDispatchToProps)(ForgotPasswordPageFormik);
+export default connect(undefined, mapDispatchToProps)(ForgotPasswordPageFormik)

@@ -1,21 +1,20 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { TextValidator } from 'react-material-ui-form-validator';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { connect } from 'react-redux'
+import { TextValidator } from 'react-material-ui-form-validator'
+import Select from '@material-ui/core/Select'
+import InputLabel from '@material-ui/core/InputLabel'
 
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import HttpsIcon from '@material-ui/icons/Https';
-import LanguageIcon from '@material-ui/icons/Language';
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton'
+import DeleteIcon from '@material-ui/icons/Delete'
+import HttpsIcon from '@material-ui/icons/Https'
+import LanguageIcon from '@material-ui/icons/Language'
+import Typography from '@material-ui/core/Typography'
+import Tooltip from '@material-ui/core/Tooltip'
+import Button from '@material-ui/core/Button'
 
-import { Main } from '../../assets/styles/core/global/mainContainer';
-import { Container } from '../../assets/styles/core/global/container';
-import PageHeading from '../../components/PageHeading/PageHeading';
+import { Main } from '../../assets/styles/core/global/mainContainer'
+import { Container } from '../../assets/styles/core/global/container'
 
 import {
   StyledCard,
@@ -26,15 +25,15 @@ import {
   CardFormRound,
   CardFormRoundCenter,
   CardIcons
-} from '../../assets/styles/components/Card/card';
+} from '../../assets/styles/components/Card/card'
 
 import {
   createTraining
-} from '../App/training/actions';
+} from '../App/training/actions'
 
 export class CreateTrainingPage extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       name: '',
@@ -43,64 +42,64 @@ export class CreateTrainingPage extends React.Component {
       private: false,
       category: 1,
       exercises: []
-    };
+    }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   addExercise = (e) => {
     this.setState((prevState) => ({
       exercises: [...prevState.exercises, { name: '', rounds: [] }],
-    }));
+    }))
   }
 
   addRound = (index) => {
     this.setState(prevState => {
-      const newExercises = [...prevState.exercises];
-      newExercises[index].rounds = [...newExercises[index].rounds, { reps: '', weight: '' }];
-      return { exercises: newExercises };
+      const newExercises = [...prevState.exercises]
+      newExercises[index].rounds = [...newExercises[index].rounds, { reps: '', weight: '' }]
+      return { exercises: newExercises }
     })
   }
 
   removeExercise = (index) => {
     this.setState((prevState) => ({
       exercises: prevState.exercises.filter((val, i) => i !== index)
-    }));
+    }))
   }
 
   removeRound = (index, indexRound) => {
     this.setState(prevState => {
-      const newExercises = [...prevState.exercises];
-      newExercises[index].rounds = newExercises[index].rounds.filter((val, i) => i !== indexRound);
-      return { exercises: newExercises };
+      const newExercises = [...prevState.exercises]
+      newExercises[index].rounds = newExercises[index].rounds.filter((val, i) => i !== indexRound)
+      return { exercises: newExercises }
     })
   }
 
   handleChange(e) {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    const { name, value } = e.target
+    this.setState({ [name]: value })
   }
 
   handleChangeExercise = (index, e) => {
-    const { value } = e.target;
+    const { value } = e.target
     this.setState(prevState => {
-      const newExercises = [...prevState.exercises];
-      newExercises[index].name = value;
-      return { exercises: newExercises };
+      const newExercises = [...prevState.exercises]
+      newExercises[index].name = value
+      return { exercises: newExercises }
     })
   }
 
   handleChangeRound = (index, indexRound, e, type) => {
-    const { value } = e.target;
+    const { value } = e.target
     this.setState(prevState => {
-      const newExercises = [...prevState.exercises];
+      const newExercises = [...prevState.exercises]
       if (type === 'weight') {
-        newExercises[index].rounds[indexRound].weight = value;
+        newExercises[index].rounds[indexRound].weight = value
       } else if (type === 'reps') {
-        newExercises[index].rounds[indexRound].reps = value;
+        newExercises[index].rounds[indexRound].reps = value
       }
-      return { exercises: newExercises };
+      return { exercises: newExercises }
     })
   }
 
@@ -112,23 +111,21 @@ export class CreateTrainingPage extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    this.props.createTraining(this.state);
+    e.preventDefault()
+    this.props.createTraining(this.state)
   }
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <Helmet
           titleTemplate="Create training"
           defaultTitle="Create training"
         >
           <meta name="description" content="Create training" />
         </Helmet>
-
         <Main>
           <Container>
-            <PageHeading title="Create your training" />
             <StyledCard>
               <StyledCardContent>
                 <CardFormTraining
@@ -314,13 +311,13 @@ export class CreateTrainingPage extends React.Component {
             </StyledCard>
           </Container>
         </Main>
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   createTraining: (training) => dispatch(createTraining(training))
-});
+})
 
-export default connect(undefined, mapDispatchToProps)(CreateTrainingPage);
+export default connect(undefined, mapDispatchToProps)(CreateTrainingPage)

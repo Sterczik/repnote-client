@@ -1,9 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Main } from '../../assets/styles/core/global/mainContainer'
 import { Container } from '../../assets/styles/core/global/container'
-import TrainingInList from '../../components/TrainingInList/TrainingInList'
 
 import {
   getMyTrainings
@@ -32,7 +32,11 @@ export class MyTrainingsPage extends React.Component {
               ) : (
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   { this.props.trainings.map((training) => (
-                    <TrainingInList key={training.id} training={training} />
+                    <>
+                      { training.name }
+                      { training.user.name }
+                      <Link to={'/trainings/' + training.id}>Go to training</Link>
+                    </>
                   )) }
                 </div>
               )

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 import {
   Badge,
@@ -52,35 +53,35 @@ export class HomePage extends React.Component {
                   <Row>
                     <Col lg="6">
                       <h1 className="display-3 text-white">
-                        A beautiful Design System{" "}
-                        <span>completed with examples</span>
+                        Create your trainings{" "}
+                        <span>share with people</span>
                       </h1>
                       <p className="lead text-white">
-                        The design system comes with four pre-built pages to
-                        help you get started faster. You can change the text and
-                        images and you're good to go.
+                        Donec convallis urna placerat sem facilisis vestibulum. Nulla sodales eu nibh eget varius. Quisque quis accumsan dui. Nunc ut sapien dui.
                       </p>
                       <div className="btn-wrapper">
                         <Button
                           className="btn-icon mb-3 mb-sm-0"
                           color="info"
-                          href="#"
+                          to="/auth/register"
+                          tag={Link}
                         >
                           <span className="btn-inner--icon mr-1">
-                            <i className="fa fa-code" />
+                            <i className="ni ni-badge" />
                           </span>
-                          <span className="btn-inner--text">Components</span>
+                          <span className="btn-inner--text">Start now</span>
                         </Button>
                         <Button
                           className="btn-white btn-icon mb-3 mb-sm-0 ml-1"
                           color="default"
-                          href="#"
+                          to="/landing/about"
+                          tag={Link}
                         >
                           <span className="btn-inner--icon mr-1">
-                            <i className="ni ni-cloud-download-95" />
+                            <i className="fa fa-caret-down" />
                           </span>
                           <span className="btn-inner--text">
-                            Download React
+                            Read more
                           </span>
                         </Button>
                       </div>
@@ -117,28 +118,26 @@ export class HomePage extends React.Component {
                             <i className="ni ni-check-bold" />
                           </div>
                           <h6 className="text-primary text-uppercase">
-                            Download Argon
+                            Lorem ipsum
                           </h6>
                           <p className="description mt-3">
-                            Argon is a great free UI package based on Bootstrap
-                            4 that includes the most important components and
-                            features.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fermentum fringilla dolor a pharetra. Pellentesque ut eros eget ex efficitur laoreet ac lobortis dolor.
                           </p>
                           <div>
                             <Badge color="primary" pill className="mr-1">
-                              design
+                              lorem
                             </Badge>
                             <Badge color="primary" pill className="mr-1">
-                              system
+                              ipsum
                             </Badge>
                             <Badge color="primary" pill className="mr-1">
-                              creative
+                              dolor
                             </Badge>
                           </div>
                           <Button
                             className="mt-4"
                             color="primary"
-                            href="#pablo"
+                            href="!#"
                             onClick={e => e.preventDefault()}
                           >
                             Learn more
@@ -153,28 +152,26 @@ export class HomePage extends React.Component {
                             <i className="ni ni-istanbul" />
                           </div>
                           <h6 className="text-success text-uppercase">
-                            Build Something
+                            Lorem ipsum
                           </h6>
                           <p className="description mt-3">
-                            Argon is a great free UI package based on Bootstrap
-                            4 that includes the most important components and
-                            features.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fermentum fringilla dolor a pharetra. Pellentesque ut eros eget ex efficitur laoreet ac lobortis dolor.
                           </p>
                           <div>
                             <Badge color="success" pill className="mr-1">
-                              business
+                              lorem
                             </Badge>
                             <Badge color="success" pill className="mr-1">
-                              vision
+                              ipsum
                             </Badge>
                             <Badge color="success" pill className="mr-1">
-                              success
+                              dolor
                             </Badge>
                           </div>
                           <Button
                             className="mt-4"
                             color="success"
-                            href="#pablo"
+                            href="!#"
                             onClick={e => e.preventDefault()}
                           >
                             Learn more
@@ -189,28 +186,26 @@ export class HomePage extends React.Component {
                             <i className="ni ni-planet" />
                           </div>
                           <h6 className="text-warning text-uppercase">
-                            Prepare Launch
+                            Lorem ipsum
                           </h6>
                           <p className="description mt-3">
-                            Argon is a great free UI package based on Bootstrap
-                            4 that includes the most important components and
-                            features.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fermentum fringilla dolor a pharetra. Pellentesque ut eros eget ex efficitur laoreet ac lobortis dolor.
                           </p>
                           <div>
                             <Badge color="warning" pill className="mr-1">
-                              marketing
+                              lorem
                             </Badge>
                             <Badge color="warning" pill className="mr-1">
-                              product
+                              ipsum
                             </Badge>
                             <Badge color="warning" pill className="mr-1">
-                              launch
+                              dolor
                             </Badge>
                           </div>
                           <Button
                             className="mt-4"
                             color="warning"
-                            href="#pablo"
+                            href="!#"
                             onClick={e => e.preventDefault()}
                           >
                             Learn more
@@ -240,9 +235,7 @@ export class HomePage extends React.Component {
                     </div>
                     <h3>Awesome features</h3>
                     <p>
-                      The kit comes with three pre-built pages to help you get
-                      started faster. You can change the text and images and
-                      you're good to go.
+                      Nulla id felis vitae libero molestie vulputate. Donec aliquam orci velit, sed lacinia dolor mollis quis. Quisque sed metus id nibh auctor cursus.
                     </p>
                     <ul className="list-unstyled mt-5">
                       <li className="py-2">
@@ -257,7 +250,7 @@ export class HomePage extends React.Component {
                           </div>
                           <div>
                             <h6 className="mb-0">
-                              Carefully crafted components
+                              Lorem ipsum dolor
                             </h6>
                           </div>
                         </div>
@@ -273,7 +266,9 @@ export class HomePage extends React.Component {
                             </Badge>
                           </div>
                           <div>
-                            <h6 className="mb-0">Amazing page examples</h6>
+                            <h6 className="mb-0">
+                              Lorem ipsum dolor
+                            </h6>
                           </div>
                         </div>
                       </li>
@@ -289,7 +284,7 @@ export class HomePage extends React.Component {
                           </div>
                           <div>
                             <h6 className="mb-0">
-                              Super friendly support team
+                              Lorem ipsum dolor
                             </h6>
                           </div>
                         </div>
@@ -311,29 +306,11 @@ export class HomePage extends React.Component {
                       top
                     />
                     <blockquote className="card-blockquote">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="svg-bg"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 583 95"
-                      >
-                        <polygon
-                          className="fill-default"
-                          points="0,52 583,95 0,95"
-                        />
-                        <polygon
-                          className="fill-default"
-                          opacity=".2"
-                          points="0,42 583,95 683,0 0,95"
-                        />
-                      </svg>
                       <h4 className="display-3 font-weight-bold text-white">
-                        Design System
+                        Trainings System
                       </h4>
                       <p className="lead text-italic text-white">
-                        The Arctic Ocean freezes every winter and much of the
-                        sea-ice then thaws every summer, and that process will
-                        continue whatever happens.
+                        Nulla id felis vitae libero molestie vulputate. Donec aliquam orci velit, sed lacinia dolor mollis quis. Quisque sed metus id nibh auctor cursus.
                       </p>
                     </blockquote>
                   </Card>
@@ -345,27 +322,14 @@ export class HomePage extends React.Component {
                     </div>
                     <h3>Our customers</h3>
                     <p className="lead">
-                      Don't let your uses guess by attaching tooltips and
-                      popoves to any element. Just make sure you enable them
-                      first via JavaScript.
+                      Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris. Duis aliquet semper dignissim.
                     </p>
                     <p>
-                      The kit comes with three pre-built pages to help you get
-                      started faster. You can change the text and images and
-                      you're good to go.
+                      Vivamus id orci eu augue convallis lacinia ut in erat. Morbi blandit pellentesque est, eu blandit dolor viverra sit amet. Morbi porttitor semper iaculis.
                     </p>
                     <p>
-                      The kit comes with three pre-built pages to help you get
-                      started faster. You can change the text and images and
-                      you're good to go.
+                      Nam dapibus placerat finibus. Fusce dignissim vehicula nisi. Sed id suscipit velit, non mattis purus. Suspendisse at erat purus.
                     </p>
-                    <a
-                      className="font-weight-bold text-warning mt-5"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
-                    >
-                      A beautiful UI Kit for impactful websites
-                    </a>
                   </div>
                 </Col>
               </Row>
@@ -393,9 +357,7 @@ export class HomePage extends React.Component {
                     <div className="pl-4">
                       <h4 className="display-3 text-white">Modern Interface</h4>
                       <p className="text-white">
-                        The Arctic Ocean freezes every winter and much of the
-                        sea-ice then thaws every summer, and that process will
-                        continue whatever.
+                        Nulla egestas ultricies nisl, vitae suscipit justo feugiat sed.
                       </p>
                     </div>
                   </div>
@@ -412,13 +374,12 @@ export class HomePage extends React.Component {
                             Awesome Support
                           </h5>
                           <p>
-                            The Arctic Ocean freezes every winter and much of
-                            the sea-ice then thaws every summer, and that
-                            process will continue whatever.
+                            Integer sagittis enim eu nulla dignissim dapibus. Nullam in dapibus lorem.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                           </p>
                           <a
                             className="text-success"
-                            href="#pablo"
+                            href="!#"
                             onClick={e => e.preventDefault()}
                           >
                             Learn more
@@ -437,16 +398,15 @@ export class HomePage extends React.Component {
                         </div>
                         <div className="pl-4">
                           <h5 className="title text-warning">
-                            Modular Components
+                            Awesome Support
                           </h5>
                           <p>
-                            The Arctic Ocean freezes every winter and much of
-                            the sea-ice then thaws every summer, and that
-                            process will continue whatever.
+                            Integer sagittis enim eu nulla dignissim dapibus. Nullam in dapibus lorem.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                           </p>
                           <a
                             className="text-warning"
-                            href="#pablo"
+                            href="!#"
                             onClick={e => e.preventDefault()}
                           >
                             Learn more
@@ -476,231 +436,23 @@ export class HomePage extends React.Component {
           </section>
           <section className="section section-lg">
             <Container>
-              <Row className="justify-content-center text-center mb-lg">
+              <Row className="justify-content-center text-center mb-sm">
                 <Col lg="8">
                   <h2 className="display-3">The amazing Team</h2>
                   <p className="lead text-muted">
-                    According to the National Oceanic and Atmospheric
-                    Administration, Ted, Scambos, NSIDClead scentist, puts the
-                    potentially record maximum.
+                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris. Duis aliquet semper dignissim. Vivamus id orci eu augue convallis lacinia ut in erat. Morbi blandit pellentesque est, eu blandit dolor viverra sit amet.
                   </p>
                 </Col>
               </Row>
-              <Row>
-                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                  <div className="px-4">
-                    <img
-                      alt="..."
-                      className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src={require("../../assets/img/theme/team-1-800x800.jpg")}
-                      style={{ width: "200px" }}
-                    />
-                    <div className="pt-4 text-center">
-                      <h5 className="title">
-                        <span className="d-block mb-1">Ryan Tompson</span>
-                        <small className="h6 text-muted">Web Developer</small>
-                      </h5>
-                      <div className="mt-3">
-                        <Button
-                          className="btn-icon-only rounded-circle"
-                          color="warning"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-twitter" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="warning"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-facebook" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="warning"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-dribbble" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                  <div className="px-4">
-                    <img
-                      alt="..."
-                      className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src={require("../../assets/img/theme/team-2-800x800.jpg")}
-                      style={{ width: "200px" }}
-                    />
-                    <div className="pt-4 text-center">
-                      <h5 className="title">
-                        <span className="d-block mb-1">Romina Hadid</span>
-                        <small className="h6 text-muted">
-                          Marketing Strategist
-                        </small>
-                      </h5>
-                      <div className="mt-3">
-                        <Button
-                          className="btn-icon-only rounded-circle"
-                          color="primary"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-twitter" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="primary"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-facebook" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="primary"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-dribbble" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                  <div className="px-4">
-                    <img
-                      alt="..."
-                      className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src={require("../../assets/img/theme/team-3-800x800.jpg")}
-                      style={{ width: "200px" }}
-                    />
-                    <div className="pt-4 text-center">
-                      <h5 className="title">
-                        <span className="d-block mb-1">Alexander Smith</span>
-                        <small className="h6 text-muted">UI/UX Designer</small>
-                      </h5>
-                      <div className="mt-3">
-                        <Button
-                          className="btn-icon-only rounded-circle"
-                          color="info"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-twitter" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="info"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-facebook" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="info"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-dribbble" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                  <div className="px-4">
-                    <img
-                      alt="..."
-                      className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                      src={require("../../assets/img/theme/team-4-800x800.jpg")}
-                      style={{ width: "200px" }}
-                    />
-                    <div className="pt-4 text-center">
-                      <h5 className="title">
-                        <span className="d-block mb-1">John Doe</span>
-                        <small className="h6 text-muted">Founder and CEO</small>
-                      </h5>
-                      <div className="mt-3">
-                        <Button
-                          className="btn-icon-only rounded-circle"
-                          color="success"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-twitter" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="success"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-facebook" />
-                        </Button>
-                        <Button
-                          className="btn-icon-only rounded-circle ml-1"
-                          color="success"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i className="fa fa-dribbble" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </Container>
-          </section>
-          <section className="section section-lg pt-0">
-            <Container>
-              <Card className="bg-gradient-warning shadow-lg border-0">
-                <div className="p-5">
-                  <Row className="align-items-center">
-                    <Col lg="8">
-                      <h3 className="text-white">
-                        We made website building easier for you.
-                      </h3>
-                      <p className="lead text-white mt-3">
-                        I will be the leader of a company that ends up being
-                        worth billions of dollars, because I got the answers. I
-                        understand culture.
-                      </p>
-                    </Col>
-                    <Col className="ml-lg-auto" lg="3">
-                      <Button
-                        block
-                        className="btn-white"
-                        color="default"
-                        href="!#"
-                        size="lg"
-                      >
-                        Download React
-                      </Button>
-                    </Col>
-                  </Row>
-                </div>
-              </Card>
             </Container>
           </section>
           <section className="section section-lg bg-gradient-default">
             <Container className="pt-lg pb-300">
               <Row className="text-center justify-content-center">
                 <Col lg="10">
-                  <h2 className="display-3 text-white">Build something</h2>
+                  <h2 className="display-3 text-white">Favourites exercises</h2>
                   <p className="lead text-white">
-                    According to the National Oceanic and Atmospheric
-                    Administration, Ted, Scambos, NSIDClead scentist, puts the
-                    potentially record low maximum sea ice extent tihs year down
-                    to low ice.
+                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris. Duis aliquet semper dignissim. Vivamus id orci eu augue convallis lacinia ut in erat.
                   </p>
                 </Col>
               </Row>
@@ -709,30 +461,27 @@ export class HomePage extends React.Component {
                   <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                     <i className="ni ni-settings text-primary" />
                   </div>
-                  <h5 className="text-white mt-3">Building tools</h5>
+                  <h5 className="text-white mt-3">Nice support</h5>
                   <p className="text-white mt-3">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris.
                   </p>
                 </Col>
                 <Col lg="4">
                   <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                     <i className="ni ni-ruler-pencil text-primary" />
                   </div>
-                  <h5 className="text-white mt-3">Grow your market</h5>
+                  <h5 className="text-white mt-3">Many creators</h5>
                   <p className="text-white mt-3">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris.
                   </p>
                 </Col>
                 <Col lg="4">
                   <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                     <i className="ni ni-atom text-primary" />
                   </div>
-                  <h5 className="text-white mt-3">Launch time</h5>
+                  <h5 className="text-white mt-3">Friendly UI</h5>
                   <p className="text-white mt-3">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris.
                   </p>
                 </Col>
               </Row>
@@ -759,9 +508,9 @@ export class HomePage extends React.Component {
                 <Col lg="8">
                   <Card className="bg-gradient-secondary shadow">
                     <CardBody className="p-lg-5">
-                      <h4 className="mb-1">Want to work with us?</h4>
+                      <h4 className="mb-1">Want to contact?</h4>
                       <p className="mt-0">
-                        Your project is very important to us.
+                        Your feedback is very important to us.
                       </p>
                       <FormGroup
                         className={classnames("mt-5", {

@@ -112,6 +112,14 @@ const routes = [
     type: "Normal"
   },
   {
+    path: "/create",
+    name: "Create Training",
+    icon: "",
+    component: CreateTrainingPage,
+    layout: "/trainings",
+    type: "Private"
+  },
+  {
     path: "/:id",
     name: "Training",
     icon: "",
@@ -124,14 +132,6 @@ const routes = [
     name: "My Trainings",
     icon: "",
     component: MyTrainingsPage,
-    layout: "/trainings",
-    type: "Private"
-  },
-  {
-    path: "/create",
-    name: "Create Training",
-    icon: "",
-    component: CreateTrainingPage,
     layout: "/trainings",
     type: "Private"
   },

@@ -161,7 +161,7 @@ const RegisterPage = ({
                               <span>
                                 I agree with the{" "}
                                 <a
-                                  href="#pablo"
+                                  href="!#"
                                   onClick={e => e.preventDefault()}
                                 >
                                   Privacy Policy

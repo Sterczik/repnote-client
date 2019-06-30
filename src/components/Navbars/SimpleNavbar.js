@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Headroom from 'headroom.js'
 import {
-  Button,
   UncontrolledCollapse,
   DropdownMenu,
   DropdownItem,
@@ -19,6 +18,8 @@ import {
   Col,
   UncontrolledTooltip
 } from 'reactstrap'
+import { connect } from 'react-redux'
+import { authActions } from '../../containers/App/auth/actions'
 
 class SimpleNavbar extends React.Component {
   componentDidMount() {
@@ -67,7 +68,7 @@ class SimpleNavbar extends React.Component {
                   <UncontrolledDropdown nav>
                     <DropdownToggle nav>
                       <i className="ni ni-ui-04 d-lg-none mr-1" />
-                      <span className="nav-link-inner--text">Components</span>
+                      <span className="nav-link-inner--text">Lorem ipsum</span>
                     </DropdownToggle>
                     <DropdownMenu className="dropdown-menu-xl">
                       <div className="dropdown-menu-inner">
@@ -84,44 +85,7 @@ class SimpleNavbar extends React.Component {
                               Getting started
                             </h6>
                             <p className="description d-none d-md-inline-block mb-0">
-                              Learn how to use Argon compiling Scss, change
-                              brand colors and more.
-                            </p>
-                          </Media>
-                        </Media>
-                        <Media
-                          className="d-flex align-items-center"
-                          href="!#"
-                          target="_blank"
-                        >
-                          <div className="icon icon-shape bg-gradient-success rounded-circle text-white">
-                            <i className="ni ni-palette" />
-                          </div>
-                          <Media body className="ml-3">
-                            <h6 className="heading text-primary mb-md-1">
-                              Foundation
-                            </h6>
-                            <p className="description d-none d-md-inline-block mb-0">
-                              Learn more about colors, typography, icons and the
-                              grid system we used for Argon.
-                            </p>
-                          </Media>
-                        </Media>
-                        <Media
-                          className="d-flex align-items-center"
-                          href="!#"
-                          target="_blank"
-                        >
-                          <div className="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                            <i className="ni ni-ui-04" />
-                          </div>
-                          <Media body className="ml-3">
-                            <h5 className="heading text-warning mb-md-1">
-                              Components
-                            </h5>
-                            <p className="description d-none d-md-inline-block mb-0">
-                              Browse our 50 beautiful handcrafted components
-                              offered in the Free version.
+                              Lorem ipsum
                             </p>
                           </Media>
                         </Media>
@@ -134,16 +98,22 @@ class SimpleNavbar extends React.Component {
                       <span className="nav-link-inner--text">Examples</span>
                     </DropdownToggle>
                     <DropdownMenu>
-                      <DropdownItem to="/landing-page" tag={Link}>
-                        Landing
+                      <DropdownItem to="/trainings" tag={Link}>
+                        Trainings
                       </DropdownItem>
-                      <DropdownItem to="/profile-page" tag={Link}>
-                        Profile
+                      <DropdownItem to="/trainings/my" tag={Link}>
+                        My trainings
                       </DropdownItem>
-                      <DropdownItem to="/login-page" tag={Link}>
+                      <DropdownItem to="/account" tag={Link}>
+                        My account
+                      </DropdownItem>
+                      <DropdownItem onClick={this.props.logout}>
+                        Logout
+                      </DropdownItem>
+                      <DropdownItem to="/auth/login" tag={Link}>
                         Login
                       </DropdownItem>
-                      <DropdownItem to="/register-page" tag={Link}>
+                      <DropdownItem to="/auth/register" tag={Link}>
                         Register
                       </DropdownItem>
                     </DropdownMenu>
@@ -186,22 +156,6 @@ class SimpleNavbar extends React.Component {
                     <NavLink
                       className="nav-link-icon"
                       href="!#"
-                      id="tooltip184698705"
-                      target="_blank"
-                    >
-                      <i className="fa fa-twitter-square" />
-                      <span className="nav-link-inner--text d-lg-none ml-2">
-                        Twitter
-                      </span>
-                    </NavLink>
-                    <UncontrolledTooltip delay={0} target="tooltip184698705">
-                      Follow us on Twitter
-                    </UncontrolledTooltip>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="!#"
                       id="tooltip112445449"
                       target="_blank"
                     >
@@ -214,21 +168,6 @@ class SimpleNavbar extends React.Component {
                       Star us on Github
                     </UncontrolledTooltip>
                   </NavItem>
-                  <NavItem className="d-none d-lg-block ml-lg-4">
-                    <Button
-                      className="btn-neutral btn-icon"
-                      color="default"
-                      href="!#"
-                      target="_blank"
-                    >
-                      <span className="btn-inner--icon">
-                        <i className="fa fa-cloud-download mr-2" />
-                      </span>
-                      <span className="nav-link-inner--text ml-1">
-                        Download
-                      </span>
-                    </Button>
-                  </NavItem>
                 </Nav>
               </UncontrolledCollapse>
             </Container>
@@ -239,4 +178,14 @@ class SimpleNavbar extends React.Component {
   }
 }
 
-export default SimpleNavbar
+const mapStateToProps = () => ({
+  isAuthenticated: !!localStorage.getItem('token')
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => {
+    dispatch(authActions.logout())
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SimpleNavbar)

@@ -1,45 +1,45 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CreateIcon from '@material-ui/icons/Create';
-import HttpsIcon from '@material-ui/icons/Https';
-import LanguageIcon from '@material-ui/icons/Language';
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import IconButton from '@material-ui/core/IconButton'
+import DeleteIcon from '@material-ui/icons/Delete'
+import CreateIcon from '@material-ui/icons/Create'
+import HttpsIcon from '@material-ui/icons/Https'
+import LanguageIcon from '@material-ui/icons/Language'
+import Typography from '@material-ui/core/Typography'
+import Tooltip from '@material-ui/core/Tooltip'
 
-import { Main } from '../../assets/styles/core/global/mainContainer';
-import { Container } from '../../assets/styles/core/global/container';
+import { Main } from '../../assets/styles/core/global/mainContainer'
+import { Container } from '../../assets/styles/core/global/container'
 import {
   StyledTraining,
   TrainingSection,
   TrainingExercise,
   TrainingRound
-} from '../../assets/styles/components/Training/training';
+} from '../../assets/styles/components/Training/training'
 
 import {
   StyledCard,
   CardIcons
-} from '../../assets/styles/components/Card/card';
+} from '../../assets/styles/components/Card/card'
 
 import {
   getTraining,
   removeTraining,
   switchTrainingStatus
-} from '../App/training/actions';
+} from '../App/training/actions'
 
 export class TrainingPage extends React.Component {
   componentDidMount() {
     if (!this.props.location.state) {
-      this.props.getTraining(this.props.match.params.id);
+      this.props.getTraining(this.props.match.params.id)
     }
   }
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <Helmet
           titleTemplate="Training"
           defaultTitle="Training"
@@ -134,8 +134,8 @@ export class TrainingPage extends React.Component {
             ) }
           </Container>
         </Main>
-      </React.Fragment>
-    );
+      </>
+    )
   }
 }
 
@@ -143,12 +143,12 @@ const mapStateToProps = (state) => ({
   training: state.training,
   trainingCategory: state.training.category === 1 ? "Gym" : state.training.category === 2 ? "Calisthenics" : "Mixed",
   id: localStorage.getItem('id')
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   getTraining: (id) => dispatch(getTraining(id)),
   removeTraining: (id) => dispatch(removeTraining(id)),
   switchTrainingStatus: (id) => dispatch(switchTrainingStatus(id)),
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrainingPage);
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingPage)

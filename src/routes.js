@@ -1,6 +1,6 @@
 // Landing
 import HomePage from './containers/HomePage/index'
-import CheckEmail from './containers/ForgotPasswordPage/CheckEmail'
+// import CheckEmail from './containers/ForgotPasswordPage/CheckEmail'
 import NotFoundPage from './containers/NotFoundPage/index'
 
 // Auth
@@ -87,14 +87,6 @@ const routes = [
   //   layout: "/auth",
   //   type: "Public"
   // }, //temporary disabled
-  {
-    path: "/check-email",
-    name: "Check email",
-    icon: "",
-    component: CheckEmail,
-    layout: "/auth",
-    type: "Public"
-  },
   // {
   //   path: "/reset-password",
   //   name: "Reset password",
@@ -103,6 +95,14 @@ const routes = [
   //   layout: "/auth",
   //   type: "Public"
   // }, //temporary disabled
+  // {
+  //   path: "/check-email",
+  //   name: "Check email",
+  //   icon: "",
+  //   component: CheckEmail,
+  //   layout: "/auth",
+  //   type: "Public"
+  // },
   {
     path: "",
     name: "Trainings",

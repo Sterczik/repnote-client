@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+import * as Yup from 'yup'
 
 export default Yup.object().shape({
   email: Yup.string('Enter your email')
@@ -10,4 +10,4 @@ export default Yup.object().shape({
     .max(30, 'Password must contain maximum 30 characters')
     .matches(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/, 'Password must contain at least 1 number, 1 capital and 1 small letter')
     .required('Enter your password')
-});
+})

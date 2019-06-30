@@ -119,7 +119,7 @@ export class AccountPage extends React.Component {
                     <div className="text-center mt-5">
                       <h3>
                         { this.props.userInfo.name }{" "}
-                        <span className="font-weight-light">, { this.props.userInfo.email }</span>
+                        <span className="font-weight-light">{ this.props.userInfo.email }</span>
                       </h3>
                       <div className="h6 font-weight-300">
                         <i className="ni location_pin mr-2" />

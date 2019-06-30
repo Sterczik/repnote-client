@@ -1,6 +1,5 @@
 /*eslint-disable*/
 import React from 'react'
-// reactstrap components
 import {
   Button,
   NavItem,
@@ -17,7 +16,7 @@ class SimpleFooter extends React.Component {
     return (
       <>
         <footer className=" footer">
-        <Container>
+          <Container>
             <Row className="row-grid align-items-center my-md">
               <Col lg="6">
                 <h3 className="text-primary font-weight-light mb-2">

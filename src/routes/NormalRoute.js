@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React from 'react'
+import { Route } from 'react-router-dom'
 
 export const NormalRoute = ({
   component: Component,
@@ -11,6 +11,6 @@ export const NormalRoute = ({
       <Component {...props} />
     )}
   />
-);
+)
 
-export default NormalRoute;
+export default NormalRoute

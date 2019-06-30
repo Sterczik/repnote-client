@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+import * as Yup from 'yup'
 
 export default Yup.object().shape({
   email: Yup.string('Enter your email')
@@ -19,4 +19,4 @@ export default Yup.object().shape({
   passwordConfirm: Yup.string('Enter your password')
     .required('Confirm your password')
     .oneOf([Yup.ref('password')], 'Password does not match')
-});
+})

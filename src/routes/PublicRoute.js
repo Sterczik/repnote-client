@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Route, Redirect } from 'react-router-dom'
 
 export const PublicRoute = ({
   isAuthenticated,
@@ -17,10 +17,10 @@ export const PublicRoute = ({
       )
     )}
   />
-);
+)
 
 const mapStateToProps = () => ({
   isAuthenticated: !!localStorage.getItem('token')
-});
+})
 
-export default connect(mapStateToProps)(PublicRoute);
+export default connect(mapStateToProps)(PublicRoute)

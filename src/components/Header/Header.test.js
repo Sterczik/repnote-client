@@ -1,22 +1,22 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { Header } from './Header';
+import React from 'react'
+import { shallow } from 'enzyme'
+import { Header } from './Header'
 
-let wrapper;
-let logout;
+let wrapper
+let logout
 
 beforeEach(() => {
-  logout = jest.fn();
+  logout = jest.fn()
   wrapper = shallow(<Header
     logout={logout}
-  />);
-});
+  />)
+})
 
 test('should render Header correctly', () => {
-  expect(wrapper).toMatchSnapshot();
-});
+  expect(wrapper).toMatchSnapshot()
+})
 
 test('should handle logout', () => {
-  wrapper.find('.header__anchor').at(2).simulate('click');
-  expect(logout).toHaveBeenCalled();
-});
+  wrapper.find('.header__anchor').at(2).simulate('click')
+  expect(logout).toHaveBeenCalled()
+})

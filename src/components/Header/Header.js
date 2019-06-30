@@ -1,43 +1,43 @@
-import React from 'react';
-import MediaQuery from 'react-responsive';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import React from 'react'
+import MediaQuery from 'react-responsive'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import IconButton from '@material-ui/core/IconButton'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import AccountCircle from '@material-ui/icons/AccountCircle'
 
-import { StyledHeader, HeaderTypo, HeaderLink } from '../../assets/styles/components/Header/header';
+import { StyledHeader, HeaderTypo, HeaderLink } from '../../assets/styles/components/Header/header'
 
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { authActions } from '../../containers/App/auth/actions';
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { authActions } from '../../containers/App/auth/actions'
 
 export class Header extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       anchorEl: null
-    };
+    }
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.logout = this.logout.bind(this);
+    this.handleClick = this.handleClick.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.logout = this.logout.bind(this)
   }
 
   handleClick(event) {
-    this.setState({ anchorEl: event.currentTarget });
+    this.setState({ anchorEl: event.currentTarget })
   }
 
   handleClose() {
-    this.setState({ anchorEl: null });
+    this.setState({ anchorEl: null })
   }
 
   logout() {
-    this.handleClose();
-    this.props.logout();
+    this.handleClose()
+    this.props.logout()
   }
 
   render() {
@@ -83,18 +83,18 @@ export class Header extends React.Component {
           </AppBar>
         </StyledHeader>
       </MediaQuery>
-    );
+    )
   }
 }
 
 const mapStateToProps = () => ({
   isAuthenticated: !!localStorage.getItem('token')
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => {
-    dispatch(authActions.logout());
+    dispatch(authActions.logout())
   }
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

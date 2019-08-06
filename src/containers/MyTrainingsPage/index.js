@@ -1,9 +1,12 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Main } from '../../assets/styles/core/global/mainContainer'
-import { Container } from '../../assets/styles/core/global/container'
+import {
+  Container,
+  Row,
+  Col
+} from 'reactstrap'
+import TrainingList from '../../components/Trainings/TrainingList'
 
 import {
   getMyTrainings
@@ -23,26 +26,27 @@ export class MyTrainingsPage extends React.Component {
         >
           <meta name="description" content="All trainings" />
         </Helmet>
-
-        <Main>
+        <section className="section section-lg pt-lg-0 mt-5">
           <Container>
+            <Row className="justify-content-center">
             {
               this.props.trainings.length === 0 ? (
-                <h2>No trainings</h2>
+                <h2 className="display-2">No trainings</h2>
               ) : (
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                  { this.props.trainings.map((training) => (
-                    <>
-                      { training.name }
-                      { training.user.name }
-                      <Link to={'/trainings/' + training.id}>Go to training</Link>
-                    </>
-                  )) }
-                </div>
+                <Col lg="12">
+                  <Row className="row-grid">
+                    { this.props.trainings.map((training) => (
+                      <Col lg="4" className="mb-5">
+                        <TrainingList training={training} />
+                      </Col>
+                    )) }
+                  </Row>
+                </Col> 
               )
             }
+            </Row>
           </Container>
-        </Main>
+        </section>
       </>
     )
   }

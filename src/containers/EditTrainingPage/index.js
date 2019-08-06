@@ -1,31 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import { TextValidator } from 'react-material-ui-form-validator'
-import Select from '@material-ui/core/Select'
-import InputLabel from '@material-ui/core/InputLabel'
-
-import IconButton from '@material-ui/core/IconButton'
-import DeleteIcon from '@material-ui/icons/Delete'
-import HttpsIcon from '@material-ui/icons/Https'
-import LanguageIcon from '@material-ui/icons/Language'
-import Typography from '@material-ui/core/Typography'
-import Tooltip from '@material-ui/core/Tooltip'
-import Button from '@material-ui/core/Button'
-
-import { Main } from '../../assets/styles/core/global/mainContainer'
-import { Container } from '../../assets/styles/core/global/container'
-
-import {
-  StyledCard,
-  StyledCardContent,
-  CardFormTraining,
-  CardFormRow,
-  CardFormRowCenter,
-  CardFormRound,
-  CardFormRoundCenter,
-  CardIcons
-} from '../../assets/styles/components/Card/card'
 
 import {
   getTraining,
@@ -139,7 +114,7 @@ export class EditTrainingPage extends React.Component {
           <meta name="description" content="Edit training" />
         </Helmet>
 
-        <Main>
+        {/* <Main>
           <Container>
             {
               this.state.exercises ? (
@@ -329,7 +304,7 @@ export class EditTrainingPage extends React.Component {
               ) : null
             }
           </Container>
-        </Main>
+        </Main> */}
       </>
     )
   }

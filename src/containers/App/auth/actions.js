@@ -1,10 +1,10 @@
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
-import { userService } from '../../../services/user'
+import { ServiceUsers } from '../../../services/users/users'
 import { history } from '../../../helpers/history'
 import { authConstants } from './constants'
 
 function logout() {
-  userService.logout()
+  ServiceUsers.logout()
 
   return {
     type: authConstants.LOGOUT
@@ -30,7 +30,7 @@ function register(email, name, password, passwordConfirm) {
   return (dispatch) => {
     dispatch(registerInProcess({ email }))
 
-    userService.register(email, name, password, passwordConfirm)
+    ServiceUsers.register(email, name, password, passwordConfirm)
       .then((data) => {
         if (data.success) {
           dispatch(registerSuccess())
@@ -71,13 +71,12 @@ function login(email, password) {
   return (dispatch) => {
     dispatch(loginInProcess({ email }))
 
-    userService.login(email, password)
+    ServiceUsers.login(email, password)
       .then((data) => {
         if (data.success) {
           if (data.token.token) {
             localStorage.setItem('token', JSON.stringify(data.token.token))
             localStorage.setItem('refreshToken', JSON.stringify(data.token.refreshToken))
-            localStorage.setItem('id', JSON.stringify(data.user.id))
           }
           dispatch(loginSuccess(data))
           history.push('/trainings')
@@ -124,13 +123,12 @@ function socialLogin(response, provider) {
       token = response.Zi.access_token
     }
 
-    userService.socialLogin(token, provider)
+    ServiceUsers.socialLogin(token, provider)
       .then((data) => {
         if (data.success) {
           if (data.token.token) {
             localStorage.setItem('token', JSON.stringify(data.token.token))
             localStorage.setItem('refreshToken', 'dummy')
-            localStorage.setItem('id', JSON.stringify(data.user.id))
           }
           dispatch(socialLoginSuccess(data))
           history.push('/trainings')
@@ -166,7 +164,7 @@ function changePassword(oldPassword, newPassword, newPasswordConfirm) {
   return (dispatch) => {
     dispatch(changePasswordInProcess())
 
-    userService.changePassword(oldPassword, newPassword, newPasswordConfirm)
+    ServiceUsers.changePassword(oldPassword, newPassword, newPasswordConfirm)
       .then((res) => {
         const data = res.data
         if (data.success) {
@@ -208,7 +206,7 @@ function forgotPassword(email) {
   return (dispatch) => {
     dispatch(forgotPasswordInProcess())
 
-    userService.forgotPassword(email)
+    ServiceUsers.forgotPassword(email)
       .then((res) => {
         const data = res.data
         if (data.success) {
@@ -247,7 +245,7 @@ function resetPassword(newPassword, newPasswordConfirm) {
   return (dispatch) => {
     dispatch(resetPasswordInProcess())
 
-    userService.resetPassword(newPassword, newPasswordConfirm)
+    ServiceUsers.resetPassword(newPassword, newPasswordConfirm)
       .then((res) => {
         const data = res.data
         if (data.success) {
@@ -290,7 +288,7 @@ function getProfile() {
   return (dispatch) => {
     dispatch(getProfileInProcess())
 
-    userService.getProfile()
+    ServiceUsers.getProfile()
       .then((res) => {
         const data = res.data
         if (data.success) {

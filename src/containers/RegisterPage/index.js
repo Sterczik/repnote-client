@@ -20,7 +20,7 @@ import {
   Container,
   Row,
   Col
-} from "reactstrap"
+} from 'reactstrap'
 
 import { authActions } from '../App/auth/actions'
 

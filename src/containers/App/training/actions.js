@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
 import { authHeader } from '../../../helpers/auth-header'
-import { userService } from '../../../services/user'
+import { ServiceUsers } from '../../../services/users/users'
 import { history } from '../../../helpers/history'
 import { trainingConstants } from './constants'
 import { baseUrl } from '../../../helpers/baseUrl'
@@ -33,7 +33,7 @@ export function getTraining(id) {
         dispatch(getTrainingSuccess(training))
       })
       .catch((error) => {
-        userService.handleResponse(error)
+        // ServiceUsers.handleResponse(error)
         dispatch(getTrainingFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
@@ -78,7 +78,7 @@ export function editTraining(trainingData, id) {
         }))
       })
       .catch((error) => {
-        userService.handleResponse(error)
+        ServiceUsers.handleResponse(error)
         dispatch(editTrainingFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
@@ -119,7 +119,7 @@ export function removeTraining(id) {
         }))
       })
       .catch((error) => {
-        userService.handleResponse(error)
+        ServiceUsers.handleResponse(error)
         dispatch(removeTrainingFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
@@ -156,7 +156,7 @@ export function switchTrainingStatus(id) {
         dispatch(switchTrainingStatusSuccess(training))
       })
       .catch((error) => {
-        userService.handleResponse(error)
+        ServiceUsers.handleResponse(error)
         dispatch(switchTrainingStatusFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
@@ -201,7 +201,7 @@ export function createTraining(trainingData) {
         }))
       })
       .catch((error) => {
-        userService.handleResponse(error)
+        ServiceUsers.handleResponse(error)
         dispatch(createTrainingFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'

@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { authHeader } from '../helpers/auth-header'
-import { baseUrl } from '../helpers/baseUrl'
+import { authHeader } from '../../helpers/auth-header'
+import { baseUrl } from '../../helpers/baseUrl'
 
 function getUrlParameter(name) {
   /* eslint-disable no-useless-escape, indent */
@@ -13,7 +13,6 @@ function getUrlParameter(name) {
 
 function logout() {
   localStorage.removeItem('token')
-  localStorage.removeItem('id')
   localStorage.removeItem('refreshToken')
 }
 
@@ -91,7 +90,7 @@ function getProfile() {
   return axios.get(`${baseUrl}/api/app/users/profile/my`, options)
 }
 
-export const userService = {
+export const ServiceUsers = {
   register,
   login,
   socialLogin,

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
 import { authHeader } from '../../../helpers/auth-header'
-import { userService } from '../../../services/user'
+import { ServiceUsers } from '../../../services/users/users'
 import { trainingsConstants } from './constants'
 import { baseUrl } from '../../../helpers/baseUrl'
 
@@ -35,7 +35,7 @@ export function getTrainings() {
         }))
       })
       .catch((error) => {
-        userService.handleResponse(error)
+        ServiceUsers.handleResponse(error)
         dispatch(getTrainingsFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
@@ -74,7 +74,7 @@ export function getMyTrainings() {
         }))
       })
       .catch((error) => {
-        userService.handleResponse(error)
+        ServiceUsers.handleResponse(error)
         dispatch(getTrainingsFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'

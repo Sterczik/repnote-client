@@ -5,14 +5,18 @@ import { ServiceUsers } from '../../../services/users/users'
 import { trainingsConstants } from './constants'
 import { baseUrl } from '../../../helpers/baseUrl'
 
-export function getTrainings() {
+export function getTrainings (
+    page = localStorage.getItem('page') ? localStorage.getItem('page') : '1',
+    perPage = localStorage.getItem('perPage') ? localStorage.getItem('perPage') : '24',
+    sort = localStorage.getItem('sort') ? localStorage.getItem('sort') : '1'
+  ) {
   const getTrainingsInProcess = () => ({
     type: trainingsConstants.GET_TRAININGS_IN_PROCESS
   })
 
-  const getTrainingsSuccess = (trainings) => ({
+  const getTrainingsSuccess = (trainingsData) => ({
     type: trainingsConstants.GET_TRAININGS_SUCCESS,
-    trainings
+    trainingsData
   })
 
   const getTrainingsFailure = (error) => ({
@@ -20,16 +24,24 @@ export function getTrainings() {
     error
   })
 
+  page = parseInt(page)
+  perPage = parseInt(perPage)
+  sort = parseInt(sort)
+
+  localStorage.setItem('page', page)
+  localStorage.setItem('perPage', perPage)
+  localStorage.setItem('sort', sort)
+
   return (dispatch) => {
     dispatch(getTrainingsInProcess())
 
     const options = {
       headers: authHeader()
     }
-    return axios.get(`${baseUrl}/api/app/trainings/`, options)
+    return axios.get(`${baseUrl}/api/app/trainings?page=${page}&perPage=${perPage}&sort=${sort}`, options)
       .then((res) => {
-        const trainings = res.data
-        dispatch(getTrainingsSuccess(trainings))
+        const trainingsData = res.data
+        dispatch(getTrainingsSuccess(trainingsData))
         dispatch(snackbar.show({
           message: 'You successfully fetched Trainings.'
         }))

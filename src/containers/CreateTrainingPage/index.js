@@ -12,9 +12,6 @@ import {
   Col
 } from 'reactstrap'
 
-import { ServiceTrainingCategories } from '../../services/trainingCategories/trainingCategories'
-import { ServiceExerciseCategories } from '../../services/exerciseCategories/exerciseCategories'
-
 import {
   createTraining
 } from '../App/training/actions'
@@ -29,28 +26,11 @@ export class CreateTrainingPage extends React.Component {
       goal: '',
       private: false,
       category: 1,
-      exercises: [],
-      trainingCategories: [],
-      exerciseCategories: []
+      exercises: []
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  componentDidMount() {
-    Promise.all([
-      ServiceTrainingCategories.getTrainingCategories(),
-      ServiceExerciseCategories.getExerciseCategories()
-    ]).then(values => {
-      const trainingCategories = values[0].data
-      const exerciseCategories = values[1].data
-
-      this.setState({
-        trainingCategories,
-        exerciseCategories
-      })
-    })
   }
 
   addExercise = (e) => {
@@ -180,7 +160,7 @@ export class CreateTrainingPage extends React.Component {
                               name="category"
                               className="form-control-alternative"
                             >
-                              { this.state.trainingCategories.map((trainingCategory) => (
+                              { this.props.trainingCategories.map((trainingCategory) => (
                                 <option key={trainingCategory.id} value={trainingCategory.id}>{ trainingCategory.name }</option>
                               )) }
                             </AvField>
@@ -259,7 +239,7 @@ export class CreateTrainingPage extends React.Component {
                                         name="exercise_category"
                                         className="form-control-alternative"
                                       >
-                                        { this.state.exerciseCategories.map((exerciseCategory) => (
+                                        { this.props.exerciseCategories.map((exerciseCategory) => (
                                           <option key={exerciseCategory.id} value={Number(exerciseCategory.id)}>{ exerciseCategory.name }</option>
                                         )) }
                                       </AvField>
@@ -351,8 +331,13 @@ export class CreateTrainingPage extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  trainingCategories: state.global.trainingCategories,
+  exerciseCategories: state.global.exerciseCategories
+})
+
 const mapDispatchToProps = (dispatch) => ({
   createTraining: (training) => dispatch(createTraining(training))
 })
 
-export default connect(undefined, mapDispatchToProps)(CreateTrainingPage)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTrainingPage)

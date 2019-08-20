@@ -1,8 +1,7 @@
-import axios from 'axios'
-import { baseUrl } from '../../helpers/baseUrl'
+import Api from '../../helpers/api'
 
 function getTrainingCategories() {
-  return axios.get(`${baseUrl}/api/app/trainingCategories`)
+  return Api().get('/trainingCategories')
 }
 
 export const ServiceTrainingCategories = {

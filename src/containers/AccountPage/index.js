@@ -2,10 +2,18 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Button, Card, Container, Row, Col } from 'reactstrap'
+import { Button, Card, Container, Row, Col, Modal, } from 'reactstrap'
 import { authActions } from '../App/auth/actions'
 
 export class AccountPage extends React.Component {
+  state = {
+    editAccountModal: false
+  }
+  toggleModal = (state) => {
+    this.setState({
+      [state]: !this.state[state]
+    })
+  }
   componentDidMount() {
     this.props.getProfile()
   }
@@ -56,8 +64,9 @@ export class AccountPage extends React.Component {
                           <a href="!#" onClick={e => e.preventDefault()}>
                             <img
                               alt="..."
+                              style={{width: 180 + 'px'}}
                               className="rounded-circle"
-                              src={require("../../assets/img/theme/team-4-800x800.jpg")}
+                              src={this.props.userInfo.avatar}
                             />
                           </a>
                         </div>
@@ -68,10 +77,10 @@ export class AccountPage extends React.Component {
                       >
                         <div className="card-profile-actions py-4 mt-lg-0">
                           <Button
-                            component={Link}
+                            tag={Link}
                             className="mr-4"
                             color="info"
-                            to="/auth/change-password"
+                            to="/account/change-password"
                             size="sm"
                           >
                             Change Password
@@ -84,76 +93,90 @@ export class AccountPage extends React.Component {
                           >
                             Logout
                           </Button>
-                          { 1 + 2 === 3 ? (
-                            null
-                          ) : (
-                            <Button
-                              className="float-right"
-                              color="default"
-                              href="!#"
-                              onClick={e => e.preventDefault()}
-                              size="sm"
-                            >
-                              Message
-                            </Button>
-                          ) }
                         </div>
                       </Col>
                       <Col className="order-lg-1" lg="4">
                         <div className="card-profile-stats d-flex justify-content-center">
                           <div>
+                            <span className="heading btn-inner--icon mr-1">
+                              <i className={`fa fa-${this.props.userInfo.provider}`} />
+                            </span>
+                            <span className="description">Provider</span>
+                          </div>
+                          <div>
                             <span className="heading">22</span>
                             <span className="description">Followers</span>
                           </div>
-                          <div>
-                            <span className="heading">89</span>
+                          { this.props.userInfo.trainings && <div>
+                            <span className="heading">{ this.props.userInfo.trainings.length }</span>
                             <span className="description">Trainings</span>
-                          </div>
-                          <div>
-                            <span className="heading">523</span>
-                            <span className="description">Points</span>
-                          </div>
+                          </div> }
                         </div>
                       </Col>
                     </Row>
                     <div className="text-center mt-5">
-                      <h3>
-                        { this.props.userInfo.name }{" "}
-                        <span className="font-weight-light">{ this.props.userInfo.email }</span>
-                      </h3>
-                      <div className="h6 font-weight-300">
-                        <i className="ni location_pin mr-2" />
-                        Bucharest, Romania
-                      </div>
-                      <div className="h6 mt-4">
-                        <i className="ni business_briefcase-24 mr-2" />
-                        Solution Manager
-                      </div>
-                      <div>
-                        <i className="ni education_hat mr-2" />
-                        University of Computer Science
-                      </div>
+                      <h3>{ this.props.userInfo.name }</h3>
+                      <h4>{ this.props.userInfo.email }</h4>
                     </div>
                     <div className="mt-5 py-5 border-top text-center">
                       <Row className="justify-content-center">
                         <Col lg="9">
                           <p>
-                            An artist of considerable range, Ryan — the name taken
-                            by Melbourne-raised, Brooklyn-based Nick Murphy —
-                            writes, performs and records all of his own music,
-                            giving it a warm, intimate feel with a solid groove
-                            structure. An artist of considerable range.
+                            Account description
                           </p>
-                          <a href="!#" onClick={e => e.preventDefault()}>
-                            Show more
-                          </a>
                         </Col>
                       </Row>
+                    </div>
+                    <div className="text-center mb-5">
+                      <Button
+                        color="primary"
+                        type="button"
+                        size="sm"
+                        onClick={() => this.toggleModal("editAccountModal")}
+                      >
+                        Edit Account
+                      </Button>
                     </div>
                   </div>
                 ) : null }
               </Card>
             </Container>
+            <Modal
+              className="modal-dialog-centered"
+              isOpen={this.state.editAccountModal}
+              toggle={() => this.toggleModal("editAccountModal")}
+            >
+              <div className="modal-header">
+                <h5 className="modal-title" id="editAccountModalLabel">
+                  Edit your account
+                </h5>
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  type="button"
+                  onClick={() => this.toggleModal("editAccountModal")}
+                >
+                  <span aria-hidden={true}>×</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                
+              </div>
+              <div className="modal-footer">
+                <Button
+                  color="secondary"
+                  data-dismiss="modal"
+                  type="button"
+                  onClick={() => this.toggleModal("editAccountModal")}
+                >
+                  Close
+                </Button>
+                <Button color="primary" type="button">
+                  Save changes
+                </Button>
+              </div>
+            </Modal>
           </section>
         </main>     
       </>

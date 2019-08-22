@@ -54,6 +54,9 @@ const ChangePasswordPage = ({
                   <div className="text-center text-muted mb-4">
                     <small>Change password</small>
                   </div>
+                  <div className="text-center text-muted mb-4">
+                    <small>You can change your password only when you registered via email. If you registered via Google or Facebook you can't change your password. You can check your provider in your account information</small>
+                  </div>
                   <FormikForm>
                     <Form>
                       <FormGroup className="mb-3">

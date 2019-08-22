@@ -20,9 +20,9 @@ import LandingLayout from './layouts/Landing'
 import AuthLayout from './layouts/Auth'
 import AccountLayout from './layouts/Account'
 import TrainingsLayout from './layouts/Trainings'
+import UsersLayout from './layouts/Users'
 
-// Action creators
-import { getTrainingCategories, getExerciseCategories } from './containers/App/global/actions'
+import Dispatch from './dispatch'
 
 const initialState = {}
 const store = configureStore(initialState, history)
@@ -31,8 +31,7 @@ const MOUNT_NODE = document.getElementById('root')
 window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true
 
 // Dispatch action creators
-store.dispatch(getTrainingCategories())
-store.dispatch(getExerciseCategories())
+Dispatch(store)
 
 ReactDOM.render(
   <Provider store={store}>
@@ -44,6 +43,7 @@ ReactDOM.render(
           <Route path="/auth" render={props => <AuthLayout {...props} />} />
           <Route path="/account" render={props => <AccountLayout {...props} />} />
           <Route path="/trainings" render={props => <TrainingsLayout {...props} />} />
+          <Route path="/users" render={props => <UsersLayout {...props} />} />
           <Redirect from="/" to="/landing" />
         </Switch>
       </>

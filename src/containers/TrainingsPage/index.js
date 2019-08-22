@@ -16,13 +16,8 @@ import {
   getTrainings
 } from '../App/trainings/actions'
 
-import {
-  getListingLayout
-} from '../App/layout/actions'
-
 export class TrainingsPage extends React.Component {
   componentDidMount() {
-    this.props.getListingLayout()
     this.props.getTrainings()
   }
 
@@ -86,8 +81,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getTrainings: () => dispatch(getTrainings()),
-  getListingLayout: () => dispatch(getListingLayout())
+  getTrainings: () => dispatch(getTrainings())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrainingsPage)

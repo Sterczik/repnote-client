@@ -1,6 +1,5 @@
 // Landing
 import HomePage from './containers/HomePage/index'
-// import CheckEmail from './containers/ForgotPasswordPage/CheckEmail'
 import NotFoundPage from './containers/NotFoundPage/index'
 
 // Auth
@@ -13,6 +12,7 @@ import LoginPage from './containers/LoginPage/index'
 
 // Account
 import AccountPage from './containers/AccountPage/index'
+import AccountEditPage from './containers/AccountEditPage/index'
 import ChangePasswordPage from './containers/ChangePasswordPage/index'
 
 // Trainings
@@ -21,6 +21,9 @@ import MyTrainingsPage from './containers/MyTrainingsPage/index'
 import TrainingPage from './containers/TrainingPage/index'
 import CreateTrainingPage from './containers/CreateTrainingPage/index'
 import EditTrainingPage from './containers/EditTrainingPage/index'
+
+// Users
+import UserPage from './containers/UserPage/index'
 
 const routes = [
   {
@@ -72,6 +75,22 @@ const routes = [
     type: "Private"
   },
   {
+    path: "/edit",
+    name: "Account",
+    icon: "",
+    component: AccountEditPage,
+    layout: "/account",
+    type: "Private"
+  },
+  {
+    path: "/:name",
+    name: "User",
+    icon: "",
+    component: UserPage,
+    layout: "/users",
+    type: "Normal"
+  },
+  {
     path: "/change-password",
     name: "Change password",
     icon: "",
@@ -95,14 +114,6 @@ const routes = [
   //   layout: "/auth",
   //   type: "Public"
   // }, //temporary disabled
-  // {
-  //   path: "/check-email",
-  //   name: "Check email",
-  //   icon: "",
-  //   component: CheckEmail,
-  //   layout: "/auth",
-  //   type: "Public"
-  // },
   {
     path: "",
     name: "Trainings",

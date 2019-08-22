@@ -1,15 +1,5 @@
-import axios from 'axios'
-import { authHeader } from '../../helpers/auth-header'
-import { baseUrl } from '../../helpers/baseUrl'
-
-function getUrlParameter(name) {
-  /* eslint-disable no-useless-escape, indent */
-  const names = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]')
-  /* eslint-disable prefer-template, indent */
-  const regex = new RegExp('[\\?&]' + names + '=([^&#]*)')
-  const results = regex.exec(window.location.search)
-  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '))
-}
+import Api from '../../helpers/api'
+import getUrlParameter from '../../helpers/getUrlParameter'
 
 function logout() {
   localStorage.removeItem('token')
@@ -27,67 +17,43 @@ function handleResponse(response) {
 }
 
 function register(email, name, password, password_confirmation) {
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      email, name, password, password_confirmation
-    })
-  }
-  return fetch(`${baseUrl}/api/app/users/register`, requestOptions)
-    .then(res => res.json())
-    .then(data => {
-      return data
-    })
+  return Api().post('/users/register', JSON.stringify({
+    email, name, password, password_confirmation
+  }))
 }
 
 function login(email, password) {
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      email,
-      password
-    })
-  }
-  return fetch(`${baseUrl}/api/app/users/login`, requestOptions)
-    .then(res => res.json())
+  return Api().post('/users/login', JSON.stringify({
+    email,
+    password
+  }))
 }
 
 function socialLogin(response, provider) {
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      response
-    })
-  }
-
-  return fetch(`${baseUrl}/api/app/users/authenticated/${provider}`, requestOptions)
-    .then(res => res.json())
+  return Api().post(`/users/authenticated/${provider}`, JSON.stringify({
+    response
+  }))
 }
 
 function changePassword(oldPassword, newPassword, newPasswordConfirm) {
   const body = JSON.stringify({ oldPassword, newPassword, newPasswordConfirm })
-  const options = {
-    headers: authHeader()
-  }
-  return axios.put(`${baseUrl}/api/app/users/change-password`, body, options)
+  return Api(true).put('/users/change-password', body)
 }
 
 function forgotPassword(email) {
-  return axios.post(`${baseUrl}/api/app/users/forgot-password`, { email })
+  return Api().post('/users/forgot-password', { email })
 }
 
 function resetPassword(newPassword, newPasswordConfirm) {
-  return axios.post(`${baseUrl}/api/app/users/reset-password?token=${getUrlParameter('token')}`, { newPassword, newPasswordConfirm })
+  return Api().post(`/users/reset-password?token=${getUrlParameter('token')}`, { newPassword, newPasswordConfirm })
 }
 
 function getProfile() {
-  const options = {
-    headers: authHeader()
-  }
-  return axios.get(`${baseUrl}/api/app/users/profile/my`, options)
+  return Api(true).get('/users/profile')
+}
+
+function getUserProfile(slug) {
+  return Api().get(`/users/${slug}`)
 }
 
 export const ServiceUsers = {
@@ -99,5 +65,6 @@ export const ServiceUsers = {
   handleResponse,
   forgotPassword,
   resetPassword,
-  getProfile
+  getProfile,
+  getUserProfile
 }

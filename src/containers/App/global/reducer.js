@@ -38,6 +38,22 @@ export default (state = globalReducerDefaultState, action) => {
         ...state,
         exerciseCategories: []
       }
+
+    case globalConstants.GET_USER_PROFILE_IN_PROCESS:
+      return {
+        ...state,
+        userProfile: {}
+      }
+    case globalConstants.GET_USER_PROFILE_SUCCESS:
+      return {
+        ...state,
+        userProfile: action.userProfile
+      }
+    case globalConstants.GET_USER_PROFILE_FAILURE:
+      return {
+        ...state,
+        userProfile: {}
+      }
     // Default
     default:
       return state

@@ -12,12 +12,10 @@ import LoginPage from './containers/LoginPage/index'
 
 // Account
 import AccountPage from './containers/AccountPage/index'
-import AccountEditPage from './containers/AccountEditPage/index'
 import ChangePasswordPage from './containers/ChangePasswordPage/index'
 
 // Trainings
 import TrainingsPage from './containers/TrainingsPage/index'
-import MyTrainingsPage from './containers/MyTrainingsPage/index'
 import TrainingPage from './containers/TrainingPage/index'
 import CreateTrainingPage from './containers/CreateTrainingPage/index'
 import EditTrainingPage from './containers/EditTrainingPage/index'
@@ -71,14 +69,6 @@ const routes = [
     name: "Account",
     icon: "",
     component: AccountPage,
-    layout: "/account",
-    type: "Private"
-  },
-  {
-    path: "/edit",
-    name: "Account",
-    icon: "",
-    component: AccountEditPage,
     layout: "/account",
     type: "Private"
   },
@@ -137,14 +127,6 @@ const routes = [
     component: TrainingPage,
     layout: "/trainings",
     type: "Normal"
-  },
-  {
-    path: "/my",
-    name: "My Trainings",
-    icon: "",
-    component: MyTrainingsPage,
-    layout: "/trainings",
-    type: "Private"
   },
   {
     path: "/:id/edit",

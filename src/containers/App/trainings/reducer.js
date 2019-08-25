@@ -1,6 +1,11 @@
 import { trainingsConstants } from './constants'
 
-const trainingsReducerDefaultState = {}
+const trainingsReducerDefaultState = {
+  total: '0',
+  page: localStorage.getItem('page') ? localStorage.getItem('page') : 1,
+  perPage: localStorage.getItem('perPage') ? localStorage.getItem('perPage') : 12,
+  search: localStorage.getItem('search') ? localStorage.getItem('search') : ''
+}
 
 export default (state = trainingsReducerDefaultState, action) => {
   switch (action.type) {
@@ -11,6 +16,11 @@ export default (state = trainingsReducerDefaultState, action) => {
       return action.trainingsData
     case trainingsConstants.GET_TRAININGS_FAILURE:
       return {}
+    case trainingsConstants.SET_SEARCH:
+      return {
+        ...state,
+        search: action.search
+      }
     // Default
     default:
       return state

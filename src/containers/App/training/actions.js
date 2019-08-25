@@ -1,10 +1,8 @@
-import axios from 'axios'
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
-import { authHeader } from '../../../helpers/auth-header'
 import { ServiceUsers } from '../../../services/users/users'
 import { history } from '../../../helpers/history'
 import { trainingConstants } from './constants'
-import { baseUrl } from '../../../helpers/baseUrl'
+import { ServiceTrainings } from '../../../services/trainings/trainings'
 
 export function getTraining(id) {
   const getTrainingInProcess = () => ({
@@ -24,10 +22,7 @@ export function getTraining(id) {
   return (dispatch) => {
     dispatch(getTrainingInProcess())
 
-    const options = {
-      headers: authHeader()
-    }
-    return axios.get(`${baseUrl}/api/app/trainings/${id}`, options)
+    ServiceTrainings.getTraining(id)
       .then((res) => {
         const training = res.data
         dispatch(getTrainingSuccess(training))
@@ -64,11 +59,7 @@ export function editTraining(trainingData, id) {
       ...trainingData
     })
 
-    const options = {
-      headers: authHeader()
-    }
-
-    return axios.put(`${baseUrl}/api/app/trainings/${id}`, data,  options)
+    ServiceTrainings.editTraining(data, id)
       .then((res) => {
         const training = res.data
         history.push(`/trainings/${id}`, { new: true })
@@ -105,11 +96,7 @@ export function removeTraining(id) {
   return (dispatch) => {
     dispatch(removeTrainingInProcess())
 
-    const options = {
-      headers: authHeader()
-    }
-
-    return axios.delete(`${baseUrl}/api/app/trainings/${id}`, options)
+    ServiceTrainings.removeTraining(id)
       .then((res) => {
         const training = res.data
         dispatch(removeTrainingSuccess(training))
@@ -146,11 +133,7 @@ export function switchTrainingStatus(id) {
   return (dispatch) => {
     dispatch(switchTrainingStatusInProcess())
 
-    const options = {
-      headers: authHeader()
-    }
-
-    return axios.put(`${baseUrl}/api/app/trainings/${id}/status`, {}, options)
+    ServiceTrainings.switchTrainingStatus(id)
       .then((res) => {
         const training = res.data
         dispatch(switchTrainingStatusSuccess(training))
@@ -187,11 +170,7 @@ export function createTraining(trainingData) {
       ...trainingData
     })
 
-    const options = {
-      headers: authHeader()
-    }
-
-    return axios.post(`${baseUrl}/api/app/trainings/`, data, options)
+    ServiceTrainings.createTraining(data)
       .then((res) => {
         const training = res.data
         history.push(`trainings/${training.id}`, { new: true })

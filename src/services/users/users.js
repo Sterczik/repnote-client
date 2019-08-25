@@ -52,6 +52,10 @@ function getProfile() {
   return Api(true).get('/users/profile')
 }
 
+function editProfile(name) {
+  return Api(true).put('/users/profile', { name })
+}
+
 function getUserProfile(slug) {
   return Api().get(`/users/${slug}`)
 }
@@ -66,5 +70,6 @@ export const ServiceUsers = {
   forgotPassword,
   resetPassword,
   getProfile,
+  editProfile,
   getUserProfile
 }

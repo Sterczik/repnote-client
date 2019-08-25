@@ -1,6 +1,8 @@
+import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
 import { globalConstants } from './constants'
 import { ServiceTrainingCategories } from '../../../services/trainingCategories/trainingCategories'
 import { ServiceExerciseCategories } from '../../../services/exerciseCategories/exerciseCategories'
+import { ServiceUsers } from '../../../services/users/users'
 
 export function getTrainingCategories() {
   const getTrainingCategoriesInProcess = () => ({
@@ -56,6 +58,38 @@ export function getExerciseCategories() {
       })
       .catch((error) => {
         dispatch(getExerciseCategoriesFailure(error))
+      })
+  }
+}
+
+export function getUserProfile(slug) {
+  const getUserProfileInProcess = () => ({
+    type: globalConstants.GET_USER_PROFILE_IN_PROCESS
+  })
+
+  const getUserProfileSuccess = (userProfile) => ({
+    type: globalConstants.GET_USER_PROFILE_SUCCESS,
+    userProfile
+  })
+
+  const getUserProfileFailure = (error) => ({
+    type: globalConstants.GET_USER_PROFILE_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(getUserProfileInProcess())
+
+    ServiceUsers.getUserProfile(slug)
+      .then((res) => {
+        const userProfile = res.data
+        dispatch(getUserProfileSuccess(userProfile))
+      })
+      .catch((error) => {
+        dispatch(getUserProfileFailure(error))
+        dispatch(snackbar.show({
+          message: 'Something went wrong!'
+        }))
       })
   }
 }

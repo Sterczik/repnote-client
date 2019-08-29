@@ -2,8 +2,12 @@ import Api from '../../helpers/api'
 import getUrlParameter from '../../helpers/getUrlParameter'
 
 function logout() {
+  const token = localStorage.getItem('refreshToken')
+
   localStorage.removeItem('token')
   localStorage.removeItem('refreshToken')
+
+  return Api(true).post('/users/logout', { token })
 }
 
 function handleResponse(response) {
@@ -52,12 +56,18 @@ function getProfile() {
   return Api(true).get('/users/profile')
 }
 
-function editProfile(name) {
-  return Api(true).put('/users/profile', { name })
+function editProfile(name, description) {
+  return Api(true).put('/users/profile', { name, description })
 }
 
 function getUserProfile(slug) {
   return Api().get(`/users/${slug}`)
+}
+
+function changeAvatar(file) {
+  const formData = new FormData()
+  formData.append('avatar', file)
+  return Api(true).post('/users/profile/avatar', formData)
 }
 
 export const ServiceUsers = {
@@ -71,5 +81,6 @@ export const ServiceUsers = {
   resetPassword,
   getProfile,
   editProfile,
-  getUserProfile
+  getUserProfile,
+  changeAvatar
 }

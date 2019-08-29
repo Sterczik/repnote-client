@@ -100,7 +100,7 @@ export function removeTraining(id) {
       .then((res) => {
         const training = res.data
         dispatch(removeTrainingSuccess(training))
-        history.push('/my-trainings')
+        history.push('/account/trainings')
         dispatch(snackbar.show({
           message: 'You successfully removed your Training.'
         }))

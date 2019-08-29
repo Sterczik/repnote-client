@@ -101,7 +101,7 @@ class SimpleNavbar extends React.Component {
                       <DropdownItem to="/trainings" tag={Link}>
                         Trainings
                       </DropdownItem>
-                      <DropdownItem to="/trainings/my" tag={Link}>
+                      <DropdownItem to="/account/trainings" tag={Link}>
                         My trainings
                       </DropdownItem>
                       <DropdownItem to="/account" tag={Link}>

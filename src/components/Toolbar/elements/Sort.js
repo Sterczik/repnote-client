@@ -43,7 +43,6 @@ class Sort extends React.Component {
           className="form-control-alternative"
         >
           <option value="1">Najnowsze</option>
-          <option value="2">Najlepiej oceniane</option>
         </Input>
       </InputGroup>
     )

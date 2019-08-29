@@ -1,5 +1,6 @@
 // Landing
 import HomePage from './containers/HomePage/index'
+import AboutPage from './containers/AboutPage/index'
 import NotFoundPage from './containers/NotFoundPage/index'
 
 // Auth
@@ -29,6 +30,14 @@ const routes = [
     name: "Home",
     icon: "",
     component: HomePage,
+    layout: "/landing",
+    type: "Normal"
+  },
+  {
+    path: "/about",
+    name: "About",
+    icon: "",
+    component: AboutPage,
     layout: "/landing",
     type: "Normal"
   },

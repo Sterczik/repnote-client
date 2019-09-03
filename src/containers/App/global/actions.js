@@ -3,6 +3,7 @@ import { globalConstants } from './constants'
 import { ServiceTrainingCategories } from '../../../services/trainingCategories/trainingCategories'
 import { ServiceExerciseCategories } from '../../../services/exerciseCategories/exerciseCategories'
 import { ServiceUsers } from '../../../services/users/users'
+import { ServiceContact } from '../../../services/contact/contact'
 
 export function getTrainingCategories() {
   const getTrainingCategoriesInProcess = () => ({
@@ -87,6 +88,42 @@ export function getUserProfile(slug) {
       })
       .catch((error) => {
         dispatch(getUserProfileFailure(error))
+        dispatch(snackbar.show({
+          message: 'Something went wrong!'
+        }))
+      })
+  }
+}
+
+export function sendContactMessage(message) {
+  const sendContactMessageInProcess = () => ({
+    type: globalConstants.SEND_CONTACT_MESSAGE_IN_PROCESS
+  })
+
+  const sendContactMessageSuccess = (userProfile) => ({
+    type: globalConstants.SEND_CONTACT_MESSAGE_SUCCESS,
+    userProfile
+  })
+
+  const sendContactMessageFailure = (error) => ({
+    type: globalConstants.SEND_CONTACT_MESSAGE_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(sendContactMessageInProcess())
+
+    const messageData = JSON.stringify({
+      ...message
+    })
+
+    ServiceContact.sendContactMessage(messageData)
+      .then((res) => {
+        const data = res.data
+        dispatch(sendContactMessageSuccess(data))
+      })
+      .catch((error) => {
+        dispatch(sendContactMessageFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
         }))

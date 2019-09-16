@@ -6,7 +6,7 @@ const app = express();
 const publicPath = path.join(__dirname, '..', 'build');
 const port = process.env.PORT || 8080;
 
-app.use(favicon(path.join(__dirname, '..', 'build', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '..', 'build', 'repnote-dot.png')));
 app.use(express.static(publicPath));
 
 app.get('*', (req, res) => {

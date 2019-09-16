@@ -1,6 +1,9 @@
 // Landing
 import HomePage from './containers/HomePage/index'
 import AboutPage from './containers/AboutPage/index'
+
+// Global
+import ContactPage from './containers/ContactPage/index'
 import NotFoundPage from './containers/NotFoundPage/index'
 
 // Auth
@@ -38,6 +41,14 @@ const routes = [
     name: "About",
     icon: "",
     component: AboutPage,
+    layout: "/landing",
+    type: "Normal"
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+    icon: "",
+    component: ContactPage,
     layout: "/landing",
     type: "Normal"
   },

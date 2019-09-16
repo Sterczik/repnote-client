@@ -97,6 +97,7 @@ export class HomePage extends React.Component {
               </div>
             </section>
           </div>
+          
           <section className="section section-lg pt-lg-0 mt--200">
             <Container>
               <Row className="justify-content-center">
@@ -209,6 +210,7 @@ export class HomePage extends React.Component {
               </Row>
             </Container>
           </section>
+
           <section className="section section-lg">
             <Container>
               <Row className="row-grid align-items-center">
@@ -286,6 +288,7 @@ export class HomePage extends React.Component {
               </Row>
             </Container>
           </section>
+
           <section className="section bg-secondary">
             <Container>
               <Row className="row-grid align-items-center">
@@ -326,6 +329,7 @@ export class HomePage extends React.Component {
               </Row>
             </Container>
           </section>
+
           <section className="section pb-0 bg-gradient-warning">
             <Container>
               <Row className="row-grid align-items-center">
@@ -425,6 +429,7 @@ export class HomePage extends React.Component {
               </svg>
             </div>
           </section>
+
           <section className="section section-lg">
             <Container>
               <Row className="justify-content-center text-center mb-sm">
@@ -437,6 +442,7 @@ export class HomePage extends React.Component {
               </Row>
             </Container>
           </section>
+
           <section className="section section-lg bg-gradient-default">
             <Container className="pt-lg pb-300">
               <Row className="text-center justify-content-center">
@@ -493,7 +499,24 @@ export class HomePage extends React.Component {
               </svg>
             </div>
           </section>
-          <ContactForm />
+
+          <section className="section section-lg pt-lg-0 section-contact-us">
+            <Container>
+              <Row className="justify-content-center mt--300">
+                <Col lg="8">
+                  <Card className="bg-gradient-secondary shadow">
+                    <CardBody className="p-lg-5">
+                      <h4 className="mb-1">Want to contact?</h4>
+                      <p className="mt-0">
+                        Your feedback is very important to us.
+                      </p>
+                      <ContactForm />
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+          </section>
         </main>
       </>
     )

@@ -39,6 +39,22 @@ export default (state = globalReducerDefaultState, action) => {
         exerciseCategories: []
       }
 
+    case globalConstants.GET_TRAINING_ADVANCEMENT_LEVELS_IN_PROCESS:
+      return {
+        ...state,
+        advancementLevels: []
+      }
+    case globalConstants.GET_TRAINING_ADVANCEMENT_LEVELS_SUCCESS:
+      return {
+        ...state,
+        advancementLevels: action.advancementLevels
+      }
+    case globalConstants.GET_TRAINING_ADVANCEMENT_LEVELS_FAILURE:
+      return {
+        ...state,
+        advancementLevels: []
+      }
+
     case globalConstants.GET_USER_PROFILE_IN_PROCESS:
       return {
         ...state,

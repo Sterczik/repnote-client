@@ -2,6 +2,7 @@ import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
 import { globalConstants } from './constants'
 import { ServiceTrainingCategories } from '../../../services/trainingCategories/trainingCategories'
 import { ServiceExerciseCategories } from '../../../services/exerciseCategories/exerciseCategories'
+import { ServiceTrainingAdvancementLevels } from '../../../services/trainingAdvancementLevels/trainingAdvancementLevels'
 import { ServiceUsers } from '../../../services/users/users'
 import { ServiceContact } from '../../../services/contact/contact'
 
@@ -63,6 +64,35 @@ export function getExerciseCategories() {
   }
 }
 
+export function getTrainingAdvancementLevels() {
+  const getTrainingAdvancementLevelsInProcess = () => ({
+    type: globalConstants.GET_TRAINING_ADVANCEMENT_LEVELS_IN_PROCESS
+  })
+
+  const getTrainingAdvancementLevelsSuccess = (advancementLevels) => ({
+    type: globalConstants.GET_TRAINING_ADVANCEMENT_LEVELS_SUCCESS,
+    advancementLevels
+  })
+
+  const getTrainingAdvancementLevelsFailure = (error) => ({
+    type: globalConstants.GET_TRAINING_ADVANCEMENT_LEVELS_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(getTrainingAdvancementLevelsInProcess())
+
+    ServiceTrainingAdvancementLevels.getTrainingAdvancementLevels()
+      .then((res) => {
+        const trainingAdvancementLevels = res.data
+        dispatch(getTrainingAdvancementLevelsSuccess(trainingAdvancementLevels))
+      })
+      .catch((error) => {
+        dispatch(getTrainingAdvancementLevelsFailure(error))
+      })
+  }
+}
+
 export function getUserProfile(slug) {
   const getUserProfileInProcess = () => ({
     type: globalConstants.GET_USER_PROFILE_IN_PROCESS
@@ -100,9 +130,9 @@ export function sendContactMessage(message) {
     type: globalConstants.SEND_CONTACT_MESSAGE_IN_PROCESS
   })
 
-  const sendContactMessageSuccess = (userProfile) => ({
+  const sendContactMessageSuccess = (response) => ({
     type: globalConstants.SEND_CONTACT_MESSAGE_SUCCESS,
-    userProfile
+    response
   })
 
   const sendContactMessageFailure = (error) => ({
@@ -121,6 +151,9 @@ export function sendContactMessage(message) {
       .then((res) => {
         const data = res.data
         dispatch(sendContactMessageSuccess(data))
+        dispatch(snackbar.show({
+          message: data.message
+        }))
       })
       .catch((error) => {
         dispatch(sendContactMessageFailure(error))

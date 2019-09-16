@@ -20,23 +20,20 @@ const TrainingTiles = ({ training }) => (
           { training.name } - { training.user.name }
         </h6>
         <p className="description mt-3">
-          { training.category.name }
-        </p>
-        <p className="description mt-3">
-          { training.exercises.length }
-        </p>
-        <p className="description mt-3">
           { training.goal }
         </p>
         <div>
-          <Badge color="primary" pill className="mr-1">
-            lorem
+          <Badge color="success" pill className="mr-1 mt-1">
+            { training.likes.length } likes
           </Badge>
-          <Badge color="primary" pill className="mr-1">
-            ipsum
+          <Badge color="info" pill className="mr-1 mt-1">
+            { training.category.name }
           </Badge>
-          <Badge color="primary" pill className="mr-1">
-            dolor
+          <Badge color="danger" pill className="mr-1 mt-1">
+            { training.advancementLevel.name }
+          </Badge>
+          <Badge color="default" pill className="mr-1 mt-1">
+            { training.exercises.length } exercises
           </Badge>
         </div>
         <Button

@@ -17,8 +17,15 @@ const TrainingTiles = ({ training }) => (
         </div>
         <img style={{width: 50 + 'px'}} className="img-fluid rounded-circle shadow" src={training.user.avatar} alt="img" />
         <h6 className="text-primary text-uppercase">
-          { training.name } - { training.user.name }
+          { training.name }
         </h6>
+        <p className="description mt-3">
+          <Link
+            to={'/users/' + training.user.slug}
+          >
+            { training.user.name }
+          </Link>
+        </p>
         <p className="description mt-3">
           { training.goal }
         </p>

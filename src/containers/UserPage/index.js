@@ -81,10 +81,14 @@ export class AccountPage extends React.Component {
                       </Col>
                       <Col className="order-lg-1" lg="4">
                         <div className="card-profile-stats d-flex justify-content-center">
-                          <div>
-                            <span className="heading">22</span>
+                          { this.props.userProfile.trainings && <div>
+                            <span className="heading">{ this.props.userProfile.followers.length }</span>
                             <span className="description">Followers</span>
-                          </div>
+                          </div> }
+                          { this.props.userProfile.trainings && <div>
+                            <span className="heading">{ this.props.userProfile.following.length }</span>
+                            <span className="description">Following</span>
+                          </div> }
                           { this.props.userProfile.trainings && <div>
                             <span className="heading">{ this.props.userProfile.trainings.length }</span>
                             <span className="description">Trainings</span>
@@ -96,15 +100,17 @@ export class AccountPage extends React.Component {
                       <h3>{ this.props.userProfile.name }</h3>
                       <h4>{ this.props.userProfile.email }</h4>
                     </div>
-                    <div className="mt-5 py-5 border-top text-center">
-                      <Row className="justify-content-center">
-                        <Col lg="9">
-                          <p>
-                            Description
-                          </p>
-                        </Col>
-                      </Row>
-                    </div>
+                    { this.props.userProfile.description &&
+                      <div className="mt-5 py-5 border-top text-center">
+                        <Row className="justify-content-center">
+                          <Col lg="9">
+                            <p>
+                              { this.props.userProfile.description }
+                            </p>
+                          </Col>
+                        </Row>
+                      </div>
+                    }
                   </div>
                 ) : null }
               </Card>

@@ -5,11 +5,13 @@ import {
   Input,
   InputGroupAddon,
   InputGroupText,
-  InputGroup
+  InputGroup,
+  Button
 } from 'reactstrap'
 
 import {
-  getTrainings
+  getTrainings,
+  setSearch
 } from '../../../containers/App/trainings/actions'
 
 class Search extends React.Component {
@@ -17,12 +19,23 @@ class Search extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      search: props.trainings.search
+    }
+
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(e) {
     const { value } = e.target
-    localStorage.setItem('sort', value)
+    this.setState({
+      search: value
+    })
+  }
+
+  handleSearch() {
+    this.props.setSearch(this.state.search)
+
     this.props.getTrainings()
   }
 
@@ -38,10 +51,17 @@ class Search extends React.Component {
           placeholder="Search"
           type="text"
           name="search"
-          value={this.props.trainings.sort}
+          value={this.props.trainings.search}
           onChange={this.handleChange}
           className="form-control-alternative"
         />
+        <Button
+          onClick={e => this.handleSearch()}
+          className=""
+          color="primary"
+        >
+          Search
+        </Button>
       </InputGroup>
     )
   }
@@ -52,7 +72,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getTrainings: () => dispatch(getTrainings())
+  getTrainings: () => dispatch(getTrainings()),
+  setSearch: (value) => dispatch(setSearch(value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

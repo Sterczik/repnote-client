@@ -1,6 +1,7 @@
 import { authConstants } from './constants'
 
-const user = JSON.parse(localStorage.getItem('token'))
+const user = localStorage.getItem('token') && localStorage.getItem('token').length ? JSON.parse(localStorage.getItem('token')) : null
+
 const initialState = user ? {
   loggedIn: true,
   loggingIn: false,
@@ -31,6 +32,7 @@ export default (state = initialState, action) => {
         ...state,
         registerProcess: false
       }
+      
     case authConstants.LOGIN_IN_PROCESS:
       return {
         loggingIn: true,
@@ -52,6 +54,7 @@ export default (state = initialState, action) => {
         loggedIn: false,
         user: {}
       }
+
     case authConstants.SOCIAL_LOGIN_IN_PROCESS:
       return {
         loggingIn: true,
@@ -73,6 +76,7 @@ export default (state = initialState, action) => {
         loggedIn: false,
         user: {}
       }
+
     case authConstants.CHANGE_PASSWORD_IN_PROCESS:
       return {
         ...state
@@ -85,12 +89,14 @@ export default (state = initialState, action) => {
       return {
         ...state
       }
+
     case authConstants.LOGOUT:
       return {
         ...state,
         loggedIn: false,
         user: {}
       }
+
     case authConstants.GET_PROFILE_IN_PROCESS:
       return {
         ...state
@@ -105,6 +111,40 @@ export default (state = initialState, action) => {
         ...state,
         userInfo: {}
       }
+    
+    case authConstants.EDIT_PROFILE_IN_PROCESS:
+      return {
+        ...state
+      }
+    case authConstants.EDIT_PROFILE_SUCCESS:
+      return {
+        ...state,
+        userInfo: action.userInfo
+      }
+    case authConstants.EDIT_PROFILE_FAILURE:
+      return {
+        ...state,
+        userInfo: {}
+      }
+
+    case authConstants.CHANGE_AVATAR_IN_PROCESS:
+      return {
+        ...state
+      }
+    case authConstants.CHANGE_AVATAR_SUCCESS:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          avatar: action.data
+        }
+      }
+    case authConstants.CHANGE_AVATAR_FAILURE:
+      return {
+        ...state,
+        userInfo: {}
+      }
+
     default:
       return state
   }

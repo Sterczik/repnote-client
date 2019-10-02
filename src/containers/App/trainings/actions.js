@@ -38,9 +38,6 @@ export function getTrainings (
       .then((res) => {
         const trainingsData = res.data
         dispatch(getTrainingsSuccess(trainingsData))
-        dispatch(snackbar.show({
-          message: 'You successfully fetched Trainings.'
-        }))
       })
       .catch((error) => {
         ServiceUsers.handleResponse(error)

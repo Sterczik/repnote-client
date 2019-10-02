@@ -31,7 +31,8 @@ function register(email, name, password, passwordConfirm) {
     dispatch(registerInProcess({ email }))
 
     ServiceUsers.register(email, name, password, passwordConfirm)
-      .then((data) => {
+      .then((response) => {
+        const { data } = response
         if (data.success) {
           dispatch(registerSuccess())
           dispatch(snackbar.show({
@@ -72,11 +73,12 @@ function login(email, password) {
     dispatch(loginInProcess({ email }))
 
     ServiceUsers.login(email, password)
-      .then((data) => {
+      .then((response) => {
+        const { data } = response
         if (data.success) {
           if (data.token.token) {
-            localStorage.setItem('token', JSON.stringify(data.token.token))
-            localStorage.setItem('refreshToken', JSON.stringify(data.token.refreshToken))
+            localStorage.setItem('token', data.token.token)
+            localStorage.setItem('refreshToken', data.token.refreshToken)
           }
           dispatch(loginSuccess(data))
           history.push('/trainings')
@@ -124,7 +126,8 @@ function socialLogin(response, provider) {
     }
 
     ServiceUsers.socialLogin(token, provider)
-      .then((data) => {
+      .then((response) => {
+        const { data } = response
         if (data.success) {
           if (data.token.token) {
             localStorage.setItem('token', JSON.stringify(data.token.token))
@@ -165,11 +168,11 @@ function changePassword(oldPassword, newPassword, newPasswordConfirm) {
     dispatch(changePasswordInProcess())
 
     ServiceUsers.changePassword(oldPassword, newPassword, newPasswordConfirm)
-      .then((res) => {
-        const data = res.data
+      .then((response) => {
+        const { data } = response
         if (data.success) {
           dispatch(changePasswordSuccess())
-          history.push('/my-account')
+          history.push('/account')
           dispatch(snackbar.show({
             message: data.message
           }))
@@ -289,25 +292,73 @@ function getProfile() {
     dispatch(getProfileInProcess())
 
     ServiceUsers.getProfile()
-      .then((res) => {
-        const data = res.data
-        if (data.success) {
-          dispatch(getProfileSuccess(data.user))
-          dispatch(snackbar.show({
-            message: data.message
-          }))
-        } else {
-          dispatch(getProfileFailure())
-          dispatch(snackbar.show({
-            message: data.errors.message
-          }))
-        }
+      .then((response) => {
+        const { data } = response
+        dispatch(getProfileSuccess(data))
       })
       .catch((error) => {
         dispatch(getProfileFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
         }))
+      })
+  }
+}
+
+function editProfile(name, description) {
+  const editProfileInProcess = () => ({
+    type: authConstants.EDIT_PROFILE_IN_PROCESS
+  })
+
+  const editProfileSuccess = (userInfo) => ({
+    type: authConstants.EDIT_PROFILE_SUCCESS,
+    userInfo
+  })
+
+  const editProfileFailure = (error) => ({
+    type: authConstants.EDIT_PROFILE_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(editProfileInProcess())
+
+    ServiceUsers.editProfile(name, description)
+      .then((response) => {
+        const { data } = response
+        dispatch(editProfileSuccess(data))
+      })
+      .catch((error) => {
+        dispatch(editProfileFailure(error))
+      })
+  }
+}
+
+function changeAvatar(file) {
+  const changeAvatarInProcess = () => ({
+    type: authConstants.CHANGE_AVATAR_IN_PROCESS
+  })
+
+  const changeAvatarSuccess = (data) => ({
+    type: authConstants.CHANGE_AVATAR_SUCCESS,
+    data
+  })
+
+  const changeAvatarFailure = (error) => ({
+    type: authConstants.CHANGE_AVATAR_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(changeAvatarInProcess())
+
+    ServiceUsers.changeAvatar(file)
+      .then((response) => {
+        const { data } = response
+        dispatch(changeAvatarSuccess(data))
+      })
+      .catch((error) => {
+        dispatch(changeAvatarFailure(error))
       })
   }
 }
@@ -320,5 +371,7 @@ export const authActions = {
   changePassword,
   forgotPassword,
   resetPassword,
-  getProfile
+  getProfile,
+  editProfile,
+  changeAvatar
 }

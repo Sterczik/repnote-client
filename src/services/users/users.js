@@ -53,7 +53,7 @@ function resetPassword(newPassword, newPasswordConfirm) {
 }
 
 function getProfile() {
-  return Api(true).get('/users/profile')
+  return Api(true).get('/users/profile/user')
 }
 
 function editProfile(name, description) {

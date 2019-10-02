@@ -20,13 +20,13 @@ class Account extends React.Component {
         <>
           <SimpleNavbar />
           <main ref="main">
-            <Switch>{getRoutes(routes, 'account')}</Switch>
+            <Switch>{ getRoutes(routes, 'account') }</Switch>
           </main>
           <SimpleFooter />
         </>
       )
     } else {
-      return <Route component={NotFoundPage} />
+      return <Route component={ NotFoundPage } />
     }
   }
 }

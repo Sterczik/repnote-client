@@ -20,13 +20,13 @@ class Users extends React.Component {
         <>
           <SimpleNavbar />
           <main ref="main">
-            <Switch>{getRoutes(routes, 'users')}</Switch>
+            <Switch>{ getRoutes(routes, 'users') }</Switch>
           </main>
           <SimpleFooter />
         </>
       )
     } else {
-      return <Route component={NotFoundPage} />
+      return <Route component={ NotFoundPage } />
     }
   }
 }

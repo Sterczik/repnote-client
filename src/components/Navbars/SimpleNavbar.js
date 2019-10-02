@@ -7,7 +7,6 @@ import {
   DropdownItem,
   DropdownToggle,
   UncontrolledDropdown,
-  Media,
   NavbarBrand,
   Navbar,
   NavItem,
@@ -15,8 +14,7 @@ import {
   Nav,
   Container,
   Row,
-  Col,
-  UncontrolledTooltip
+  Col
 } from 'reactstrap'
 import { connect } from 'react-redux'
 import { authActions } from '../../containers/App/auth/actions'
@@ -51,7 +49,7 @@ class SimpleNavbar extends React.Component {
                     <Col className="collapse-brand" xs="6">
                       <Link to="/">
                         <img
-                          alt="..."
+                          alt="Repnote logo"
                           src={require("../../assets/img/brand/repnote.png")}
                         />
                       </Link>
@@ -65,7 +63,22 @@ class SimpleNavbar extends React.Component {
                   </Row>
                 </div>
                 <Nav className="navbar-nav-hover align-items-lg-center" navbar>
-                  <UncontrolledDropdown nav>
+                  <NavItem>
+                    <NavLink to="/landing" tag={Link}>
+                      <span className="nav-link-inner--text">Home</span>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink to="/landing/about" tag={Link}>
+                      <span className="nav-link-inner--text">About</span>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink to="/landing/contact" tag={Link}>
+                      <span className="nav-link-inner--text">Contact us</span>
+                    </NavLink>
+                  </NavItem>
+                  {/* <UncontrolledDropdown nav>
                     <DropdownToggle nav>
                       <i className="ni ni-ui-04 d-lg-none mr-1" />
                       <span className="nav-link-inner--text">Lorem ipsum</span>
@@ -91,68 +104,45 @@ class SimpleNavbar extends React.Component {
                         </Media>
                       </div>
                     </DropdownMenu>
-                  </UncontrolledDropdown>
-                  <UncontrolledDropdown nav>
-                    <DropdownToggle nav>
-                      <i className="ni ni-collection d-lg-none mr-1" />
-                      <span className="nav-link-inner--text">Examples</span>
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem to="/trainings" tag={Link}>
-                        Trainings
-                      </DropdownItem>
-                      <DropdownItem to="/account/trainings" tag={Link}>
-                        My trainings
-                      </DropdownItem>
-                      <DropdownItem to="/account" tag={Link}>
-                        My account
-                      </DropdownItem>
-                      <DropdownItem onClick={this.props.logout}>
-                        Logout
-                      </DropdownItem>
-                      <DropdownItem to="/auth/login" tag={Link}>
-                        Login
-                      </DropdownItem>
-                      <DropdownItem to="/auth/register" tag={Link}>
-                        Register
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
+                  </UncontrolledDropdown> */}
                 </Nav>
-                <Nav className="align-items-lg-center ml-lg-auto" navbar>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="!#"
-                      id="tooltip333589074"
-                      target="_blank"
-                    >
-                      <i className="fa fa-facebook-square" />
-                      <span className="nav-link-inner--text d-lg-none ml-2">
-                        Facebook
-                      </span>
-                    </NavLink>
-                    <UncontrolledTooltip delay={0} target="tooltip333589074">
-                      Like us on Facebook
-                    </UncontrolledTooltip>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="!#"
-                      id="tooltip356693867"
-                      target="_blank"
-                    >
-                      <i className="fa fa-instagram" />
-                      <span className="nav-link-inner--text d-lg-none ml-2">
-                        Instagram
-                      </span>
-                    </NavLink>
-                    <UncontrolledTooltip delay={0} target="tooltip356693867">
-                      Follow us on Instagram
-                    </UncontrolledTooltip>
-                  </NavItem>
-                  <NavItem>
+                <Nav className="navbar-nav-hover align-items-lg-center ml-lg-auto" navbar>
+                  { this.props.isAuthenticated ? (
+                    <UncontrolledDropdown nav>
+                      <DropdownToggle nav>
+                        <i className="fa fa-user-circle-o" />
+                        <span className="nav-link-inner--text d-lg-none">Examples</span>
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem to="/trainings" tag={Link}>
+                          Trainings
+                        </DropdownItem>
+                        <DropdownItem to="/account/trainings" tag={Link}>
+                          My trainings
+                        </DropdownItem>
+                        <DropdownItem to="/account" tag={Link}>
+                          My account
+                        </DropdownItem>
+                        <DropdownItem onClick={this.props.logout}>
+                          Logout
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  ) : (
+                    <>
+                      <NavItem>
+                        <NavLink to="/auth/login" tag={Link}>
+                          <span className="nav-link-inner--text">Login</span>
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink to="/auth/register" tag={Link}>
+                          <span className="nav-link-inner--text">Register</span>
+                        </NavLink>
+                      </NavItem>
+                    </>
+                  ) }
+                  {/* <NavItem>
                     <NavLink
                       className="nav-link-icon"
                       href="!#"
@@ -167,7 +157,7 @@ class SimpleNavbar extends React.Component {
                     <UncontrolledTooltip delay={0} target="tooltip112445449">
                       Star us on Github
                     </UncontrolledTooltip>
-                  </NavItem>
+                  </NavItem> */}
                 </Nav>
               </UncontrolledCollapse>
             </Container>

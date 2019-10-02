@@ -20,13 +20,13 @@ class Auth extends React.Component {
         <>
           <SimpleNavbar />
           <main ref="main">
-            <Switch>{getRoutes(routes, 'auth')}</Switch>
+            <Switch>{ getRoutes(routes, 'auth') }</Switch>
           </main>
           <SimpleFooter />
         </>
       )
     } else {
-      return <Route component={NotFoundPage} />
+      return <Route component={ NotFoundPage } />
     }
   }
 }

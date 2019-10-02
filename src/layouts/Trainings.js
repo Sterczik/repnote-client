@@ -14,13 +14,13 @@ class Trainings extends React.Component {
         <>
           <TrainingsNavbar />
           <main ref="main">
-            <Switch>{getRoutes(routes, 'trainings')}</Switch>
+            <Switch>{ getRoutes(routes, 'trainings') }</Switch>
           </main>
           <SimpleFooter />
         </>
       )
     } else {
-      return <Route component={NotFoundPage} />
+      return <Route component={ NotFoundPage } />
     }
   }
 }

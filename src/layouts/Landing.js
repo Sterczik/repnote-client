@@ -20,13 +20,13 @@ class Landing extends React.Component {
         <>
           <SimpleNavbar />
           <main ref="main">
-            <Switch>{getRoutes(routes, 'landing')}</Switch>
+            <Switch>{ getRoutes(routes, 'landing') }</Switch>
           </main>
           <SimpleFooter />
         </>
       )
     } else {
-      return <Route component={NotFoundPage} />
+      return <Route component={ NotFoundPage } />
     }
   }
 }

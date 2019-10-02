@@ -44,14 +44,6 @@ function changePassword(oldPassword, newPassword, newPasswordConfirm) {
   return Api(true).put('/users/change-password', body)
 }
 
-function forgotPassword(email) {
-  return Api().post('/users/forgot-password', { email })
-}
-
-function resetPassword(newPassword, newPasswordConfirm) {
-  return Api().post(`/users/reset-password?token=${getUrlParameter('token')}`, { newPassword, newPasswordConfirm })
-}
-
 function getProfile() {
   return Api(true).get('/users/profile/user')
 }
@@ -77,8 +69,6 @@ export const ServiceUsers = {
   changePassword,
   logout,
   handleResponse,
-  forgotPassword,
-  resetPassword,
   getProfile,
   editProfile,
   getUserProfile,

@@ -11,8 +11,6 @@ import RegisterPage from './containers/RegisterPage/index'
 import RegisterConfirmPage from './containers/RegisterConfirmPage/index'
 import RegisterFailurePage from './containers/RegisterFailurePage/index'
 import LoginPage from './containers/LoginPage/index'
-// import ForgotPasswordPage from './containers/ForgotPasswordPage/index'
-// import ResetPasswordPage from './containers/ResetPasswordPage/index'
 
 // Account
 import AccountPage from './containers/AccountPage/index'
@@ -108,22 +106,6 @@ const routes = [
     layout: "/account",
     type: "Private"
   },
-  // {
-  //   path: "/forgot-password",
-  //   name: "Forgot password",
-  //   icon: "",
-  //   component: ForgotPasswordPage,
-  //   layout: "/auth",
-  //   type: "Public"
-  // }, //temporary disabled
-  // {
-  //   path: "/reset-password",
-  //   name: "Reset password",
-  //   icon: "",
-  //   component: ResetPasswordPage,
-  //   layout: "/auth",
-  //   type: "Public"
-  // }, //temporary disabled
   {
     path: "",
     name: "Trainings",

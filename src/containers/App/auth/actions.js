@@ -192,87 +192,6 @@ function changePassword(oldPassword, newPassword, newPasswordConfirm) {
   }
 }
 
-function forgotPassword(email) {
-  const forgotPasswordInProcess = () => ({
-    type: authConstants.FORGOT_PASSWORD_IN_PROCESS
-  })
-
-  const forgotPasswordSuccess = () => ({
-    type: authConstants.FORGOT_PASSWORD_SUCCESS
-  })
-
-  const forgotPasswordFailure = (error) => ({
-    type: authConstants.FORGOT_PASSWORD_FAILURE,
-    error
-  })
-
-  return (dispatch) => {
-    dispatch(forgotPasswordInProcess())
-
-    ServiceUsers.forgotPassword(email)
-      .then((res) => {
-        const data = res.data
-        if (data.success) {
-          dispatch(forgotPasswordSuccess())
-          history.push('/check-email')
-        } else {
-          dispatch(forgotPasswordFailure())
-          dispatch(snackbar.show({
-            message: data.errors.message
-          }))
-        }
-      })
-      .catch((error) => {
-        dispatch(forgotPasswordFailure(error))
-        dispatch(snackbar.show({
-          message: 'Something went wrong!'
-        }))
-      })
-  }
-}
-
-function resetPassword(newPassword, newPasswordConfirm) {
-  const resetPasswordInProcess = () => ({
-    type: authConstants.RESET_PASSWORD_IN_PROCESS
-  })
-
-  const resetPasswordSuccess = () => ({
-    type: authConstants.RESET_PASSWORD_SUCCESS
-  })
-
-  const resetPasswordFailure = (error) => ({
-    type: authConstants.RESET_PASSWORD_FAILURE,
-    error
-  })
-
-  return (dispatch) => {
-    dispatch(resetPasswordInProcess())
-
-    ServiceUsers.resetPassword(newPassword, newPasswordConfirm)
-      .then((res) => {
-        const data = res.data
-        if (data.success) {
-          dispatch(resetPasswordSuccess())
-          history.push('/login')
-          dispatch(snackbar.show({
-            message: data.message
-          }))
-        } else {
-          dispatch(resetPasswordFailure())
-          dispatch(snackbar.show({
-            message: data.errors.message
-          }))
-        }
-      })
-      .catch((error) => {
-        dispatch(resetPasswordFailure(error))
-        dispatch(snackbar.show({
-          message: 'Something went wrong!'
-        }))
-      })
-  }
-}
-
 function getProfile() {
   const getProfileInProcess = () => ({
     type: authConstants.GET_PROFILE_IN_PROCESS
@@ -369,8 +288,6 @@ export const authActions = {
   login,
   socialLogin,
   changePassword,
-  forgotPassword,
-  resetPassword,
   getProfile,
   editProfile,
   changeAvatar

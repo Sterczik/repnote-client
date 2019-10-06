@@ -1,6 +1,5 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Google from '../../components/SocialLogin/Google'
 import Facebook from '../../components/SocialLogin/Facebook'
@@ -14,8 +13,6 @@ import {
   Row,
   Col
 } from 'reactstrap'
-
-import { authActions } from '../App/auth/actions'
 
 export const LoginPage = () => (
   <>
@@ -72,8 +69,4 @@ export const LoginPage = () => (
   </>
 )
 
-const mapDispatchToProps = (dispatch) => ({
-  socialLogin: (response, provider) => dispatch(authActions.socialLogin(response, provider))
-})
-
-export default connect(undefined, mapDispatchToProps)(LoginPage)
+export default LoginPage

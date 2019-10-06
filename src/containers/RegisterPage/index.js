@@ -1,6 +1,5 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { connect } from 'react-redux'
 import Google from '../../components/SocialLogin/Google'
 import Facebook from '../../components/SocialLogin/Facebook'
 import RegisterForm from '../../components/Forms/RegisterForm/RegisterForm'
@@ -13,8 +12,6 @@ import {
   Row,
   Col
 } from 'reactstrap'
-
-import { authActions } from '../App/auth/actions'
 
 export const RegisterPage = () => (
   <>
@@ -64,8 +61,4 @@ export const RegisterPage = () => (
   </>
 )
 
-const mapDispatchToProps = (dispatch) => ({
-  socialLogin: (response, provider) => dispatch(authActions.socialLogin(response, provider))
-})
-
-export default connect(undefined, mapDispatchToProps)(RegisterPage)
+export default RegisterPage

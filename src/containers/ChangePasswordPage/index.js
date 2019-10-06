@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import { withFormik, Form as FormikForm } from 'formik'
+import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
 import validationSchema from './validationSchema'
 
 import {
@@ -63,7 +63,7 @@ const ChangePasswordPage = ({
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-lock-circle-open" />
+                              <i className="fa fa-lock" />
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
@@ -73,16 +73,17 @@ const ChangePasswordPage = ({
                             name="oldPassword"
                             value={values.oldPassword}
                             onChange={handleChange}
-                            // helperText={touched.oldPassword ? errors.oldPassword : ''}
-                            // error={touched.oldPassword && Boolean(errors.oldPassword)}
                           />
                         </InputGroup>
+                        <div className="formik-invalid-feedback">
+                          <ErrorMessage name="oldPassword" />
+                        </div>
                       </FormGroup>
                       <FormGroup className="mb-3">
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-lock-circle-open" />
+                              <i className="fa fa-lock" />
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
@@ -92,16 +93,17 @@ const ChangePasswordPage = ({
                             name="newPassword"
                             value={values.newPassword}
                             onChange={handleChange}
-                            // helperText={touched.newPassword ? errors.newPassword : ''}
-                            // error={touched.newPassword && Boolean(errors.newPassword)}
                           />
                         </InputGroup>
+                        <div className="formik-invalid-feedback">
+                          <ErrorMessage name="newPassword" />
+                        </div>
                       </FormGroup>
                       <FormGroup>
                         <InputGroup className="input-group-alternative">
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
-                              <i className="ni ni-lock-circle-open" />
+                              <i className="fa fa-lock" />
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
@@ -111,10 +113,11 @@ const ChangePasswordPage = ({
                             name="newPasswordConfirm"
                             value={values.newPasswordConfirm}
                             onChange={handleChange}
-                            // helperText={touched.newPasswordConfirm ? errors.newPasswordConfirm : ''}
-                            // error={touched.newPasswordConfirm && Boolean(errors.newPasswordConfirm)}
                           />
                         </InputGroup>
+                        <div className="formik-invalid-feedback">
+                          <ErrorMessage name="newPasswordConfirm" />
+                        </div>
                       </FormGroup>
                       <div className="text-center">
                         <Button

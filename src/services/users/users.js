@@ -1,5 +1,4 @@
 import Api from '../../helpers/api'
-import getUrlParameter from '../../helpers/getUrlParameter'
 
 function logout() {
   const token = localStorage.getItem('refreshToken')

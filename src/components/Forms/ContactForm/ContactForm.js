@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withFormik, Form as FormikForm } from 'formik'
+import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
 import validationSchema from './validationSchema'
 
 import {
@@ -27,7 +27,7 @@ const ContactForm = ({
         <InputGroup className="input-group-alternative">
           <InputGroupAddon addonType="prepend">
             <InputGroupText>
-              <i className="ni ni-lock-circle-open" />
+              <i className="fa fa-user-circle" />
             </InputGroupText>
           </InputGroupAddon>
           <Input
@@ -39,6 +39,9 @@ const ContactForm = ({
             onChange={handleChange}
           />
         </InputGroup>
+        <div className="formik-invalid-feedback">
+          <ErrorMessage name="name" />
+        </div>
       </FormGroup>
       <FormGroup>
         <InputGroup className="input-group-alternative">
@@ -56,6 +59,9 @@ const ContactForm = ({
             onChange={handleChange}
           />
         </InputGroup>
+        <div className="formik-invalid-feedback">
+          <ErrorMessage name="email" />
+        </div>
       </FormGroup>
       <FormGroup className="mb-4">
         <Input
@@ -69,6 +75,9 @@ const ContactForm = ({
           value={values.message}
           onChange={handleChange}
         />
+        <div className="formik-invalid-feedback">
+          <ErrorMessage name="message" />
+        </div>
       </FormGroup>
       <div>
         <Button

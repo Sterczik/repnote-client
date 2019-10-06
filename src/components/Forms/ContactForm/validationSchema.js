@@ -7,6 +7,7 @@ export default Yup.object().shape({
     .required('Enter your name'),
 
   email: Yup.string('')
+    .email('Enter a valid email')
     .max(50, 'Email must contain maximum 50 characters')
     .required('Enter your email'),
 

@@ -1,23 +1,15 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import { withFormik, Form as FormikForm } from 'formik'
 import { Link } from 'react-router-dom'
-import validationSchema from './validationSchema'
 import Google from '../../components/SocialLogin/Google'
 import Facebook from '../../components/SocialLogin/Facebook'
+import LoginForm from '../../components/Forms/LoginForm/LoginForm'
 
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col
@@ -25,13 +17,8 @@ import {
 
 import { authActions } from '../App/auth/actions'
 
-const LoginPage = ({
-  values,
-  errors,
-  touched,
-  handleChange
-}) => (
-  <div>
+export const LoginPage = () => (
+  <>
     <Helmet
       titleTemplate="Login"
       defaultTitle="Login"
@@ -67,66 +54,11 @@ const LoginPage = ({
                   <div className="text-center text-muted mb-4">
                     <small>Or sign in with credentials</small>
                   </div>
-                  <FormikForm>
-                    <Form>
-                      <FormGroup className="mb-3">
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-email-83" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="Email"
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={values.email}
-                            onChange={handleChange}
-                            // helperText={touched.email ? errors.email : ''}
-                            // error={touched.email && Boolean(errors.email)}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <FormGroup>
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-lock-circle-open" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="Password"
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={values.password}
-                            onChange={handleChange}
-                            // helperText={touched.password ? errors.password : ''}
-                            // error={touched.password && Boolean(errors.password)}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-                      <div className="text-center">
-                        <Button
-                          className="my-4"
-                          color="primary"
-                          type="submit"
-                        >
-                          Sign in
-                        </Button>
-                      </div>
-                    </Form>
-                  </FormikForm>
+                  <LoginForm />
                 </CardBody>
               </Card>
               <Row className="mt-3">
                 <Col xs="6">
-                  <Link className="text-light" to="/auth/forgot-password">
-                    <small>Forgot password?</small>
-                  </Link>
-                </Col>
-                <Col className="text-right" xs="6">
                   <Link className="text-light" to="/auth/register">
                     <small>Create new account</small>
                   </Link>
@@ -137,25 +69,11 @@ const LoginPage = ({
         </Container>
       </section>
     </main>
-  </div>
+  </>
 )
 
-const LoginPageFormik = withFormik({
-  mapPropsToValues() {
-    return {
-      email: '',
-      password: ''
-    }
-  },
-  validationSchema,
-  handleSubmit(values, { props }) {
-    props.login(values.email, values.password)
-  }
-})(LoginPage)
-
 const mapDispatchToProps = (dispatch) => ({
-  login: (email, password) => dispatch(authActions.login(email, password)),
   socialLogin: (response, provider) => dispatch(authActions.socialLogin(response, provider))
 })
 
-export default connect(undefined, mapDispatchToProps)(LoginPageFormik)
+export default connect(undefined, mapDispatchToProps)(LoginPage)

@@ -18,5 +18,7 @@ export default Yup.object().shape({
 
   passwordConfirm: Yup.string('Enter your password')
     .required('Confirm your password')
-    .oneOf([Yup.ref('password')], 'Password does not match')
+    .oneOf([Yup.ref('password')], 'Password does not match'),
+
+  privacy: Yup.bool().oneOf([true], 'Field must be checked')
 })

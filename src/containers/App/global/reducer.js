@@ -2,7 +2,8 @@ import { globalConstants } from './constants'
 
 const globalReducerDefaultState = {
   trainingCategories: [],
-  exerciseCategories: []
+  exerciseCategories: [],
+  advancementLevels: []
 }
 
 export default (state = globalReducerDefaultState, action) => {

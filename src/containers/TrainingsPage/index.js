@@ -30,14 +30,10 @@ export class TrainingsPage extends React.Component {
         >
           <meta name="description" content="All trainings" />
         </Helmet>
-        <section className="section section-lg pt-lg-0 mt-5">
+        <section className="section">
           <Container>
-            <Row>
-              <Toolbar />
-            </Row>
-            <Row>
-              <Filters />
-            </Row>
+            <Toolbar />
+            <Filters />
             <Row className="justify-content-center">
             {
               this.props.trainings && this.props.trainings.data && this.props.trainings.data.length === 0 ? (
@@ -45,21 +41,15 @@ export class TrainingsPage extends React.Component {
               ) : (
                 <Col lg="12">
                   <Row className="row-grid">
-
                     { this.props.listingLayout === 'row' ? (
-
                       this.props.trainings && this.props.trainings.data && this.props.trainings.data.map((training) => (
                         <TrainingRow training={training} />
                       ))
-
                     ) : (
-
                       this.props.trainings && this.props.trainings.data && this.props.trainings.data.map((training) => (
                         <TrainingTiles training={training} />
                       ))
-
                     ) }
-                    
                   </Row>
                 </Col>
               )

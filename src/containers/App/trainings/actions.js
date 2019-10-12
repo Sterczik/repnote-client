@@ -57,3 +57,21 @@ export function setSearch(value) {
     value
   }
 }
+
+export function setTrainingCategoryFilter(value) {
+  localStorage.setItem('activeTrainingCategoryFilter', value)
+
+  return {
+    type: trainingsConstants.SET_TRAINING_CATEGORY_FILTER,
+    value
+  }
+}
+
+export function setTrainingAdvancementLevelFilter(value) {
+  localStorage.setItem('activeTrainingAdvancementLevelFilter', value)
+
+  return {
+    type: trainingsConstants.SET_TRAINING_ADVANCEMENT_LEVEL_FILTER,
+    value
+  }
+}

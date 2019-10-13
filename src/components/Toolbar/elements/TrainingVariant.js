@@ -9,29 +9,32 @@ import {
 } from '../../../containers/App/layout/actions'
 
 const TrainingVariant = (props) => {
-
   return (
     <>
       <Button
-        onClick={e => props.setListingLayout('tiles')}
-        className=""
+        className={props.layout === 'tiles' ? 'btn-primary btn-icon ml-1' : 'btn-neutral btn-icon ml-1'}
         color="primary"
+        onClick={e => props.setListingLayout('tiles')}
       >
-        Tiles
+        <i className="fa fa-th" />
       </Button>
       <Button
-        onClick={e => props.setListingLayout('row')}
-        className=""
+        className={props.layout === 'row' ? 'btn-primary btn-icon ml-1' : 'btn-neutral btn-icon ml-1'}
         color="primary"
+        onClick={e => props.setListingLayout('row')}
       >
-        Row
+        <i className="fa fa-th-list" />
       </Button>
     </>
   )
 }
 
+const mapStateToProps = (state) => ({
+  layout: state.layout.listingLayout
+})
+
 const mapDispatchToProps = (dispatch) => ({
   setListingLayout: (layout) => dispatch(setListingLayout(layout))
 })
 
-export default connect(undefined, mapDispatchToProps)(TrainingVariant)
+export default connect(mapStateToProps, mapDispatchToProps)(TrainingVariant)

@@ -13,8 +13,7 @@ import {
   Nav,
   Container,
   Row,
-  Col,
-  UncontrolledTooltip
+  Col
 } from 'reactstrap'
 import { connect } from 'react-redux'
 import { authActions } from '../../containers/App/auth/actions'
@@ -36,22 +35,22 @@ class TrainingsNavbar extends React.Component {
                   src={require("../../assets/img/brand/repnote-white.png")}
                 />
               </NavbarBrand>
-              <button className="navbar-toggler" id="navbar-default">
+              <button className="navbar-toggler" id="navbar_global">
                 <span className="navbar-toggler-icon" />
               </button>
-              <UncontrolledCollapse navbar toggler="#navbar-default">
+              <UncontrolledCollapse navbar toggler="#navbar_global">
                 <div className="navbar-collapse-header">
                   <Row>
                     <Col className="collapse-brand" xs="6">
                       <Link to="/">
                         <img
-                          alt="..."
+                          alt="Repnote logo"
                           src={require("../../assets/img/brand/repnote.png")}
                         />
                       </Link>
                     </Col>
                     <Col className="collapse-close" xs="6">
-                      <button className="navbar-toggler" id="navbar-default">
+                      <button className="navbar-toggler" id="navbar_global">
                         <span />
                         <span />
                       </button>
@@ -59,41 +58,63 @@ class TrainingsNavbar extends React.Component {
                   </Row>
                 </div>
                 <Nav className="navbar-nav-hover align-items-lg-center" navbar>
-                  <UncontrolledDropdown nav>
-                    <DropdownToggle nav>
-                      <i className="ni ni-ui-04 d-lg-none mr-1" />
-                      <span className="nav-link-inner--text">Trainings</span>
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem to="/trainings" tag={Link}>
-                        Trainings
-                      </DropdownItem>
-                      <DropdownItem to="/trainings/create" tag={Link}>
-                        Create training
-                      </DropdownItem>
-                      <DropdownItem onClick={this.props.logout}>
-                        Logout
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </Nav>
-                <Nav className="align-items-lg-center ml-lg-auto" navbar>
                   <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="!#"
-                      id="tooltip356691234"
-                      target="_blank"
-                    >
-                      <i className="ni ni-settings-gear-65" />
-                      <span className="nav-link-inner--text d-lg-none ml-2">
-                        Settings
-                      </span>
+                    <NavLink to="/landing" tag={Link}>
+                      <span className="nav-link-inner--text">Home</span>
                     </NavLink>
-                    <UncontrolledTooltip delay={0} target="tooltip356691234">
-                      Settings
-                    </UncontrolledTooltip>
                   </NavItem>
+                  <NavItem>
+                    <NavLink to="/trainings" tag={Link}>
+                      <span className="nav-link-inner--text">Trainings</span>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink to="/landing/about" tag={Link}>
+                      <span className="nav-link-inner--text">About</span>
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink to="/landing/contact" tag={Link}>
+                      <span className="nav-link-inner--text">Contact us</span>
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+                <Nav className="navbar-nav-hover align-items-lg-center ml-lg-auto" navbar>
+                  { this.props.isAuthenticated ? (
+                    <UncontrolledDropdown nav>
+                      <DropdownToggle nav>
+                        <i className="fa fa-user-circle-o" />
+                        <span className="nav-link-inner--text d-lg-none">Examples</span>
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem to="/trainings" tag={Link}>
+                          Trainings
+                        </DropdownItem>
+                        <DropdownItem to="/account/trainings" tag={Link}>
+                          My trainings
+                        </DropdownItem>
+                        <DropdownItem to="/account" tag={Link}>
+                          My account
+                        </DropdownItem>
+                        <DropdownItem onClick={this.props.logout}>
+                          Logout
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  ) : (
+                    <>
+                      <NavItem>
+                        <NavLink to="/auth/login" tag={Link}>
+                          <span className="nav-link-inner--text">Login</span>
+                        </NavLink>
+                      </NavItem>
+                      <NavItem>
+                        <NavLink to="/auth/register" tag={Link}>
+                          <span className="nav-link-inner--text">Register</span>
+                        </NavLink>
+                      </NavItem>
+                    </>
+                  ) }
                 </Nav>
               </UncontrolledCollapse>
             </Container>

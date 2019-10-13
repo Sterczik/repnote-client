@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 const Total = (props) => (
   <div>
-    Items: { props.trainings.total }
+    <h5 className="display-5 mb-0">Trainings: { props.trainings.total }</h5>
   </div>
 )
 

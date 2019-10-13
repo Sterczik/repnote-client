@@ -46,6 +46,14 @@ class SimpleFooter extends React.Component {
                       About
                     </NavLink>
                   </NavItem>
+                  <NavItem>
+                    <NavLink
+                      to="/landing/contact"
+                      tag={Link}
+                    >
+                      Contact us
+                    </NavLink>
+                  </NavItem>
                 </Nav>
               </Col>
             </Row>

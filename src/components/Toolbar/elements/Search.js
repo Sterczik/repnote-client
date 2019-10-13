@@ -5,8 +5,7 @@ import {
   Input,
   InputGroupAddon,
   InputGroupText,
-  InputGroup,
-  Button
+  InputGroup
 } from 'reactstrap'
 
 import {
@@ -35,18 +34,12 @@ class Search extends React.Component {
 
   handleSearch() {
     this.props.setSearch(this.state.search)
-
     this.props.getTrainings()
   }
 
   render() {
     return (
       <InputGroup className="input-group-alternative mb-3">
-        <InputGroupAddon addonType="prepend">
-          <InputGroupText>
-            <i className="ni ni-email-83" />
-          </InputGroupText>
-        </InputGroupAddon>
         <Input
           placeholder="Search"
           type="text"
@@ -55,13 +48,12 @@ class Search extends React.Component {
           onChange={this.handleChange}
           className="form-control-alternative"
         />
-        <Button
-          onClick={e => this.handleSearch()}
-          className=""
-          color="primary"
-        >
-          Search
-        </Button>
+        <InputGroupAddon addonType="append">
+          <InputGroupText
+            onClick={e => this.handleSearch()}>
+            <i className="fa fa-search" />
+          </InputGroupText>
+        </InputGroupAddon>
       </InputGroup>
     )
   }

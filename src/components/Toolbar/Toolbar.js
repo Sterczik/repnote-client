@@ -23,10 +23,10 @@ const Toolbar = (props) => (
     </Row>
     <Row>
       <Col sm="6" lg="4">
-        <Sort />
+        <ListLimit />
       </Col>
       <Col sm="6" lg="4">
-        <ListLimit />
+        <Sort />
       </Col>
       <Col sm="6" lg="4">
         <Search />

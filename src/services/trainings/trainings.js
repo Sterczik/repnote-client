@@ -24,11 +24,21 @@ function getTrainings({ page, perPage, sort, search }) {
   return Api(true).get(`/trainings?page=${page}&perPage=${perPage}&sort=${sort}&search=${search}`)
 }
 
+function likeTraining(id) {
+  return Api(true).post(`/trainings/${id}/like`)
+}
+
+function unlikeTraining(id) {
+  return Api(true).delete(`/trainings/${id}/like`)
+}
+
 export const ServiceTrainings = {
   getTraining,
   editTraining,
   removeTraining,
   switchTrainingStatus,
   createTraining,
-  getTrainings
+  getTrainings,
+  likeTraining,
+  unlikeTraining
 }

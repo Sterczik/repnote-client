@@ -32,6 +32,10 @@ function login(email, password) {
   }))
 }
 
+function refreshToken(refreshToken) {
+  return Api().post('users/refreshToken', { refreshToken })
+}
+
 function socialLogin(response, provider) {
   return Api().post(`/users/authenticated/${provider}`, JSON.stringify({
     response
@@ -61,15 +65,26 @@ function changeAvatar(file) {
   return Api(true).post('/users/profile/avatar', formData)
 }
 
+function followUser(id) {
+  return Api(true).post(`/users/${id}/follow`)
+}
+
+function unfollowUser(id) {
+  return Api(true).delete(`/users/${id}/follow`)
+}
+
 export const ServiceUsers = {
   register,
   login,
   socialLogin,
   changePassword,
   logout,
+  refreshToken,
   handleResponse,
   getProfile,
   editProfile,
   getUserProfile,
-  changeAvatar
+  changeAvatar,
+  followUser,
+  unfollowUser
 }

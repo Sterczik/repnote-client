@@ -125,6 +125,39 @@ export function getUserProfile(slug) {
   }
 }
 
+export function followUser(id) {
+  const followUserInProcess = () => ({
+    type: globalConstants.FOLLOW_USER_IN_PROGRESS
+  })
+
+  const followUserSuccess = (data) => ({
+    type: globalConstants.FOLLOW_USER_SUCCESS,
+    data
+  })
+
+  const followUserFailure = (error) => ({
+    type: globalConstants.FOLLOW_USER_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(followUserInProcess())
+
+    ServiceUsers.followUser(id)
+      .then((res) => {
+        const data = res.data
+        dispatch(followUserSuccess(data))
+      })
+      .catch((error) => {
+        ServiceUsers.handleResponse(error)
+        dispatch(followUserFailure(error))
+        dispatch(snackbar.show({
+          message: 'Something went wrong!'
+        }))
+      })
+  }
+}
+
 export function sendContactMessage(message) {
   const sendContactMessageInProcess = () => ({
     type: globalConstants.SEND_CONTACT_MESSAGE_IN_PROCESS

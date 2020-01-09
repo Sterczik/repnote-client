@@ -38,7 +38,7 @@ function register(email, name, password, passwordConfirm) {
           dispatch(snackbar.show({
             message: data.message
           }))
-          history.push('/register-confirm')
+          history.push('/landing')
         } else {
           dispatch(registerFailure())
         }
@@ -48,7 +48,6 @@ function register(email, name, password, passwordConfirm) {
         dispatch(snackbar.show({
           message: 'Something went wrong!'
         }))
-        history.push('/register-failure')
       })
   }
 }
@@ -77,6 +76,10 @@ function login(email, password) {
         const { data } = response
         if (data.success) {
           if (data.token.token) {
+            // localStorage.setItem('repnote_tokens', {
+            //   'token': data.token.token,
+            //   'refreshToken': data.token.refreshToken
+            // })
             localStorage.setItem('token', data.token.token)
             localStorage.setItem('refreshToken', data.token.refreshToken)
           }
@@ -91,6 +94,50 @@ function login(email, password) {
       })
       .catch((error) => {
         dispatch(loginFailure(error))
+        dispatch(snackbar.show({
+          message: 'Something went wrong'
+        }))
+      })
+  }
+}
+
+function refreshToken(token) {
+  const refreshTokenInProcess = () => ({
+    type: authConstants.REFRESH_TOKEN_IN_PROCESS
+  })
+
+  const refreshTokenSuccess = (token) => ({
+    type: authConstants.REFRESH_TOKEN_SUCCESS,
+    token
+  })
+
+  const refreshTokenFailure = (error) => ({
+    type: authConstants.REFRESH_TOKEN_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(refreshTokenInProcess())
+
+    ServiceUsers.refreshToken(token)
+      .then((response) => {
+        const { data } = response
+        if (data.success) {
+          if (data.token.token) {
+            // localStorage.setItem('repnote_tokens', {
+            //   'token': data.token.token,
+            //   'refreshToken': data.token.refreshToken
+            // })
+            localStorage.setItem('token', data.token.token)
+            localStorage.setItem('refreshToken', data.token.refreshToken)
+          }
+          dispatch(refreshTokenSuccess(data))
+        } else {
+          dispatch(refreshTokenFailure())
+        }
+      })
+      .catch((error) => {
+        dispatch(refreshTokenFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong'
         }))
@@ -130,6 +177,10 @@ function socialLogin(response, provider) {
         const { data } = response
         if (data.success) {
           if (data.token.token) {
+            // localStorage.setItem('repnote_tokens', {
+            //   'token': JSON.stringify(data.token.token),
+            //   'refreshToken': 'dummy'
+            // })
             localStorage.setItem('token', JSON.stringify(data.token.token))
             localStorage.setItem('refreshToken', 'dummy')
           }
@@ -286,6 +337,7 @@ export const authActions = {
   logout,
   register,
   login,
+  refreshToken,
   socialLogin,
   changePassword,
   getProfile,

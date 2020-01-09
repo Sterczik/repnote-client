@@ -1,6 +1,6 @@
 import { authConstants } from './constants'
 
-const user = localStorage.getItem('token') && localStorage.getItem('token').length ? JSON.parse(localStorage.getItem('token')) : null
+const user = localStorage.getItem('token') && localStorage.getItem('token').length ? localStorage.getItem('token') : null
 
 const initialState = user ? {
   loggedIn: true,
@@ -17,6 +17,7 @@ const initialState = user ? {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    // Register
     case authConstants.REGISTER_IN_PROCESS:
       return {
         ...state,
@@ -32,7 +33,7 @@ export default (state = initialState, action) => {
         ...state,
         registerProcess: false
       }
-      
+    // Login
     case authConstants.LOGIN_IN_PROCESS:
       return {
         loggingIn: true,
@@ -54,7 +55,7 @@ export default (state = initialState, action) => {
         loggedIn: false,
         user: {}
       }
-
+    // Social Login
     case authConstants.SOCIAL_LOGIN_IN_PROCESS:
       return {
         loggingIn: true,
@@ -76,7 +77,28 @@ export default (state = initialState, action) => {
         loggedIn: false,
         user: {}
       }
-
+    // Refresh Token
+    case authConstants.REFRESH_TOKEN_IN_PROCESS:
+      return {
+        // loggingIn: true,
+        // loggedIn: false,
+        user: {}
+      }
+    case authConstants.REFRESH_TOKEN_SUCCESS:
+      return {
+        loggingIn: false,
+        loggedIn: true,
+        user: {
+          ...action.token
+        }
+      }
+    case authConstants.REFRESH_TOKEN_FAILURE:
+      return {
+        loggingIn: false,
+        loggedIn: false,
+        user: {}
+      }
+    // Change Password
     case authConstants.CHANGE_PASSWORD_IN_PROCESS:
       return {
         ...state
@@ -89,14 +111,14 @@ export default (state = initialState, action) => {
       return {
         ...state
       }
-
+    // Logout
     case authConstants.LOGOUT:
       return {
         ...state,
         loggedIn: false,
         user: {}
       }
-
+    // Get Profile
     case authConstants.GET_PROFILE_IN_PROCESS:
       return {
         ...state
@@ -111,7 +133,7 @@ export default (state = initialState, action) => {
         ...state,
         userInfo: {}
       }
-    
+    // Edit Profile
     case authConstants.EDIT_PROFILE_IN_PROCESS:
       return {
         ...state
@@ -126,7 +148,7 @@ export default (state = initialState, action) => {
         ...state,
         userInfo: {}
       }
-
+    // Change Avatar
     case authConstants.CHANGE_AVATAR_IN_PROCESS:
       return {
         ...state
@@ -144,7 +166,7 @@ export default (state = initialState, action) => {
         ...state,
         userInfo: {}
       }
-
+    // Default
     default:
       return state
   }

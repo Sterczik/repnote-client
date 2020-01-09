@@ -188,3 +188,36 @@ export function createTraining(trainingData) {
       })
   }
 }
+
+export function likeTraining(id) {
+  const likeTrainingInProcess = () => ({
+    type: trainingConstants.LIKE_TRAINING_IN_PROCESS
+  })
+
+  const likeTrainingSuccess = (training) => ({
+    type: trainingConstants.LIKE_TRAINING_SUCCESS,
+    training
+  })
+
+  const likeTrainingFailure = (error) => ({
+    type: trainingConstants.LIKE_TRAINING_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(likeTrainingInProcess())
+
+    ServiceTrainings.likeTraining(id)
+      .then((res) => {
+        const training = res.data
+        dispatch(likeTrainingSuccess(training))
+      })
+      .catch((error) => {
+        ServiceUsers.handleResponse(error)
+        dispatch(likeTrainingFailure(error))
+        dispatch(snackbar.show({
+          message: 'Something went wrong!'
+        }))
+      })
+  }
+}

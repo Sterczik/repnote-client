@@ -2,9 +2,9 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { Button, Card, Container, Row, Col } from 'reactstrap'
-import { getUserProfile } from '../App/global/actions'
+import { getUserProfile, followUser } from '../App/global/actions'
 
-export class AccountPage extends React.Component {
+export class UserPage extends React.Component {
   componentDidMount() {
     const slug = this.props.match.params.name
     this.props.getUserProfile(slug)
@@ -68,6 +68,16 @@ export class AccountPage extends React.Component {
                         lg="4"
                       >
                         <div className="card-profile-actions py-4 mt-lg-0">
+                          { this.props.userProfile.id ? (
+                            <Button
+                              type="button"
+                              onClick={() => { followUser(this.props.userProfile.id) }}
+                              color="primary"
+                              size="sm"
+                            >
+                              Follow
+                            </Button>
+                          ) : null }
                           <Button
                             className="float-right"
                             color="default"
@@ -127,7 +137,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getUserProfile: (slug) => dispatch(getUserProfile(slug))
+  getUserProfile: (slug) => dispatch(getUserProfile(slug)),
+  followUser: (id) => dispatch(followUser(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountPage)
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage)

@@ -8,8 +8,6 @@ import NotFoundPage from './containers/NotFoundPage/index'
 
 // Auth
 import RegisterPage from './containers/RegisterPage/index'
-import RegisterConfirmPage from './containers/RegisterConfirmPage/index'
-import RegisterFailurePage from './containers/RegisterFailurePage/index'
 import LoginPage from './containers/LoginPage/index'
 
 // Account
@@ -55,22 +53,6 @@ const routes = [
     name: "Register",
     icon: "",
     component: RegisterPage,
-    layout: "/auth",
-    type: "Public"
-  },
-  {
-    path: "/register-confirm",
-    name: "Register Confirm",
-    icon: "",
-    component: RegisterConfirmPage,
-    layout: "/auth",
-    type: "Public"
-  },
-  {
-    path: "/register-failure",
-    name: "Register Failure",
-    icon: "",
-    component: RegisterFailurePage,
     layout: "/auth",
     type: "Public"
   },

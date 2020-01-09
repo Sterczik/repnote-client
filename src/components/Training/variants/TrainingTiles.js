@@ -27,6 +27,9 @@ const TrainingTiles = ({ training }) => (
           { training.goal }
         </p>
         <div>
+          <i className="fa fa-heart-o" /> { training.likes.length }
+        </div>
+        <div>
           <Badge color="success" pill className="mr-1 mt-1">
             { training.likes.length } likes
           </Badge>

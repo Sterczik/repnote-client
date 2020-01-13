@@ -58,9 +58,9 @@ function login(email, password) {
     user
   })
 
-  const loginSuccess = (user) => ({
+  const loginSuccess = (tokens) => ({
     type: authConstants.LOGIN_SUCCESS,
-    user
+    tokens
   })
 
   const loginFailure = (error) => ({
@@ -75,16 +75,16 @@ function login(email, password) {
       .then((response) => {
         const { data } = response
         if (data.success) {
-          if (data.token.token) {
-            // localStorage.setItem('repnote_tokens', {
-            //   'token': data.token.token,
-            //   'refreshToken': data.token.refreshToken
-            // })
-            localStorage.setItem('token', data.token.token)
+          if (data.token.token && data.token.refreshToken) {
+            localStorage.setItem('token', String(data.token.token))
             localStorage.setItem('refreshToken', data.token.refreshToken)
+
+            dispatch(loginSuccess({
+              accessToken: data.token.token,
+              refreshToken: data.token.refreshToken
+            }))
+            history.push('/trainings')
           }
-          dispatch(loginSuccess(data))
-          history.push('/trainings')
         } else {
           dispatch(loginFailure())
           dispatch(snackbar.show({
@@ -101,48 +101,52 @@ function login(email, password) {
   }
 }
 
-function refreshToken(token) {
-  const refreshTokenInProcess = () => ({
-    type: authConstants.REFRESH_TOKEN_IN_PROCESS
-  })
-
-  const refreshTokenSuccess = (token) => ({
-    type: authConstants.REFRESH_TOKEN_SUCCESS,
-    token
-  })
-
-  const refreshTokenFailure = (error) => ({
-    type: authConstants.REFRESH_TOKEN_FAILURE,
-    error
-  })
-
-  return (dispatch) => {
-    dispatch(refreshTokenInProcess())
-
-    ServiceUsers.refreshToken(token)
-      .then((response) => {
-        const { data } = response
-        if (data.success) {
-          if (data.token.token) {
-            // localStorage.setItem('repnote_tokens', {
-            //   'token': data.token.token,
-            //   'refreshToken': data.token.refreshToken
-            // })
-            localStorage.setItem('token', data.token.token)
-            localStorage.setItem('refreshToken', data.token.refreshToken)
-          }
-          dispatch(refreshTokenSuccess(data))
-        } else {
-          dispatch(refreshTokenFailure())
-        }
-      })
-      .catch((error) => {
-        dispatch(refreshTokenFailure(error))
-        dispatch(snackbar.show({
-          message: 'Something went wrong'
-        }))
-      })
+function refreshToken(dispatch, refreshToken) {
+  const refreshTokenSuccess = (tokens) => {
+    localStorage.setItem('token', tokens.accessToken)
+    localStorage.setItem('refreshToken', tokens.refreshToken)
+    return {
+      type: authConstants.SAVE_ACCESS_TOKEN_SUCCESS,
+      tokens
+    }
   }
+
+  const freshTokenPromise = ServiceUsers.refreshToken(refreshToken)
+    .then(response => {
+      const { data } = response
+
+      if (data.success) {
+        dispatch({
+          type: authConstants.REFRESH_TOKEN_SUCCESS
+        })
+  
+        dispatch(refreshTokenSuccess({
+          accessToken: data.token.token,
+          refreshToken: data.token.refreshToken
+        }))
+      }
+
+      return data.token.token && data.token.refreshToken
+        ? Promise.resolve({
+          accessToken: data.token.token,
+          refreshToken: data.token.refreshToken
+        }) : Promise.reject({
+          message: 'Could not refresh token'
+        })
+    })
+    .catch((e) => {
+      dispatch({
+        type: authConstants.REFRESH_TOKEN_FAILURE
+      })
+      return Promise.reject(e)
+    })
+
+  dispatch({
+    type: authConstants.REFRESH_TOKEN_IN_PROCESS,
+    freshTokenPromise
+  })
+
+  return freshTokenPromise
 }
 
 function socialLogin(response, provider) {
@@ -150,9 +154,9 @@ function socialLogin(response, provider) {
     type: authConstants.SOCIAL_LOGIN_IN_PROCESS
   })
 
-  const socialLoginSuccess = (user) => ({
+  const socialLoginSuccess = (tokens) => ({
     type: authConstants.SOCIAL_LOGIN_SUCCESS,
-    user
+    tokens
   })
 
   const socialLoginFailure = (error) => ({
@@ -177,14 +181,13 @@ function socialLogin(response, provider) {
         const { data } = response
         if (data.success) {
           if (data.token.token) {
-            // localStorage.setItem('repnote_tokens', {
-            //   'token': JSON.stringify(data.token.token),
-            //   'refreshToken': 'dummy'
-            // })
-            localStorage.setItem('token', JSON.stringify(data.token.token))
+            localStorage.setItem('token', data.token.token)
             localStorage.setItem('refreshToken', 'dummy')
           }
-          dispatch(socialLoginSuccess(data))
+          dispatch(socialLoginSuccess({
+            accessToken: data.token.token,
+            refreshToken: data.token.refreshToken
+          }))
           history.push('/trainings')
         } else {
           dispatch(socialLoginFailure())

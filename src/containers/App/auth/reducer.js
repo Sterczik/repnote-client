@@ -1,18 +1,24 @@
 import { authConstants } from './constants'
 
-const user = localStorage.getItem('token') && localStorage.getItem('token').length ? localStorage.getItem('token') : null
+const accessToken = localStorage.getItem('token') && localStorage.getItem('token').length ? localStorage.getItem('token') : null
+const refreshToken = localStorage.getItem('refreshToken') && localStorage.getItem('refreshToken').length ? localStorage.getItem('refreshToken') : null
 
-const initialState = user ? {
+const initialState = accessToken && refreshToken ? {
   loggedIn: true,
   loggingIn: false,
-  user,
-  userInfo: {}
+  user: {
+    accessToken: accessToken,
+    refreshToken: refreshToken
+  },
+  userInfo: {},
+  freshTokenPromise: null
 } : {
   loggedIn: false,
   loggingIn: false,
   user: {},
   userInfo: {},
-  registerProcess: false
+  registerProcess: false,
+  freshTokenPromise: null
 }
 
 export default (state = initialState, action) => {
@@ -36,21 +42,24 @@ export default (state = initialState, action) => {
     // Login
     case authConstants.LOGIN_IN_PROCESS:
       return {
+        ...state,
         loggingIn: true,
         loggedIn: false,
         user: {}
       }
     case authConstants.LOGIN_SUCCESS:
       return {
+        ...state,
         loggingIn: false,
         loggedIn: true,
         user: {
-          ...action.token,
-          ...action.user
+          accessToken: action.tokens.accessToken,
+          refreshToken: action.tokens.refreshToken
         }
       }
     case authConstants.LOGIN_FAILURE:
       return {
+        ...state,
         loggingIn: false,
         loggedIn: false,
         user: {}
@@ -67,8 +76,8 @@ export default (state = initialState, action) => {
         loggingIn: false,
         loggedIn: true,
         user: {
-          ...action.token,
-          ...action.user
+          accessToken: action.tokens.accessToken,
+          refreshToken: action.tokens.refreshToken
         }
       }
     case authConstants.SOCIAL_LOGIN_FAILURE:
@@ -80,23 +89,31 @@ export default (state = initialState, action) => {
     // Refresh Token
     case authConstants.REFRESH_TOKEN_IN_PROCESS:
       return {
-        // loggingIn: true,
-        // loggedIn: false,
-        user: {}
+        ...state,
+        freshTokenPromise: action.freshTokenPromise
       }
     case authConstants.REFRESH_TOKEN_SUCCESS:
       return {
-        loggingIn: false,
-        loggedIn: true,
-        user: {
-          ...action.token
-        }
+        ...state,
+        freshTokenPromise: null
       }
     case authConstants.REFRESH_TOKEN_FAILURE:
       return {
+        ...state,
         loggingIn: false,
         loggedIn: false,
         user: {}
+      }
+    // Save Token
+    case authConstants.SAVE_ACCESS_TOKEN_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          accessToken: action.tokens.accessToken,
+          refreshToken: action.tokens.refreshToken
+        },
+        freshTokenPromise: null
       }
     // Change Password
     case authConstants.CHANGE_PASSWORD_IN_PROCESS:

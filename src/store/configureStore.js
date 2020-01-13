@@ -13,6 +13,8 @@ import trainingsReducer from '../containers/App/trainings/reducer'
 import trainingReducer from '../containers/App/training/reducer'
 import layoutReducer from '../containers/App/layout/reducer'
 
+import { jwt } from './middlewares/jwt'
+
 /* eslint-disable no-underscore-dangle, indent */
 const composeEnhancers = process.env.NODE_ENV !== 'production'
 && typeof window === 'object'
@@ -30,7 +32,7 @@ export default () => {
       layout: layoutReducer,
       snackbar: snackbarReducer
     }),
-    composeEnhancers(applyMiddleware(thunk))
+    composeEnhancers(applyMiddleware(jwt, thunk))
   )
 
   return store

@@ -1,9 +1,8 @@
 import axios from 'axios'
 import { baseUrl } from './baseUrl'
 
-const token = localStorage.getItem('token') && localStorage.getItem('token').length ? JSON.parse(localStorage.getItem('token')) : null
-
 export default (auth = false) => {
+  const token = localStorage.getItem('token')
   if (auth) {
     return axios.create({
       baseURL: `${baseUrl}/api/app`,

@@ -44,7 +44,7 @@ export class HomePage extends React.Component {
                         <span>share with people</span>
                       </h1>
                       <p className="lead text-white">
-                        Donec convallis urna placerat sem facilisis vestibulum. Nulla sodales eu nibh eget varius. Quisque quis accumsan dui. Nunc ut sapien dui.
+                        With RepNote, you can create your unique trainings for yourself, or share them with other people.
                       </p>
                       <div className="btn-wrapper">
                         <Button
@@ -94,21 +94,11 @@ export class HomePage extends React.Component {
           <section className="section section-lg">
             <Container>
               <Row className="row-grid align-items-center">
-                <Col className="order-md-2" md="6">
-                  {/* <img
-                    alt="..."
-                    className="img-fluid floating"
-                    src={require("../../assets/img/")}
-                  /> */}
-                </Col>
                 <Col className="order-md-1" md="6">
                   <div className="pr-md-5">
                     <h3>Awesome features</h3>
                     <p className="lead">
                       Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue.
-                    </p>
-                    <p>
-                      Nulla id felis vitae libero molestie vulputate. Donec aliquam orci velit, sed lacinia dolor mollis quis. Quisque sed metus id nibh auctor cursus.
                     </p>
                     <ul className="list-unstyled mt-5">
                       <li className="py-2">
@@ -211,21 +201,6 @@ export class HomePage extends React.Component {
                 </Col>
               </Row>
             </Container>
-            {/* <div className="separator separator-bottom separator-skew zindex-100">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="none"
-                version="1.1"
-                viewBox="0 0 2560 100"
-                x="0"
-                y="0"
-              >
-                <polygon
-                  className="fill-white"
-                  points="2560 0 2560 100 0 100"
-                />
-              </svg>
-            </div> */}
           </section>
 
           <section className="section section-lg">
@@ -256,28 +231,19 @@ export class HomePage extends React.Component {
                   <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                     <i className="ni ni-settings text-primary" />
                   </div>
-                  <h5 className="text-white mt-3">Nice support</h5>
-                  <p className="text-white mt-3">
-                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris.
-                  </p>
+                  <h5 className="text-white mt-3">Support</h5>
                 </Col>
                 <Col lg="4" className="text-center">
                   <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                     <i className="ni ni-ruler-pencil text-primary" />
                   </div>
-                  <h5 className="text-white mt-3">Many creators</h5>
-                  <p className="text-white mt-3">
-                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris.
-                  </p>
+                  <h5 className="text-white mt-3">Customization</h5>
                 </Col>
                 <Col lg="4" className="text-center">
                   <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                     <i className="ni ni-atom text-primary" />
                   </div>
                   <h5 className="text-white mt-3">Friendly UI</h5>
-                  <p className="text-white mt-3">
-                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris.
-                  </p>
                 </Col>
               </Row>
             </Container>

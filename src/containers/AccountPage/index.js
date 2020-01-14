@@ -2,12 +2,15 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Button, Card, Container, Row, Col, Modal, } from 'reactstrap'
+import { Button, Card, Container, Row, Col } from 'reactstrap'
 import { authActions } from '../App/auth/actions'
+import EditAccountModal from '../../components/Modals/EditAccountModal/EditAccountModal'
+import ChangeAvatarModal from '../../components/Modals/ChangeAvatarModal/ChangeAvatarModal'
 
 export class AccountPage extends React.Component {
   state = {
-    editAccountModal: false
+    editAccountModal: false,
+    changeAvatarModal: false
   }
   toggleModal = (state) => {
     this.setState({
@@ -61,14 +64,14 @@ export class AccountPage extends React.Component {
                     <Row className="justify-content-center">
                       <Col className="order-lg-2" lg="3">
                         <div className="card-profile-image">
-                          <a href="!#" onClick={e => e.preventDefault()}>
+                          <div onClick={() => this.toggleModal("changeAvatarModal")}>
                             <img
                               alt="..."
                               style={{width: 180 + 'px'}}
                               className="rounded-circle"
                               src={this.props.userInfo.avatar}
                             />
-                          </a>
+                          </div>
                         </div>
                       </Col>
                       <Col
@@ -99,7 +102,7 @@ export class AccountPage extends React.Component {
                         <div className="card-profile-stats d-flex justify-content-center">
                           <div>
                             <span className="heading btn-inner--icon mr-1">
-                              <i className={`fa fa-${this.props.userInfo.provider}`} />
+                              <i className={`fa fa-${this.props.userInfo.provider === 'local' ? 'at' : this.props.userInfo.provider}`} />
                             </span>
                             <span className="description">Provider</span>
                           </div>
@@ -118,15 +121,17 @@ export class AccountPage extends React.Component {
                       <h3>{ this.props.userInfo.name }</h3>
                       <h4>{ this.props.userInfo.email }</h4>
                     </div>
-                    <div className="mt-5 py-5 border-top text-center">
-                      <Row className="justify-content-center">
-                        <Col lg="9">
-                          <p>
-                            Account description
-                          </p>
-                        </Col>
-                      </Row>
-                    </div>
+                    { this.props.userInfo.description &&
+                      <div className="mt-5 py-5 border-top text-center">
+                        <Row className="justify-content-center">
+                          <Col lg="9">
+                            <p>
+                              { this.props.userInfo.description }
+                            </p>
+                          </Col>
+                        </Row>
+                      </div>
+                    }
                     <div className="text-center mb-5">
                       <Button
                         color="primary"
@@ -134,49 +139,25 @@ export class AccountPage extends React.Component {
                         size="sm"
                         onClick={() => this.toggleModal("editAccountModal")}
                       >
-                        Edit Account
+                        Edit Profile
                       </Button>
                     </div>
+                    <EditAccountModal
+                      user={this.props.userInfo}
+                      editAccountModal={this.state.editAccountModal}
+                      toggleModal={this.toggleModal}
+                      editProfile={this.props.editProfile}
+                    />
+                    <ChangeAvatarModal
+                      avatar={this.props.userInfo.avatar}
+                      changeAvatarModal={this.state.changeAvatarModal}
+                      toggleModal={this.toggleModal}
+                      changeAvatar={this.props.changeAvatar}
+                    />
                   </div>
                 ) : null }
               </Card>
             </Container>
-            <Modal
-              className="modal-dialog-centered"
-              isOpen={this.state.editAccountModal}
-              toggle={() => this.toggleModal("editAccountModal")}
-            >
-              <div className="modal-header">
-                <h5 className="modal-title" id="editAccountModalLabel">
-                  Edit your account
-                </h5>
-                <button
-                  aria-label="Close"
-                  className="close"
-                  data-dismiss="modal"
-                  type="button"
-                  onClick={() => this.toggleModal("editAccountModal")}
-                >
-                  <span aria-hidden={true}>×</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                
-              </div>
-              <div className="modal-footer">
-                <Button
-                  color="secondary"
-                  data-dismiss="modal"
-                  type="button"
-                  onClick={() => this.toggleModal("editAccountModal")}
-                >
-                  Close
-                </Button>
-                <Button color="primary" type="button">
-                  Save changes
-                </Button>
-              </div>
-            </Modal>
           </section>
         </main>     
       </>
@@ -190,6 +171,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getProfile: () => dispatch(authActions.getProfile()),
+  editProfile: (name, description) => dispatch(authActions.editProfile(name, description)),
+  changeAvatar: (file) => dispatch(authActions.changeAvatar(file)),
   logout: () => dispatch(authActions.logout())
 })
 

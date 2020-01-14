@@ -175,13 +175,12 @@ export default (state = initialState, action) => {
         ...state,
         userInfo: {
           ...state.userInfo,
-          avatar: action.data
+          avatar: action.data.avatar
         }
       }
     case authConstants.CHANGE_AVATAR_FAILURE:
       return {
-        ...state,
-        userInfo: {}
+        ...state
       }
     // Default
     default:

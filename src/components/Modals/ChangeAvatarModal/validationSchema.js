@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-const avatarSize = 8000
+const avatarSize = 15 * 1024
 const avatarFormats = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png']
 
 export default Yup.object().shape({

@@ -32,7 +32,7 @@ class Categories extends React.Component {
       <InputGroup className="input-group-alternative mb-3">
         <InputGroupAddon addonType="prepend">
           <InputGroupText>
-            <i className="fa fa-lock" />
+            <i className="fa fa-book" />
           </InputGroupText>
         </InputGroupAddon>
         <Input

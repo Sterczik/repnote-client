@@ -30,7 +30,7 @@ export class TrainingPage extends React.Component {
         >
           <meta name="description" content="Training" />
         </Helmet>
-        <main>
+        <main class="training-page">
           <section className="section section-shaped section-lg">
             <Container>
               { this.props.training.id ? (

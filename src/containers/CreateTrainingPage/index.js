@@ -26,6 +26,8 @@ export class CreateTrainingPage extends React.Component {
       goal: '',
       private: false,
       category: 1,
+      advancementLevel: 1,
+      daysPerWeek: 3,
       exercises: []
     }
 
@@ -107,6 +109,8 @@ export class CreateTrainingPage extends React.Component {
       goal: this.state.goal,
       private: this.state.private,
       category: Number(this.state.category),
+      advancementLevel: Number(this.state.advancementLevel),
+      days_per_week: Number(this.state.daysPerWeek),
       exercises: this.state.exercises
     })
   }
@@ -152,7 +156,6 @@ export class CreateTrainingPage extends React.Component {
                           </Col>
                           <Col sm="12" lg="6">
                             <AvField
-                              // label="Training category"
                               type="select"
                               value={this.state.category}
                               onChange={this.handleChange}
@@ -163,6 +166,43 @@ export class CreateTrainingPage extends React.Component {
                               { this.props.trainingCategories.map((trainingCategory) => (
                                 <option key={trainingCategory.id} value={trainingCategory.id}>{ trainingCategory.name }</option>
                               )) }
+                            </AvField>
+                          </Col>
+                        </Row>
+
+                        <Row>
+                          <Col sm="12" lg="6">
+                            <AvField
+                              label="Advancement Level"
+                              type="select"
+                              value={this.state.advancementLevel}
+                              onChange={this.handleChange}
+                              required
+                              name="advancementLevel"
+                              className="form-control-alternative"
+                            >
+                              { this.props.advancementLevels.map((advancementLevel) => (
+                                <option key={advancementLevel.id} value={advancementLevel.id}>{ advancementLevel.name }</option>
+                              )) }
+                            </AvField>
+                          </Col>
+                          <Col sm="12" lg="6">
+                            <AvField
+                              label="Training days weekly"
+                              type="select"
+                              value={this.state.daysPerWeek}
+                              onChange={this.handleChange}
+                              required
+                              name="daysPerWeek"
+                              className="form-control-alternative"
+                            >
+                              <option value={1}>1</option>
+                              <option value={2}>2</option>
+                              <option value={3}>3</option>
+                              <option value={4}>4</option>
+                              <option value={5}>5</option>
+                              <option value={6}>6</option>
+                              <option value={7}>7</option>
                             </AvField>
                           </Col>
                         </Row>
@@ -333,7 +373,8 @@ export class CreateTrainingPage extends React.Component {
 
 const mapStateToProps = (state) => ({
   trainingCategories: state.global.trainingCategories,
-  exerciseCategories: state.global.exerciseCategories
+  exerciseCategories: state.global.exerciseCategories,
+  advancementLevels: state.global.advancementLevels
 })
 
 const mapDispatchToProps = (dispatch) => ({

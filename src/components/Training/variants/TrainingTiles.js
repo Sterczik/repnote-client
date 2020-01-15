@@ -12,27 +12,26 @@ const TrainingTiles = ({ training }) => (
   <Col lg="4" className="mb-5">
     <Card className="shadow border-0">
       <CardBody className="py-4 card-body-flex">
-        <img style={{width: 50 + 'px'}} className="img-fluid rounded-circle shadow" src={training.user.avatar} alt="img" />
-        <h6 className="text-primary text-uppercase">
+        <div>
+          <img style={{width: 50 + 'px'}} className="img-fluid rounded-circle shadow" src={training.user.avatar} alt="img" />
+          <span className="description ml-2">
+            <Link
+              to={'/users/' + training.user.slug}
+            >
+              { training.user.name }
+            </Link>
+          </span>
+        </div>
+        <h6 className="text-primary">
           { training.name }
         </h6>
-        <p className="description mt-3">
-          <Link
-            to={'/users/' + training.user.slug}
-          >
-            { training.user.name }
-          </Link>
-        </p>
-        <p className="description mt-3">
+        <p className="description">
           { training.goal }
         </p>
         <div>
           <i className="fa fa-heart-o" /> { training.likes.length }
         </div>
         <div>
-          <Badge color="success" pill className="mr-1 mt-1">
-            { training.likes.length } likes
-          </Badge>
           <Badge color="info" pill className="mr-1 mt-1">
             { training.category.name }
           </Badge>

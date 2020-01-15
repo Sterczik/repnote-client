@@ -31,7 +31,7 @@ class Sort extends React.Component {
       <InputGroup className="input-group-alternative mb-3">
         <InputGroupAddon addonType="prepend">
           <InputGroupText>
-            <i className="ni ni-email-83" />
+            <i className="fa fa-sort" />
           </InputGroupText>
         </InputGroupAddon>
         <Input
@@ -42,7 +42,7 @@ class Sort extends React.Component {
           onChange={this.handleChange}
           className="form-control-alternative"
         >
-          <option value="1">Najnowsze</option>
+          <option value="1">New</option>
         </Input>
       </InputGroup>
     )

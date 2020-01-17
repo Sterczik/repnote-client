@@ -182,7 +182,7 @@ function socialLogin(response, provider) {
         if (data.success) {
           if (data.token.token) {
             localStorage.setItem('token', data.token.token)
-            localStorage.setItem('refreshToken', 'dummy')
+            localStorage.setItem('refreshToken', data.token.refreshToken)
           }
           dispatch(socialLoginSuccess({
             accessToken: data.token.token,

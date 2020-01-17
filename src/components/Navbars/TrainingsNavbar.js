@@ -93,6 +93,9 @@ class TrainingsNavbar extends React.Component {
                         <DropdownItem to="/account/trainings" tag={Link}>
                           My trainings
                         </DropdownItem>
+                        <DropdownItem to="/trainings/create" tag={Link}>
+                          Create training
+                        </DropdownItem>
                         <DropdownItem to="/account" tag={Link}>
                           My account
                         </DropdownItem>

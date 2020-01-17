@@ -83,33 +83,6 @@ class SimpleNavbar extends React.Component {
                       <span className="nav-link-inner--text">Contact us</span>
                     </NavLink>
                   </NavItem>
-                  {/* <UncontrolledDropdown nav>
-                    <DropdownToggle nav>
-                      <i className="ni ni-ui-04 d-lg-none mr-1" />
-                      <span className="nav-link-inner--text">Lorem ipsum</span>
-                    </DropdownToggle>
-                    <DropdownMenu className="dropdown-menu-xl">
-                      <div className="dropdown-menu-inner">
-                        <Media
-                          className="d-flex align-items-center"
-                          href="!#"
-                          target="_blank"
-                        >
-                          <div className="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                            <i className="ni ni-spaceship" />
-                          </div>
-                          <Media body className="ml-3">
-                            <h6 className="heading text-primary mb-md-1">
-                              Getting started
-                            </h6>
-                            <p className="description d-none d-md-inline-block mb-0">
-                              Lorem ipsum
-                            </p>
-                          </Media>
-                        </Media>
-                      </div>
-                    </DropdownMenu>
-                  </UncontrolledDropdown> */}
                 </Nav>
                 <Nav className="navbar-nav-hover align-items-lg-center ml-lg-auto" navbar>
                   { this.props.isAuthenticated ? (
@@ -124,6 +97,9 @@ class SimpleNavbar extends React.Component {
                         </DropdownItem>
                         <DropdownItem to="/account/trainings" tag={Link}>
                           My trainings
+                        </DropdownItem>
+                        <DropdownItem to="/trainings/create" tag={Link}>
+                          Create training
                         </DropdownItem>
                         <DropdownItem to="/account" tag={Link}>
                           My account
@@ -147,22 +123,6 @@ class SimpleNavbar extends React.Component {
                       </NavItem>
                     </>
                   ) }
-                  {/* <NavItem>
-                    <NavLink
-                      className="nav-link-icon"
-                      href="!#"
-                      id="tooltip112445449"
-                      target="_blank"
-                    >
-                      <i className="fa fa-github" />
-                      <span className="nav-link-inner--text d-lg-none ml-2">
-                        Github
-                      </span>
-                    </NavLink>
-                    <UncontrolledTooltip delay={0} target="tooltip112445449">
-                      Star us on Github
-                    </UncontrolledTooltip>
-                  </NavItem> */}
                 </Nav>
               </UncontrolledCollapse>
             </Container>

@@ -20,8 +20,8 @@ function createTraining(data) {
   return Api(true).post('/trainings', data)
 }
 
-function getTrainings({ page, perPage, sort, search }) {
-  return Api(true).get(`/trainings?page=${page}&perPage=${perPage}&sort=${sort}&search=${search}`)
+function getTrainings({ page, perPage, sort, search, categoryFilter, advancementLevelFilter }) {
+  return Api(true).get(`/trainings?page=${page}&perPage=${perPage}&sort=${sort}&search=${search}&categoryFilter=${categoryFilter}&advancementLevelFilter=${advancementLevelFilter}`)
 }
 
 function likeTraining(id) {

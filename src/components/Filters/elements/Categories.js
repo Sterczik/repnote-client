@@ -63,7 +63,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getTrainings: () => dispatch(getTrainings()),
-  setTrainingCategoryFilter: () => dispatch(setTrainingCategoryFilter())
+  setTrainingCategoryFilter: (value) => dispatch(setTrainingCategoryFilter(value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories)

@@ -22,7 +22,7 @@ class ListLimit extends React.Component {
 
   handleChange(e) {
     const { value } = e.target
-    localStorage.setItem('perPage', value)
+    localStorage.setItem('listing_perPage', value)
     this.props.getTrainings()
   }
 

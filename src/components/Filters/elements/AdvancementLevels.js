@@ -63,7 +63,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getTrainings: () => dispatch(getTrainings()),
-  setTrainingAdvancementLevelFilter: () => dispatch(setTrainingAdvancementLevelFilter())
+  setTrainingAdvancementLevelFilter: (value) => dispatch(setTrainingAdvancementLevelFilter(value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdvancementLevels)

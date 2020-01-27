@@ -4,10 +4,12 @@ import { trainingsConstants } from './constants'
 import { ServiceTrainings } from '../../../services/trainings/trainings'
 
 export function getTrainings (
-    page = localStorage.getItem('page') ? localStorage.getItem('page') : '1',
-    perPage = localStorage.getItem('perPage') ? localStorage.getItem('perPage') : '24',
-    sort = localStorage.getItem('sort') ? localStorage.getItem('sort') : '1',
-    search = localStorage.getItem('search') ? localStorage.getItem('search') : ''
+    page = localStorage.getItem('listing_page') ? localStorage.getItem('listing_page') : '1',
+    perPage = localStorage.getItem('listing_perPage') ? localStorage.getItem('listing_perPage') : '24',
+    sort = localStorage.getItem('listing_sort') ? localStorage.getItem('listing_sort') : '1',
+    search = localStorage.getItem('listing_search') ? localStorage.getItem('listing_search') : '',
+    categoryFilter = localStorage.getItem('listing_categoryFilter') ? localStorage.getItem('listing_categoryFilter') : '0',
+    advancementLevelFilter = localStorage.getItem('listing_advancementLevelFilter') ? localStorage.getItem('listing_advancementLevelFilter') : '0'
   ) {
   const getTrainingsInProcess = () => ({
     type: trainingsConstants.GET_TRAININGS_IN_PROCESS
@@ -26,15 +28,19 @@ export function getTrainings (
   page = parseInt(page)
   perPage = parseInt(perPage)
   sort = parseInt(sort)
+  categoryFilter = parseInt(categoryFilter)
+  advancementLevelFilter = parseInt(advancementLevelFilter)
 
-  localStorage.setItem('page', page)
-  localStorage.setItem('perPage', perPage)
-  localStorage.setItem('sort', sort)
+  localStorage.setItem('listing_page', page)
+  localStorage.setItem('listing_perPage', perPage)
+  localStorage.setItem('listing_sort', sort)
+  localStorage.setItem('listing_categoryFilter', categoryFilter)
+  localStorage.setItem('listing_advancementLevelFilter', advancementLevelFilter)
 
   return (dispatch) => {
     dispatch(getTrainingsInProcess())
     
-    ServiceTrainings.getTrainings({ page, perPage, sort, search })
+    ServiceTrainings.getTrainings({ page, perPage, sort, search, categoryFilter, advancementLevelFilter })
       .then((res) => {
         const trainingsData = res.data
         dispatch(getTrainingsSuccess(trainingsData))
@@ -50,7 +56,7 @@ export function getTrainings (
 }
 
 export function setSearch(value) {
-  localStorage.setItem('search', value)
+  localStorage.setItem('listing_search', value)
 
   return {
     type: trainingsConstants.SET_SEARCH,
@@ -58,8 +64,17 @@ export function setSearch(value) {
   }
 }
 
+export function setSort(value) {
+  localStorage.setItem('listing_sort', value)
+
+  return {
+    type: trainingsConstants.SET_SORT,
+    value
+  }
+}
+
 export function setTrainingCategoryFilter(value) {
-  localStorage.setItem('activeTrainingCategoryFilter', value)
+  localStorage.setItem('listing_categoryFilter', value)
 
   return {
     type: trainingsConstants.SET_TRAINING_CATEGORY_FILTER,
@@ -68,7 +83,7 @@ export function setTrainingCategoryFilter(value) {
 }
 
 export function setTrainingAdvancementLevelFilter(value) {
-  localStorage.setItem('activeTrainingAdvancementLevelFilter', value)
+  localStorage.setItem('listing_advancementLevelFilter', value)
 
   return {
     type: trainingsConstants.SET_TRAINING_ADVANCEMENT_LEVEL_FILTER,

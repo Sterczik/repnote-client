@@ -1,12 +1,34 @@
 import { trainingsConstants } from './constants'
 
+const defaults = {
+  page: 1,
+  perPage: 12,
+  search: '',
+  sort: 1,
+  categoryFilter: 0,
+  advancementLevelFilter: 0
+}
+
 const trainingsReducerDefaultState = {
   total: '0',
-  page: localStorage.getItem('page') ? localStorage.getItem('page') : 1,
-  perPage: localStorage.getItem('perPage') ? localStorage.getItem('perPage') : 12,
-  search: localStorage.getItem('search') ? localStorage.getItem('search') : '',
-  activeTrainingCategoryFilter: 0,
-  activeTrainingAdvancementLevelFilter: 0
+  page: localStorage.getItem('listing_page')
+    ? localStorage.getItem('listing_page')
+    : defaults.page,
+  perPage: localStorage.getItem('listing_perPage')
+    ? localStorage.getItem('listing_perPage')
+    : defaults.perPage,
+  search: localStorage.getItem('listing_search')
+    ? localStorage.getItem('listing_search')
+    : defaults.search,
+  sort: localStorage.getItem('listing_sort')
+    ? localStorage.getItem('sort')
+    : defaults.sort,
+  activeTrainingCategoryFilter: localStorage.getItem('listing_categoryFilter')
+    ? localStorage.getItem('listing_categoryFilter')
+    : defaults.categoryFilter,
+  activeTrainingAdvancementLevelFilter: localStorage.getItem('listing_advancementLevelFilter')
+    ? localStorage.getItem('listing_advancementLevelFilter')
+    : defaults.advancementLevelFilter
 }
 
 export default (state = trainingsReducerDefaultState, action) => {
@@ -24,16 +46,25 @@ export default (state = trainingsReducerDefaultState, action) => {
       }
     case trainingsConstants.GET_TRAININGS_FAILURE:
       return state
+    // Set Search
     case trainingsConstants.SET_SEARCH:
       return {
         ...state,
-        search: action.search
+        search: action.value
       }
+    // Set Sort
+    case trainingsConstants.SET_SORT:
+      return {
+        ...state,
+        sort: action.value
+      }
+    // Set Category Filter
     case trainingsConstants.SET_TRAINING_CATEGORY_FILTER:
       return {
         ...state,
         activeTrainingCategoryFilter: action.value
       }
+    // Set Advancement Level Filter
     case trainingsConstants.SET_TRAINING_ADVANCEMENT_LEVEL_FILTER:
       return {
         ...state,

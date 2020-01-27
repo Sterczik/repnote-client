@@ -44,7 +44,7 @@ class Search extends React.Component {
           placeholder="Search"
           type="text"
           name="search"
-          value={this.props.trainings.search}
+          value={this.state.search}
           onChange={this.handleChange}
           className="form-control-alternative"
         />

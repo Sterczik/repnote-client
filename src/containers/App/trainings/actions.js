@@ -90,3 +90,12 @@ export function setTrainingAdvancementLevelFilter(value) {
     value
   }
 }
+
+export function setPage(value) {
+  localStorage.setItem('listing_page', value)
+
+  return {
+    type: trainingsConstants.SET_PAGE,
+    value
+  }
+}

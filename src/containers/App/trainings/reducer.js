@@ -3,6 +3,7 @@ import { trainingsConstants } from './constants'
 const defaults = {
   page: 1,
   perPage: 12,
+  lastPage: 1,
   search: '',
   sort: 1,
   categoryFilter: 0,
@@ -17,6 +18,7 @@ const trainingsReducerDefaultState = {
   perPage: localStorage.getItem('listing_perPage')
     ? localStorage.getItem('listing_perPage')
     : defaults.perPage,
+  lastPage: defaults.lastPage,
   search: localStorage.getItem('listing_search')
     ? localStorage.getItem('listing_search')
     : defaults.search,
@@ -42,6 +44,7 @@ export default (state = trainingsReducerDefaultState, action) => {
         total: action.trainingsData.total,
         page: action.trainingsData.page,
         perPage: action.trainingsData.perPage,
+        lastPage: action.trainingsData.lastPage,
         data: action.trainingsData.data
       }
     case trainingsConstants.GET_TRAININGS_FAILURE:
@@ -69,6 +72,12 @@ export default (state = trainingsReducerDefaultState, action) => {
       return {
         ...state,
         activeTrainingAdvancementLevelFilter: action.value
+      }
+    // Set Page
+    case trainingsConstants.SET_PAGE:
+      return {
+        ...state,
+        page: action.value
       }
     // Default
     default:

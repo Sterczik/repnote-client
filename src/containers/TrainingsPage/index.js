@@ -55,7 +55,7 @@ export class TrainingsPage extends React.Component {
               )
             }
             </Row>
-            <Row>
+            <Row className="justify-content-center">
               <PaginationList />
             </Row>
           </Container>

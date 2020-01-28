@@ -3,64 +3,82 @@ import { connect } from 'react-redux'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
 
 import {
-  getTrainings
+  getTrainings,
+  setPage
 } from '../../containers/App/trainings/actions'
 
-class PaginationList extends React.Component {
-  constructor(props) {
-    super(props)
+const PaginationList = (props) => {
+  return (
+    <>
+      <Pagination aria-label="Page navigation">
 
-    this.perPage = this.props.trainings.perPage
-    this.lastPage = this.props.trainings.lastPage
-
-    this.state = {
-      currentPage: this.props.trainings.page
-    }
-  }
-
-  handleClick(e, index) {
-    e.preventDefault()
-
-    this.setState({
-      currentPage: index
-    })
-  }
-
-  render() {
-    const { currentPage } = this.state
-
-    return (
-      <>
-        <Pagination aria-label="Page navigation">
-            
-          <PaginationItem disabled={currentPage <= 0}>
+        { props.trainings.page !== 1 ? (
+          <PaginationItem disabled={props.trainings.page <= 1}>
             <PaginationLink
-              onClick={e => this.handleClick(e, currentPage - 1)}
+              onClick={e => props.setPage(1)}
+              href="#"
+            >
+              1
+            </PaginationLink>
+          </PaginationItem>
+        ) : null }
+        
+        { props.trainings.page !== 1 ? (
+          <PaginationItem disabled={props.trainings.page <= 1}>
+            <PaginationLink
+              onClick={e => props.setPage(props.trainings.page - 1)}
               previous
               href="#"
             />
           </PaginationItem>
+        ) : null }
 
-          {[...Array(this.lastPage)].map((page, i) => 
-            <PaginationItem active={i === currentPage} key={i}>
-              <PaginationLink onClick={e => this.handleClick(e, i)} href="#">
-                {i + 1}
-              </PaginationLink>
-            </PaginationItem>
-          )}
+        { (props.trainings.page - 1) >= 1 ? (
+          <PaginationItem disabled={(props.trainings.page - 1) <= 1}>
+            <PaginationLink onClick={e => props.setPage(props.trainings.page - 1)} href="#">
+              { props.trainings.page - 1 }
+            </PaginationLink>
+          </PaginationItem>
+        ) : null }
 
-          <PaginationItem disabled={currentPage >= this.lastPage - 1}>
+        <PaginationItem active={true}>
+          <PaginationLink href="#">
+            { props.trainings.page }
+          </PaginationLink>
+        </PaginationItem>
+
+        { (props.trainings.page + 1) <= props.trainings.lastPage ? (
+          <PaginationItem disabled={(props.trainings.page + 1) >= props.trainings.lastPage}>
+            <PaginationLink onClick={e => props.setPage(props.trainings.page + 1)} href="#">
+              { props.trainings.page + 1 }
+            </PaginationLink>
+          </PaginationItem>
+        ) : null }
+
+        { props.trainings.page !== props.trainings.lastPage ? (
+          <PaginationItem disabled={props.trainings.page >= props.trainings.lastPage}>
             <PaginationLink
-              onClick={e => this.handleClick(e, currentPage + 1)}
+              onClick={e => props.setPage(props.trainings.page + 1)}
               next
               href="#"
             />
           </PaginationItem>
-          
-        </Pagination>
-      </>
-    )
-  }
+        ) : null }
+
+        { props.trainings.page !== props.trainings.lastPage ? (
+          <PaginationItem disabled={props.trainings.page >= props.trainings.lastPage}>
+            <PaginationLink
+              onClick={e => props.setPage(props.trainings.lastPage)}
+              href="#"
+            >
+              { props.trainings.lastPage }
+            </PaginationLink>
+          </PaginationItem>
+        ) : null }
+        
+      </Pagination>
+    </>
+  )
 }
 
 const mapStateToProps = (state) => ({
@@ -68,7 +86,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getTrainings: () => dispatch(getTrainings())
+  getTrainings: () => dispatch(getTrainings()),
+  setPage: (value) => dispatch(setPage(value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaginationList)

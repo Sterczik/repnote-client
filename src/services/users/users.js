@@ -43,7 +43,11 @@ function socialLogin(response, provider) {
 }
 
 function changePassword(oldPassword, newPassword, newPasswordConfirm) {
-  const body = JSON.stringify({ oldPassword, newPassword, newPasswordConfirm })
+  const body = JSON.stringify({
+    oldPassword: oldPassword,
+    password: newPassword,
+    passwordConfirmation: newPasswordConfirm
+  })
   return Api(true).put('/users/change-password', body)
 }
 

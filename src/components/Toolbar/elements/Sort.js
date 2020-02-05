@@ -22,7 +22,7 @@ class Sort extends React.Component {
 
   handleChange(e) {
     const { value } = e.target
-    localStorage.setItem('sort', value)
+    localStorage.setItem('listing_sort', value)
     this.props.getTrainings()
   }
 
@@ -35,14 +35,14 @@ class Sort extends React.Component {
           </InputGroupText>
         </InputGroupAddon>
         <Input
-          placeholder="Sort"
           type="select"
           name="sort"
           value={this.props.trainings.sort}
           onChange={this.handleChange}
           className="form-control-alternative"
         >
-          <option value="1">New</option>
+          <option value="1">Newest</option>
+          <option value="2">Most likes</option>
         </Input>
       </InputGroup>
     )

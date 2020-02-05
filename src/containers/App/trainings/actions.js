@@ -15,9 +15,10 @@ export function getTrainings (
     type: trainingsConstants.GET_TRAININGS_IN_PROCESS
   })
 
-  const getTrainingsSuccess = (trainingsData) => ({
+  const getTrainingsSuccess = (trainingsData, sort) => ({
     type: trainingsConstants.GET_TRAININGS_SUCCESS,
-    trainingsData
+    trainingsData,
+    sort
   })
 
   const getTrainingsFailure = (error) => ({
@@ -43,7 +44,7 @@ export function getTrainings (
     ServiceTrainings.getTrainings({ page, perPage, sort, search, categoryFilter, advancementLevelFilter })
       .then((res) => {
         const trainingsData = res.data
-        dispatch(getTrainingsSuccess(trainingsData))
+        dispatch(getTrainingsSuccess(trainingsData, sort))
       })
       .catch((error) => {
         ServiceUsers.handleResponse(error)

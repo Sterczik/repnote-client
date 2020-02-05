@@ -23,7 +23,7 @@ const trainingsReducerDefaultState = {
     ? localStorage.getItem('listing_search')
     : defaults.search,
   sort: localStorage.getItem('listing_sort')
-    ? localStorage.getItem('sort')
+    ? localStorage.getItem('listing_sort')
     : defaults.sort,
   activeTrainingCategoryFilter: localStorage.getItem('listing_categoryFilter')
     ? localStorage.getItem('listing_categoryFilter')
@@ -41,6 +41,7 @@ export default (state = trainingsReducerDefaultState, action) => {
     case trainingsConstants.GET_TRAININGS_SUCCESS:
       return {
         ...state,
+        sort: action.sort,
         total: action.trainingsData.total,
         page: action.trainingsData.page,
         perPage: action.trainingsData.perPage,

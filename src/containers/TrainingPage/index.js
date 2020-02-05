@@ -30,7 +30,7 @@ export class TrainingPage extends React.Component {
         >
           <meta name="description" content="Training" />
         </Helmet>
-        <main class="training-page">
+        <main className="training-page">
           <section className="section section-shaped section-lg">
             <Container>
               { this.props.training.id ? (
@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch) => ({
   getTraining: (id) => dispatch(getTraining(id)),
   removeTraining: (id) => dispatch(removeTraining(id)),
   switchTrainingStatus: (id) => dispatch(switchTrainingStatus(id)),
-  likeTraining: (id) => dispatch(likeTraining(id)),
+  likeTraining: (id, like) => dispatch(likeTraining(id, like)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrainingPage)

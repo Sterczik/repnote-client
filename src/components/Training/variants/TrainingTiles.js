@@ -29,7 +29,7 @@ const TrainingTiles = ({ training }) => (
           { training.goal }
         </p>
         <div>
-          <i className="fa fa-heart-o" /> { training.likes.length }
+          <i className="fa fa-heart" /> { training.likes.length }
         </div>
         <div>
           <Badge color="info" pill className="mr-1 mt-1">

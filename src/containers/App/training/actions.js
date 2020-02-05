@@ -189,14 +189,14 @@ export function createTraining(trainingData) {
   }
 }
 
-export function likeTraining(id) {
+export function likeTraining(id, like) {
   const likeTrainingInProcess = () => ({
     type: trainingConstants.LIKE_TRAINING_IN_PROCESS
   })
 
-  const likeTrainingSuccess = (training) => ({
+  const likeTrainingSuccess = (like) => ({
     type: trainingConstants.LIKE_TRAINING_SUCCESS,
-    training
+    like
   })
 
   const likeTrainingFailure = (error) => ({
@@ -207,10 +207,10 @@ export function likeTraining(id) {
   return (dispatch) => {
     dispatch(likeTrainingInProcess())
 
-    ServiceTrainings.likeTraining(id)
-      .then((res) => {
-        const training = res.data
-        dispatch(likeTrainingSuccess(training))
+    const likeQuery = like ? ServiceTrainings.likeTraining(id) : ServiceTrainings.unlikeTraining(id)
+    likeQuery
+      .then(() => {
+        dispatch(likeTrainingSuccess(like))
       })
       .catch((error) => {
         ServiceUsers.handleResponse(error)

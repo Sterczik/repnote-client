@@ -68,16 +68,27 @@ export class UserPage extends React.Component {
                         lg="4"
                       >
                         <div className="card-profile-actions py-4 mt-lg-0">
-                          { this.props.userProfile.id ? (
+                          { this.props.userProfile.id
+                          ? !this.props.userProfile.followed ? (
                             <Button
                               type="button"
-                              onClick={() => { followUser(this.props.userProfile.id) }}
+                              onClick={() => { this.props.followUser(this.props.userProfile.id, true) }}
                               color="primary"
                               size="sm"
                             >
                               Follow
                             </Button>
-                          ) : null }
+                          ) : (
+                            <Button
+                              type="button"
+                              onClick={() => { this.props.followUser(this.props.userProfile.id, false) }}
+                              color="danger"
+                              size="sm"
+                            >
+                              Unfollow
+                            </Button>
+                          )
+                          : null }
                           <Button
                             className="float-right"
                             color="default"
@@ -92,7 +103,7 @@ export class UserPage extends React.Component {
                       <Col className="order-lg-1" lg="4">
                         <div className="card-profile-stats d-flex justify-content-center">
                           { this.props.userProfile.trainings && <div>
-                            <span className="heading">{ this.props.userProfile.followers.length }</span>
+                            <span className="heading">{ this.props.userProfile.followersLength }</span>
                             <span className="description">Followers</span>
                           </div> }
                           { this.props.userProfile.trainings && <div>
@@ -138,7 +149,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getUserProfile: (slug) => dispatch(getUserProfile(slug)),
-  followUser: (id) => dispatch(followUser(id))
+  followUser: (id, follow) => dispatch(followUser(id, follow))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage)

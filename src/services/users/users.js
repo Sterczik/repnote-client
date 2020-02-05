@@ -60,7 +60,7 @@ function editProfile(name, description) {
 }
 
 function getUserProfile(slug) {
-  return Api().get(`/users/${slug}`)
+  return Api(true).get(`/users/${slug}`)
 }
 
 function changeAvatar(file) {

@@ -125,14 +125,14 @@ export function getUserProfile(slug) {
   }
 }
 
-export function followUser(id) {
+export function followUser(id, follow) {
   const followUserInProcess = () => ({
     type: globalConstants.FOLLOW_USER_IN_PROGRESS
   })
 
-  const followUserSuccess = (data) => ({
+  const followUserSuccess = (follow) => ({
     type: globalConstants.FOLLOW_USER_SUCCESS,
-    data
+    follow
   })
 
   const followUserFailure = (error) => ({
@@ -143,10 +143,10 @@ export function followUser(id) {
   return (dispatch) => {
     dispatch(followUserInProcess())
 
-    ServiceUsers.followUser(id)
-      .then((res) => {
-        const data = res.data
-        dispatch(followUserSuccess(data))
+    const followQuery = follow ? ServiceUsers.followUser(id) : ServiceUsers.unfollowUser(id)
+    followQuery
+      .then(() => {
+        dispatch(followUserSuccess(follow))
       })
       .catch((error) => {
         ServiceUsers.handleResponse(error)

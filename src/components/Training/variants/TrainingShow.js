@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {
   Card,
-  CardBody,
   Row,
   Col,
   Button
@@ -31,16 +30,27 @@ const TrainingShow = (props) => (
                 lg="4"
               >
                 <div className="card-training-actions py-4 mt-lg-0">
-                  { !props.training.edit ? (
-                    <Button
-                      type="button"
-                      onClick={() => props.likeTraining(props.training.id)}
-                      color="primary"
-                      size="sm"
-                    >
-                      Like
-                    </Button>
-                  ) : null }
+                  { !props.training.edit
+                    ? !props.training.liked ? (
+                      <Button
+                        type="button"
+                        onClick={() => props.likeTraining(props.training.id, true)}
+                        color="primary"
+                        size="sm"
+                      >
+                        Like <i className="fa fa-heart" />
+                      </Button>
+                    ) : (
+                      <Button
+                        type="button"
+                        onClick={() => props.likeTraining(props.training.id, false)}
+                        color="danger"
+                        size="sm"
+                      >
+                        Unlike <i className="fa fa-heart" />
+                      </Button>
+                    )
+                    : null }
                   { props.training.edit ? (
                     <>
                       <Button
@@ -73,7 +83,7 @@ const TrainingShow = (props) => (
               <Col className="order-lg-1" lg="4">
                 <div className="card-training-stats d-flex justify-content-center">
                   { true && <div>
-                    <span className="heading">{ props.training.likes.length }</span>
+                    <span className="heading">{ props.training.likesLength }</span>
                     <span className="description">Likes</span>
                   </div> }
                   { props.training.edit && <div>

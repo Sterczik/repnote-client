@@ -8,7 +8,10 @@ export default (state = trainingReducerDefaultState, action) => {
     case trainingConstants.GET_TRAINING_IN_PROCESS:
       return state
     case trainingConstants.GET_TRAINING_SUCCESS:
-      return action.training
+      return {
+        ...action.training,
+        likesLength: action.training.likes.length
+      }
     case trainingConstants.GET_TRAINING_FAILURE:
       return state
     // Remove Training
@@ -41,6 +44,17 @@ export default (state = trainingReducerDefaultState, action) => {
     case trainingConstants.EDIT_TRAINING_SUCCESS:
       return {...action.training}
     case trainingConstants.EDIT_TRAINING_FAILURE:
+      return state
+    // Like Training
+    case trainingConstants.LIKE_TRAINING_IN_PROCESS:
+      return state
+    case trainingConstants.LIKE_TRAINING_SUCCESS:
+      return {
+        ...state,
+        likesLength: action.like ? state.likesLength + 1 : state.likesLength - 1,
+        liked: action.like
+      }
+    case trainingConstants.LIKE_TRAINING_FAILURE:
       return state
     // Default
     default:

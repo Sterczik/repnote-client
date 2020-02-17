@@ -1,19 +1,46 @@
 import { trainingConstants } from './constants'
 
-const trainingReducerDefaultState = {}
+const trainingReducerDefaultState = {
+  training: {},
+  isLoaded: false,
+  isAuthorizedError: false,
+  isSuccess: false
+}
 
 export default (state = trainingReducerDefaultState, action) => {
   switch (action.type) {
     // Get Training
     case trainingConstants.GET_TRAINING_IN_PROCESS:
-      return state
+      return {
+        training: {},
+        isLoaded: false,
+        isAuthorizedError: false,
+        isSuccess: false
+      }
     case trainingConstants.GET_TRAINING_SUCCESS:
       return {
-        ...action.training,
-        likesLength: action.training.likes.length
+        training: {
+          ...action.training,
+          likesLength: action.training.likes.length
+        },
+        isLoaded: true,
+        isAuthorizedError: false,
+        isSuccess: true
+      }
+    case trainingConstants.GET_TRAINING_AUTH_FAILURE:
+      return {
+        training: {},
+        isLoaded: true,
+        isAuthorizedError: true,
+        isSuccess: false
       }
     case trainingConstants.GET_TRAINING_FAILURE:
-      return state
+      return {
+        training: {},
+        isLoaded: true,
+        isAuthorizedError: false,
+        isSuccess: false
+      }
     // Remove Training
     case trainingConstants.REMOVE_TRAINING_IN_PROCESS:
       return state

@@ -2,6 +2,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import TrainingShow from '../../components/Training/variants/TrainingShow'
+import TrainingShowAuthError from '../../components/Training/errors/TrainingShowAuthError'
+import TrainingShowError from '../../components/Training/errors/TrainingShowError'
 
 import {
   Container
@@ -31,21 +33,30 @@ export class TrainingPage extends React.Component {
           <meta name="description" content="Training" />
         </Helmet>
         <main className="training-page">
-          <section className="section section-shaped section-lg">
-            <Container>
-              { this.props.training.id ? (
+
+          { !this.props.trainingData.isLoaded ? (
+            <div>Loading</div>
+          ) : this.props.trainingData.isLoaded
+            && !this.props.trainingData.isSuccess
+            && this.props.trainingData.isAuthorizedError ? (
+            <TrainingShowAuthError />
+          ) : this.props.trainingData.isLoaded
+            && !this.props.trainingData.isSuccess
+            && !this.props.trainingData.isAuthorizedError ? (
+            <TrainingShowError />
+          ) : (
+            <section className="section section-shaped section-lg">
+              <Container>
                 <TrainingShow 
-                  training={this.props.training}
+                  trainingData={this.props.trainingData}
                   removeTraining={this.props.removeTraining}
                   switchTrainingStatus={this.props.switchTrainingStatus}
                   likeTraining={this.props.likeTraining}
                 />
-                ) : (
-                  <div>Loading</div>
-                ) 
-              }
-            </Container>
-          </section>
+              </Container>
+            </section>
+          ) }
+
         </main>
       </>
     )
@@ -53,7 +64,7 @@ export class TrainingPage extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  training: state.training
+  trainingData: state.trainingData
 })
 
 const mapDispatchToProps = (dispatch) => ({

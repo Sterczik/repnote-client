@@ -14,9 +14,12 @@ export function getTraining(id) {
     training
   })
 
-  const getTrainingFailure = (error) => ({
-    type: trainingConstants.GET_TRAINING_FAILURE,
-    error
+  const getTrainingAuthFailure = () => ({
+    type: trainingConstants.GET_TRAINING_AUTH_FAILURE
+  })
+
+  const getTrainingFailure = () => ({
+    type: trainingConstants.GET_TRAINING_FAILURE
   })
 
   return (dispatch) => {
@@ -28,11 +31,14 @@ export function getTraining(id) {
         dispatch(getTrainingSuccess(training))
       })
       .catch((error) => {
-        // ServiceUsers.handleResponse(error)
-        dispatch(getTrainingFailure(error))
-        dispatch(snackbar.show({
-          message: 'Something went wrong!'
-        }))
+        if (error.response && error.response.status === 401) {
+          dispatch(getTrainingAuthFailure())
+        } else {
+          dispatch(getTrainingFailure())
+          dispatch(snackbar.show({
+            message: 'Something went wrong!'
+          }))
+        }
       })
   }
 }

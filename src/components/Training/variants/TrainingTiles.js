@@ -8,20 +8,22 @@ import {
   Col
 } from 'reactstrap'
 
-const TrainingTiles = ({ training }) => (
+const TrainingTiles = ({ training, showUser = true }) => (
   <Col lg="4" className="mb-5">
     <Card className="shadow border-0">
       <CardBody className="py-4 card-body-flex">
-        <div>
-          <img style={{width: 50 + 'px'}} className="img-fluid rounded-circle shadow" src={training.user.avatar} alt="img" />
-          <span className="description ml-2">
-            <Link
-              to={'/users/' + training.user.slug}
-            >
-              { training.user.name }
-            </Link>
-          </span>
-        </div>
+        { showUser ? (
+          <div>
+            <img style={{width: 50 + 'px'}} className="img-fluid rounded-circle shadow" src={training.user.avatar} alt="img" />
+            <span className="description ml-2">
+              <Link
+                to={'/users/' + training.user.slug}
+              >
+                { training.user.name }
+              </Link>
+            </span>
+          </div>
+        ) : null }
         <h6 className="text-primary">
           { training.name }
         </h6>

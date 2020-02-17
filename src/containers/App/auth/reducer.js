@@ -182,6 +182,23 @@ export default (state = initialState, action) => {
       return {
         ...state
       }
+    // Reset Avatar
+    case authConstants.RESET_AVATAR_IN_PROCESS:
+      return {
+        ...state
+      }
+    case authConstants.RESET_AVATAR_SUCCESS:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          avatar: action.data.avatar
+        }
+      }
+    case authConstants.RESET_AVATAR_FAILURE:
+      return {
+        ...state
+      }
     // Default
     default:
       return state

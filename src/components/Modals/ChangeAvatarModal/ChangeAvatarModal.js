@@ -33,11 +33,9 @@ class ChangeAvatarModal extends React.Component {
         >
           { (formikProps) => {
             const {
-              values,
               errors,
               touched,
               isSubmitting,
-              handleChange,
               handleBlur,
               handleSubmit,
               setFieldValue

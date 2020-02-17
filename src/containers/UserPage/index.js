@@ -3,8 +3,17 @@ import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { Button, Card, Container, Row, Col } from 'reactstrap'
 import { getUserProfile, followUser } from '../App/global/actions'
+import TrainingTiles from '../../components/Training/variants/TrainingTiles'
 
 export class UserPage extends React.Component {
+  state = {
+    showTrainings: false
+  }
+  toggle = () => {
+    this.setState({
+      showTrainings: !this.state.showTrainings
+    })
+  }
   componentDidMount() {
     const slug = this.props.match.params.name
     this.props.getUserProfile(slug)
@@ -92,11 +101,10 @@ export class UserPage extends React.Component {
                           <Button
                             className="float-right"
                             color="default"
-                            href="!#"
-                            onClick={e => e.preventDefault()}
+                            onClick={this.toggle}
                             size="sm"
                           >
-                            Message
+                            { this.state.showTrainings ? 'Hide trainings' : 'Show trainings' }
                           </Button>
                         </div>
                       </Col>
@@ -117,21 +125,35 @@ export class UserPage extends React.Component {
                         </div>
                       </Col>
                     </Row>
-                    <div className="text-center mt-5">
-                      <h3>{ this.props.userProfile.name }</h3>
-                      <h4>{ this.props.userProfile.email }</h4>
+                    <div className="my-5">
+                      { this.state.showTrainings ? (
+                        <>
+                          { this.props.userProfile.trainings && this.props.userProfile.trainings.map(training => (
+                            <TrainingTiles
+                              training={training}
+                              showUser={false}
+                            />
+                          )) }
+                        </>
+                      ) : (
+                        <>
+                          <div className="text-center">
+                            <h3>{ this.props.userProfile.name }</h3>
+                          </div>
+                          { this.props.userProfile.description &&
+                            <div className="mt-5 py-5 border-top text-center">
+                              <Row className="justify-content-center">
+                                <Col lg="9">
+                                  <p>
+                                    { this.props.userProfile.description }
+                                  </p>
+                                </Col>
+                              </Row>
+                            </div>
+                          }
+                        </>
+                      ) }
                     </div>
-                    { this.props.userProfile.description &&
-                      <div className="mt-5 py-5 border-top text-center">
-                        <Row className="justify-content-center">
-                          <Col lg="9">
-                            <p>
-                              { this.props.userProfile.description }
-                            </p>
-                          </Col>
-                        </Row>
-                      </div>
-                    }
                   </div>
                 ) : null }
               </Card>

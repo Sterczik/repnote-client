@@ -13,7 +13,7 @@ const PaginationList = (props) => {
       <Pagination aria-label="Page navigation">
 
         { props.trainings.page !== 1 ? (
-          <PaginationItem disabled={props.trainings.page <= 1}>
+          <PaginationItem disabled={props.trainings.page <= 1} className="is-first">
             <PaginationLink
               onClick={e => props.setPage(1)}
               href="#"
@@ -33,7 +33,7 @@ const PaginationList = (props) => {
           </PaginationItem>
         ) : null }
 
-        { (props.trainings.page - 1) >= 1 ? (
+        { (props.trainings.page - 1) > 1 ? (
           <PaginationItem disabled={(props.trainings.page - 1) <= 1}>
             <PaginationLink onClick={e => props.setPage(props.trainings.page - 1)} href="#">
               { props.trainings.page - 1 }
@@ -47,7 +47,7 @@ const PaginationList = (props) => {
           </PaginationLink>
         </PaginationItem>
 
-        { (props.trainings.page + 1) <= props.trainings.lastPage ? (
+        { (props.trainings.page + 1) < props.trainings.lastPage ? (
           <PaginationItem disabled={(props.trainings.page + 1) >= props.trainings.lastPage}>
             <PaginationLink onClick={e => props.setPage(props.trainings.page + 1)} href="#">
               { props.trainings.page + 1 }
@@ -66,7 +66,7 @@ const PaginationList = (props) => {
         ) : null }
 
         { props.trainings.page !== props.trainings.lastPage ? (
-          <PaginationItem disabled={props.trainings.page >= props.trainings.lastPage}>
+          <PaginationItem disabled={props.trainings.page >= props.trainings.lastPage} className="is-last">
             <PaginationLink
               onClick={e => props.setPage(props.trainings.lastPage)}
               href="#"

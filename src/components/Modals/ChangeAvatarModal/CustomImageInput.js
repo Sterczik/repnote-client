@@ -37,7 +37,6 @@ class CustomImageInput extends React.Component {
 
   showPreloadImage() {
     const { errorMessage } = this.props
-    const { name } = this.props.field
     const { file, imagePreviewUrl } = this.state
 
     let comp = null
@@ -54,13 +53,9 @@ class CustomImageInput extends React.Component {
     return comp
   }
 
-  componentDidMount() {
-    // console.log(this.fileUpload.current)
-  }
-
   render() {
-    const { errorMessage, title } = this.props
-    const { name, onBlur } = this.props.field
+    const { title } = this.props
+    const { name } = this.props.field
 
     return (
       <div>

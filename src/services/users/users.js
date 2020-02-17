@@ -69,6 +69,10 @@ function changeAvatar(file) {
   return Api(true).post('/users/profile/avatar', formData)
 }
 
+function resetAvatar() {
+  return Api(true).put('/users/profile/avatar/reset')
+}
+
 function followUser(id) {
   return Api(true).post(`/users/${id}/follow`)
 }
@@ -89,6 +93,7 @@ export const ServiceUsers = {
   editProfile,
   getUserProfile,
   changeAvatar,
+  resetAvatar,
   followUser,
   unfollowUser
 }

@@ -4,13 +4,20 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Button, Card, Container, Row, Col } from 'reactstrap'
 import { authActions } from '../App/auth/actions'
+import TrainingTiles from '../../components/Training/variants/TrainingTiles'
 import EditAccountModal from '../../components/Modals/EditAccountModal/EditAccountModal'
 import ChangeAvatarModal from '../../components/Modals/ChangeAvatarModal/ChangeAvatarModal'
 
 export class AccountPage extends React.Component {
   state = {
+    showTrainings: false,
     editAccountModal: false,
     changeAvatarModal: false
+  }
+  toggle = () => {
+    this.setState({
+      showTrainings: !this.state.showTrainings
+    })
   }
   toggleModal = (state) => {
     this.setState({
@@ -72,6 +79,14 @@ export class AccountPage extends React.Component {
                               src={this.props.userInfo.avatar}
                             />
                           </div>
+                          <Button
+                            color="secondary"
+                            data-dismiss="modal"
+                            type="button"
+                            onClick={() => this.props.resetAvatar()}
+                          >
+                            Reset avatar
+                          </Button>
                         </div>
                       </Col>
                       <Col
@@ -81,7 +96,6 @@ export class AccountPage extends React.Component {
                         <div className="card-profile-actions py-4 mt-lg-0">
                           <Button
                             tag={Link}
-                            className="mr-4"
                             color="info"
                             to="/account/change-password"
                             size="sm"
@@ -96,13 +110,21 @@ export class AccountPage extends React.Component {
                           >
                             Logout
                           </Button>
+                          <Button
+                            className="float-right"
+                            color="default"
+                            onClick={this.toggle}
+                            size="sm"
+                          >
+                            { this.state.showTrainings ? 'Hide trainings' : 'Show trainings' }
+                          </Button>
                         </div>
                       </Col>
                       <Col className="order-lg-1" lg="4">
                         <div className="card-profile-stats d-flex justify-content-center">
                           <div>
                             <span className="heading btn-inner--icon mr-1">
-                              <i className={`fa fa-${this.props.userInfo.provider === 'local' ? 'at' : this.props.userInfo.provider}`} />
+                              <i className={`fa fa-${this.props.userInfo.provider}`} />
                             </span>
                             <span className="description">Provider</span>
                           </div>
@@ -117,30 +139,45 @@ export class AccountPage extends React.Component {
                         </div>
                       </Col>
                     </Row>
-                    <div className="text-center mt-5">
-                      <h3>{ this.props.userInfo.name }</h3>
-                      <h4>{ this.props.userInfo.email }</h4>
-                    </div>
-                    { this.props.userInfo.description &&
-                      <div className="mt-5 py-5 border-top text-center">
-                        <Row className="justify-content-center">
-                          <Col lg="9">
-                            <p>
-                              { this.props.userInfo.description }
-                            </p>
-                          </Col>
-                        </Row>
-                      </div>
-                    }
-                    <div className="text-center mb-5">
-                      <Button
-                        color="primary"
-                        type="button"
-                        size="sm"
-                        onClick={() => this.toggleModal("editAccountModal")}
-                      >
-                        Edit Profile
-                      </Button>
+                    <div className="my-5">
+                      { this.state.showTrainings ? (
+                        <>
+                          { this.props.userInfo.trainings && this.props.userInfo.trainings.map(training => (
+                            <TrainingTiles
+                              training={training}
+                              showUser={false}
+                            />
+                          )) }
+                        </>
+                      ) : (
+                        <>
+                          <div className="text-center">
+                            <h3>{ this.props.userInfo.name }</h3>
+                            <h4>{ this.props.userInfo.email }</h4>
+                          </div>
+                          { this.props.userInfo.description &&
+                            <div className="mt-5 py-5 border-top text-center">
+                              <Row className="justify-content-center">
+                                <Col lg="9">
+                                  <p>
+                                    { this.props.userInfo.description }
+                                  </p>
+                                </Col>
+                              </Row>
+                            </div>
+                          }
+                          <div className="text-center">
+                            <Button
+                              color="primary"
+                              type="button"
+                              size="sm"
+                              onClick={() => this.toggleModal("editAccountModal")}
+                            >
+                              Edit Profile
+                            </Button>
+                          </div>
+                        </>
+                      ) }
                     </div>
                     <EditAccountModal
                       user={this.props.userInfo}
@@ -173,6 +210,7 @@ const mapDispatchToProps = (dispatch) => ({
   getProfile: () => dispatch(authActions.getProfile()),
   editProfile: (name, description) => dispatch(authActions.editProfile(name, description)),
   changeAvatar: (file) => dispatch(authActions.changeAvatar(file)),
+  resetAvatar: () => dispatch(authActions.resetAvatar()),
   logout: () => dispatch(authActions.logout())
 })
 

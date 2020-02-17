@@ -167,14 +167,7 @@ function socialLogin(response, provider) {
   return (dispatch) => {
     dispatch(socialLoginInProcess())
 
-    let token = ''
-
-    if (provider === 'facebook') {
-      token = response.accessToken
-    }
-    if (provider === 'google') {
-      token = response.Zi.access_token
-    }
+    const token = response.accessToken
 
     ServiceUsers.socialLogin(token, provider)
       .then((response) => {
@@ -336,6 +329,34 @@ function changeAvatar(file) {
   }
 }
 
+function resetAvatar() {
+  const resetAvatarInProcess = () => ({
+    type: authConstants.RESET_AVATAR_IN_PROCESS
+  })
+
+  const resetAvatarSuccess = (data) => ({
+    type: authConstants.RESET_AVATAR_SUCCESS,
+    data
+  })
+
+  const resetAvatarFailure = () => ({
+    type: authConstants.RESET_PASSWORD_FAILURE
+  })
+
+  return (dispatch) => {
+    dispatch(resetAvatarInProcess())
+
+    ServiceUsers.resetAvatar()
+      .then((response) => {
+        const { data } = response
+        dispatch(resetAvatarSuccess(data))
+      })
+      .catch(() => {
+        dispatch(resetAvatarFailure())
+      })
+  }
+}
+
 export const authActions = {
   logout,
   register,
@@ -345,5 +366,6 @@ export const authActions = {
   changePassword,
   getProfile,
   editProfile,
-  changeAvatar
+  changeAvatar,
+  resetAvatar
 }

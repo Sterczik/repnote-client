@@ -28,7 +28,7 @@ export default () => {
       global: globalReducer,
       auth: authReducer,
       trainings: trainingsReducer,
-      training: trainingReducer,
+      trainingData: trainingReducer,
       layout: layoutReducer,
       snackbar: snackbarReducer
     }),

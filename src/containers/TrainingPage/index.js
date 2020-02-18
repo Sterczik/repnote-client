@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import TrainingShow from '../../components/Training/variants/TrainingShow'
+import TrainingShowLoading from '../../components/Training/loading/TrainingShowLoading'
 import TrainingShowAuthError from '../../components/Training/errors/TrainingShowAuthError'
 import TrainingShowError from '../../components/Training/errors/TrainingShowError'
 
@@ -35,7 +36,7 @@ export class TrainingPage extends React.Component {
         <main className="training-page">
 
           { !this.props.trainingData.isLoaded ? (
-            <div>Loading</div>
+            <TrainingShowLoading />
           ) : this.props.trainingData.isLoaded
             && !this.props.trainingData.isSuccess
             && this.props.trainingData.isAuthorizedError ? (

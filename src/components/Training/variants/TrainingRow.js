@@ -38,17 +38,15 @@ const TrainingRow = ({ training }) => (
           <Badge color="danger" pill className="mr-1 mt-1">
             { training.advancementLevel.name }
           </Badge>
-          <Badge color="default" pill className="mr-1 mt-1">
-            { training.exercises.length } exercises
-          </Badge>
         </div>
         <Button
-          className="mt-4"
-          color="primary"
+          className="mt-3"
+          color="default"
+          size="sm"
           to={'/trainings/' + training.id}
           tag={Link}
         >
-          See more
+          Open training
         </Button>
       </CardBody>
     </Card>

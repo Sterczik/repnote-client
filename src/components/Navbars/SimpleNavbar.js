@@ -88,15 +88,12 @@ class SimpleNavbar extends React.Component {
                   { this.props.isAuthenticated ? (
                     <UncontrolledDropdown nav>
                       <DropdownToggle nav>
-                        <i className="fa fa-user-circle-o" />
-                        <span className="nav-link-inner--text d-lg-none">Examples</span>
+                        <i className="fa fa-bars" />
+                        <span className="nav-link-inner--text d-lg-none"></span>
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem to="/trainings" tag={Link}>
                           Trainings
-                        </DropdownItem>
-                        <DropdownItem to="/account/trainings" tag={Link}>
-                          My trainings
                         </DropdownItem>
                         <DropdownItem to="/trainings/create" tag={Link}>
                           Create training
@@ -133,8 +130,8 @@ class SimpleNavbar extends React.Component {
   }
 }
 
-const mapStateToProps = () => ({
-  isAuthenticated: !!localStorage.getItem('token')
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.loggedIn
 })
 
 const mapDispatchToProps = (dispatch) => ({

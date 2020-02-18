@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
 import {
-  Badge,
   Button,
   Card,
   CardBody,
@@ -94,65 +93,12 @@ export class HomePage extends React.Component {
           <section className="section section-lg">
             <Container>
               <Row className="row-grid align-items-center">
-                <Col className="order-md-1" md="6">
+                <Col className="order-md-1" md="8">
                   <div className="pr-md-5">
-                    <h3>Awesome features</h3>
+                    <h3>Great features</h3>
                     <p className="lead">
                       Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue.
                     </p>
-                    <ul className="list-unstyled mt-5">
-                      <li className="py-2">
-                        <div className="d-flex align-items-center">
-                          <div>
-                            <Badge
-                              className="badge-circle mr-3"
-                              color="success"
-                            >
-                              <i className="ni ni-settings-gear-65" />
-                            </Badge>
-                          </div>
-                          <div>
-                            <h6 className="mb-0">
-                              Lorem ipsum dolor
-                            </h6>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="py-2">
-                        <div className="d-flex align-items-center">
-                          <div>
-                            <Badge
-                              className="badge-circle mr-3"
-                              color="success"
-                            >
-                              <i className="ni ni-html5" />
-                            </Badge>
-                          </div>
-                          <div>
-                            <h6 className="mb-0">
-                              Lorem ipsum dolor
-                            </h6>
-                          </div>
-                        </div>
-                      </li>
-                      <li className="py-2">
-                        <div className="d-flex align-items-center">
-                          <div>
-                            <Badge
-                              className="badge-circle mr-3"
-                              color="success"
-                            >
-                              <i className="ni ni-satisfied" />
-                            </Badge>
-                          </div>
-                          <div>
-                            <h6 className="mb-0">
-                              Lorem ipsum dolor
-                            </h6>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
                   </div>
                 </Col>
               </Row>
@@ -162,15 +108,6 @@ export class HomePage extends React.Component {
           <section className="section bg-gradient-warning">
             <Container>
               <Row className="row-grid align-items-center">
-                <Col className="order-lg-2 ml-lg-auto" md="6">
-                  <div className="position-relative pl-md-5">
-                    {/* <img
-                      alt="..."
-                      className="img-center img-fluid"
-                      src={require("../../assets/img/")}
-                    /> */}
-                  </div>
-                </Col>
                 <Col className="order-lg-1" lg="6">
                   <div className="d-flex px-3">
                     <div>
@@ -220,7 +157,7 @@ export class HomePage extends React.Component {
             <Container className="pt-lg pb-300">
               <Row className="text-center justify-content-center">
                 <Col lg="10">
-                  <h2 className="display-3 text-white">Favourites exercises</h2>
+                  <h2 className="display-3 text-white">Favourites trainings</h2>
                   <p className="lead text-white">
                     Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris. Duis aliquet semper dignissim. Vivamus id orci eu augue convallis lacinia ut in erat.
                   </p>

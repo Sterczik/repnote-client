@@ -19,8 +19,8 @@ export const PublicRoute = ({
   />
 )
 
-const mapStateToProps = () => ({
-  isAuthenticated: !!localStorage.getItem('token')
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.loggedIn
 })
 
 export default connect(mapStateToProps)(PublicRoute)

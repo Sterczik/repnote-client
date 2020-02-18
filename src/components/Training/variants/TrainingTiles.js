@@ -9,7 +9,7 @@ import {
 } from 'reactstrap'
 
 const TrainingTiles = ({ training, showUser = true }) => (
-  <Col lg="4" className="mb-5">
+  <Col lg="4" className="mb-4">
     <Card className="shadow border-0">
       <CardBody className="py-4 card-body-flex">
         { showUser ? (
@@ -40,17 +40,15 @@ const TrainingTiles = ({ training, showUser = true }) => (
           <Badge color="danger" pill className="mr-1 mt-1">
             { training.advancementLevel.name }
           </Badge>
-          <Badge color="default" pill className="mr-1 mt-1">
-            { training.exercises.length } exercises
-          </Badge>
         </div>
         <Button
-          className="mt-4"
-          color="primary"
+          className="mt-2 btn-block"
+          color="default"
+          size="sm"
           to={'/trainings/' + training.id}
           tag={Link}
         >
-          See more
+          Open training
         </Button>
       </CardBody>
     </Card>

@@ -130,21 +130,22 @@ const TrainingShow = (props) => (
               </Row>
             </div>
             <div className="mt-3 py-3 border-top text-center">
-              { props.trainingData.training.exercises.map((exercise) => (
-                <Row className="justify-content-center" key={exercise.id}>
-                  <Col lg="9">
-                    <p>
-                      { exercise.name }
-                    </p>
-                  </Col>
-                  { exercise.rounds.map((round) => (
-                    <div key={round.id}>
-                      <div>
-                        Weight: { round.weight } kg
-                      </div>
-                      <div>
-                        Reps: { round.reps }
-                      </div>
+              { props.trainingData.training.subtrainings.map((subtraining) => (
+                <Row className="justify-content-center" key={subtraining.id}>
+                  <p>Subtraining: {subtraining.name}</p>
+                  { subtraining.exercises.map((exercise) => (
+                    <div key={exercise.id}>
+                      <p>Exercise: { exercise.name }</p>
+                      { exercise.rounds.map((round) => (
+                        <div key={round.id}>
+                          <p>
+                            Weight: { round.weight } kg
+                          </p>
+                          <p>
+                            Reps: { round.reps }
+                          </p>
+                        </div>
+                      )) }
                     </div>
                   )) }
                 </Row>

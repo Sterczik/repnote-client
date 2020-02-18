@@ -78,8 +78,11 @@ export default (state = trainingReducerDefaultState, action) => {
     case trainingConstants.LIKE_TRAINING_SUCCESS:
       return {
         ...state,
-        likesLength: action.like ? state.likesLength + 1 : state.likesLength - 1,
-        liked: action.like
+        training: {
+          ...state.training,
+          likesLength: action.like ? state.training.likesLength + 1 : state.training.likesLength - 1,
+          liked: action.like
+        },
       }
     case trainingConstants.LIKE_TRAINING_FAILURE:
       return state

@@ -101,6 +101,9 @@ class SimpleNavbar extends React.Component {
                         <DropdownItem to="/account" tag={Link}>
                           My account
                         </DropdownItem>
+                        <DropdownItem to="/account/change-password" tag={Link}>
+                          Change password
+                        </DropdownItem>
                         <DropdownItem onClick={this.props.logout}>
                           Logout
                         </DropdownItem>
@@ -135,9 +138,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => {
-    dispatch(authActions.logout())
-  }
+  logout: () => dispatch(authActions.logout())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleNavbar)

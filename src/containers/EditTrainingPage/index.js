@@ -1,6 +1,17 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
+import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation'
+
+import {
+  Button,
+  Card,
+  CardBody,
+  Container,
+  Row,
+  Col,
+  Label
+} from 'reactstrap'
 
 import {
   getTraining,
@@ -15,9 +26,11 @@ export class EditTrainingPage extends React.Component {
       name: '',
       description: '',
       goal: '',
-      private: false,
+      private: '0',
       category: 1,
-      exercises: []
+      advancementLevel: 1,
+      daysPerWeek: 3,
+      subtrainings: []
     }
     
     this.handleChange = this.handleChange.bind(this)
@@ -27,41 +40,73 @@ export class EditTrainingPage extends React.Component {
   async componentDidMount() {
     await this.props.getTraining(this.props.match.params.id)
 
-    this.setState({
-      name: this.props.training.name,
-      description: this.props.training.description,
-      goal: this.props.training.goal,
-      private: this.props.training.private,
-      category: this.props.training.category,
-      exercises: this.props.training.exercises
-    })
+    setTimeout(() => {
+      this.setState({
+        name: this.props.training.name,
+        description: this.props.training.description,
+        goal: this.props.training.goal,
+        private: this.props.training.private ? '1' : '0',
+        category: this.props.training.category_id,
+        advancementLevel: this.props.training.advancement_level_id,
+        daysPerWeek: this.props.training.days_per_week,
+        subtrainings: this.props.training.subtrainings
+      })
+    }, 800)
+    // setTimeout(() => {
+    //   this.state.subtrainings.forEach((subtraining, indexS) => {
+    //     subtraining.exercises.forEach((exercise, indexE) => {
+    //       console.log('hello', exercise.category.name)
+    //       this.setState(prevState => {
+    //         const newSubtrainings = [...prevState.subtrainings]
+    //         newSubtrainings[indexS].exercises[indexE].category = newSubtrainings[indexS].exercises[indexE].category.id
+    //         return { subtrainings: newSubtrainings }
+    //       })
+    //     })
+    //   })
+    // }, 800)
   }
 
-  addExercise = (e) => {
+  addSubtraining = (e) => {
     this.setState((prevState) => ({
-      exercises: [...prevState.exercises, { name: '', rounds: [] }],
+      subtrainings: [...prevState.subtrainings, { name: '', exercises: [] }]
     }))
   }
 
-  addRound = (index) => {
+  addExercise = (index) => {
     this.setState(prevState => {
-      const newExercises = [...prevState.exercises]
-      newExercises[index].rounds = [...newExercises[index].rounds, { reps: '', weight: '' }]
-      return { exercises: newExercises }
+      const newSubtrainings = [...prevState.subtrainings]
+      newSubtrainings[index].exercises = [...newSubtrainings[index].exercises, { name: '', rounds: [], category_id: 1 }]
+      return { subtrainings: newSubtrainings }
     })
   }
 
-  removeExercise = (index) => {
+  addRound = (index, indexExercise) => {
+    this.setState(prevState => {
+      const newSubtrainings = [...prevState.subtrainings]
+      newSubtrainings[index].exercises[indexExercise].rounds = [...newSubtrainings[index].exercises[indexExercise].rounds, { reps: '', weight: '' }]
+      return { subtrainings: newSubtrainings }
+    })
+  }
+
+  removeSubtraining = (index) => {
     this.setState((prevState) => ({
-      exercises: prevState.exercises.filter((val, i) => i !== index)
+      subtrainings: prevState.subtrainings.filter((val, i) => i !== index)
     }))
   }
 
-  removeRound = (index, indexRound) => {
+  removeExercise = (index, indexExercise) => {
     this.setState(prevState => {
-      const newExercises = [...prevState.exercises]
-      newExercises[index].rounds = newExercises[index].rounds.filter((val, i) => i !== indexRound)
-      return { exercises: newExercises }
+      const newSubtrainings = [...prevState.subtrainings]
+      newSubtrainings[index].exercises = newSubtrainings[index].exercises.filter((val, i) => i !== indexExercise)
+      return { subtrainings: newSubtrainings }
+    })
+  }
+
+  removeRound = (index, indexExercise, indexRound) => {
+    this.setState(prevState => {
+      const newSubtrainings = [...prevState.subtrainings]
+      newSubtrainings[index].exercises[indexExercise].rounds = newSubtrainings[index].exercises[indexExercise].rounds.filter((val, i) => i !== indexRound)
+      return { subtrainings: newSubtrainings }
     })
   }
 
@@ -70,38 +115,56 @@ export class EditTrainingPage extends React.Component {
     this.setState({ [name]: value })
   }
 
-  handleChangeExercise = (index, e) => {
+  handleChangeSubtraining = (index, e, type) => {
     const { value } = e.target
     this.setState(prevState => {
-      const newExercises = [...prevState.exercises]
-      newExercises[index].name = value
-      return { exercises: newExercises }
-    })
-  }
-
-  handleChangeRound = (index, indexRound, e, type) => {
-    const { value } = e.target
-    this.setState(prevState => {
-      const newExercises = [...prevState.exercises]
-      if (type === 'weight') {
-        newExercises[index].rounds[indexRound].weight = value
-      } else if (type === 'reps') {
-        newExercises[index].rounds[indexRound].reps = value
+      const newSubtrainings = [...prevState.subtrainings]
+      if (type === 'name') {
+        newSubtrainings[index].name = value
       }
-      return { exercises: newExercises }
+      return { subtrainings: newSubtrainings }
     })
   }
 
-  changeStatus() {
-    this.setState({
-      ...this.state,
-      private: !this.state.private
+  handleChangeExercise = (index, indexExercise, e, type) => {
+    const { value } = e.target
+    this.setState(prevState => {
+      const newSubtrainings = [...prevState.subtrainings]
+      if (type === 'name') {
+        newSubtrainings[index].exercises[indexExercise].name = value
+      } else if (type === 'category') {
+        newSubtrainings[index].exercises[indexExercise].category_id = Number(value)
+      }
+      return { subtrainings: newSubtrainings }
+    })
+  }
+
+  handleChangeRound = (index, indexExercise, indexRound, e, type) => {
+    const { value } = e.target
+    this.setState(prevState => {
+      const newSubtrainings = [...prevState.subtrainings]
+      if (type === 'weight') {
+        newSubtrainings[index].exercises[indexExercise].rounds[indexRound].weight = value
+      } else if (type === 'reps') {
+        newSubtrainings[index].exercises[indexExercise].rounds[indexRound].reps = value
+      }
+      return { subtrainings: newSubtrainings }
     })
   }
 
   handleSubmit(e) {
+    console.log("HALO")
     e.preventDefault()
-    this.props.editTraining(this.state, this.props.match.params.id)
+    this.props.editTraining({
+      name: this.state.name,
+      description: this.state.description,
+      goal: this.state.goal,
+      private: this.state.private === '1' ? true : false,
+      category: Number(this.state.category),
+      advancementLevel: Number(this.state.advancementLevel),
+      days_per_week: Number(this.state.daysPerWeek),
+      subtrainings: this.state.subtrainings
+    }, this.props.match.params.id)
   }
 
   render() {
@@ -113,205 +176,334 @@ export class EditTrainingPage extends React.Component {
         >
           <meta name="description" content="Edit training" />
         </Helmet>
+        <main>
+          <section className="section section-shaped section-lg">
+            <Container>
+              <Row className="mb-4 text-center">
+                <Col sm="12">
+                  <h2 className="display-2">Edit training</h2>
+                </Col>
+              </Row>
+              <Row className="justify-content-center">
+                <Col lg="12">
+                  <Card className="bg-secondary shadow border-0">
+                    <CardBody className="px-lg-5 py-lg-5">
+                      <AvForm
+                        onValidSubmit={this.handleSubmit}
+                      >
+                        <Row className="mb-1">
+                          <Col sm="12">
+                            <h4 className="display-4">Information</h4>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col sm="12" lg="6">
+                            <AvGroup>
+                              <Label for="name">Training name *</Label>
+                              <AvInput
+                                id="name"
+                                type="text"
+                                name="name"
+                                value={this.state.name}
+                                onChange={this.handleChange}
+                                required
+                                className="form-control-alternative"
+                              />
+                              <AvFeedback>Training name is required</AvFeedback>
+                            </AvGroup>
+                          </Col>
+                          <Col sm="12" lg="6">
+                            <AvField
+                              type="select"
+                              label="Training category *"
+                              value={this.state.category}
+                              onChange={this.handleChange}
+                              required
+                              name="category"
+                              className="form-control-alternative"
+                            >
+                              { this.props.trainingCategories.map((trainingCategory) => (
+                                <option key={trainingCategory.id} value={trainingCategory.id}>{ trainingCategory.name }</option>
+                              )) }
+                            </AvField>
+                          </Col>
+                        </Row>
 
-        {/* <Main>
-          <Container>
-            {
-              this.state.exercises ? (
-                <StyledCard>
-                  <StyledCardContent>
-                    <CardFormTraining
-                      onSubmit={this.handleSubmit}
-                    >
-                      <CardFormRow>
-                        <Typography variant="title" color="inherit" className="text-center">
-                          Training name
-                        </Typography>
+                        <Row>
+                          <Col sm="12" lg="6">
+                            <AvField
+                              label="Advancement Level *"
+                              type="select"
+                              value={this.state.advancementLevel}
+                              onChange={this.handleChange}
+                              required
+                              name="advancementLevel"
+                              className="form-control-alternative"
+                            >
+                              { this.props.advancementLevels.map((advancementLevel) => (
+                                <option key={advancementLevel.id} value={advancementLevel.id}>{ advancementLevel.name }</option>
+                              )) }
+                            </AvField>
+                          </Col>
+                          <Col sm="12" lg="6">
+                            <AvField
+                              label="Training days weekly *"
+                              type="select"
+                              value={this.state.daysPerWeek}
+                              onChange={this.handleChange}
+                              required
+                              name="daysPerWeek"
+                              className="form-control-alternative"
+                            >
+                              <option value={1}>1</option>
+                              <option value={2}>2</option>
+                              <option value={3}>3</option>
+                              <option value={4}>4</option>
+                              <option value={5}>5</option>
+                              <option value={6}>6</option>
+                              <option value={7}>7</option>
+                            </AvField>
+                          </Col>
+                        </Row>
 
-                        <TextValidator
-                          name="name"
-                          label="Training name"
-                          type="text"
-                          value={this.state.name}
-                          onChange={this.handleChange}
-                          fullWidth
-                          validators={['required']}
-                          errorMessages={[
-                            'Training name is required',
-                          ]}
-                        />
-                      </CardFormRow>
-                      <CardFormRow>
-                        <Typography variant="title" color="inherit" className="text-center">
-                          Training category
-                        </Typography>
+                        <AvGroup>
+                          <Label for="description">Training description *</Label>
+                          <AvInput
+                            id="description"
+                            name="description"
+                            value={this.state.description}
+                            onChange={this.handleChange}
+                            required
+                            className="form-control-alternative"
+                            type="textarea"
+                          />
+                          <AvFeedback>Training description is required</AvFeedback>
+                        </AvGroup>
 
-                        <InputLabel htmlFor="category">Category</InputLabel>
-                        <Select
-                          native
-                          fullWidth
-                          value={this.state.category}
-                          onChange={this.handleChange}
-                          inputProps={{
-                            name: 'category',
-                            id: 'category',
-                          }}
-                        >
-                          <option value={1}>Gym</option>
-                          <option value={2}>Calisthenics</option>
-                          <option value={3}>Mixed</option>
-                        </Select>
-                      </CardFormRow>
-                      <CardFormRow>
-                        <Typography variant="title" color="inherit" className="text-center">
-                          Training description
-                        </Typography>
+                        <AvGroup>
+                          <Label for="goal">Training goal *</Label>
+                          <AvInput
+                            id="goal"
+                            type="text"
+                            name="goal"
+                            value={this.state.goal}
+                            onChange={this.handleChange}
+                            required
+                            className="form-control-alternative"
+                          />
+                          <AvFeedback>Training goal is required</AvFeedback>
+                        </AvGroup>
 
-                        <TextValidator
-                          name="description"
-                          label="Training description"
-                          type="text"
-                          value={this.state.description}
-                          onChange={this.handleChange}
-                          fullWidth
-                          validators={['required']}
-                          errorMessages={[
-                            'Training description is required',
-                          ]}
-                        />
-                      </CardFormRow>
-                      <CardFormRow>
-                        <Typography variant="title" color="inherit" className="text-center">
-                          Training goal
-                        </Typography>
+                        <Row className="mb-3">
+                          <Col sm="12" lg="6">
+                            <AvField
+                              label="Training status *"
+                              type="select"
+                              value={this.state.private}
+                              onChange={this.handleChange}
+                              required
+                              name="private"
+                              className="form-control-alternative"
+                            >
+                              <option value={0}>Public</option>
+                              <option value={1}>Private</option>
+                            </AvField>
+                          </Col>
+                        </Row>
 
-                        <TextValidator
-                          name="goal"
-                          label="Training goal"
-                          type="text"
-                          value={this.state.goal}
-                          onChange={this.handleChange}
-                          fullWidth
-                          validators={['required']}
-                          errorMessages={[
-                            'Training goal is required',
-                          ]}
-                        />
-                      </CardFormRow>
-                      <CardFormRowCenter>
-                        <Typography variant="title" color="inherit" className="text-center">
-                          Training status - {this.state.private ? 'Private' : 'Public'}
-                        </Typography>
-                        <Tooltip title="Change Status">
-                          <IconButton aria-label="Change Status" color="primary" type="submit" className="card__icon" onClick={() => this.changeStatus()}>
-                            { this.state.private ? (
-                              <HttpsIcon />
+                        <Row className="border-top pt-3">
+                          <Col sm="12">
+                            <h4 className="display-4">Subtrainings & Exercises</h4>
+                          </Col>
+                        </Row>
+
+                        <div>
+                          {
+                            this.state.subtrainings.length === 0 ? (
+                              <Row>
+                                <Col sm="12">
+                                  <h5 className="display-5">No subtrainings yet</h5>
+                                </Col>
+                              </Row>
                             ) : (
-                              <LanguageIcon />
-                            )}
-                          </IconButton>
-                        </Tooltip>
-                      </CardFormRowCenter>
-                      <CardFormRowCenter>
-                        <Typography variant="title" color="inherit" className="text-center">
-                          Exercises
-                        </Typography>
-                      </CardFormRowCenter>
-                      <CardFormRow>
-                        {
-                          this.state.exercises && this.state.exercises.length === 0 ? (
-                            <Typography variant="title" color="inherit" className="text-center">
-                              No exercises yet
-                            </Typography>
-                          ) : (
-                            this.state.exercises.map((exercise, index) => (
-                              <StyledCard key={index}>
-                                <StyledCardContent>
-                                  <TextValidator
-                                    name={`exercise-${index}`}
-                                    label="Exercise name"
-                                    type="text"
-                                    value={this.state.exercises[index].name}
-                                    onChange={e => this.handleChangeExercise(index, e)}
-                                    fullWidth
-                                    validators={['required']}
-                                    errorMessages={[
-                                      'Exercise name is required'
-                                    ]}
-                                  />
-                                  <CardFormRowCenter>
-                                    {
-                                      exercise.rounds.length === 0 ? (
-                                        null
-                                      ) : (
-                                        exercise.rounds.map((round, indexRound) => (
-                                          <CardFormRound key={indexRound}>
-                                            <TextValidator
-                                              name={`round-${index}-${indexRound}-weight`}
-                                              label="Round weight"
-                                              type="number"
-                                              value={this.state.exercises[index].rounds[indexRound].weight}
-                                              onChange={e => this.handleChangeRound(index, indexRound, e, 'weight')}
-                                              fullWidth
-                                              validators={['required']}
-                                              errorMessages={[
-                                                'Round weight is required'
-                                              ]}
-                                            />
-                                            <TextValidator
-                                              name={`round-${index}-${indexRound}-reps`}
-                                              label="Round reps"
-                                              type="number"
-                                              value={this.state.exercises[index].rounds[indexRound].reps}
-                                              onChange={e => this.handleChangeRound(index, indexRound, e, 'reps')}
-                                              fullWidth
-                                              validators={['required']}
-                                              errorMessages={[
-                                                'Round reps is required'
-                                              ]}
-                                            />
-                                            <CardIcons>
-                                              <Tooltip title="Delete">
-                                                <IconButton color="primary" className="card__icon" onClick={() => this.removeRound(index, indexRound)}>
-                                                  <DeleteIcon />
-                                                </IconButton>
-                                              </Tooltip>
-                                            </CardIcons>
-                                          </CardFormRound>
-                                        ))
-                                      )
-                                    }
-                                    <CardFormRoundCenter>
-                                      <Button type="button" color="primary" onClick={() => this.addRound(index)}>Add Round</Button>
-                                    </CardFormRoundCenter>
-                                  </CardFormRowCenter>
-                                  <Button type="button" color="secondary" onClick={() => this.removeExercise(index)}>Remove Exercise</Button>
-                                </StyledCardContent>
-                              </StyledCard>
-                            ))
-                          )
-                        }
-                      </CardFormRow>
-                      <CardFormRowCenter>
-                        <Button type="button" color="primary" onClick={() => this.addExercise()} disabled={this.state.exercises.length > 9 ? true : false}>Add Exercise</Button>
-                      </CardFormRowCenter>
-                      <CardFormRowCenter>
-                        <Button type="submit" color="secondary">Save training</Button>
-                      </CardFormRowCenter>
-                    </CardFormTraining>
-                  </StyledCardContent>
-                </StyledCard>
-              ) : null
-            }
-          </Container>
-        </Main> */}
+                              this.state.subtrainings.map((subtraining, index) => (
+                                <>
+                                  <Row key={index} className="my-4 border-bottom">
+                                    <Col sm="12" lg="6">
+                                      <AvGroup>
+                                        <AvInput
+                                          placeholder="Subtraining name"
+                                          type="text"
+                                          name={`subtraining-${index}`}
+                                          value={this.state.subtrainings[index].name}
+                                          onChange={e => this.handleChangeSubtraining(index, e, 'name')}
+                                          className="form-control-alternative"
+                                        />
+                                      </AvGroup>
+                                    </Col>
+                                    <Col sm="6" lg="3">
+                                      <Button className="btn-icon btn-block" color="danger" type="button" onClick={() => this.removeSubtraining(index)}>
+                                        <span className="btn-inner--icon">
+                                          <i className="ni ni-fat-remove" />
+                                        </span>
+                                        <span className="btn-inner--text">Subtraining</span>
+                                      </Button>
+                                    </Col>
+                                    <Col sm="6" lg="3">
+                                      <Button className="btn-icon btn-block" color="info" type="button" onClick={() => this.addExercise(index)} disabled={this.state.subtrainings[index].exercises.length >= 10 ? true : false}>
+                                        <span className="btn-inner--icon">
+                                          <i className="ni ni-fat-add" />
+                                        </span>
+                                        <span className="btn-inner--text">Exercise</span>
+                                      </Button>
+                                    </Col>
+                                    <Col sm="12">
+                                      <div>
+                                        {
+                                          this.state.subtrainings[index].exercises.length === 0 ? (
+                                            <Row>
+                                              <Col sm="12">
+                                                <h5 className="display-5">No exercises yet</h5>
+                                              </Col>
+                                            </Row>
+                                          ) : (
+                                            this.state.subtrainings[index].exercises.map((exercise, indexExercise) => (
+                                              <>
+                                                <Row key={indexExercise}>
+                                                  <Col sm="12" lg="4">
+                                                    <AvGroup>
+                                                      <AvInput
+                                                        placeholder="Exercise name *"
+                                                        type="text"
+                                                        name={`exercise-${index}-${indexExercise}`}
+                                                        value={this.state.subtrainings[index].exercises[indexExercise].name}
+                                                        onChange={e => this.handleChangeExercise(index, indexExercise, e, 'name')}
+                                                        required
+                                                        className="form-control-alternative"
+                                                      />
+                                                      <AvFeedback>Exercise name is required</AvFeedback>
+                                                    </AvGroup>
+                                                  </Col>
+                                                  <Col sm="12" lg="4">
+                                                    <AvField
+                                                      type="select"
+                                                      value={this.state.subtrainings[index].exercises[indexExercise].category_id}
+                                                      onChange={e => this.handleChangeExercise(index, indexExercise, e, 'category')}
+                                                      name="exercise_category"
+                                                      className="form-control-alternative"
+                                                    >
+                                                      { this.props.exerciseCategories.map((exerciseCategory) => (
+                                                        <option key={exerciseCategory.id} value={Number(exerciseCategory.id)}>{ exerciseCategory.name }</option>
+                                                      )) }
+                                                    </AvField>
+                                                  </Col>
+                                                  <Col sm="12" lg="4">
+                                                    <Button className="btn-icon btn-block" color="danger" type="button" onClick={() => this.removeExercise(index, indexExercise)}>
+                                                      <span className="btn-inner--icon">
+                                                        <i className="ni ni-fat-remove" />
+                                                      </span>
+                                                      <span className="btn-inner--text">Exercise</span>
+                                                    </Button>
+                                                  </Col>
+                                                </Row>
+
+                                                <div>
+                                                  {
+                                                    exercise.rounds.length === 0 ? (
+                                                      null
+                                                    ) : (
+                                                      exercise.rounds.map((round, indexRound) => (
+                                                        <div key={indexRound}>
+
+                                                          <Row>
+                                                            <Col sm="12" lg="4">
+                                                              <AvGroup>
+                                                                <AvInput
+                                                                  placeholder="Round weight"
+                                                                  type="number"
+                                                                  name={`round-${index}-${indexExercise}-${indexRound}-weight`}
+                                                                  value={this.state.subtrainings[index].exercises[indexExercise].rounds[indexRound].weight}
+                                                                  onChange={e => this.handleChangeRound(index, indexExercise, indexRound, e, 'weight')}
+                                                                  required
+                                                                  className="form-control-alternative"
+                                                                />
+                                                                <AvFeedback>Round weight is required</AvFeedback>
+                                                              </AvGroup>
+                                                            </Col>
+                                                            <Col sm="12" lg="4">
+                                                              <AvGroup>
+                                                                <AvInput
+                                                                  placeholder="Round reps"
+                                                                  type="number"
+                                                                  name={`round-${index}-${indexExercise}-${indexRound}-reps`}
+                                                                  value={this.state.subtrainings[index].exercises[indexExercise].rounds[indexRound].reps}
+                                                                  onChange={e => this.handleChangeRound(index, indexExercise, indexRound, e, 'reps')}
+                                                                  required
+                                                                  className="form-control-alternative"
+                                                                />
+                                                                <AvFeedback>Round reps is required</AvFeedback>
+                                                              </AvGroup>
+                                                            </Col>
+                                                            <Col sm="12" lg="4">
+                                                              <Button className="btn-icon btn-block" color="danger" type="button" onClick={() => this.removeRound(index, indexExercise, indexRound)}>
+                                                                <span className="btn-inner--icon">
+                                                                  <i className="ni ni-fat-remove" />
+                                                                </span>
+                                                                <span className="btn-inner--text">Round</span>
+                                                              </Button>
+                                                            </Col>
+                                                          </Row>
+                                                        </div>
+                                                      ))
+                                                    )
+                                                  }
+                                                  <div className="mb-5">
+                                                    <Button type="button" size="sm" color="default" onClick={() => this.addRound(index, indexExercise)} disabled={this.state.subtrainings[index].exercises[indexExercise].rounds.length >= 20 ? true : false}>Add Round</Button>
+                                                  </div>
+                                                </div>
+                                              </>
+                                            ))
+                                          )
+                                        }
+                                      </div>
+                                    </Col>
+                                  </Row>
+                                </>
+                              ))
+                            )
+                          }
+                        </div>
+                        <Row className="my-3">
+                          <Col sm="12" lg="6">
+                            <Button className="btn-icon btn-block" color="info" type="button" onClick={() => this.addSubtraining()} disabled={this.state.subtrainings.length >= 10 ? true : false}>
+                              <span className="btn-inner--icon">
+                                <i className="ni ni-fat-add" />
+                              </span>
+                              <span className="btn-inner--text">Subtraining</span>
+                            </Button>
+                          </Col>
+                          <Col sm="12" lg="6">
+                            <Button className="btn-block" type="submit" color="success">Save training</Button>
+                          </Col>
+                        </Row>
+                      </AvForm>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+          </section>
+        </main>
       </>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  training: state.training
+  training: state.trainingData.training,
+  trainingCategories: state.global.trainingCategories,
+  exerciseCategories: state.global.exerciseCategories,
+  advancementLevels: state.global.advancementLevels
 })
 
 const mapDispatchToProps = (dispatch) => ({

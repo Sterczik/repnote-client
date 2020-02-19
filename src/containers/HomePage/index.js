@@ -97,7 +97,7 @@ export class HomePage extends React.Component {
                   <div className="pr-md-5">
                     <h3>Great features</h3>
                     <p className="lead">
-                      Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue.
+                      RepNote comes with bunch of features which will help you create your best trainings.
                     </p>
                   </div>
                 </Col>
@@ -112,26 +112,26 @@ export class HomePage extends React.Component {
                   <div className="d-flex px-3">
                     <div>
                       <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                        <i className="ni ni-building text-primary" />
+                        <i className="fa fa-users text-primary" />
                       </div>
                     </div>
                     <div className="pl-4">
-                      <h4 className="display-3 text-white">Modern Interface</h4>
+                      <h4 className="display-3 text-white">Community</h4>
                       <p className="text-white">
-                        Nulla egestas ultricies nisl, vitae suscipit justo feugiat sed.
+                        Check out trainings created by RepNote users,
                       </p>
                     </div>
                   </div>
                   <div className="d-flex px-3">
                     <div>
                       <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                        <i className="ni ni-building text-primary" />
+                        <i className="fa fa-edit text-primary" />
                       </div>
                     </div>
                     <div className="pl-4">
-                      <h4 className="display-3 text-white">Modern Interface</h4>
+                      <h4 className="display-3 text-white">Creativity</h4>
                       <p className="text-white">
-                        Nulla egestas ultricies nisl, vitae suscipit justo feugiat sed.
+                        or create training for others by yourself.
                       </p>
                     </div>
                   </div>
@@ -144,9 +144,9 @@ export class HomePage extends React.Component {
             <Container>
               <Row className="justify-content-center text-center mb-sm">
                 <Col lg="8">
-                  <h2 className="display-3">The amazing Team</h2>
+                  <h2 className="display-3">Support</h2>
                   <p className="lead text-muted">
-                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris. Duis aliquet semper dignissim. Vivamus id orci eu augue convallis lacinia ut in erat. Morbi blandit pellentesque est, eu blandit dolor viverra sit amet.
+                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris.
                   </p>
                 </Col>
               </Row>

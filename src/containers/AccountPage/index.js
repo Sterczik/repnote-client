@@ -73,20 +73,12 @@ export class AccountPage extends React.Component {
                         <div className="card-profile-image">
                           <div onClick={() => this.toggleModal("changeAvatarModal")}>
                             <img
-                              alt="..."
-                              style={{width: 180 + 'px'}}
+                              alt="Avatar"
+                              style={{ width: 180 + 'px' }}
                               className="rounded-circle"
-                              src={this.props.userInfo.avatar}
+                              src={ this.props.userInfo.avatar }
                             />
                           </div>
-                          <Button
-                            color="secondary"
-                            data-dismiss="modal"
-                            type="button"
-                            onClick={() => this.props.resetAvatar()}
-                          >
-                            Reset avatar
-                          </Button>
                         </div>
                       </Col>
                       <Col
@@ -101,14 +93,6 @@ export class AccountPage extends React.Component {
                             size="sm"
                           >
                             Change Password
-                          </Button>
-                          <Button
-                            type="button"
-                            onClick={this.props.logout}
-                            color="danger"
-                            size="sm"
-                          >
-                            Logout
                           </Button>
                           <Button
                             className="float-right"
@@ -139,7 +123,20 @@ export class AccountPage extends React.Component {
                         </div>
                       </Col>
                     </Row>
-                    <div className="my-5">
+                    <div className="mt-4">
+                      <div className="text-center">
+                        <Button
+                          color="default"
+                          data-dismiss="modal"
+                          size="sm"
+                          type="button"
+                          onClick={() => this.props.resetAvatar()}
+                        >
+                          Reset avatar
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="mt-4 mb-5">
                       { this.state.showTrainings ? (
                         <>
                           { this.props.userInfo.trainings && this.props.userInfo.trainings.map(training => (

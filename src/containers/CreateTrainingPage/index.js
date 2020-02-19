@@ -45,7 +45,7 @@ export class CreateTrainingPage extends React.Component {
   addExercise = (index) => {
     this.setState(prevState => {
       const newSubtrainings = [...prevState.subtrainings]
-      newSubtrainings[index].exercises = [...newSubtrainings[index].exercises, { name: '', rounds: [] }]
+      newSubtrainings[index].exercises = [...newSubtrainings[index].exercises, { name: '', rounds: [], category_id: 1 }]
       return { subtrainings: newSubtrainings }
     })
   }
@@ -103,7 +103,7 @@ export class CreateTrainingPage extends React.Component {
       if (type === 'name') {
         newSubtrainings[index].exercises[indexExercise].name = value
       } else if (type === 'category') {
-        newSubtrainings[index].exercises[indexExercise].category = Number(value)
+        newSubtrainings[index].exercises[indexExercise].category_id = Number(value)
       }
       return { subtrainings: newSubtrainings }
     })
@@ -356,7 +356,7 @@ export class CreateTrainingPage extends React.Component {
                                                   <Col sm="12" lg="4">
                                                     <AvField
                                                       type="select"
-                                                      value={this.state.subtrainings[index].exercises[indexExercise].category}
+                                                      value={this.state.subtrainings[index].exercises[indexExercise].category_id}
                                                       onChange={e => this.handleChangeExercise(index, indexExercise, e, 'category')}
                                                       name="exercise_category"
                                                       className="form-control-alternative"

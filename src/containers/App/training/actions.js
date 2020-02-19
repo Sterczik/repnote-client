@@ -68,11 +68,9 @@ export function editTraining(trainingData, id) {
     ServiceTrainings.editTraining(data, id)
       .then((res) => {
         const training = res.data
-        history.push(`/trainings/${id}`, { new: true })
         dispatch(editTrainingSuccess(training))
-        dispatch(snackbar.show({
-          message: 'You successfully edited your Training.'
-        }))
+        history.push('/landing')
+        history.push(`/trainings/${id}`)
       })
       .catch((error) => {
         ServiceUsers.handleResponse(error)
@@ -179,11 +177,9 @@ export function createTraining(trainingData) {
     ServiceTrainings.createTraining(data)
       .then((res) => {
         const training = res.data
-        history.push(`trainings/${training.id}`, { new: true })
         dispatch(createTrainingSuccess(training))
-        dispatch(snackbar.show({
-          message: 'You successfully added your Training.'
-        }))
+        history.push('/landing')
+        history.push(`/trainings/${training.id}`)
       })
       .catch((error) => {
         ServiceUsers.handleResponse(error)

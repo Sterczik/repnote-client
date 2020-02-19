@@ -131,7 +131,7 @@ const TrainingShow = (props) => (
             </div>
             <div className="mt-3 py-3 border-top text-center">
               { props.trainingData.training.subtrainings.map((subtraining) => (
-                <Row className="justify-content-center" key={subtraining.id}>
+                <div key={subtraining.id}>
                   <p>Subtraining: {subtraining.name}</p>
                   { subtraining.exercises.map((exercise) => (
                     <div key={exercise.id}>
@@ -148,7 +148,7 @@ const TrainingShow = (props) => (
                       )) }
                     </div>
                   )) }
-                </Row>
+                </div>
               )) }
             </div>
           </div>

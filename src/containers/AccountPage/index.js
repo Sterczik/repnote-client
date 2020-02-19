@@ -138,14 +138,18 @@ export class AccountPage extends React.Component {
                     </div>
                     <div className="mt-4 mb-5">
                       { this.state.showTrainings ? (
-                        <>
-                          { this.props.userInfo.trainings && this.props.userInfo.trainings.map(training => (
-                            <TrainingTiles
-                              training={training}
-                              showUser={false}
-                            />
-                          )) }
-                        </>
+                        <Row className="justify-content-center">
+                          <Col lg="12">
+                            <Row className="row-grid">
+                              { this.props.userInfo.trainings && this.props.userInfo.trainings.map(training => (
+                                <TrainingTiles
+                                  training={training}
+                                  showUser={false}
+                                />
+                              )) }
+                            </Row>
+                          </Col>
+                        </Row>
                       ) : (
                         <>
                           <div className="text-center">

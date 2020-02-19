@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {
   Card,
@@ -30,7 +31,7 @@ const TrainingShow = (props) => (
                 lg="4"
               >
                 <div className="card-training-actions py-4 mt-lg-0">
-                  { !props.trainingData.training.edit
+                  { !props.trainingData.training.edit && props.isAuthenticated
                     ? !props.trainingData.training.liked ? (
                       <Button
                         type="button"
@@ -158,4 +159,8 @@ const TrainingShow = (props) => (
   </>
 )
 
-export default TrainingShow
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.loggedIn
+})
+
+export default connect(mapStateToProps)(TrainingShow)

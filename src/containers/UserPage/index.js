@@ -77,7 +77,7 @@ export class UserPage extends React.Component {
                         lg="4"
                       >
                         <div className="card-profile-actions py-4 mt-lg-0">
-                          { this.props.userProfile.id
+                          { this.props.userProfile.id && this.props.isAuthenticated
                           ? !this.props.userProfile.followed ? (
                             <Button
                               type="button"
@@ -127,14 +127,18 @@ export class UserPage extends React.Component {
                     </Row>
                     <div className="my-5">
                       { this.state.showTrainings ? (
-                        <>
-                          { this.props.userProfile.trainings && this.props.userProfile.trainings.map(training => (
-                            <TrainingTiles
-                              training={training}
-                              showUser={false}
-                            />
-                          )) }
-                        </>
+                        <Row className="justify-content-center">
+                          <Col lg="12">
+                            <Row className="row-grid">
+                              { this.props.userProfile.trainings && this.props.userProfile.trainings.map(training => (
+                                <TrainingTiles
+                                  training={training}
+                                  showUser={false}
+                                />
+                              )) }
+                            </Row>
+                          </Col>
+                        </Row>
                       ) : (
                         <>
                           <div className="text-center">
@@ -166,7 +170,8 @@ export class UserPage extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  userProfile: state.global.userProfile
+  userProfile: state.global.userProfile,
+  isAuthenticated: state.auth.loggedIn
 })
 
 const mapDispatchToProps = (dispatch) => ({

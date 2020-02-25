@@ -26,8 +26,6 @@ import Dispatch from './dispatch'
 const initialState = {}
 const store = configureStore(initialState, history)
 const MOUNT_NODE = document.getElementById('root')
-/* eslint-disable no-underscore-dangle, indent */
-window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true
 
 // Dispatch action creators
 Dispatch(store)

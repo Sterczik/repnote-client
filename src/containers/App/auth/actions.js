@@ -4,10 +4,28 @@ import { history } from '../../../helpers/history'
 import { authConstants } from './constants'
 
 function logout() {
-  ServiceUsers.logout()
+  const logoutInProcess = () => ({
+    type: authConstants.LOGOUT_IN_PROGRESS
+  })
 
-  return {
-    type: authConstants.LOGOUT
+  const logoutSuccess = () => ({
+    type: authConstants.LOGOUT_SUCCESS
+  })
+
+  const logoutFailure = () => ({
+    type: authConstants.LOGOUT_FAILURE
+  })
+
+  return (dispatch) => {
+    dispatch(logoutInProcess())
+
+    ServiceUsers.logout()
+      .then(() => {
+        dispatch(logoutSuccess())
+      })
+      .catch(() => {
+        dispatch(logoutFailure())
+      })
   }
 }
 

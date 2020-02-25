@@ -129,7 +129,17 @@ export default (state = initialState, action) => {
         ...state
       }
     // Logout
-    case authConstants.LOGOUT:
+    case authConstants.LOGOUT_IN_PROGRESS:
+      return {
+        ...state
+      }
+    case authConstants.LOGOUT_SUCCESS:
+      return {
+        ...state,
+        loggedIn: false,
+        user: {}
+      }
+    case authConstants.LOGOUT_FAILURE:
       return {
         ...state,
         loggedIn: false,

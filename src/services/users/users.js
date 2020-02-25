@@ -1,12 +1,15 @@
 import Api from '../../helpers/api'
 
 function logout() {
-  const token = localStorage.getItem('refreshToken')
+  const refreshToken = localStorage.getItem('refreshToken')
+  const accessToken = localStorage.getItem('token')
 
   localStorage.removeItem('token')
   localStorage.removeItem('refreshToken')
 
-  return Api(true).post('/users/logout', { token })
+  return Api(true, accessToken).post('/users/logout', {
+    token: refreshToken
+  })
 }
 
 function handleResponse(response) {

@@ -133,10 +133,10 @@ const TrainingShow = (props) => (
             <div className="mt-3 py-3 border-top text-center">
               { props.trainingData.training.subtrainings.map((subtraining) => (
                 <div key={subtraining.id}>
-                  <p>Subtraining: {subtraining.name}</p>
+                  <h5 className="display-5">{subtraining.name}</h5>
                   { subtraining.exercises.map((exercise) => (
                     <div key={exercise.id}>
-                      <p>Exercise: { exercise.name }</p>
+                      <h6 className="display-6">{ exercise.name }</h6>
                       { exercise.rounds.map((round) => (
                         <div key={round.id}>
                           <p>

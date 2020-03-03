@@ -52,18 +52,6 @@ export class EditTrainingPage extends React.Component {
         subtrainings: this.props.training.subtrainings
       })
     }, 800)
-    // setTimeout(() => {
-    //   this.state.subtrainings.forEach((subtraining, indexS) => {
-    //     subtraining.exercises.forEach((exercise, indexE) => {
-    //       console.log('hello', exercise.category.name)
-    //       this.setState(prevState => {
-    //         const newSubtrainings = [...prevState.subtrainings]
-    //         newSubtrainings[indexS].exercises[indexE].category = newSubtrainings[indexS].exercises[indexE].category.id
-    //         return { subtrainings: newSubtrainings }
-    //       })
-    //     })
-    //   })
-    // }, 800)
   }
 
   addSubtraining = (e) => {
@@ -153,7 +141,6 @@ export class EditTrainingPage extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log("HALO")
     e.preventDefault()
     this.props.editTraining({
       name: this.state.name,

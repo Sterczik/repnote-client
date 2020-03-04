@@ -1,5 +1,4 @@
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
-import { ServiceUsers } from '../../../services/users/users'
 import { history } from '../../../helpers/history'
 import { trainingConstants } from './constants'
 import { ServiceTrainings } from '../../../services/trainings/trainings'
@@ -73,7 +72,6 @@ export function editTraining(trainingData, id) {
         history.push(`/trainings/${id}`)
       })
       .catch((error) => {
-        ServiceUsers.handleResponse(error)
         dispatch(editTrainingFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
@@ -110,7 +108,6 @@ export function removeTraining(id) {
         }))
       })
       .catch((error) => {
-        ServiceUsers.handleResponse(error)
         dispatch(removeTrainingFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
@@ -143,7 +140,6 @@ export function switchTrainingStatus(id) {
         dispatch(switchTrainingStatusSuccess(training))
       })
       .catch((error) => {
-        ServiceUsers.handleResponse(error)
         dispatch(switchTrainingStatusFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
@@ -182,7 +178,6 @@ export function createTraining(trainingData) {
         history.push(`/trainings/${training.id}`)
       })
       .catch((error) => {
-        ServiceUsers.handleResponse(error)
         dispatch(createTrainingFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
@@ -215,8 +210,41 @@ export function likeTraining(id, like) {
         dispatch(likeTrainingSuccess(like))
       })
       .catch((error) => {
-        ServiceUsers.handleResponse(error)
         dispatch(likeTrainingFailure(error))
+        dispatch(snackbar.show({
+          message: 'Something went wrong!'
+        }))
+      })
+  }
+}
+
+export function cloneTraining(id) {
+  const cloneTrainingInProcess = () => ({
+    type: trainingConstants.CLONE_TRAINING_IN_PROCESS
+  })
+
+  const cloneTrainingSuccess = (training) => ({
+    type: trainingConstants.CLONE_TRAINING_SUCCESS,
+    training
+  })
+
+  const cloneTrainingFailure = (error) => ({
+    type: trainingConstants.CLONE_TRAINING_FAILURE,
+    error
+  })
+
+  return (dispatch) => {
+    dispatch(cloneTrainingInProcess())
+
+    ServiceTrainings.cloneTraining(id)
+      .then((res) => {
+        const training = res.data
+        dispatch(cloneTrainingSuccess(training))
+        history.push('/landing')
+        history.push(`/trainings/${training.id}`)
+      })
+      .catch((error) => {
+        dispatch(cloneTrainingFailure(error))
         dispatch(snackbar.show({
           message: 'Something went wrong!'
         }))

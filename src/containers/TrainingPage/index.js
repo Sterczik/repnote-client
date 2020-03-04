@@ -14,7 +14,8 @@ import {
   getTraining,
   removeTraining,
   switchTrainingStatus,
-  likeTraining
+  likeTraining,
+  cloneTraining
 } from '../App/training/actions'
 
 export class TrainingPage extends React.Component {
@@ -53,6 +54,7 @@ export class TrainingPage extends React.Component {
                   removeTraining={this.props.removeTraining}
                   switchTrainingStatus={this.props.switchTrainingStatus}
                   likeTraining={this.props.likeTraining}
+                  cloneTraining={this.props.cloneTraining}
                 />
               </Container>
             </section>
@@ -73,6 +75,7 @@ const mapDispatchToProps = (dispatch) => ({
   removeTraining: (id) => dispatch(removeTraining(id)),
   switchTrainingStatus: (id) => dispatch(switchTrainingStatus(id)),
   likeTraining: (id, like) => dispatch(likeTraining(id, like)),
+  cloneTraining: (id) => dispatch(cloneTraining(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrainingPage)

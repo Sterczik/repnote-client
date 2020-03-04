@@ -31,28 +31,40 @@ const TrainingShow = (props) => (
                 lg="4"
               >
                 <div className="card-training-actions py-4 mt-lg-0">
-                  { !props.trainingData.training.edit && props.isAuthenticated
-                    ? !props.trainingData.training.liked ? (
-                      <Button
-                        type="button"
-                        onClick={() => props.likeTraining(props.trainingData.training.id, true)}
-                        color="primary"
-                        size="sm"
-                      >
-                        Like <i className="fa fa-heart" />
-                      </Button>
-                    ) : (
-                      <Button
-                        type="button"
-                        onClick={() => props.likeTraining(props.trainingData.training.id, false)}
-                        color="danger"
-                        size="sm"
-                      >
-                        Unlike <i className="fa fa-heart" />
-                      </Button>
+                  { !props.trainingData.training.isOwner && props.isAuthenticated
+                    ? (
+                      <>
+                        <Button
+                          type="button"
+                          onClick={() => props.cloneTraining(props.trainingData.training.id)}
+                          color="info"
+                          size="sm"
+                        >
+                          Clone
+                        </Button>
+                        { !props.trainingData.training.liked ? (
+                          <Button
+                            type="button"
+                            onClick={() => props.likeTraining(props.trainingData.training.id, true)}
+                            color="primary"
+                            size="sm"
+                          >
+                            Like <i className="fa fa-heart" />
+                          </Button>
+                        ) : (
+                          <Button
+                            type="button"
+                            onClick={() => props.likeTraining(props.trainingData.training.id, false)}
+                            color="danger"
+                            size="sm"
+                          >
+                            Unlike <i className="fa fa-heart" />
+                          </Button>
+                        ) }
+                      </>
                     )
                     : null }
-                  { props.trainingData.training.edit ? (
+                  { props.trainingData.training.isOwner ? (
                     <>
                       <Button
                         color="default"
@@ -87,7 +99,7 @@ const TrainingShow = (props) => (
                     <span className="heading">{ props.trainingData.training.likesLength }</span>
                     <span className="description">Likes</span>
                   </div> }
-                  { props.trainingData.training.edit && <div>
+                  { props.trainingData.training.isOwner && <div>
                     <span className="heading">{ props.trainingData.training.private ? 'Private' : 'Public' }</span>
                     <span className="description">Status</span>
                   </div> }

@@ -32,6 +32,10 @@ function unlikeTraining(id) {
   return Api(true).delete(`/trainings/${id}/like`)
 }
 
+function cloneTraining(id) {
+  return Api(true).post(`/trainings/${id}/clone`)
+}
+
 export const ServiceTrainings = {
   getTraining,
   editTraining,
@@ -40,5 +44,6 @@ export const ServiceTrainings = {
   createTraining,
   getTrainings,
   likeTraining,
-  unlikeTraining
+  unlikeTraining,
+  cloneTraining
 }

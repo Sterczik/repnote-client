@@ -86,6 +86,13 @@ export default (state = trainingReducerDefaultState, action) => {
       }
     case trainingConstants.LIKE_TRAINING_FAILURE:
       return state
+    // Clone Training
+    case trainingConstants.CLONE_TRAINING_IN_PROCESS:
+      return state
+    case trainingConstants.CLONE_TRAINING_SUCCESS:
+      return {...action.training}
+    case trainingConstants.CLONE_TRAINING_FAILURE:
+      return {}
     // Default
     default:
       return state

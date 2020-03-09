@@ -14,21 +14,21 @@ import TrainingVariant from './elements/TrainingVariant'
 const Toolbar = (props) => (
   <>
     <Row>
-      <Col lg="6" className="mb-3 d-flex align-items-center">
+      <Col xs="6" className="mb-3 d-flex align-items-center">
         <Total />
       </Col>
-      <Col lg="6" className="mb-3 d-flex justify-content-end">
+      <Col xs="6" className="mb-3 d-flex justify-content-end">
         <TrainingVariant />
       </Col>
     </Row>
     <Row>
-      <Col sm="6" lg="4">
+      <Col xs="6" md="4">
         <ListLimit />
       </Col>
-      <Col sm="6" lg="4">
+      <Col xs="6" md="4">
         <Sort />
       </Col>
-      <Col sm="6" lg="4">
+      <Col xs="12" md="4">
         <Search />
       </Col>
     </Row>

@@ -93,8 +93,8 @@ export class HomePage extends React.Component {
           <section className="section section-lg">
             <Container>
               <Row className="row-grid align-items-center">
-                <Col className="order-md-1" md="8">
-                  <div className="pr-md-5">
+                <Col className="order-lg-1" lg="8">
+                  <div className="pr-lg-5">
                     <h3>Great features</h3>
                     <p className="lead">
                       RepNote comes with bunch of features which will help you create your best trainings.
@@ -146,7 +146,7 @@ export class HomePage extends React.Component {
                 <Col lg="8">
                   <h2 className="display-3">Support</h2>
                   <p className="lead text-muted">
-                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris.
+                    Text
                   </p>
                 </Col>
               </Row>
@@ -156,28 +156,25 @@ export class HomePage extends React.Component {
           <section className="section section-lg bg-gradient-default">
             <Container className="pt-lg pb-300">
               <Row className="text-center justify-content-center">
-                <Col lg="10">
+                <Col>
                   <h2 className="display-3 text-white">Favourites trainings</h2>
-                  <p className="lead text-white">
-                    Maecenas fringilla, augue nec euismod venenatis, erat risus eleifend augue, eget venenatis nunc risus quis mauris. Duis aliquet semper dignissim. Vivamus id orci eu augue convallis lacinia ut in erat.
-                  </p>
                 </Col>
               </Row>
               <Row className="row-grid mt-5">
-                <Col lg="4" className="text-center">
-                  <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                <Col md="4" className="text-center">
+                  <div className="icon icon-md icon-shape bg-gradient-white shadow rounded-circle text-primary">
                     <i className="ni ni-settings text-primary" />
                   </div>
                   <h5 className="text-white mt-3">Support</h5>
                 </Col>
-                <Col lg="4" className="text-center">
-                  <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                <Col md="4" className="text-center">
+                  <div className="icon icon-md icon-shape bg-gradient-white shadow rounded-circle text-primary">
                     <i className="ni ni-ruler-pencil text-primary" />
                   </div>
                   <h5 className="text-white mt-3">Customization</h5>
                 </Col>
-                <Col lg="4" className="text-center">
-                  <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                <Col md="4" className="text-center">
+                  <div className="icon icon-md icon-shape bg-gradient-white shadow rounded-circle text-primary">
                     <i className="ni ni-atom text-primary" />
                   </div>
                   <h5 className="text-white mt-3">Friendly UI</h5>

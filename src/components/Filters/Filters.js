@@ -9,10 +9,10 @@ import Categories from './elements/Categories'
 
 const Filters = () => (
   <Row>
-    <Col sm="6" lg="4">
+    <Col xs="12" sm="6" lg="4">
       <Categories />
     </Col>
-    <Col sm="6" lg="4">
+    <Col xs="12" sm="6" lg="4">
       <AdvancementLevels />
     </Col>
   </Row>

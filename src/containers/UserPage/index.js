@@ -62,14 +62,14 @@ export class UserPage extends React.Component {
                     <Row className="justify-content-center">
                       <Col className="order-lg-2" lg="3">
                         <div className="card-profile-image">
-                          <a href="!#" onClick={e => e.preventDefault()}>
+                          <div>
                             <img
-                              alt="..."
-                              style={{width: 180 + 'px'}}
+                              alt="Avatar"
+                              style={{ width: 180 + 'px', height: 180 + 'px' }}
                               className="rounded-circle"
-                              src={this.props.userProfile.avatar}
+                              src={ this.props.userProfile.avatar }
                             />
-                          </a>
+                          </div>
                         </div>
                       </Col>
                       <Col
@@ -110,11 +110,11 @@ export class UserPage extends React.Component {
                       </Col>
                       <Col className="order-lg-1" lg="4">
                         <div className="card-profile-stats d-flex justify-content-center">
-                          { this.props.userProfile.trainings && <div>
+                          { this.props.userProfile.followersLength && <div>
                             <span className="heading">{ this.props.userProfile.followersLength }</span>
                             <span className="description">Followers</span>
                           </div> }
-                          { this.props.userProfile.trainings && <div>
+                          { this.props.userProfile.following && <div>
                             <span className="heading">{ this.props.userProfile.following.length }</span>
                             <span className="description">Following</span>
                           </div> }

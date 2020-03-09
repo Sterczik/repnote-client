@@ -74,7 +74,7 @@ export class AccountPage extends React.Component {
                           <div onClick={() => this.toggleModal("changeAvatarModal")}>
                             <img
                               alt="Avatar"
-                              style={{ width: 180 + 'px' }}
+                              style={{ width: 180 + 'px', height: 180 + 'px' }}
                               className="rounded-circle"
                               src={ this.props.userInfo.avatar }
                             />
@@ -92,7 +92,7 @@ export class AccountPage extends React.Component {
                             to="/account/change-password"
                             size="sm"
                           >
-                            Change Password
+                            Ch. Password
                           </Button>
                           <Button
                             className="float-right"
@@ -107,15 +107,13 @@ export class AccountPage extends React.Component {
                       <Col className="order-lg-1" lg="4">
                         <div className="card-profile-stats d-flex justify-content-center">
                           <div>
-                            <span className="heading btn-inner--icon mr-1">
-                              <i className={`fa fa-${this.props.userInfo.provider}`} />
-                            </span>
-                            <span className="description">Provider</span>
-                          </div>
-                          <div>
-                            <span className="heading">22</span>
+                            <span className="heading">{ this.props.userInfo.followersLength }</span>
                             <span className="description">Followers</span>
                           </div>
+                          { this.props.userInfo.following && <div>
+                            <span className="heading">{ this.props.userInfo.following.length }</span>
+                            <span className="description">Following</span>
+                          </div> }
                           { this.props.userInfo.trainings && <div>
                             <span className="heading">{ this.props.userInfo.trainings.length }</span>
                             <span className="description">Trainings</span>
@@ -124,6 +122,10 @@ export class AccountPage extends React.Component {
                       </Col>
                     </Row>
                     <div className="mt-4">
+                      <div className="text-center mb-1">
+                        <span className="description">Provider: </span>
+                        <span><i className={`fa fa-${this.props.userInfo.provider}`}/></span>
+                      </div>
                       <div className="text-center">
                         <Button
                           color="default"

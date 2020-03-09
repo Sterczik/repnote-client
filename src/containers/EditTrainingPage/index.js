@@ -167,7 +167,7 @@ export class EditTrainingPage extends React.Component {
           <section className="section section-shaped section-lg">
             <Container>
               <Row className="mb-4 text-center">
-                <Col sm="12">
+                <Col>
                   <h2 className="display-2">Edit training</h2>
                 </Col>
               </Row>
@@ -179,12 +179,12 @@ export class EditTrainingPage extends React.Component {
                         onValidSubmit={this.handleSubmit}
                       >
                         <Row className="mb-1">
-                          <Col sm="12">
+                          <Col>
                             <h4 className="display-4">Information</h4>
                           </Col>
                         </Row>
                         <Row>
-                          <Col sm="12" lg="6">
+                          <Col xs="12" md="6">
                             <AvGroup>
                               <Label for="name">Training name *</Label>
                               <AvInput
@@ -199,7 +199,7 @@ export class EditTrainingPage extends React.Component {
                               <AvFeedback>Training name is required</AvFeedback>
                             </AvGroup>
                           </Col>
-                          <Col sm="12" lg="6">
+                          <Col xs="12" md="6">
                             <AvField
                               type="select"
                               label="Training category *"
@@ -217,7 +217,7 @@ export class EditTrainingPage extends React.Component {
                         </Row>
 
                         <Row>
-                          <Col sm="12" lg="6">
+                          <Col xs="12" md="6">
                             <AvField
                               label="Advancement Level *"
                               type="select"
@@ -232,7 +232,7 @@ export class EditTrainingPage extends React.Component {
                               )) }
                             </AvField>
                           </Col>
-                          <Col sm="12" lg="6">
+                          <Col xs="12" md="6">
                             <AvField
                               label="Training days weekly *"
                               type="select"
@@ -282,7 +282,7 @@ export class EditTrainingPage extends React.Component {
                         </AvGroup>
 
                         <Row className="mb-3">
-                          <Col sm="12" lg="6">
+                          <Col xs="12" md="6">
                             <AvField
                               label="Training status *"
                               type="select"
@@ -299,7 +299,7 @@ export class EditTrainingPage extends React.Component {
                         </Row>
 
                         <Row className="border-top pt-3">
-                          <Col sm="12">
+                          <Col>
                             <h4 className="display-4">Subtrainings & Exercises</h4>
                           </Col>
                         </Row>
@@ -308,7 +308,7 @@ export class EditTrainingPage extends React.Component {
                           {
                             this.state.subtrainings.length === 0 ? (
                               <Row>
-                                <Col sm="12">
+                                <Col>
                                   <h5 className="display-5">No subtrainings yet</h5>
                                 </Col>
                               </Row>
@@ -316,7 +316,7 @@ export class EditTrainingPage extends React.Component {
                               this.state.subtrainings.map((subtraining, index) => (
                                 <>
                                   <Row key={index} className="my-4 border-bottom">
-                                    <Col sm="12" lg="6">
+                                    <Col xs="12" md="6">
                                       <AvGroup>
                                         <AvInput
                                           placeholder="Subtraining name"
@@ -328,7 +328,7 @@ export class EditTrainingPage extends React.Component {
                                         />
                                       </AvGroup>
                                     </Col>
-                                    <Col sm="6" lg="3">
+                                    <Col md="6" lg="3" className="mb-3">
                                       <Button className="btn-icon btn-block" color="danger" type="button" onClick={() => this.removeSubtraining(index)}>
                                         <span className="btn-inner--icon">
                                           <i className="ni ni-fat-remove" />
@@ -336,7 +336,7 @@ export class EditTrainingPage extends React.Component {
                                         <span className="btn-inner--text">Subtraining</span>
                                       </Button>
                                     </Col>
-                                    <Col sm="6" lg="3">
+                                    <Col lg="3" className="mb-3">
                                       <Button className="btn-icon btn-block" color="info" type="button" onClick={() => this.addExercise(index)} disabled={this.state.subtrainings[index].exercises.length >= 10 ? true : false}>
                                         <span className="btn-inner--icon">
                                           <i className="ni ni-fat-add" />
@@ -344,12 +344,12 @@ export class EditTrainingPage extends React.Component {
                                         <span className="btn-inner--text">Exercise</span>
                                       </Button>
                                     </Col>
-                                    <Col sm="12">
+                                    <Col>
                                       <div>
                                         {
                                           this.state.subtrainings[index].exercises.length === 0 ? (
                                             <Row>
-                                              <Col sm="12">
+                                              <Col>
                                                 <h5 className="display-5">No exercises yet</h5>
                                               </Col>
                                             </Row>
@@ -357,7 +357,7 @@ export class EditTrainingPage extends React.Component {
                                             this.state.subtrainings[index].exercises.map((exercise, indexExercise) => (
                                               <>
                                                 <Row key={indexExercise}>
-                                                  <Col sm="12" lg="4">
+                                                  <Col md="4">
                                                     <AvGroup>
                                                       <AvInput
                                                         placeholder="Exercise name *"
@@ -371,7 +371,7 @@ export class EditTrainingPage extends React.Component {
                                                       <AvFeedback>Exercise name is required</AvFeedback>
                                                     </AvGroup>
                                                   </Col>
-                                                  <Col sm="12" lg="4">
+                                                  <Col md="4">
                                                     <AvField
                                                       type="select"
                                                       value={this.state.subtrainings[index].exercises[indexExercise].category_id}
@@ -384,7 +384,7 @@ export class EditTrainingPage extends React.Component {
                                                       )) }
                                                     </AvField>
                                                   </Col>
-                                                  <Col sm="12" lg="4">
+                                                  <Col md="4" className="mb-3">
                                                     <Button className="btn-icon btn-block" color="danger" type="button" onClick={() => this.removeExercise(index, indexExercise)}>
                                                       <span className="btn-inner--icon">
                                                         <i className="ni ni-fat-remove" />
@@ -431,7 +431,7 @@ export class EditTrainingPage extends React.Component {
                                                                 <AvFeedback>Round reps is required</AvFeedback>
                                                               </AvGroup>
                                                             </Col>
-                                                            <Col sm="12" lg="4">
+                                                            <Col sm="12" lg="4" className="mb-3">
                                                               <Button className="btn-icon btn-block" color="danger" type="button" onClick={() => this.removeRound(index, indexExercise, indexRound)}>
                                                                 <span className="btn-inner--icon">
                                                                   <i className="ni ni-fat-remove" />
@@ -461,7 +461,7 @@ export class EditTrainingPage extends React.Component {
                           }
                         </div>
                         <Row className="my-3">
-                          <Col sm="12" lg="6">
+                          <Col md="6" className="mb-3">
                             <Button className="btn-icon btn-block" color="info" type="button" onClick={() => this.addSubtraining()} disabled={this.state.subtrainings.length >= 10 ? true : false}>
                               <span className="btn-inner--icon">
                                 <i className="ni ni-fat-add" />
@@ -469,7 +469,7 @@ export class EditTrainingPage extends React.Component {
                               <span className="btn-inner--text">Subtraining</span>
                             </Button>
                           </Col>
-                          <Col sm="12" lg="6">
+                          <Col md="6">
                             <Button className="btn-block" type="submit" color="success">Save training</Button>
                           </Col>
                         </Row>

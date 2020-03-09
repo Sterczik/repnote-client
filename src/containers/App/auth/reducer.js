@@ -148,12 +148,16 @@ export default (state = initialState, action) => {
     // Get Profile
     case authConstants.GET_PROFILE_IN_PROCESS:
       return {
-        ...state
+        ...state,
+        userInfo: {}
       }
     case authConstants.GET_PROFILE_SUCCESS:
       return {
         ...state,
-        userInfo: action.userInfo
+        userInfo: {
+          ...action.userInfo,
+          followersLength: action.userInfo.followers.length
+        },
       }
     case authConstants.GET_PROFILE_FAILURE:
       return {

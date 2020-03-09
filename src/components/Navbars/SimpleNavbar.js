@@ -92,9 +92,6 @@ class SimpleNavbar extends React.Component {
                         <span className="nav-link-inner--text d-lg-none"></span>
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem to="/trainings" tag={Link}>
-                          Trainings
-                        </DropdownItem>
                         <DropdownItem to="/trainings/create" tag={Link}>
                           Create training
                         </DropdownItem>

@@ -19,8 +19,8 @@ const TrainingShow = (props) => (
               <Col className="order-lg-2" lg="3">
                 <div className="card-training-image">
                   <img
-                    alt="..."
-                    style={{width: 180 + 'px'}}
+                    alt="Avatar"
+                    style={{ width: 180 + 'px', height: 180 + 'px' }}
                     className="rounded-circle"
                     src={props.trainingData.training.user.avatar}
                   />
@@ -110,56 +110,59 @@ const TrainingShow = (props) => (
               <h3>{ props.trainingData.training.user.name }</h3>
             </div>
             <div className="mt-3 py-3 border-top text-center">
-              <Row className="mb-3 text-center">
-                <Col sm="12">
-                  <h3 className="display-3">{ props.trainingData.training.name }</h3>
+              <Row className="mb-2 text-center">
+                <Col>
+                  <h4 className="display-4">Name</h4>
+                  <h5 className="display-5">{ props.trainingData.training.name }</h5>
                 </Col>
               </Row>
               <Row className="mb-2 text-center">
-                <Col sm="12">
-                  <h5 className="display-5">Category: {props.trainingData.training.category.name}</h5>
+                <Col>
+                  <h4 className="display-4">Category</h4>
+                  <h5 className="display-5">{props.trainingData.training.category.name}</h5>
                 </Col>
               </Row>
-              <Row className="mb-3 text-center">
-                <Col sm="12">
-                  <h5 className="display-5">Advancement Level: {props.trainingData.training.advancementLevel.name}</h5>
+              <Row className="mb-2 text-center">
+                <Col>
+                  <h4 className="display-4">Advancement Level</h4>
+                  <h5 className="display-5">{props.trainingData.training.advancementLevel.name}</h5>
                 </Col>
               </Row>
-              <Row className="justify-content-center">
-                <Col lg="9">
-                  <p>
-                    { props.trainingData.training.goal }
-                  </p>
+              <Row className="mb-2 text-center">
+                <Col lg="12">
+                  <h4 className="display-4">Goal</h4>
+                  <h5 className="display-5">{props.trainingData.training.goal}</h5>
+                </Col>
+              </Row>
+              <Row className="mb-2 text-center">
+                <Col lg="12">
+                  <h4 className="display-4">Description</h4>
+                  <p>{ props.trainingData.training.description }</p>
                 </Col>
               </Row>
             </div>
-            <div className="mt-3 py-3 border-top text-center">
-              <Row className="justify-content-center">
-                <Col lg="9">
-                  <p>
-                    { props.trainingData.training.description }
-                  </p>
-                </Col>
-              </Row>
-            </div>
-            <div className="mt-3 py-3 border-top text-center">
+            <div className="py-4 border-top text-center">
               { props.trainingData.training.subtrainings.map((subtraining) => (
                 <div key={subtraining.id}>
-                  <h5 className="display-5">{subtraining.name}</h5>
+                  <Row className="mb-2 text-center">
+                    <Col lg="12">
+                      <h4 className="display-4">{ subtraining.name }</h4>
+                    </Col>
+                  </Row>
                   { subtraining.exercises.map((exercise) => (
-                    <div key={exercise.id}>
-                      <h6 className="display-6">{ exercise.name }</h6>
-                      { exercise.rounds.map((round) => (
-                        <div key={round.id}>
-                          <p>
-                            Weight: { round.weight } kg
-                          </p>
-                          <p>
-                            Reps: { round.reps }
-                          </p>
-                        </div>
-                      )) }
-                    </div>
+                    <Row className="mb-2 text-center" key={exercise.id}>
+                      <Col lg="12">
+                        <h5 className="display-5">{ exercise.name }</h5>
+                      </Col>
+                      <Col lg="12">
+                        { exercise.rounds.map((round) => (
+                          <div className="mb-3" key={round.id}>
+                            <p className="mb-0">Weight: { round.weight } kg</p>
+                            <p className="mb-0">Reps: { round.reps }</p>
+                          </div>
+                        )) }
+                      </Col>
+                    </Row>
                   )) }
                 </div>
               )) }

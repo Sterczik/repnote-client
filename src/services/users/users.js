@@ -49,7 +49,7 @@ function changePassword(oldPassword, newPassword, newPasswordConfirm) {
   const body = JSON.stringify({
     oldPassword: oldPassword,
     password: newPassword,
-    passwordConfirmation: newPasswordConfirm
+    password_confirmation: newPasswordConfirm
   })
   return Api(true).put('/users/change-password', body)
 }

@@ -1710,15 +1710,15 @@ autoprefixer@^9.3.1:
     postcss "^7.0.26"
     postcss-value-parser "^4.0.2"
 
-availity-reactstrap-validation@^2.6.0:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/availity-reactstrap-validation/-/availity-reactstrap-validation-2.6.1.tgz#7a682322da18db63aeca10b9494cf0338688cf4c"
-  integrity sha512-Se9X7q1wV0jyOjCnieayUXltPPELNsQ2AdiETdH5yf1yyfcqDUsJ52rLhQ56LUIyoc1C3OjFqoi2YbfgnBqSFA==
+availity-reactstrap-validation@2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/availity-reactstrap-validation/-/availity-reactstrap-validation-2.6.0.tgz#101fd2e8c196166d249f9fa24bfc7538640def0a"
+  integrity sha512-HgxsjJLFgzXF2Fjj9Bofey+pA1DXoJ54qdSWhd8ltJxPtWV7uUahfwC4Rs2iyj6hOrmsDlKVxpTpFmqE0Ipt3A==
   dependencies:
     babel-runtime "^6.26.0"
     classnames "^2.2.6"
+    dayjs "^1.8.13"
     lodash "^4.17.10"
-    moment "^2.22.2"
     prop-types "^15.6.2"
 
 aws-sign2@~0.7.0:
@@ -3238,6 +3238,11 @@ data-urls@^2.0.0:
     abab "^2.0.3"
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
+
+dayjs@^1.8.13:
+  version "1.8.27"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.27.tgz#a8ae63ee990af28c05c430f0e160ae835a0fbbf8"
+  integrity sha512-Jpa2acjWIeOkg8KURUHICk0EqnEFSSF5eMEscsOgyJ92ZukXwmpmRkPSUka7KHSfbj5eKH30ieosYip+ky9emQ==
 
 debounce@^1.1.0:
   version "1.2.0"
@@ -6451,7 +6456,7 @@ jsx-ast-utils@^2.0.1:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
 
-jwt-decode@^2.2.0:
+jwt-decode@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-2.2.0.tgz#7d86bd56679f58ce6a84704a657dd392bba81a79"
   integrity sha1-fYa9VmefWM5qhHBKZX3TkruoGnk=
@@ -7090,7 +7095,7 @@ mkdirp@0.5.1, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   dependencies:
     minimist "0.0.8"
 
-moment@^2.22.2, moment@^2.24.0:
+moment@2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
@@ -7297,10 +7302,10 @@ node-releases@^1.1.3, node-releases@^1.1.50:
   dependencies:
     semver "^6.3.0"
 
-node-sass@^4.12.0:
-  version "4.13.1"
-  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.13.1.tgz#9db5689696bb2eec2c32b98bfea4c7a2e992d0a3"
-  integrity sha512-TTWFx+ZhyDx1Biiez2nB0L3YrCZ/8oHagaDalbuBSlqXgUPsdkUSzJsVxeDO9LtPB49+Fh3WQl3slABo6AotNw==
+node-sass@4.12.0:
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.12.0.tgz#0914f531932380114a30cc5fa4fa63233a25f017"
+  integrity sha512-A1Iv4oN+Iel6EPv77/HddXErL2a+gZ4uBeZUy+a8O35CFYTXhgA8MgLCWBtwpGZdCvTvQ9d+bQxX/QC36GDPpQ==
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -7309,7 +7314,7 @@ node-sass@^4.12.0:
     get-stdin "^4.0.1"
     glob "^7.0.3"
     in-publish "^2.0.0"
-    lodash "^4.17.15"
+    lodash "^4.17.11"
     meow "^3.7.0"
     mkdirp "^0.5.1"
     nan "^2.13.2"
@@ -8929,7 +8934,7 @@ react-event-listener@^0.6.2:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
-react-facebook-login@^4.1.1:
+react-facebook-login@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-facebook-login/-/react-facebook-login-4.1.1.tgz#005121236a6ac0dee02099976fb1a3265f9d633e"
   integrity sha512-COnHEHlYGTKipz4963safFAK9PaNTcCiXfPXMS/yxo8El+/AJL5ye8kMJf23lKSSGGPgqFQuInskIHVqGqTvSw==
@@ -9099,7 +9104,7 @@ react@16.7.0:
     prop-types "^15.6.2"
     scheduler "^0.12.0"
 
-reactstrap@^8.0.0:
+reactstrap@8.4.1:
   version "8.4.1"
   resolved "https://registry.yarnpkg.com/reactstrap/-/reactstrap-8.4.1.tgz#c7f63b9057f58b52833061711ebe235b9ec4e3e5"
   integrity sha512-oAjp9PYYUGKl7SLXwrQ1oRIrYw0MqfO2mUqYgGapFKHG2uwjEtLip5rYxtMujkGx3COjH5FX1WtcfNU4oqpH0Q==

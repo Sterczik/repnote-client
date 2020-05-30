@@ -406,10 +406,10 @@ export class EditTrainingPage extends React.Component {
                                                             <Col sm="12" lg="4">
                                                               <AvGroup>
                                                                 <AvInput
-                                                                  placeholder="Round weight"
+                                                                  placeholder="Round weight (kg)"
                                                                   type="number"
                                                                   name={`round-${index}-${indexExercise}-${indexRound}-weight`}
-                                                                  value={this.state.subtrainings[index].exercises[indexExercise].rounds[indexRound].weight}
+                                                                  value={this.state.subtrainings[index].exercises[indexExercise].rounds[indexRound].weight !== 0 ? this.state.subtrainings[index].exercises[indexExercise].rounds[indexRound].weight : '0'}
                                                                   onChange={e => this.handleChangeRound(index, indexExercise, indexRound, e, 'weight')}
                                                                   required
                                                                   className="form-control-alternative"

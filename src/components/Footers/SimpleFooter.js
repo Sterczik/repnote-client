@@ -40,14 +40,6 @@ class SimpleFooter extends React.Component {
                 <Nav className="nav-footer justify-content-end">
                   <NavItem>
                     <NavLink
-                      to="/landing/about"
-                      tag={Link}
-                    >
-                      About
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink
                       to="/landing/contact"
                       tag={Link}
                     >

@@ -74,11 +74,6 @@ class SimpleNavbar extends React.Component {
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink to="/landing/about" tag={Link}>
-                      <span className="nav-link-inner--text">About</span>
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
                     <NavLink to="/landing/contact" tag={Link}>
                       <span className="nav-link-inner--text">Contact us</span>
                     </NavLink>

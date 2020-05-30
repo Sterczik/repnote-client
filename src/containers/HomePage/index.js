@@ -60,11 +60,11 @@ export class HomePage extends React.Component {
                         <Button
                           className="btn-white mb-3 mb-sm-0 ml-1"
                           color="default"
-                          to="/landing/about"
+                          to="/landing/contact"
                           tag={Link}
                         >
                           <span className="btn-inner--text">
-                            Read more
+                            Contact
                           </span>
                         </Button>
                       </div>

@@ -2,7 +2,7 @@ import {
   getTrainingCategories,
   getExerciseCategories,
   getTrainingAdvancementLevels
-} from './containers/App/global/actions'
+} from 'store/global/actions'
 
 export default (store) => {
   store.dispatch(getTrainingCategories())

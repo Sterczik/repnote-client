@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { baseUrl } from './baseUrl'
+import { baseUrl } from 'helpers/baseUrl'
 
 export default (auth = false, accessToken = null) => {
   const token = localStorage.getItem('token') || accessToken

@@ -6,15 +6,15 @@ import {
   Row,
   Col
 } from 'reactstrap'
-import TrainingTiles from '../../components/Training/variants/TrainingTiles'
-import TrainingRow from '../../components/Training/variants/TrainingRow'
-import Toolbar from '../../components/Toolbar/Toolbar'
-import Filters from '../../components/Filters/Filters'
-import PaginationList from '../../components/Pagination/PaginationList'
+import TrainingTiles from 'components/Training/variants/TrainingTiles'
+import TrainingRow from 'components/Training/variants/TrainingRow'
+import Toolbar from 'components/Toolbar/Toolbar'
+import Filters from 'components/Filters/Filters'
+import PaginationList from 'components/Pagination/PaginationList'
 
 import {
   getTrainings
-} from '../App/trainings/actions'
+} from 'store/trainings/actions'
 
 export class TrainingsPage extends React.Component {
   componentDidMount() {

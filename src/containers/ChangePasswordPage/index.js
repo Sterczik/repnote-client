@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import ChangePasswordForm from '../../components/Forms/ChangePasswordForm/ChangePasswordForm'
+import ChangePasswordForm from 'components/Forms/ChangePasswordForm/ChangePasswordForm'
 
 import {
   Card,

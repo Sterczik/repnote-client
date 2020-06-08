@@ -17,7 +17,7 @@ import {
   Col
 } from 'reactstrap'
 import { connect } from 'react-redux'
-import { authActions } from '../../containers/App/auth/actions'
+import { authActions } from 'store/auth/actions'
 
 class SimpleNavbar extends React.Component {
   componentDidMount() {

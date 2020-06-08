@@ -6,7 +6,7 @@ import {
 
 import {
   setListingLayout
-} from '../../../containers/App/layout/actions'
+} from 'store/layout/actions'
 
 const TrainingVariant = (props) => {
   return (

@@ -1,4 +1,4 @@
-import Api from '../../helpers/api'
+import Api from 'helpers/api'
 
 function getTraining(id) {
   return Api(true).get(`/trainings/${id}`)

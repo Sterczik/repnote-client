@@ -1,7 +1,7 @@
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
-import { history } from '../../../helpers/history'
+import { history } from 'helpers/history'
 import { trainingConstants } from './constants'
-import { ServiceTrainings } from '../../../services/trainings/trainings'
+import { ServiceTrainings } from 'services/trainings/trainings'
 
 export function getTraining(id) {
   const getTrainingInProcess = () => ({

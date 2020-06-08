@@ -1,7 +1,7 @@
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
-import { ServiceUsers } from '../../../services/users/users'
+import { ServiceUsers } from 'services/users/users'
 import { trainingsConstants } from './constants'
-import { ServiceTrainings } from '../../../services/trainings/trainings'
+import { ServiceTrainings } from 'services/trainings/trainings'
 
 export function getTrainings (
     page = localStorage.getItem('listing_page') ? localStorage.getItem('listing_page') : '1',

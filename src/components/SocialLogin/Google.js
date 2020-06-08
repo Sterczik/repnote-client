@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import GoogleLogin from 'react-google-login'
 import {
   Button
-} from "reactstrap"
-import { authActions } from '../../containers/App/auth/actions'
+} from 'reactstrap'
+import { authActions } from 'store/auth/actions'
 
 const Google = (props) => (
   <GoogleLogin

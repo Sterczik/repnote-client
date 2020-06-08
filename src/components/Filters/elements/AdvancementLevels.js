@@ -11,7 +11,7 @@ import {
 import {
   getTrainings,
   setTrainingAdvancementLevelFilter
-} from '../../../containers/App/trainings/actions'
+} from 'store/trainings/actions'
 
 class AdvancementLevels extends React.Component {
   

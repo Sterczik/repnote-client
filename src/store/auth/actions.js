@@ -1,6 +1,6 @@
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
-import { ServiceUsers } from '../../../services/users/users'
-import { history } from '../../../helpers/history'
+import { ServiceUsers } from 'services/users/users'
+import { history } from 'helpers/history'
 import { authConstants } from './constants'
 
 function logout() {

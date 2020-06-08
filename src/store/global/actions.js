@@ -1,10 +1,10 @@
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
 import { globalConstants } from './constants'
-import { ServiceTrainingCategories } from '../../../services/trainingCategories/trainingCategories'
-import { ServiceExerciseCategories } from '../../../services/exerciseCategories/exerciseCategories'
-import { ServiceTrainingAdvancementLevels } from '../../../services/trainingAdvancementLevels/trainingAdvancementLevels'
-import { ServiceUsers } from '../../../services/users/users'
-import { ServiceContact } from '../../../services/contact/contact'
+import { ServiceTrainingCategories } from 'services/trainingCategories/trainingCategories'
+import { ServiceExerciseCategories } from 'services/exerciseCategories/exerciseCategories'
+import { ServiceTrainingAdvancementLevels } from 'services/trainingAdvancementLevels/trainingAdvancementLevels'
+import { ServiceUsers } from 'services/users/users'
+import { ServiceContact } from 'services/contact/contact'
 
 export function getTrainingCategories() {
   const getTrainingCategoriesInProcess = () => ({

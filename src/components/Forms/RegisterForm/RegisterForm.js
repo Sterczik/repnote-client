@@ -14,7 +14,7 @@ import {
   InputGroup
 } from 'reactstrap'
 
-import { authActions } from '../../../containers/App/auth/actions'
+import { authActions } from 'store/auth/actions'
 
 const RegisterForm = ({
   values,

@@ -13,7 +13,7 @@ import {
   InputGroup
 } from 'reactstrap'
 
-import { sendContactMessage } from '../../../containers/App/global/actions'
+import { sendContactMessage } from 'store/global/actions'
 
 const ContactForm = ({
   values,

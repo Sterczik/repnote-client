@@ -11,7 +11,7 @@ import {
 import {
   getTrainings,
   setTrainingCategoryFilter
-} from '../../../containers/App/trainings/actions'
+} from 'store/trainings/actions'
 
 class Categories extends React.Component {
   

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import TrainingShow from '../../components/Training/variants/TrainingShow'
-import TrainingShowLoading from '../../components/Training/loading/TrainingShowLoading'
-import TrainingShowAuthError from '../../components/Training/errors/TrainingShowAuthError'
-import TrainingShowError from '../../components/Training/errors/TrainingShowError'
+import TrainingShow from 'components/Training/variants/TrainingShow'
+import TrainingShowLoading from 'components/Training/loading/TrainingShowLoading'
+import TrainingShowAuthError from 'components/Training/errors/TrainingShowAuthError'
+import TrainingShowError from 'components/Training/errors/TrainingShowError'
 
 import {
   Container
@@ -16,7 +16,7 @@ import {
   switchTrainingStatus,
   likeTraining,
   cloneTraining
-} from '../App/training/actions'
+} from 'store/training/actions'
 
 export class TrainingPage extends React.Component {
   componentDidMount() {

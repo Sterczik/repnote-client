@@ -15,7 +15,7 @@ import {
 
 import {
   createTraining
-} from '../App/training/actions'
+} from 'store/training/actions'
 
 export class CreateTrainingPage extends React.Component {
   constructor(props) {

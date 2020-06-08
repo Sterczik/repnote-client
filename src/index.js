@@ -4,24 +4,24 @@ import { Provider } from 'react-redux'
 import { Router, Switch, Route, Redirect } from 'react-router-dom'
 import { SnackbarProvider } from 'material-ui-snackbar-redux'
 
-import configureStore from './store/configureStore'
-import { history } from './helpers/history'
+import configureStore from 'storeConfig/configureStore'
+import { history } from 'helpers/history'
 
-import * as serviceWorker from './serviceWorker'
+import * as serviceWorker from 'serviceWorker'
 
 // Styles
-import './assets/vendor/nucleo/css/nucleo.css'
-import './assets/vendor/font-awesome/css/font-awesome.min.css'
-import './assets/scss/argon-design-system-react.scss'
+import 'assets/vendor/nucleo/css/nucleo.css'
+import 'assets/vendor/font-awesome/css/font-awesome.min.css'
+import 'assets/scss/argon-design-system-react.scss'
 
 // Layouts
-import LandingLayout from './layouts/Landing'
-import AuthLayout from './layouts/Auth'
-import AccountLayout from './layouts/Account'
-import TrainingsLayout from './layouts/Trainings'
-import UsersLayout from './layouts/Users'
+import LandingLayout from 'layouts/Landing'
+import AuthLayout from 'layouts/Auth'
+import AccountLayout from 'layouts/Account'
+import TrainingsLayout from 'layouts/Trainings'
+import UsersLayout from 'layouts/Users'
 
-import Dispatch from './dispatch'
+import Dispatch from 'dispatch'
 
 const initialState = {}
 const store = configureStore(initialState, history)

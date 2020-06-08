@@ -7,7 +7,7 @@ import {
   Row,
   Col
 } from 'reactstrap'
-import ContactForm from '../../components/Forms/ContactForm/ContactForm'
+import ContactForm from 'components/Forms/ContactForm/ContactForm'
 
 export const ContactPage = () => (
   <>

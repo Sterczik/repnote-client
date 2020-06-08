@@ -4,7 +4,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import {
   Button
 } from "reactstrap"
-import { authActions } from '../../containers/App/auth/actions'
+import { authActions } from 'store/auth/actions'
 
 const Facebook = (props) => (
   <FacebookLogin

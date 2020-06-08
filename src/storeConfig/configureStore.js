@@ -7,11 +7,11 @@ import {
 import thunk from 'redux-thunk'
 import { snackbarReducer } from 'material-ui-snackbar-redux'
 
-import globalReducer from '../containers/App/global/reducer'
-import authReducer from '../containers/App/auth/reducer'
-import trainingsReducer from '../containers/App/trainings/reducer'
-import trainingReducer from '../containers/App/training/reducer'
-import layoutReducer from '../containers/App/layout/reducer'
+import globalReducer from 'store/global/reducer'
+import authReducer from 'store/auth/reducer'
+import trainingsReducer from 'store/trainings/reducer'
+import trainingReducer from 'store/training/reducer'
+import layoutReducer from 'store/layout/reducer'
 
 import { jwt } from './middlewares/jwt'
 

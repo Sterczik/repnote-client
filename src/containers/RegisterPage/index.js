@@ -1,8 +1,8 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Google from '../../components/SocialLogin/Google'
-import Facebook from '../../components/SocialLogin/Facebook'
-import RegisterForm from '../../components/Forms/RegisterForm/RegisterForm'
+import Google from 'components/SocialLogin/Google'
+import Facebook from 'components/SocialLogin/Facebook'
+import RegisterForm from 'components/Forms/RegisterForm/RegisterForm'
 
 import {
   Card,

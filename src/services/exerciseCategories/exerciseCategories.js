@@ -1,4 +1,4 @@
-import Api from '../../helpers/api'
+import Api from 'helpers/api'
 
 function getExerciseCategories() {
   return Api().get('/exerciseCategories')

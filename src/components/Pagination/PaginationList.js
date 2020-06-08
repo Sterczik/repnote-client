@@ -5,7 +5,7 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
 import {
   getTrainings,
   setPage
-} from '../../containers/App/trainings/actions'
+} from 'store/trainings/actions'
 
 const PaginationList = (props) => {
   return (

@@ -3,10 +3,10 @@ import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Button, Card, Container, Row, Col } from 'reactstrap'
-import { authActions } from '../App/auth/actions'
-import TrainingTiles from '../../components/Training/variants/TrainingTiles'
-import EditAccountModal from '../../components/Modals/EditAccountModal/EditAccountModal'
-import ChangeAvatarModal from '../../components/Modals/ChangeAvatarModal/ChangeAvatarModal'
+import { authActions } from 'store/auth/actions'
+import TrainingTiles from 'components/Training/variants/TrainingTiles'
+import EditAccountModal from 'components/Modals/EditAccountModal/EditAccountModal'
+import ChangeAvatarModal from 'components/Modals/ChangeAvatarModal/ChangeAvatarModal'
 
 export class AccountPage extends React.Component {
   state = {

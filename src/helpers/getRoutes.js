@@ -1,7 +1,7 @@
 import React from 'react'
-import PrivateRoute from '../routes/PrivateRoute'
-import PublicRoute from '../routes/PublicRoute'
-import NormalRoute from '../routes/NormalRoute'
+import PrivateRoute from 'routes/PrivateRoute'
+import PublicRoute from 'routes/PublicRoute'
+import NormalRoute from 'routes/NormalRoute'
 
 const getRoutes = (routes, layout) => {
   return routes.map((prop, key) => {

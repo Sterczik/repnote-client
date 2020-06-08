@@ -2,8 +2,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { Button, Card, Container, Row, Col } from 'reactstrap'
-import { getUserProfile, followUser } from '../App/global/actions'
-import TrainingTiles from '../../components/Training/variants/TrainingTiles'
+import { getUserProfile, followUser } from 'store/global/actions'
+import TrainingTiles from 'components/Training/variants/TrainingTiles'
 
 export class UserPage extends React.Component {
   state = {

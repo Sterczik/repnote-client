@@ -1,9 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
-import Google from '../../components/SocialLogin/Google'
-import Facebook from '../../components/SocialLogin/Facebook'
-import LoginForm from '../../components/Forms/LoginForm/LoginForm'
+import Google from 'components/SocialLogin/Google'
+import Facebook from 'components/SocialLogin/Facebook'
+import LoginForm from 'components/Forms/LoginForm/LoginForm'
 
 import {
   Card,

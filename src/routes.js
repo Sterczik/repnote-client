@@ -1,26 +1,26 @@
 // Landing
-import HomePage from './containers/HomePage/index'
+import HomePage from 'containers/HomePage/index'
 
 // Global
-import ContactPage from './containers/ContactPage/index'
-import NotFoundPage from './containers/NotFoundPage/index'
+import ContactPage from 'containers/ContactPage/index'
+import NotFoundPage from 'containers/NotFoundPage/index'
 
 // Auth
-import RegisterPage from './containers/RegisterPage/index'
-import LoginPage from './containers/LoginPage/index'
+import RegisterPage from 'containers/RegisterPage/index'
+import LoginPage from 'containers/LoginPage/index'
 
 // Account
-import AccountPage from './containers/AccountPage/index'
-import ChangePasswordPage from './containers/ChangePasswordPage/index'
+import AccountPage from 'containers/AccountPage/index'
+import ChangePasswordPage from 'containers/ChangePasswordPage/index'
 
 // Trainings
-import TrainingsPage from './containers/TrainingsPage/index'
-import TrainingPage from './containers/TrainingPage/index'
-import CreateTrainingPage from './containers/CreateTrainingPage/index'
-import EditTrainingPage from './containers/EditTrainingPage/index'
+import TrainingsPage from 'containers/TrainingsPage/index'
+import TrainingPage from 'containers/TrainingPage/index'
+import CreateTrainingPage from 'containers/CreateTrainingPage/index'
+import EditTrainingPage from 'containers/EditTrainingPage/index'
 
 // Users
-import UserPage from './containers/UserPage/index'
+import UserPage from 'containers/UserPage/index'
 
 const routes = [
   {

@@ -10,7 +10,7 @@ import {
 
 import {
   getTrainings
-} from '../../../containers/App/trainings/actions'
+} from 'store/trainings/actions'
 
 class ListLimit extends React.Component {
   

@@ -11,7 +11,7 @@ import {
 import {
   getTrainings,
   setSearch
-} from '../../../containers/App/trainings/actions'
+} from 'store/trainings/actions'
 
 class Search extends React.Component {
 

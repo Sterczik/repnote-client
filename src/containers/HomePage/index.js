@@ -26,7 +26,7 @@ export class HomePage extends React.Component {
           </Helmet>
           <div className="position-relative">
             <section className="section section-lg section-shaped">
-              <div className="shape shape-style-1 shape-default">
+              <div className="shape shape-style-1 bg-gradient-info">
                 <span />
                 <span />
                 <span />
@@ -48,7 +48,7 @@ export class HomePage extends React.Component {
                       <div className="btn-wrapper">
                         <Button
                           className="btn-icon mb-3 mb-sm-0"
-                          color="info"
+                          color="default"
                           to="/auth/register"
                           tag={Link}
                         >
@@ -100,54 +100,6 @@ export class HomePage extends React.Component {
                       RepNote comes with bunch of features which will help you create your best trainings.
                     </p>
                   </div>
-                </Col>
-              </Row>
-            </Container>
-          </section>
-
-          <section className="section bg-gradient-warning">
-            <Container>
-              <Row className="row-grid align-items-center">
-                <Col className="order-lg-1" lg="6">
-                  <div className="d-flex px-3">
-                    <div>
-                      <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                        <i className="fa fa-users text-primary" />
-                      </div>
-                    </div>
-                    <div className="pl-4">
-                      <h4 className="display-3 text-white">Community</h4>
-                      <p className="text-white">
-                        Check out trainings created by RepNote users,
-                      </p>
-                    </div>
-                  </div>
-                  <div className="d-flex px-3">
-                    <div>
-                      <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                        <i className="fa fa-edit text-primary" />
-                      </div>
-                    </div>
-                    <div className="pl-4">
-                      <h4 className="display-3 text-white">Creativity</h4>
-                      <p className="text-white">
-                        or create training for others by yourself.
-                      </p>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </Container>
-          </section>
-
-          <section className="section section-lg">
-            <Container>
-              <Row className="justify-content-center text-center mb-sm">
-                <Col lg="8">
-                  <h2 className="display-3">Support</h2>
-                  <p className="lead text-muted">
-                    Text
-                  </p>
                 </Col>
               </Row>
             </Container>

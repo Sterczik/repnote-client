@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
-import { Link } from 'react-router-dom'
 import validationSchema from './validationSchema'
 
 import {
@@ -18,8 +17,6 @@ import { authActions } from 'store/auth/actions'
 
 const RegisterForm = ({
   values,
-  errors,
-  touched,
   handleChange
 }) => (
   <FormikForm>
@@ -104,34 +101,6 @@ const RegisterForm = ({
         </InputGroup>
         <div className="formik-invalid-feedback">
           <ErrorMessage name="passwordConfirm" />
-        </div>
-      </FormGroup>
-      <FormGroup className="my-4">
-        <InputGroup className="custom-control custom-control-alternative custom-checkbox">
-          <Input
-            className="custom-control-input"
-            type="checkbox"
-            id="privacy"
-            name="privacy"
-            value={values.privacy}
-            onChange={handleChange}
-          />
-          <label
-            className="custom-control-label"
-            htmlFor="privacy"
-          >
-            <span>
-              I agree with the{" "}
-              <Link
-                to="/landing/privacy-policy"
-              >
-                Privacy Policy
-              </Link>
-            </span>
-          </label>
-        </InputGroup>
-        <div className="formik-invalid-feedback">
-          <ErrorMessage name="privacy" />
         </div>
       </FormGroup>
       <div className="text-center">

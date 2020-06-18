@@ -13,26 +13,18 @@ class SimpleFooter extends React.Component {
   render() {
     return (
       <>
-        <footer className=" footer">
+        <footer className="footer footer-dark">
           <Container>
             <Row className="align-items-center justify-content-md-between">
               <Col md="6">
                 <div className="copyright">
-                  © {new Date().getFullYear()}{" "}
+                  © 2020{" "}
                   <a
                     href="https://github.com/Sterczik"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Kamil Sterczewski
-                  </a>{" | "}
-                  Theme created by {" "}
-                  <a
-                    href="https://www.creative-tim.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Creative Tim
                   </a>
                 </div>
               </Col>

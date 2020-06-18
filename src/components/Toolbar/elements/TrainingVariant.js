@@ -12,15 +12,15 @@ const TrainingVariant = (props) => {
   return (
     <>
       <Button
-        className={props.layout === 'tiles' ? 'btn-primary btn-icon ml-1' : 'btn-neutral btn-icon ml-1'}
-        color="primary"
+        className={props.layout === 'tiles' ? 'btn-default btn-icon ml-1' : 'btn-neutral btn-icon ml-1'}
+        color="default"
         onClick={e => props.setListingLayout('tiles')}
       >
         <i className="fa fa-th" />
       </Button>
       <Button
-        className={props.layout === 'row' ? 'btn-primary btn-icon ml-1' : 'btn-neutral btn-icon ml-1'}
-        color="primary"
+        className={props.layout === 'row' ? 'btn-default btn-icon ml-1' : 'btn-neutral btn-icon ml-1'}
+        color="default"
         onClick={e => props.setListingLayout('row')}
       >
         <i className="fa fa-th-list" />

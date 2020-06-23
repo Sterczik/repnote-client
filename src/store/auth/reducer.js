@@ -11,12 +11,20 @@ const initialState = accessToken && refreshToken ? {
     refreshToken: refreshToken
   },
   userInfo: {},
+  userInfoState: {
+    isLoaded: false,
+    isSuccess: false
+  },
   freshTokenPromise: null
 } : {
   loggedIn: false,
   loggingIn: false,
   user: {},
   userInfo: {},
+  userInfoState: {
+    isLoaded: false,
+    isSuccess: false
+  },
   registerProcess: false,
   freshTokenPromise: null
 }
@@ -149,7 +157,11 @@ export default (state = initialState, action) => {
     case authConstants.GET_PROFILE_IN_PROCESS:
       return {
         ...state,
-        userInfo: {}
+        userInfo: {},
+        userInfoState: {
+          isLoaded: false,
+          isSuccess: false
+        }
       }
     case authConstants.GET_PROFILE_SUCCESS:
       return {
@@ -158,11 +170,19 @@ export default (state = initialState, action) => {
           ...action.userInfo,
           followersLength: action.userInfo.followers.length
         },
+        userInfoState: {
+          isLoaded: true,
+          isSuccess: true
+        }
       }
     case authConstants.GET_PROFILE_FAILURE:
       return {
         ...state,
-        userInfo: {}
+        userInfo: {},
+        userInfoState: {
+          isLoaded: true,
+          isSuccess: false
+        }
       }
     // Edit Profile
     case authConstants.EDIT_PROFILE_IN_PROCESS:
@@ -176,8 +196,7 @@ export default (state = initialState, action) => {
       }
     case authConstants.EDIT_PROFILE_FAILURE:
       return {
-        ...state,
-        userInfo: {}
+        ...state
       }
     // Change Avatar
     case authConstants.CHANGE_AVATAR_IN_PROCESS:

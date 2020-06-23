@@ -3,7 +3,12 @@ import { globalConstants } from './constants'
 const globalReducerDefaultState = {
   trainingCategories: [],
   exerciseCategories: [],
-  advancementLevels: []
+  advancementLevels: [],
+  userProfile: {},
+  userProfileState: {
+    isLoaded: false,
+    isSuccess: false
+  }
 }
 
 export default (state = globalReducerDefaultState, action) => {
@@ -60,7 +65,11 @@ export default (state = globalReducerDefaultState, action) => {
     case globalConstants.GET_USER_PROFILE_IN_PROCESS:
       return {
         ...state,
-        userProfile: {}
+        userProfile: {},
+        userProfileState: {
+          isLoaded: false,
+          isSuccess: false
+        }
       }
     case globalConstants.GET_USER_PROFILE_SUCCESS:
       return {
@@ -69,11 +78,19 @@ export default (state = globalReducerDefaultState, action) => {
           ...action.userProfile,
           followersLength: action.userProfile.followers.length
         },
+        userProfileState: {
+          isLoaded: true,
+          isSuccess: true
+        }
       }
     case globalConstants.GET_USER_PROFILE_FAILURE:
       return {
         ...state,
-        userProfile: {}
+        userProfile: {},
+        userProfileState: {
+          isLoaded: true,
+          isSuccess: false
+        }
       }
     // Follow User
     case globalConstants.FOLLOW_USER_IN_PROGRESS:

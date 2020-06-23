@@ -103,9 +103,8 @@ export function getUserProfile(slug) {
     userProfile
   })
 
-  const getUserProfileFailure = (error) => ({
-    type: globalConstants.GET_USER_PROFILE_FAILURE,
-    error
+  const getUserProfileFailure = () => ({
+    type: globalConstants.GET_USER_PROFILE_FAILURE
   })
 
   return (dispatch) => {
@@ -116,11 +115,8 @@ export function getUserProfile(slug) {
         const userProfile = res.data
         dispatch(getUserProfileSuccess(userProfile))
       })
-      .catch((error) => {
-        dispatch(getUserProfileFailure(error))
-        dispatch(snackbar.show({
-          message: 'Something went wrong!'
-        }))
+      .catch(() => {
+        dispatch(getUserProfileFailure())
       })
   }
 }

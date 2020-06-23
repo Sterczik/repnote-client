@@ -481,14 +481,14 @@
 
 // Profile cover
 .section-profile-cover {
-    height: 450px;
+    height: 300px;
     background-size: cover;
     background-position: center center;
 }
 
 @include media-breakpoint-down(md) {
     .section-profile-cover {
-        height: 250px;
+        height: 220px;
     }
 }
 

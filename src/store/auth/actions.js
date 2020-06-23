@@ -267,9 +267,8 @@ function getProfile() {
     userInfo
   })
 
-  const getProfileFailure = (error) => ({
-    type: authConstants.GET_PROFILE_FAILURE,
-    error
+  const getProfileFailure = () => ({
+    type: authConstants.GET_PROFILE_FAILURE
   })
 
   return (dispatch) => {
@@ -280,11 +279,8 @@ function getProfile() {
         const { data } = response
         dispatch(getProfileSuccess(data))
       })
-      .catch((error) => {
-        dispatch(getProfileFailure(error))
-        dispatch(snackbar.show({
-          message: 'Something went wrong!'
-        }))
+      .catch(() => {
+        dispatch(getProfileFailure())
       })
   }
 }

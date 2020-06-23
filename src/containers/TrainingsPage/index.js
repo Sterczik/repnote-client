@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import {
@@ -16,7 +16,7 @@ import {
   getTrainings
 } from 'store/trainings/actions'
 
-export class TrainingsPage extends React.Component {
+class TrainingsPage extends Component {
   componentDidMount() {
     this.props.getTrainings()
   }

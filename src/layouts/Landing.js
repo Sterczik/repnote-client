@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import { routes } from 'routes'
@@ -7,7 +7,7 @@ import NotFoundPage from 'containers/NotFoundPage/index'
 import SimpleNavbar from 'components/Navbars/SimpleNavbar'
 import SimpleFooter from 'components/Footers/SimpleFooter'
 
-class Landing extends React.Component {
+class Landing extends Component {
   state = {}
   componentDidMount() {
     document.documentElement.scrollTop = 0

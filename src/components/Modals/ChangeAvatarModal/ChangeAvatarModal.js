@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Formik, Field } from 'formik'
 import {
   Button,
@@ -8,7 +8,7 @@ import {
 import validationSchema from './validationSchema'
 import CustomImageInput from './CustomImageInput'
 
-class ChangeAvatarModal extends React.Component {
+class ChangeAvatarModal extends Component {
   state = {
     selectedFile: null
   }

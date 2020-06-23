@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import {
@@ -13,7 +13,7 @@ import {
   setTrainingAdvancementLevelFilter
 } from 'store/trainings/actions'
 
-class AdvancementLevels extends React.Component {
+class AdvancementLevels extends Component {
   
   constructor(props) {
     super(props)

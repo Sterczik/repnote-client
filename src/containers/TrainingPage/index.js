@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import TrainingShow from 'components/Training/variants/TrainingShow'
@@ -18,7 +18,7 @@ import {
   cloneTraining
 } from 'store/training/actions'
 
-export class TrainingPage extends React.Component {
+class TrainingPage extends Component {
   componentDidMount() {
     if (!this.props.location.state) {
       this.props.getTraining(this.props.match.params.id)

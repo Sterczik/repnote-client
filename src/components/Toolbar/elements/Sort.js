@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import {
@@ -12,7 +12,7 @@ import {
   getTrainings
 } from 'store/trainings/actions'
 
-class Sort extends React.Component {
+class Sort extends Component {
 
   constructor(props) {
     super(props)

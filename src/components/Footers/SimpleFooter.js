@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {
   NavItem,
@@ -9,7 +9,7 @@ import {
   Col
 } from 'reactstrap'
 
-class SimpleFooter extends React.Component {
+class SimpleFooter extends Component {
   render() {
     return (
       <>

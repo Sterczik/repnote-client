@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {
   UncontrolledCollapse,
@@ -18,7 +18,7 @@ import {
 import { connect } from 'react-redux'
 import { authActions } from 'store/auth/actions'
 
-class TrainingsNavbar extends React.Component {
+class TrainingsNavbar extends Component {
   render() {
     return (
       <>

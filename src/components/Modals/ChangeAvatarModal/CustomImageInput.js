@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-class CustomImageInput extends React.Component {
+class CustomImageInput extends Component {
   constructor(props) {
     super(props)
     this.fileUpload = React.createRef()

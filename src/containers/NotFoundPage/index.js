@@ -4,10 +4,10 @@ import { Helmet } from 'react-helmet'
 export const NotFoundPage = () => (
   <>
     <Helmet
-        titleTemplate="Register Fail"
-        defaultTitle="Register Fail"
+        titleTemplate="Page not found"
+        defaultTitle="Page not found"
       >
-        <meta name="description" content="Register Fail" />
+        <meta name="description" content="Page not found" />
     </Helmet>
     Go home
   </>

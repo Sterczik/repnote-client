@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation'
@@ -18,7 +18,7 @@ import {
   editTraining
 } from 'store/training/actions'
 
-export class EditTrainingPage extends React.Component {
+class EditTrainingPage extends Component {
   constructor(props) {
     super(props)
     

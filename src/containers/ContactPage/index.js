@@ -19,7 +19,7 @@ export const ContactPage = () => (
     </Helmet>
     <div className="position-relative">
       <section className="section section-lg section-shaped">
-        <div className="shape shape-style-1 shape-default">
+        <div className="shape shape-style-1 bg-gradient-info">
           <span />
           <span />
           <span />

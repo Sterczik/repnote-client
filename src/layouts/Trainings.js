@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import { routes } from 'routes'
@@ -7,7 +7,7 @@ import NotFoundPage from 'containers/NotFoundPage/index'
 import TrainingsNavbar from 'components/Navbars/TrainingsNavbar'
 import SimpleFooter from 'components/Footers/SimpleFooter'
 
-class Trainings extends React.Component {
+class Trainings extends Component {
   render() {
     if (getRoutes(routes, 'trainings')) {
       return (

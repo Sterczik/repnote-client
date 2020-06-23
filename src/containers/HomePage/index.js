@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 
@@ -13,7 +13,7 @@ import {
 
 import ContactForm from 'components/Forms/ContactForm/ContactForm'
 
-export class HomePage extends React.Component {
+class HomePage extends Component {
   render() {
     return (
       <>

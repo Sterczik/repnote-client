@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Headroom from 'headroom.js'
 import {
@@ -19,7 +19,7 @@ import {
 import { connect } from 'react-redux'
 import { authActions } from 'store/auth/actions'
 
-class SimpleNavbar extends React.Component {
+class SimpleNavbar extends Component {
   componentDidMount() {
     let headroom = new Headroom(document.getElementById("navbar-main"))
     headroom.init()

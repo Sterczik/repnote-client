@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import {
@@ -12,7 +12,7 @@ import {
   getTrainings
 } from 'store/trainings/actions'
 
-class ListLimit extends React.Component {
+class ListLimit extends Component {
   
   constructor(props) {
     super(props)

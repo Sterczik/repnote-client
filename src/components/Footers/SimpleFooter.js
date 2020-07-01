@@ -15,8 +15,8 @@ class SimpleFooter extends Component {
       <>
         <footer className="footer footer-dark">
           <Container>
-            <Row className="align-items-center justify-content-md-between">
-              <Col md="6">
+            <Row className="align-items-center justify-content-between">
+              <Col xs="7">
                 <div className="copyright">
                   © 2020{" "}
                   <a
@@ -28,7 +28,7 @@ class SimpleFooter extends Component {
                   </a>
                 </div>
               </Col>
-              <Col md="6">
+              <Col xs="5">
                 <Nav className="nav-footer justify-content-end">
                   <NavItem>
                     <NavLink

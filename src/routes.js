@@ -56,20 +56,20 @@ const routes = [
     type: "Public"
   },
   {
-    path: "",
-    name: "Account",
-    icon: "",
-    component: AccountPage,
-    layout: "/account",
-    type: "Private"
-  },
-  {
     path: "/:name",
     name: "User",
     icon: "",
     component: UserPage,
     layout: "/users",
     type: "Normal"
+  },
+  {
+    path: "",
+    name: "Account",
+    icon: "",
+    component: AccountPage,
+    layout: "/account",
+    type: "Private"
   },
   {
     path: "/change-password",
@@ -112,12 +112,44 @@ const routes = [
     type: "Private"
   },
   {
-    path: "/not-found",
-    name: "Not found",
+    path: "*",
+    name: "NotFound",
     icon: "",
     component: NotFoundPage,
     layout: "/landing",
     type: "Normal"
+  },
+  {
+    path: "",
+    name: "NotFound",
+    icon: "",
+    component: NotFoundPage,
+    layout: "/users",
+    type: "Normal"
+  },
+  {
+    path: "*",
+    name: "NotFound",
+    icon: "",
+    component: NotFoundPage,
+    layout: "/account",
+    type: "Private"
+  },
+  {
+    path: "/:id/*",
+    name: "NotFound",
+    icon: "",
+    component: NotFoundPage,
+    layout: "/trainings",
+    type: "Private"
+  },
+  {
+    path: "*",
+    name: "NotFound",
+    icon: "",
+    component: NotFoundPage,
+    layout: "/auth",
+    type: "Public"
   }
 ]
 

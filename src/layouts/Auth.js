@@ -20,10 +20,7 @@ class Auth extends Component {
         <>
           <SimpleNavbar />
           <main ref="main">
-            <section className="section section-shaped section-lg">
-              <div className="shape shape-style-1 bg-gradient-info"></div>
-              <Switch>{ getRoutes(routes, 'auth') }</Switch>
-            </section>
+            <Switch>{ getRoutes(routes, 'auth') }</Switch>
           </main>
           <SimpleFooter />
         </>

@@ -72,7 +72,7 @@ class AccountPage extends Component {
                     <div className="px-4">
                       <Row className="justify-content-center">
                         <Col className="order-lg-2" lg="3">
-                          <div className="card-profile-image">
+                          <div className="card-profile-image is-editable">
                             <div onClick={() => this.toggleModal("changeAvatarModal")}>
                               <img
                                 alt="Avatar"

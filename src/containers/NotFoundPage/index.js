@@ -1,5 +1,12 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom'
+import {
+  Container,
+  Row,
+  Col,
+  Button
+} from 'reactstrap'
 
 export const NotFoundPage = () => (
   <>
@@ -9,7 +16,43 @@ export const NotFoundPage = () => (
       >
         <meta name="description" content="Page not found" />
     </Helmet>
-    Go home
+    <div className="position-relative">
+      <section className="section section-shaped section-lg">
+      <div className="shape shape-style-1 bg-gradient-info"></div>
+        <Container className="py-lg-lg">
+            <Row className="justify-content-center">
+              <Col lg="6">
+                <h1 className="display-3 text-white">
+                  404{" "}
+                  <span>Page not found!</span>
+                </h1>
+                <div className="btn-wrapper py-4">
+                  <Button
+                    className="btn-white mb-3 mb-sm-0 ml-1"
+                    color="default"
+                    to="/landing"
+                    tag={Link}
+                  >
+                    <span className="btn-inner--text">
+                      Go to homepage
+                    </span>
+                  </Button>
+                  <Button
+                    className="btn-white mb-3 mb-sm-0 ml-1"
+                    color="default"
+                    to="/landing/contact"
+                    tag={Link}
+                  >
+                    <span className="btn-inner--text">
+                      Contact
+                    </span>
+                  </Button>
+                </div>
+              </Col>
+            </Row>
+        </Container>
+      </section>
+    </div>
   </>
 )
 

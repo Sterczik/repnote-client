@@ -14,7 +14,7 @@ const TrainingRow = ({ training }) => (
       <CardBody className="py-4 card-body-flex">
         <div>
           <div className="mb-2">
-            <img style={{width: 50 + 'px'}} className="img-fluid rounded-circle shadow" src={training.user.avatar} alt="img" />
+            <img style={{width: 60 + 'px', height: 60 + 'px'}} className="trainings-image img-fluid rounded-circle shadow" src={training.user.avatar} alt="img" />
             <span className="description ml-2">
               <Link
                 to={'/users/' + training.user.slug}

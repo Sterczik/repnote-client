@@ -75,12 +75,14 @@ export default (state = initialState, action) => {
     // Social Login
     case authConstants.SOCIAL_LOGIN_IN_PROCESS:
       return {
+        ...state,
         loggingIn: true,
         loggedIn: false,
         user: {}
       }
     case authConstants.SOCIAL_LOGIN_SUCCESS:
       return {
+        ...state,
         loggingIn: false,
         loggedIn: true,
         user: {
@@ -90,6 +92,7 @@ export default (state = initialState, action) => {
       }
     case authConstants.SOCIAL_LOGIN_FAILURE:
       return {
+        ...state,
         loggingIn: false,
         loggedIn: false,
         user: {}

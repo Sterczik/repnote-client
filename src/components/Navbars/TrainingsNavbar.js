@@ -73,8 +73,47 @@ class TrainingsNavbar extends Component {
                       <span className="nav-link-inner--text">Contact us</span>
                     </NavLink>
                   </NavItem>
+                  <div className="d-block d-lg-none">
+                    { this.props.isAuthenticated ? (
+                      <>
+                        <NavItem>
+                          <NavLink to="/trainings/create" tag={Link}>
+                            <span className="nav-link-inner--text">Create training</span>
+                          </NavLink>
+                        </NavItem>
+                        <NavItem>
+                          <NavLink to="/account" tag={Link}>
+                            <span className="nav-link-inner--text">My account</span>
+                          </NavLink>
+                        </NavItem>
+                        <NavItem>
+                          <NavLink to="/account/change-password" tag={Link}>
+                            <span className="nav-link-inner--text">Change password</span>
+                          </NavLink>
+                        </NavItem>
+                        <NavItem>
+                          <NavLink onClick={this.props.logout}>
+                            <span className="nav-link-inner--text">Logout</span>
+                          </NavLink>
+                        </NavItem>
+                      </>
+                    ) : (
+                      <>
+                        <NavItem>
+                          <NavLink to="/auth/login" tag={Link}>
+                            <span className="nav-link-inner--text">Login</span>
+                          </NavLink>
+                        </NavItem>
+                        <NavItem>
+                          <NavLink to="/auth/register" tag={Link}>
+                            <span className="nav-link-inner--text">Register</span>
+                          </NavLink>
+                        </NavItem>
+                      </>
+                    ) }
+                  </div>
                 </Nav>
-                <Nav className="navbar-nav-hover align-items-lg-center ml-lg-auto" navbar>
+                <Nav className="navbar-nav-hover align-items-lg-center ml-lg-auto d-none d-lg-flex" navbar>
                   { this.props.isAuthenticated ? (
                     <UncontrolledDropdown nav>
                       <DropdownToggle nav>

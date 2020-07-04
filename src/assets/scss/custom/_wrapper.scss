@@ -1,0 +1,14 @@
+.social-btn-wrapper {
+  .btn {
+    @include media-breakpoint-down(xs) {
+      width: 100%;
+    }
+  }
+
+  .btn:not(:last-child) {
+    margin-bottom: 10px;
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 0;
+    }
+  }
+}

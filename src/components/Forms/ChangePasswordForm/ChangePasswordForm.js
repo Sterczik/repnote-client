@@ -89,7 +89,7 @@ const ChangePasswordForm = ({
           color="primary"
           type="submit"
         >
-          Sign in
+          Submit
         </Button>
       </div>
     </Form>

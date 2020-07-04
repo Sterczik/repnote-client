@@ -32,7 +32,7 @@ export const LoginPage = () => (
                 <div className="text-muted text-center mb-3">
                   <small>Sign in with</small>
                 </div>
-                <div className="btn-wrapper text-center">
+                <div className="social-btn-wrapper text-center">
                   <Facebook />
                   <Google />
                 </div>

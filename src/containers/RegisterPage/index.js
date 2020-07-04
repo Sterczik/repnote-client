@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import { Link } from 'react-router-dom'
 import Google from 'components/SocialLogin/Google'
 import Facebook from 'components/SocialLogin/Facebook'
 import RegisterForm from 'components/Forms/RegisterForm/RegisterForm'
@@ -31,7 +32,7 @@ export const RegisterPage = () => (
                 <div className="text-muted text-center mb-3">
                   <small>Sign up with</small>
                 </div>
-                <div className="btn-wrapper text-center">
+                <div className="social-btn-wrapper text-center">
                   <Facebook />
                   <Google />
                 </div>
@@ -43,6 +44,13 @@ export const RegisterPage = () => (
                 <RegisterForm />
               </CardBody>
             </Card>
+            <Row className="mt-3">
+              <Col xs="6">
+                <Link className="text-white" to="/auth/login">
+                  <small>Sign in</small>
+                </Link>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>

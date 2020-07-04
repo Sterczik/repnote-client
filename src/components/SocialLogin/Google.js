@@ -11,7 +11,7 @@ const Google = (props) => (
     clientId="156518502870-pdubhnv4g7vasi3sjdjhkltt1t2s3nrs.apps.googleusercontent.com"
     render={renderProps => (
       <Button
-        className="btn-neutral btn-icon ml-1"
+        className="btn-neutral btn-icon"
         color="default"
         disabled={renderProps.disabled}
         onClick={renderProps.onClick}

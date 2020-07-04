@@ -57,8 +57,6 @@ class AccountPage extends Component {
               </svg>
             </div>
           </section>
-
-
           <section className="section pt-4">
             <Container>
               { !this.props.userInfoState.isLoaded ? (

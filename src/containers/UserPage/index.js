@@ -66,7 +66,6 @@ class UserPage extends Component {
                             <div>
                               <img
                                 alt="Avatar"
-                                style={{ width: 180 + 'px', height: 180 + 'px' }}
                                 className="rounded-circle"
                                 src={ this.props.userProfile.avatar }
                               />

@@ -9,7 +9,7 @@ import {
 } from 'reactstrap'
 
 const TrainingRow = ({ training }) => (
-  <Col lg="12" className="mb-3">
+  <Col lg="12" className="mb-4 mt-0">
     <Card className="shadow border-0">
       <CardBody className="py-4 card-body-flex">
         <div>

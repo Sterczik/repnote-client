@@ -13,29 +13,21 @@
 .profile-page,
 .training-page {
     .card-profile {
-        margin-top: -150px;
+        margin-top: -120px;
     }
 
     .card-profile-image,
     .card-training-image {
         position: relative;
-
         img {
-            max-width: 180px;
+            width: 180px;
+            height: 180px;
             border-radius: $border-radius;
             @extend .shadow;
             transform: translate(-50%,-30%);
             position: absolute;
             left: 50%;
             transition: $transition-base;
-        }
-    }
-
-    .card-profile-image.is-editable {
-        img {
-            &:hover {
-                transform: translate(-50%, -33%);
-            }
         }
     }
 
@@ -64,9 +56,20 @@
         }
     }
 
+    .card-training-stats {
+        padding-top: 120px;
+        @include media-breakpoint-up(md) {
+            padding-top: 50px;
+        }
+        @include media-breakpoint-up(lg) {
+            padding: 1rem 0;
+        }
+    }
+
     .card-profile-actions,
     .card-training-actions {
-        padding: 0
+        padding: 0;
+        height: 76px;
     }
 
     @include media-breakpoint-down(xs) {
@@ -77,8 +80,7 @@
     }
 
     @include media-breakpoint-between(sm, md) {
-        .card-profile-stats,
-        .card-training-stats {
+        .card-profile-stats {
             margin-top: 30px;
         }
     }

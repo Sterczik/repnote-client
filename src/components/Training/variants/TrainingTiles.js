@@ -9,7 +9,7 @@ import {
 } from 'reactstrap'
 
 const TrainingTiles = ({ training, showUser = true }) => (
-  <Col lg="4" className="mb-4">
+  <Col lg="4" className="mb-4 mt-0">
     <Card className="shadow border-0">
       <CardBody className="py-4 card-body-flex">
         <div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {
+  Badge,
   Card,
   Row,
   Col,
@@ -20,7 +21,6 @@ const TrainingShow = (props) => (
                 <div className="card-training-image">
                   <img
                     alt="Avatar"
-                    style={{ width: 180 + 'px', height: 180 + 'px' }}
                     className="rounded-circle"
                     src={props.trainingData.training.user.avatar}
                   />
@@ -30,7 +30,7 @@ const TrainingShow = (props) => (
                 className="order-lg-3 text-lg-right align-self-lg-center"
                 lg="4"
               >
-                <div className="card-training-actions py-4 mt-lg-0">
+                <div className="card-training-actions py-4 mt-lg-0 d-none d-md-block">
                   { !props.trainingData.training.isOwner && props.isAuthenticated
                     ? (
                       <>
@@ -106,37 +106,30 @@ const TrainingShow = (props) => (
                 </div>
               </Col>
             </Row>
-            <div className="text-center mt-3">
-              <h3>{ props.trainingData.training.user.name }</h3>
+            <div className="text-center mt-0 mt-lg-4">
+              <h5 className="display-5">{ props.trainingData.training.user.name }</h5>
             </div>
-            <div className="mt-3 py-3 border-top text-center">
+            <div className="py-3 text-center">
               <Row className="mb-2 text-center">
-                <Col>
-                  <h4 className="display-4">Name</h4>
-                  <h5 className="display-5">{ props.trainingData.training.name }</h5>
+                <Col lg="12">
+                  <h4>{ props.trainingData.training.name }</h4>
                 </Col>
               </Row>
-              <Row className="mb-2 text-center">
-                <Col>
-                  <h4 className="display-4">Category</h4>
-                  <h5 className="display-5">{props.trainingData.training.category.name}</h5>
-                </Col>
-              </Row>
-              <Row className="mb-2 text-center">
-                <Col>
-                  <h4 className="display-4">Advancement Level</h4>
-                  <h5 className="display-5">{props.trainingData.training.advancementLevel.name}</h5>
-                </Col>
+              <Row className="mb-4 d-flex justify-content-center align-items-center">
+                <Badge color="info" pill className="mr-1 mt-1">
+                  { props.trainingData.training.category.name }
+                </Badge>
+                <Badge color="danger" pill className="mt-1">
+                  { props.trainingData.training.advancementLevel.name }
+                </Badge>
               </Row>
               <Row className="mb-2 text-center">
                 <Col lg="12">
-                  <h4 className="display-4">Goal</h4>
-                  <h5 className="display-5">{props.trainingData.training.goal}</h5>
+                  <h5>{props.trainingData.training.goal}</h5>
                 </Col>
               </Row>
-              <Row className="mb-2 text-center">
+              <Row className="text-center">
                 <Col lg="12">
-                  <h4 className="display-4">Description</h4>
                   <p>{ props.trainingData.training.description }</p>
                 </Col>
               </Row>
@@ -146,26 +139,111 @@ const TrainingShow = (props) => (
                 <div key={subtraining.id}>
                   <Row className="mb-2 text-center">
                     <Col lg="12">
-                      <h4 className="display-4">{ subtraining.name }</h4>
+                      <h4>{ subtraining.name }</h4>
+                    </Col>
+                  </Row>
+                  <Row className="mb-2 text-center">
+                    <Col lg="12">
+                      <h5 class="heading">Exercises:</h5>
                     </Col>
                   </Row>
                   { subtraining.exercises.map((exercise) => (
-                    <Row className="mb-2 text-center" key={exercise.id}>
+                    <Row className="mb-3 text-center" key={exercise.id}>
                       <Col lg="12">
-                        <h5 className="display-5">{ exercise.name }</h5>
+                        <h5>{ exercise.name }</h5>
+                        <Badge color="primary" pill className="mr-1 mb-3">
+                          { exercise.category.name }
+                        </Badge>
+                        <Badge color="primary" pill className="mb-3">
+                          Rounds: { exercise.rounds.length }
+                        </Badge>
                       </Col>
                       <Col lg="12">
-                        { exercise.rounds.map((round) => (
-                          <div className="mb-3" key={round.id}>
-                            <p className="mb-0">Weight: { round.weight } kg</p>
-                            <p className="mb-0">Reps: { round.reps }</p>
-                          </div>
-                        )) }
+                        <table className="table table-sm table-borderless table-center table-300">
+                          <thead>
+                            <tr>
+                              <th>Weight</th>
+                              <th>Reps</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            { exercise.rounds.map((round) => (
+                              <>
+                                <tr>
+                                  <td>{round.weight} kg</td>
+                                  <td>{round.reps}</td>
+                                </tr>
+                              </>
+                            )) }
+                          </tbody>
+                        </table>
                       </Col>
                     </Row>
                   )) }
                 </div>
               )) }
+            </div>
+            <div className="pb-4 d-flex justify-content-center d-md-none">
+              { !props.trainingData.training.isOwner && props.isAuthenticated
+                ? (
+                  <>
+                    <Button
+                      type="button"
+                      onClick={() => props.cloneTraining(props.trainingData.training.id)}
+                      color="info"
+                      size="sm"
+                    >
+                      Clone
+                    </Button>
+                    { !props.trainingData.training.liked ? (
+                      <Button
+                        type="button"
+                        onClick={() => props.likeTraining(props.trainingData.training.id, true)}
+                        color="primary"
+                        size="sm"
+                      >
+                        Like <i className="fa fa-heart" />
+                      </Button>
+                    ) : (
+                      <Button
+                        type="button"
+                        onClick={() => props.likeTraining(props.trainingData.training.id, false)}
+                        color="danger"
+                        size="sm"
+                      >
+                        Unlike <i className="fa fa-heart" />
+                      </Button>
+                    ) }
+                  </>
+                )
+                : null }
+              { props.trainingData.training.isOwner ? (
+                <>
+                  <Button
+                    color="default"
+                    size="sm"
+                    onClick={() => props.removeTraining(props.trainingData.training.id)}
+                  >
+                    Delete
+                  </Button>
+                  <Button
+                    color="default"
+                    size="sm"
+                    onClick={() => props.switchTrainingStatus(props.trainingData.training.id)}
+                  >
+                    Change Status
+                  </Button>
+                  <Button
+                    className="float-right"
+                    color="default"
+                    size="sm"
+                    to={'/trainings/' + props.trainingData.training.id + '/edit'}
+                    tag={Link}
+                  >
+                    Edit
+                  </Button>
+                </>
+              ) : null }
             </div>
           </div>
         </Card>

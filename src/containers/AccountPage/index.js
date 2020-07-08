@@ -70,11 +70,10 @@ class AccountPage extends Component {
                     <div className="px-4">
                       <Row className="justify-content-center">
                         <Col className="order-lg-2" lg="3">
-                          <div className="card-profile-image is-editable">
-                            <div onClick={() => this.toggleModal("changeAvatarModal")}>
+                          <div className="card-profile-image">
+                            <div>
                               <img
                                 alt="Avatar"
-                                style={{ width: 180 + 'px', height: 180 + 'px' }}
                                 className="rounded-circle"
                                 src={ this.props.userInfo.avatar }
                               />
@@ -127,6 +126,14 @@ class AccountPage extends Component {
                           <span><i className={`fa fa-${this.props.userInfo.provider}`}/></span>
                         </div>
                         <div className="text-center">
+                          <Button
+                            color="default"
+                            size="sm"
+                            type="button"
+                            onClick={() => this.toggleModal("changeAvatarModal")}
+                          >
+                            Edit avatar
+                          </Button>
                           <Button
                             color="default"
                             data-dismiss="modal"

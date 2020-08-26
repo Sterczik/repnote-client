@@ -26,6 +26,10 @@
 
 // Negative margins and paddings
 
+.mt--1 {
+    margin-top: -1rem !important;
+}
+
 @media(min-width: 992px) {
     [class*="mt--"],
     [class*="mr--"],

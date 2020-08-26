@@ -17,7 +17,7 @@ const Toolbar = (props) => (
       <Col xs="6" className="mb-3 d-flex align-items-center">
         <Total />
       </Col>
-      <Col xs="6" className="mb-3 d-flex justify-content-end">
+      <Col xs="6" className="mb-3 d-none d-lg-flex justify-content-end">
         <TrainingVariant />
       </Col>
     </Row>

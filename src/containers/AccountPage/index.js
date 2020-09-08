@@ -38,7 +38,7 @@ class AccountPage extends Component {
         >
           <meta name="description" content="My Account" />
         </Helmet>
-        <main className="profile-page">
+        <div className="profile-page">
           <section className="section-profile-cover section-shaped my-0">
             <div className="shape shape-style-1 bg-gradient-info"></div>
             <div className="separator separator-bottom separator-skew">
@@ -207,7 +207,7 @@ class AccountPage extends Component {
               ) }
             </Container>
           </section>
-        </main>     
+        </div>     
       </>
     )
   }

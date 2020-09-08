@@ -195,7 +195,10 @@ export default (state = initialState, action) => {
     case authConstants.EDIT_PROFILE_SUCCESS:
       return {
         ...state,
-        userInfo: action.userInfo
+        userInfo: {
+          ...action.userInfo,
+          followersLength: action.userInfo.followers.length
+        }
       }
     case authConstants.EDIT_PROFILE_FAILURE:
       return {

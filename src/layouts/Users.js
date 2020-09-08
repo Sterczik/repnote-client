@@ -8,7 +8,6 @@ import SimpleNavbar from 'components/Navbars/SimpleNavbar'
 import SimpleFooter from 'components/Footers/SimpleFooter'
 
 class Users extends Component {
-  state = {}
   componentDidMount() {
     document.documentElement.scrollTop = 0
     document.scrollingElement.scrollTop = 0
@@ -19,7 +18,7 @@ class Users extends Component {
       return (
         <>
           <SimpleNavbar />
-          <main ref="main">
+          <main ref="main" className="layout_users">
             <Switch>{ getRoutes(routes, 'users') }</Switch>
           </main>
           <SimpleFooter />

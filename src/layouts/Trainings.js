@@ -13,7 +13,7 @@ class Trainings extends Component {
       return (
         <>
           <TrainingsNavbar />
-          <main ref="main">
+          <main ref="main" className="layout_trainings">
             <Switch>{ getRoutes(routes, 'trainings') }</Switch>
           </main>
           <SimpleFooter />

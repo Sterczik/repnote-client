@@ -170,3 +170,56 @@
         }
     }
 }
+
+
+// flex styles for footer positioning
+
+body {
+    > #root {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        > main {
+            &.layout_account {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                > .section.section-shaped.section-lg {
+                    flex: 1;
+                }
+            }
+            &.layout_auth {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                > .section.section-shaped.section-lg {
+                    flex: 1;
+                }
+            }
+            &.layout_landing {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                > .position-relative {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    > .section.section-shaped.section-lg {
+                        flex: 1;
+                    }
+                }
+            }
+            &.layout_trainings {
+                flex: 1;
+            }
+            &.layout_users {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                > .section.section-shaped.section-lg {
+                    flex: 1;
+                }
+            }
+        }
+    }
+}

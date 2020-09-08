@@ -26,7 +26,6 @@ const routes = [
   {
     path: "",
     name: "Home",
-    icon: "",
     component: HomePage,
     layout: "/landing",
     type: "Normal"
@@ -34,7 +33,6 @@ const routes = [
   {
     path: "/contact",
     name: "Contact",
-    icon: "",
     component: ContactPage,
     layout: "/landing",
     type: "Normal"
@@ -42,7 +40,6 @@ const routes = [
   {
     path: "/register",
     name: "Register",
-    icon: "",
     component: RegisterPage,
     layout: "/auth",
     type: "Public"
@@ -50,7 +47,6 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    icon: "",
     component: LoginPage,
     layout: "/auth",
     type: "Public"
@@ -58,7 +54,6 @@ const routes = [
   {
     path: "/:name",
     name: "User",
-    icon: "",
     component: UserPage,
     layout: "/users",
     type: "Normal"
@@ -66,7 +61,6 @@ const routes = [
   {
     path: "",
     name: "Account",
-    icon: "",
     component: AccountPage,
     layout: "/account",
     type: "Private"
@@ -74,7 +68,6 @@ const routes = [
   {
     path: "/change-password",
     name: "Change password",
-    icon: "",
     component: ChangePasswordPage,
     layout: "/account",
     type: "Private"
@@ -82,7 +75,6 @@ const routes = [
   {
     path: "",
     name: "Trainings",
-    icon: "",
     component: TrainingsPage,
     layout: "/trainings",
     type: "Normal"
@@ -90,7 +82,6 @@ const routes = [
   {
     path: "/create",
     name: "Create Training",
-    icon: "",
     component: CreateTrainingPage,
     layout: "/trainings",
     type: "Private"
@@ -98,7 +89,6 @@ const routes = [
   {
     path: "/:id",
     name: "Training",
-    icon: "",
     component: TrainingPage,
     layout: "/trainings",
     type: "Normal"
@@ -106,7 +96,6 @@ const routes = [
   {
     path: "/:id/edit",
     name: "Edit Training",
-    icon: "",
     component: EditTrainingPage,
     layout: "/trainings",
     type: "Private"
@@ -114,7 +103,6 @@ const routes = [
   {
     path: "*",
     name: "NotFound",
-    icon: "",
     component: NotFoundPage,
     layout: "/landing",
     type: "Normal"
@@ -122,7 +110,6 @@ const routes = [
   {
     path: "",
     name: "NotFound",
-    icon: "",
     component: NotFoundPage,
     layout: "/users",
     type: "Normal"
@@ -130,7 +117,6 @@ const routes = [
   {
     path: "*",
     name: "NotFound",
-    icon: "",
     component: NotFoundPage,
     layout: "/account",
     type: "Private"
@@ -138,7 +124,6 @@ const routes = [
   {
     path: "/:id/*",
     name: "NotFound",
-    icon: "",
     component: NotFoundPage,
     layout: "/trainings",
     type: "Private"
@@ -146,7 +131,6 @@ const routes = [
   {
     path: "*",
     name: "NotFound",
-    icon: "",
     component: NotFoundPage,
     layout: "/auth",
     type: "Public"

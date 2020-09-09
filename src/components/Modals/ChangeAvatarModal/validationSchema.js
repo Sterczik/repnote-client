@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 
-const avatarSize = 15 * 1024
-const avatarFormats = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png']
+const avatarSize = 100 * 1024
+const avatarFormats = ['image/jpg', 'image/jpeg', 'image/png']
 
 export default Yup.object().shape({
   file: Yup.mixed()

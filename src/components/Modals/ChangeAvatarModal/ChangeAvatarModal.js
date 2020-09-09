@@ -58,6 +58,8 @@ class ChangeAvatarModal extends Component {
                   </button>
                 </div>
                 <div className="modal-body">
+                  <h6 className="display-6">Max size: 100 kB</h6>
+                  <h6 className="display-6">Available formats: jpg, jpeg, png</h6>
                   <Field
                     name="file"
                     component={CustomImageInput}
@@ -68,19 +70,6 @@ class ChangeAvatarModal extends Component {
                     style={{ display: "flex" }}
                     onBlur={handleBlur}
                   />
-                  {/* <pre>
-                    {values.file
-                      ? JSON.stringify(
-                          {
-                            fileName: values.file.name,
-                            type: values.file.type,
-                            size: `${values.file.size} bytes`
-                          },
-                          null,
-                          2
-                        )
-                      : null}
-                  </pre> */}
                 </div>
                 <div className="modal-footer">
                   <Button

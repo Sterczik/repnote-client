@@ -45,7 +45,7 @@ class CustomImageInput extends Component {
       comp = <div>{ errorMessage }</div>
     } else if (file) {
       comp = (
-        <img src={imagePreviewUrl} alt="..." />
+        <img style={{ maxWidth: 100 + '%' }} src={imagePreviewUrl} alt="..." />
       )
     } else {
       comp = <div></div>
@@ -72,10 +72,6 @@ class CustomImageInput extends Component {
         <div onClick={this.showFileUpload}>
           {this.showPreloadImage()}
         </div>
-
-        {/* {errorMessage ? (
-          <span>{errorMessage}</span>
-        ) : null} */}
       </div>
     )
   }

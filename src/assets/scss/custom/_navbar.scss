@@ -46,9 +46,6 @@
 }
 
 @include media-breakpoint-up(lg) {
-    // .navbar-main {
-    //     padding: 1rem 0;
-    // }
 
     .navbar-nav {
         .nav-item {
@@ -86,7 +83,8 @@
             opacity: 0; 
             pointer-events: none;
             margin: 0;
-            left: 0;
+            right: 0;
+            left: initial !important;
 
             &:before {
                 background: $dropdown-bg;
@@ -95,7 +93,7 @@
                 display: block;
                 height: 16px;
                 width: 16px;
-                left: 3px;
+                right: 26px;
                 position: absolute;
                 bottom: 100%;
                 transform: rotate(-45deg) translateY(1rem);
@@ -131,8 +129,7 @@
                 opacity: 0; 
                 display: block;
                 pointer-events: none;
-                transform: translate(0, 10px) perspective(200px) rotateX(-2deg);
-                transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
+                transition: visibility 0.25s, opacity 0.25s;
             }
 
             .nav-item.dropdown:hover > .dropdown-menu {
@@ -142,6 +139,8 @@
                 visibility: visible;
                 transform: translate(0, 0);
                 animation: none;
+                top: initial !important;
+                transform: initial !important;
             }
         }
         

@@ -24,10 +24,11 @@ export function getTraining(id) {
   return (dispatch) => {
     dispatch(getTrainingInProcess())
 
-    ServiceTrainings.getTraining(id)
+    const response = ServiceTrainings.getTraining(id)
       .then((res) => {
         const training = res.data
         dispatch(getTrainingSuccess(training))
+        return true
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
@@ -38,7 +39,10 @@ export function getTraining(id) {
             message: 'Something went wrong!'
           }))
         }
+        return false
       })
+
+    return response
   }
 }
 

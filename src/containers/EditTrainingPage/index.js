@@ -37,21 +37,22 @@ class EditTrainingPage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  async componentDidMount() {
-    await this.props.getTraining(this.props.match.params.id)
-
-    setTimeout(() => {
-      this.setState({
-        name: this.props.training.name,
-        description: this.props.training.description,
-        goal: this.props.training.goal,
-        private: this.props.training.private ? '1' : '0',
-        category: this.props.training.category_id,
-        advancementLevel: this.props.training.advancement_level_id,
-        daysPerWeek: this.props.training.days_per_week,
-        subtrainings: this.props.training.subtrainings
+  componentDidMount() {
+    this.props.getTraining(this.props.match.params.id)
+      .then((status) => {
+        if (status) {
+          this.setState({
+            name: this.props.training.name,
+            description: this.props.training.description,
+            goal: this.props.training.goal,
+            private: this.props.training.private ? '1' : '0',
+            category: this.props.training.category_id,
+            advancementLevel: this.props.training.advancement_level_id,
+            daysPerWeek: this.props.training.days_per_week,
+            subtrainings: this.props.training.subtrainings
+          })
+        }
       })
-    }, 800)
   }
 
   addSubtraining = (e) => {

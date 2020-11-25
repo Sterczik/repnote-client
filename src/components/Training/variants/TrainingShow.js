@@ -125,7 +125,14 @@ class TrainingShow extends Component {
                   </Col>
                 </Row>
                 <div className="text-center mt-0 mt-lg-4">
-                  <h5 className="display-5">{ this.props.trainingData.training.user.name }</h5>
+                  <h5 className="display-5">
+                    <Link
+                      to={'/users/' + this.props.trainingData.training.user.slug}
+                      className="h5"
+                    >
+                      { this.props.trainingData.training.user.name }
+                    </Link>
+                  </h5>
                 </div>
                 <div className="py-3 text-center">
                   <Row className="mb-2 text-center">

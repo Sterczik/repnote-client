@@ -1,0 +1,7 @@
+.header-global {
+    &.header-sticky {
+        position: sticky;
+        z-index: 1071;
+        top: 0;
+    }
+}

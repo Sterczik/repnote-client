@@ -22,7 +22,7 @@ class TrainingsNavbar extends Component {
   render() {
     return (
       <>
-        <header className="header-global">
+        <header className="header-global header-sticky">
           <Navbar
             className="navbar-dark bg-default navbar"
             expand="lg"
@@ -113,7 +113,7 @@ class TrainingsNavbar extends Component {
                     ) }
                   </div>
                 </Nav>
-                <Nav className="navbar-nav-hover align-items-lg-center ml-lg-auto d-none d-lg-flex" navbar>
+                <Nav className="align-items-lg-center ml-lg-auto d-none d-lg-flex" navbar>
                   { this.props.isAuthenticated ? (
                     <UncontrolledDropdown nav>
                       <DropdownToggle nav>

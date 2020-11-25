@@ -30,7 +30,7 @@ class TrainingsPage extends Component {
         >
           <meta name="description" content="All trainings" />
         </Helmet>
-        <section className="section">
+        <section className="section pb-4 pt-5">
           <Container>
             <Toolbar />
             <Filters />

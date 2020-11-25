@@ -118,7 +118,7 @@ class SimpleNavbar extends Component {
                     ) }
                   </div>
                 </Nav>
-                <Nav className="navbar-nav-hover align-items-lg-center ml-lg-auto d-none d-lg-flex" navbar>
+                <Nav className="align-items-lg-center ml-lg-auto d-none d-lg-flex" navbar>
                   { this.props.isAuthenticated ? (
                     <UncontrolledDropdown nav>
                       <DropdownToggle nav>

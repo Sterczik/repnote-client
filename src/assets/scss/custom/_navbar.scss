@@ -111,6 +111,7 @@
 
         &:not(.navbar-nav-hover) {
             .dropdown-menu {
+                top: 100% !important;
                 &.show {
                     opacity: 1;
                     pointer-events: auto;

@@ -11,7 +11,7 @@ import ListLimit from './elements/ListLimit'
 import Total from './elements/Total'
 import TrainingVariant from './elements/TrainingVariant'
 
-const Toolbar = (props) => (
+const Toolbar = () => (
   <>
     <Row>
       <Col xs="6" className="mb-3 d-flex align-items-center">

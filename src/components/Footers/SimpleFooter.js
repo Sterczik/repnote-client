@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
 import {
   NavItem,
   NavLink,
@@ -11,6 +12,10 @@ import {
 
 class SimpleFooter extends Component {
   render() {
+    const { t, i18n } = this.props
+    const changeLanguage = lng => {
+      i18n.changeLanguage(lng)
+    }
     return (
       <>
         <footer className="footer footer-dark">
@@ -30,12 +35,14 @@ class SimpleFooter extends Component {
               </Col>
               <Col xs="5">
                 <Nav className="nav-footer justify-content-end">
+                  <button onClick={() => changeLanguage('en')}>en</button>
+                  <button onClick={() => changeLanguage('pl')}>pl</button>
                   <NavItem>
                     <NavLink
                       to="/landing/contact"
                       tag={Link}
                     >
-                      Contact us
+                      { t('components.footer.contact') }
                     </NavLink>
                   </NavItem>
                 </Nav>
@@ -48,4 +55,4 @@ class SimpleFooter extends Component {
   }
 }
 
-export default SimpleFooter
+export default withTranslation()(SimpleFooter)

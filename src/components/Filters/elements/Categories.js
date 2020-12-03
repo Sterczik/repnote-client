@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withTranslation } from 'react-i18next'
 
 import {
   Input,
@@ -28,6 +29,7 @@ class Categories extends Component {
   }
 
   render() {
+    const { t } = this.props
     return (
       <InputGroup className="input-group-alternative mb-3">
         <InputGroupAddon addonType="prepend">
@@ -43,7 +45,7 @@ class Categories extends Component {
           className="form-control-alternative"
         >
           <option key="0" value="0">
-            Training category
+            { t('components.filters.trainingCategory') }
           </option>
           { this.props.trainingCategories && this.props.trainingCategories.map((trainingCategory) => (
             <option key={trainingCategory.id} value={trainingCategory.id}>
@@ -66,4 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
   setTrainingCategoryFilter: (value) => dispatch(setTrainingCategoryFilter(value))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Categories)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Categories))

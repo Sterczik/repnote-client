@@ -9,6 +9,8 @@ import { history } from 'helpers/history'
 
 import * as serviceWorker from 'serviceWorker'
 
+import './i18n'
+
 // Styles
 import 'assets/vendor/nucleo/css/nucleo.css'
 import 'assets/vendor/font-awesome/css/font-awesome.min.css'

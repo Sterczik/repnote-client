@@ -1,0 +1,90 @@
+{
+  "global": {
+    "errors": {
+      "internalServerError": "Coś poszło nie tak"
+    }
+  },
+  "components": {
+    "navbar": {
+      "home": "Strona główna",
+      "trainings": "Treningi",
+      "contact": "Skontaktuj się",
+      "createTraining": "Stwórz trening",
+      "account": "Moje konto",
+      "changePassword": "Zmień hasło",
+      "logout": "Wyloguj",
+      "login": "Zaloguj się",
+      "register": "Zarejestruj się"
+    },
+    "footer": {
+      "contact": "Skontaktuj się"
+    },
+    "forms": {
+      "contact": {
+        "success": "Wysłanie wiadomości powiodło się",
+        "name": "Twoje imię",
+        "email": "Adres email",
+        "textarea": "Napisz wiadomość...",
+        "submit": "Wyślij wiadomość",
+        "nameValidation": {
+          "required": "Wpisz swoje imię"
+        }
+      }
+    },
+    "toolbar": {
+      "total": "Znaleziono treningów:",
+      "search": "Wyszukaj"
+    },
+    "filters": {
+      "advancementLevel": "Poziom zaawansowania",
+      "trainingCategory": "Kategoria treningu"
+    },
+    "training": {
+      "open": "Otwórz trening",
+      "loading": "Ładowanie...",
+      "clone": "Sklonuj",
+      "delete": "Usuń",
+      "edit": "Edytuj",
+      "likes": "Polubień",
+      "changeStatus": "Zmień status",
+      "like": "Lubię to",
+      "unlike": "Nie lubię tego",
+      "exercises": "Ćwiczenia",
+      "rounds": "Serii",
+      "weight": "Obciążenie",
+      "reps": "Powtórzeń"
+    },
+    "modals": {
+      
+    }
+  },
+  "views": {
+    "homepage": {
+      "mainHeadline1": "Twórz swoje treningi",
+      "mainHeadline2": "i dziel się nimi z ludźmi",
+      "text": "Z RepNote, możesz tworzyć swoje unikalne treningi tylko dla siebie, albo udostępniać je dla innych ludzi.",
+      "init": "Zacznij teraz",
+      "contact": "Kontakt",
+      "features": {
+        "headline": "Przydatne funkcje",
+        "text": "RepNote posiada sporo przydatnych funkcji, które pomogą Ci w utworzeniu najlepszych treningów."
+      },
+      "favourites": {
+        "headline": "Twoje ulubione treningi",
+        "icon1": "Wsparcie",
+        "icon2": "Dostosowanie do potrzeb",
+        "icon3": "Przyjazne UI"
+      },
+      "contactForm": {
+        "headline": "Chcesz się skontaktować?",
+        "text": "Twoja opinia jest dla nas ważna."
+      }
+    },
+    "contactpage": {
+      "contactForm": {
+        "headline": "Chcesz się skontaktować?",
+        "text": "Twoja opinia jest dla nas ważna."
+      }
+    }
+  }
+}

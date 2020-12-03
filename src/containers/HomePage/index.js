@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
 
 import {
   Button,
@@ -15,6 +16,7 @@ import ContactForm from 'components/Forms/ContactForm/ContactForm'
 
 class HomePage extends Component {
   render() {
+    const { t } = this.props
     return (
       <>
         <Helmet
@@ -38,11 +40,11 @@ class HomePage extends Component {
                 <Row>
                   <Col lg="6">
                     <h1 className="display-3 text-white">
-                      Create your trainings{" "}
-                      <span>share with people</span>
+                      { t('views.homepage.mainHeadline1') }{" "}
+                      <span>{ t('views.homepage.mainHeadline2') }</span>
                     </h1>
                     <p className="lead text-white">
-                      With RepNote, you can create your unique trainings for yourself, or share them with other people.
+                      { t('views.homepage.text') }
                     </p>
                     <div className="btn-wrapper">
                       <Button
@@ -54,7 +56,7 @@ class HomePage extends Component {
                         <span className="btn-inner--icon mr-1">
                           <i className="fa fa-check" />
                         </span>
-                        <span className="btn-inner--text">Start now</span>
+                        <span className="btn-inner--text">{ t('views.homepage.init') }</span>
                       </Button>
                       <Button
                         className="btn-white mb-3 mb-sm-0 ml-1"
@@ -63,7 +65,7 @@ class HomePage extends Component {
                         tag={Link}
                       >
                         <span className="btn-inner--text">
-                          Contact
+                          { t('views.homepage.contact') }
                         </span>
                       </Button>
                     </div>
@@ -94,9 +96,9 @@ class HomePage extends Component {
             <Row className="row-grid align-items-center">
               <Col className="order-lg-1" lg="8">
                 <div className="pr-lg-5">
-                  <h3>Great features</h3>
+                  <h3>{ t('views.homepage.features.headline') }</h3>
                   <p className="lead">
-                    RepNote comes with bunch of features which will help you create your best trainings.
+                    { t('views.homepage.features.text') }
                   </p>
                 </div>
               </Col>
@@ -108,7 +110,7 @@ class HomePage extends Component {
           <Container className="pt-lg pb-300">
             <Row className="text-center justify-content-center">
               <Col>
-                <h2 className="display-3 text-white">Favourites trainings</h2>
+                <h2 className="display-3 text-white">{ t('views.homepage.favourites.headline') }</h2>
               </Col>
             </Row>
             <Row className="row-grid mt-5">
@@ -116,19 +118,19 @@ class HomePage extends Component {
                 <div className="icon icon-md icon-shape bg-gradient-white shadow rounded-circle text-primary">
                   <i className="ni ni-settings text-primary" />
                 </div>
-                <h5 className="text-white mt-3">Support</h5>
+                <h5 className="text-white mt-3">{ t('views.homepage.favourites.icon1') }</h5>
               </Col>
               <Col md="4" className="text-center">
                 <div className="icon icon-md icon-shape bg-gradient-white shadow rounded-circle text-primary">
                   <i className="ni ni-ruler-pencil text-primary" />
                 </div>
-                <h5 className="text-white mt-3">Customization</h5>
+                <h5 className="text-white mt-3">{ t('views.homepage.favourites.icon2') }</h5>
               </Col>
               <Col md="4" className="text-center">
                 <div className="icon icon-md icon-shape bg-gradient-white shadow rounded-circle text-primary">
                   <i className="ni ni-atom text-primary" />
                 </div>
-                <h5 className="text-white mt-3">Friendly UI</h5>
+                <h5 className="text-white mt-3">{ t('views.homepage.favourites.icon3') }</h5>
               </Col>
             </Row>
           </Container>
@@ -155,9 +157,9 @@ class HomePage extends Component {
               <Col lg="8">
                 <Card className="bg-gradient-secondary shadow">
                   <CardBody className="p-lg-5">
-                    <h4 className="mb-1">Want to contact?</h4>
+                    <h4 className="mb-1">{ t('views.homepage.contactForm.headline') }</h4>
                     <p className="mt-0">
-                      Your feedback is very important to us.
+                      { t('views.homepage.contactForm.text') }
                     </p>
                     <ContactForm />
                   </CardBody>
@@ -171,4 +173,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage
+export default withTranslation()(HomePage)

@@ -6,6 +6,7 @@ import {
 
 import AdvancementLevels from './elements/AdvancementLevels'
 import Categories from './elements/Categories'
+import ClearFilters from './elements/ClearFilters'
 
 const Filters = () => (
   <Row>
@@ -14,6 +15,9 @@ const Filters = () => (
     </Col>
     <Col xs="12" sm="6" lg="4">
       <AdvancementLevels />
+    </Col>
+    <Col xs="12" sm="6" lg="4">
+      <ClearFilters />
     </Col>
   </Row>
 )

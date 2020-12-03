@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
 import {
   Badge,
   Card,
@@ -20,6 +21,7 @@ class TrainingShow extends Component {
     })
   }
   render() {
+    const { t } = this.props
     return (
       <>
         <Row className="justify-content-center">
@@ -49,7 +51,7 @@ class TrainingShow extends Component {
                               size="sm"
                               onClick={() => this.props.cloneTraining(this.props.trainingData.training.id)}
                             >
-                              Clone
+                              { t('components.training.clone') }
                             </Button>
                             { !this.props.trainingData.training.liked ? (
                               <Button
@@ -58,7 +60,7 @@ class TrainingShow extends Component {
                                 color="primary"
                                 size="sm"
                               >
-                                Like <i className="fa fa-heart" />
+                                { t('components.training.like') } <i className="fa fa-heart" />
                               </Button>
                             ) : (
                               <Button
@@ -67,7 +69,7 @@ class TrainingShow extends Component {
                                 color="danger"
                                 size="sm"
                               >
-                                Unlike <i className="fa fa-heart" />
+                                { t('components.training.unlike') } <i className="fa fa-heart" />
                               </Button>
                             ) }
                           </>
@@ -80,14 +82,14 @@ class TrainingShow extends Component {
                             size="sm"
                             onClick={() => this.toggleModal("removeTrainingModal")}
                           >
-                            Delete
+                            { t('components.training.delete') }
                           </Button>
                           <Button
                             color="default"
                             size="sm"
                             onClick={() => this.props.cloneTraining(this.props.trainingData.training.id)}
                           >
-                            Clone
+                            { t('components.training.clone') }
                           </Button>
                           <Button
                             className="float-right"
@@ -96,7 +98,7 @@ class TrainingShow extends Component {
                             to={'/trainings/' + this.props.trainingData.training.id + '/edit'}
                             tag={Link}
                           >
-                            Edit
+                            { t('components.training.edit') }
                           </Button>
                         </>
                       ) : null }
@@ -106,7 +108,7 @@ class TrainingShow extends Component {
                     <div className="card-training-stats d-flex justify-content-center">
                       { true && <div>
                         <span className="heading">{ this.props.trainingData.training.likesLength }</span>
-                        <span className="description">Likes</span>
+                        <span className="description">{ t('components.training.likes') }</span>
                       </div> }
                       { this.props.trainingData.training.isOwner && <div>
                         <span className="heading">{ this.props.trainingData.training.private ? 'Private' : 'Public' }</span>
@@ -119,7 +121,7 @@ class TrainingShow extends Component {
                         size="sm"
                         onClick={() => this.props.switchTrainingStatus(this.props.trainingData.training.id)}
                       >
-                        Change Status
+                        { t('components.training.changeStatus') }
                       </Button>
                     </div> }
                   </Col>
@@ -169,7 +171,7 @@ class TrainingShow extends Component {
                       </Row>
                       <Row className="mb-2 text-center">
                         <Col lg="12">
-                          <h5 className="heading">Exercises:</h5>
+                          <h5 className="heading">{ t('components.training.exercises') }:</h5>
                         </Col>
                       </Row>
                       { subtraining.exercises.map((exercise) => (
@@ -180,15 +182,15 @@ class TrainingShow extends Component {
                               { exercise.category.name }
                             </Badge>
                             <Badge color="primary" pill className="mb-3">
-                              Rounds: { exercise.rounds.length }
+                              { t('components.training.rounds') }: { exercise.rounds.length }
                             </Badge>
                           </Col>
                           <Col lg="12">
                             <table className="table table-sm table-borderless table-center table-300">
                               <thead>
                                 <tr>
-                                  <th>Weight</th>
-                                  <th>Reps</th>
+                                  <th>{ t('components.training.weight') }</th>
+                                  <th>{ t('components.training.reps') }</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -217,7 +219,7 @@ class TrainingShow extends Component {
                           size="sm"
                           onClick={() => this.props.cloneTraining(this.props.trainingData.training.id)}
                         >
-                          Clone
+                          { t('components.training.clone') }
                         </Button>
                         { !this.props.trainingData.training.liked ? (
                           <Button
@@ -226,7 +228,7 @@ class TrainingShow extends Component {
                             color="primary"
                             size="sm"
                           >
-                            Like <i className="fa fa-heart" />
+                            { t('components.training.like') } <i className="fa fa-heart" />
                           </Button>
                         ) : (
                           <Button
@@ -235,7 +237,7 @@ class TrainingShow extends Component {
                             color="danger"
                             size="sm"
                           >
-                            Unlike <i className="fa fa-heart" />
+                            { t('components.training.unlike') } <i className="fa fa-heart" />
                           </Button>
                         ) }
                       </>
@@ -248,14 +250,14 @@ class TrainingShow extends Component {
                         size="sm"
                         onClick={() => this.toggleModal("removeTrainingModal")}
                       >
-                        Delete
+                        { t('components.training.delete') }
                       </Button>
                       <Button
                         color="default"
                         size="sm"
                         onClick={() => this.props.cloneTraining(this.props.trainingData.training.id)}
                       >
-                        Clone
+                        { t('components.training.clone') }
                       </Button>
                       <Button
                         className="float-right"
@@ -264,7 +266,7 @@ class TrainingShow extends Component {
                         to={'/trainings/' + this.props.trainingData.training.id + '/edit'}
                         tag={Link}
                       >
-                        Edit
+                        { t('components.training.edit') }
                       </Button>
                     </>
                   ) : null }
@@ -288,4 +290,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.loggedIn
 })
 
-export default connect(mapStateToProps)(TrainingShow)
+export default connect(mapStateToProps)(withTranslation()(TrainingShow))

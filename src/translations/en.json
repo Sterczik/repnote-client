@@ -1,0 +1,90 @@
+{
+  "global": {
+    "errors": {
+      "internalServerError": "Something went wrong!"
+    }
+  },
+  "components": {
+    "navbar": {
+      "home": "Home",
+      "trainings": "Trainings",
+      "contact": "Contact us",
+      "createTraining": "Create trainings",
+      "account": "My account",
+      "changePassword": "Change password",
+      "logout": "Logout",
+      "login": "Login",
+      "register": "Register"
+    },
+    "footer": {
+      "contact": "Contact us"
+    },
+    "forms": {
+      "contact": {
+        "success": "Message has been sent successfully!",
+        "name": "Your name",
+        "email": "Email address",
+        "textarea": "Type a message...",
+        "submit": "Send Message",
+        "nameValidation": {
+          "required": "Enter your name"
+        }
+      }
+    },
+    "toolbar": {
+      "total": "Trainings found:",
+      "search": "Search"
+    },
+    "filters": {
+      "advancementLevel": "Advancement level",
+      "trainingCategory": "Training category"
+    },
+    "training": {
+      "open": "Open training",
+      "loading": "Loading...",
+      "clone": "Clone",
+      "delete": "Delete",
+      "edit": "Edit",
+      "likes": "Likes",
+      "changeStatus": "Change status",
+      "like": "Like",
+      "unlike": "Unlike",
+      "exercises": "Exercises",
+      "rounds": "Rounds",
+      "weight": "Weight",
+      "reps": "Reps"
+    },
+    "modals": {
+
+    }
+  },
+  "views": {
+    "homepage": {
+      "mainHeadline1": "Create your trainings",
+      "mainHeadline2": "share with people",
+      "text": "With RepNote, you can create your unique trainings for yourself, or share them with other people.",
+      "init": "Start now",
+      "contact": "Contact",
+      "features": {
+        "headline": "Great features",
+        "text": "RepNote comes with bunch of features which will help you create your best trainings."
+      },
+      "favourites": {
+        "headline": "Favourites trainings",
+        "icon1": "Support",
+        "icon2": "Customization",
+        "icon3": "Friendly UI"
+      },
+      "contactForm": {
+        "headline": "Want to contact?",
+        "text": "Your feedback is very important to us."
+      }
+    },
+    "contactpage": {
+      "contactForm": {
+        "headline": "Want to contact?",
+        "text": "Your feedback is very important to us."
+      }
+    }
+  }
+}

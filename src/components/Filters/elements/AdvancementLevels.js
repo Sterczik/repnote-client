@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withTranslation } from 'react-i18next'
 
 import {
   Input,
@@ -28,6 +29,7 @@ class AdvancementLevels extends Component {
   }
 
   render() {
+    const { t } = this.props
     return (
       <InputGroup className="input-group-alternative mb-3">
         <InputGroupAddon addonType="prepend">
@@ -43,7 +45,7 @@ class AdvancementLevels extends Component {
           className="form-control-alternative"
         >
           <option key="0" value="0">
-            Advancement level
+            { t('components.filters.advancementLevel') }
           </option>
           { this.props.advancementLevels && this.props.advancementLevels.map((trainingAdvancementLevel) => (
             <option key={trainingAdvancementLevel.id} value={trainingAdvancementLevel.id}>
@@ -66,4 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
   setTrainingAdvancementLevelFilter: (value) => dispatch(setTrainingAdvancementLevelFilter(value))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdvancementLevels)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(AdvancementLevels))

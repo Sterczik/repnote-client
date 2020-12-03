@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withTranslation } from 'react-i18next'
 
 import {
   Input,
@@ -38,10 +39,11 @@ class Search extends Component {
   }
 
   render() {
+    const { t } = this.props
     return (
       <InputGroup className="input-group-alternative mb-3">
         <Input
-          placeholder="Search"
+          placeholder={ t('components.toolbar.search') }
           type="text"
           name="search"
           value={this.state.search}
@@ -68,4 +70,4 @@ const mapDispatchToProps = (dispatch) => ({
   setSearch: (value) => dispatch(setSearch(value))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Search))

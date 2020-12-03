@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
 import Headroom from 'headroom.js'
 import {
   UncontrolledCollapse,
@@ -25,6 +26,7 @@ class SimpleNavbar extends Component {
     headroom.init()
   }
   render() {
+    const { t } = this.props
     return (
       <>
         <header className="header-global">
@@ -65,17 +67,17 @@ class SimpleNavbar extends Component {
                 <Nav className="navbar-nav-hover align-items-lg-center" navbar>
                   <NavItem>
                     <NavLink to="/landing" tag={Link}>
-                      <span className="nav-link-inner--text">Home</span>
+                      <span className="nav-link-inner--text">{ t('components.navbar.home') }</span>
                     </NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink to="/trainings" tag={Link}>
-                      <span className="nav-link-inner--text">Trainings</span>
+                      <span className="nav-link-inner--text">{ t('components.navbar.trainings') }</span>
                     </NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink to="/landing/contact" tag={Link}>
-                      <span className="nav-link-inner--text">Contact us</span>
+                      <span className="nav-link-inner--text">{ t('components.navbar.contact') }</span>
                     </NavLink>
                   </NavItem>
                   <div className="d-block d-lg-none">
@@ -83,22 +85,22 @@ class SimpleNavbar extends Component {
                       <>
                         <NavItem>
                           <NavLink to="/trainings/create" tag={Link}>
-                            <span className="nav-link-inner--text">Create training</span>
+                            <span className="nav-link-inner--text">{ t('components.navbar.createTraining') }</span>
                           </NavLink>
                         </NavItem>
                         <NavItem>
                           <NavLink to="/account" tag={Link}>
-                            <span className="nav-link-inner--text">My account</span>
+                            <span className="nav-link-inner--text">{ t('components.navbar.account') }</span>
                           </NavLink>
                         </NavItem>
                         <NavItem>
                           <NavLink to="/account/change-password" tag={Link}>
-                            <span className="nav-link-inner--text">Change password</span>
+                            <span className="nav-link-inner--text">{ t('components.navbar.changePassword') }</span>
                           </NavLink>
                         </NavItem>
                         <NavItem>
                           <NavLink onClick={this.props.logout}>
-                            <span className="nav-link-inner--text">Logout</span>
+                            <span className="nav-link-inner--text">{ t('components.navbar.logout') }</span>
                           </NavLink>
                         </NavItem>
                       </>
@@ -106,12 +108,12 @@ class SimpleNavbar extends Component {
                       <>
                         <NavItem>
                           <NavLink to="/auth/login" tag={Link}>
-                            <span className="nav-link-inner--text">Login</span>
+                            <span className="nav-link-inner--text">{ t('components.navbar.login') }</span>
                           </NavLink>
                         </NavItem>
                         <NavItem>
                           <NavLink to="/auth/register" tag={Link}>
-                            <span className="nav-link-inner--text">Register</span>
+                            <span className="nav-link-inner--text">{ t('components.navbar.register') }</span>
                           </NavLink>
                         </NavItem>
                       </>
@@ -127,16 +129,16 @@ class SimpleNavbar extends Component {
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem to="/trainings/create" tag={Link}>
-                          Create training
+                          { t('components.navbar.createTraining') }
                         </DropdownItem>
                         <DropdownItem to="/account" tag={Link}>
-                          My account
+                          { t('components.navbar.account') }
                         </DropdownItem>
                         <DropdownItem to="/account/change-password" tag={Link}>
-                          Change password
+                          { t('components.navbar.changePassword') }
                         </DropdownItem>
                         <DropdownItem onClick={this.props.logout}>
-                          Logout
+                          { t('components.navbar.logout') }
                         </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
@@ -144,12 +146,12 @@ class SimpleNavbar extends Component {
                     <>
                       <NavItem>
                         <NavLink to="/auth/login" tag={Link}>
-                          <span className="nav-link-inner--text">Login</span>
+                          <span className="nav-link-inner--text">{ t('components.navbar.login') }</span>
                         </NavLink>
                       </NavItem>
                       <NavItem>
                         <NavLink to="/auth/register" tag={Link}>
-                          <span className="nav-link-inner--text">Register</span>
+                          <span className="nav-link-inner--text">{ t('components.navbar.register') }</span>
                         </NavLink>
                       </NavItem>
                     </>
@@ -172,4 +174,4 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(authActions.logout())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SimpleNavbar)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(SimpleNavbar))

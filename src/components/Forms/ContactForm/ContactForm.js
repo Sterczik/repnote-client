@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withTranslation } from 'react-i18next'
 import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
 import validationSchema from './validationSchema'
 
@@ -19,7 +20,8 @@ const ContactForm = ({
   values,
   errors,
   touched,
-  handleChange
+  handleChange,
+  t
 }) => (
   <FormikForm>
     <Form>
@@ -31,7 +33,7 @@ const ContactForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="Your name"
+            placeholder={ t('components.forms.contact.name') }
             type="text"
             id="name"
             name="name"
@@ -51,7 +53,7 @@ const ContactForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="Email address"
+            placeholder={ t('components.forms.contact.email') }
             type="email"
             id="email"
             name="email"
@@ -67,7 +69,7 @@ const ContactForm = ({
         <Input
           className="form-control-alternative"
           cols="80"
-          placeholder="Type a message..."
+          placeholder={ t('components.forms.contact.textarea') }
           rows="4"
           type="textarea"
           id="message"
@@ -87,7 +89,7 @@ const ContactForm = ({
           size="lg"
           type="submit"
         >
-          Send Message
+          { t('components.forms.contact.submit') }
         </Button>
       </div>
     </Form>
@@ -110,7 +112,7 @@ const ContactFormFormik = withFormik({
       message
     })
   }
-})(ContactForm)
+})(withTranslation()(ContactForm))
 
 const mapDispatchToProps = (dispatch) => ({
   sendContactMessage: (message) => dispatch(sendContactMessage(message)),

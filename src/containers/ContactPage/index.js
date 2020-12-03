@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import { withTranslation } from 'react-i18next'
 import {
   Card,
   CardBody,
@@ -9,7 +10,7 @@ import {
 } from 'reactstrap'
 import ContactForm from 'components/Forms/ContactForm/ContactForm'
 
-export const ContactPage = () => (
+export const ContactPage = ({ t }) => (
   <>
     <Helmet
         titleTemplate="Contact Us"
@@ -32,9 +33,9 @@ export const ContactPage = () => (
             <Col lg="8">
               <Card>
                 <CardBody className="p-lg-5">
-                  <h4 className="mb-1">Want to contact?</h4>
+                  <h4 className="mb-1">{ t('views.contactpage.contactForm.headline') }</h4>
                   <p className="mt-0">
-                    Your feedback is very important to us.
+                    { t('views.contactpage.contactForm.text') }
                   </p>
                   <ContactForm />
                 </CardBody>
@@ -47,4 +48,4 @@ export const ContactPage = () => (
   </>
 )
 
-export default ContactPage
+export default withTranslation()(ContactPage)

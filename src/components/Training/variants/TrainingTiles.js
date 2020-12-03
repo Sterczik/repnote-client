@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
 import {
   Badge,
   Button,
@@ -8,7 +9,7 @@ import {
   Col
 } from 'reactstrap'
 
-const TrainingTiles = ({ training, showUser = true }) => (
+const TrainingTiles = ({ training, showUser = true, t }) => (
   <Col lg="4" className="mb-4 mt-0">
     <Card className="shadow border-0">
       <CardBody className="py-4 card-body-flex">
@@ -52,11 +53,11 @@ const TrainingTiles = ({ training, showUser = true }) => (
           to={'/trainings/' + training.id}
           tag={Link}
         >
-          Open training
+          { t('components.training.open') }
         </Button>
       </CardBody>
     </Card>
   </Col>
 )
 
-export default TrainingTiles
+export default withTranslation()(TrainingTiles)

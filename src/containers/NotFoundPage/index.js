@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
 import {
   Container,
   Row,
@@ -8,7 +9,7 @@ import {
   Button
 } from 'reactstrap'
 
-export const NotFoundPage = () => (
+export const NotFoundPage = ({ t }) => (
   <>
     <Helmet
         titleTemplate="Page not found"
@@ -24,7 +25,7 @@ export const NotFoundPage = () => (
               <Col lg="6">
                 <h1 className="display-3 text-white">
                   404{" "}
-                  <span>Page not found!</span>
+                  <span>{ t('views.notfoundpage.headline') }</span>
                 </h1>
                 <div className="btn-wrapper py-4">
                   <Button
@@ -34,7 +35,7 @@ export const NotFoundPage = () => (
                     tag={Link}
                   >
                     <span className="btn-inner--text">
-                      Go to homepage
+                      { t('views.notfoundpage.back') }
                     </span>
                   </Button>
                   <Button
@@ -44,7 +45,7 @@ export const NotFoundPage = () => (
                     tag={Link}
                   >
                     <span className="btn-inner--text">
-                      Contact
+                      { t('global.buttons.contact') }
                     </span>
                   </Button>
                 </div>
@@ -56,4 +57,4 @@ export const NotFoundPage = () => (
   </>
 )
 
-export default NotFoundPage
+export default withTranslation()(NotFoundPage)

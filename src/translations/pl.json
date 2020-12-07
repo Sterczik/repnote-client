@@ -2,6 +2,11 @@
   "global": {
     "errors": {
       "internalServerError": "Coś poszło nie tak"
+    },
+    "buttons": {
+      "submit": "Zatwierdź",
+      "contact": "Kontakt",
+      "trainings": "Lista treningów"
     }
   },
   "components": {
@@ -29,11 +34,32 @@
         "nameValidation": {
           "required": "Wpisz swoje imię"
         }
+      },
+      "changePassword": {
+        "old": "Stare hasło",
+        "new": "Nowe hasło",
+        "new2": "Powtórz nowe hasło"
+      },
+      "signUp": {
+        "name": "Imię",
+        "email": "Email",
+        "password": "Hasło",
+        "password2": "Powtórz hasło",
+        "submit": "Utwórz konto"
+      },
+      "signIn": {
+        "email": "Email",
+        "password": "Hasło",
+        "submit": "Zaloguj się"
       }
     },
     "toolbar": {
       "total": "Znaleziono treningów:",
-      "search": "Wyszukaj"
+      "search": "Wyszukaj",
+      "sort": {
+        "newest": "Najnowsze",
+        "likes": "Najwięcej polubień"
+      }
     },
     "filters": {
       "advancementLevel": "Poziom zaawansowania",
@@ -52,10 +78,47 @@
       "exercises": "Ćwiczenia",
       "rounds": "Serii",
       "weight": "Obciążenie",
-      "reps": "Powtórzeń"
+      "reps": "Powtórzeń",
+      "private": "Prywatny",
+      "public": "Publiczny",
+      "errors": {
+        "auth": {
+          "headline": "Ten trening jest prywatny",
+          "text": "Trening może zostać wyświetlony wyłącznie przez jego autora."
+        },
+        "global": {
+          "headline": "Błąd",
+          "text": "Wystąpił błąd. Spróbuj odświeżyć stronę albo się z nami skontaktować."
+        }
+      }
     },
     "modals": {
-      
+      "changeAvatarModal": {
+        "header": "Zmień swoje zdjęcie",
+        "maxSize": "Maksymalny rozmiar zdjęcia:",
+        "formats": "Dostępne formaty zdjęcia:",
+        "select": "Wybierz plik",
+        "close": "Zamknij",
+        "submit": "Wyślij zdjęcie"
+      },
+      "editAccountModal": {
+        "header": "Edytuj konto",
+        "close": "Zamknij",
+        "submit": "Zapisz zmiany"
+      },
+      "removeTrainingModal": {
+        "header": "Na pewno?",
+        "text": "Trening zostanie usunięty na zawsze.",
+        "close": "Zamknij",
+        "submit": "Usuń"
+      }
+    },
+    "user": {
+      "loading": "Ładowanie...",
+      "error": {
+        "headline": "Błąd",
+        "text": "Wystąpił błąd. Spróbuj odświeżyć stronę albo się z nami skontaktować."
+      }
     }
   },
   "views": {
@@ -85,6 +148,40 @@
         "headline": "Chcesz się skontaktować?",
         "text": "Twoja opinia jest dla nas ważna."
       }
+    },
+    "changepasswordpage": {
+      "headline": "Zmień swoje hasło",
+      "text": "TEXT"
+    },
+    "loginpage": {
+      "signInSocial": "Zaloguj się za pomocą",
+      "signInEmail": "albo za podaniem:",
+      "signUp": "Utwórz nowe konto"
+    },
+    "registerpage": {
+      "signUpSocial": "Zarejestruj się za pomocą",
+      "signUpEmail": "albo za podaniem:",
+      "signIn": "Zaloguj się"
+    },
+    "notfoundpage": {
+      "headline": "Strony nie znaleziono!",
+      "back": "Powrót do strony głównej"
+    },
+    "accountpage": {
+      "myAccount": "Moje konto",
+      "userAccount": "Konto użytkownika",
+      "changePassword": "Zmień hasło",
+      "hideTrainings": "Ukryj treningi",
+      "showTrainings": "Pokaż treningi",
+      "follow": "Obserwuj",
+      "unfollow": "Przestań",
+      "followers": "Obserwujący",
+      "following": "Obserwuje",
+      "trainings": "Treningi",
+      "provider": "Rodzaj konta:",
+      "editAvatar": "Edytuj zdjęcie",
+      "resetAvatar": "Usuń zdjęcie",
+      "editProfile": "Edytuj konto"
     }
   }
 }

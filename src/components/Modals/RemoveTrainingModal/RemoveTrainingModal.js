@@ -1,4 +1,5 @@
 import React from 'react'
+import { withTranslation } from 'react-i18next'
 import {
   Button,
   Modal
@@ -13,7 +14,7 @@ const RemoveTrainingModal = (props) => {
     >
       <div className="modal-header">
         <h5 className="modal-title" id="removeTrainingModalLabel">
-          Are you sure?
+          { props.t('components.modals.removeTrainingModal.header') }
         </h5>
         <button
           aria-label="Close"
@@ -26,7 +27,7 @@ const RemoveTrainingModal = (props) => {
         </button>
       </div>
       <div className="modal-body">
-        <h5>This action will remove your training permanently.</h5>
+        <h5>{ props.t('components.modals.removeTrainingModal.text') }</h5>
       </div>
       <div className="modal-footer">
         <Button
@@ -35,18 +36,18 @@ const RemoveTrainingModal = (props) => {
           type="button"
           onClick={() => props.toggleModal("removeTrainingModal")}
         >
-          Close
+          { props.t('components.modals.removeTrainingModal.close') }
         </Button>
         <Button
           color="primary"
           type="submit"
           onClick={() => props.removeTraining(props.id)}
         >
-          Delete
+          { props.t('components.modals.removeTrainingModal.submit') }
         </Button>
       </div>
     </Modal>
   )
 }
 
-export default RemoveTrainingModal
+export default withTranslation()(RemoveTrainingModal)

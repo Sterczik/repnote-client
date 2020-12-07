@@ -1,4 +1,5 @@
 import React from 'react'
+import { withTranslation } from 'react-i18next'
 import { Formik } from 'formik'
 import {
   Button,
@@ -43,7 +44,7 @@ const EditAccountModal = (props) => {
             <Form onSubmit={handleSubmit}>
               <div className="modal-header">
                 <h5 className="modal-title" id="editAccountModalLabel">
-                  Edit your account
+                  { props.t('components.modals.editAccountModal.header') }
                 </h5>
                 <button
                   aria-label="Close"
@@ -106,10 +107,10 @@ const EditAccountModal = (props) => {
                   type="button"
                   onClick={() => props.toggleModal("editAccountModal")}
                 >
-                  Close
+                  { props.t('components.modals.editAccountModal.close') }
                 </Button>
                 <Button color="primary" type="submit" disabled={isSubmitting}>
-                  Save changes
+                  { props.t('components.modals.editAccountModal.submit') }
                 </Button>
               </div>
             </Form>
@@ -120,4 +121,4 @@ const EditAccountModal = (props) => {
   )
 }
 
-export default EditAccountModal
+export default withTranslation()(EditAccountModal)

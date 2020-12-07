@@ -18,8 +18,6 @@ import { sendContactMessage } from 'store/global/actions'
 
 const ContactForm = ({
   values,
-  errors,
-  touched,
   handleChange,
   t
 }) => (

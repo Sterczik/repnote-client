@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withTranslation } from 'react-i18next'
 import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
 import validationSchema from './validationSchema'
 
@@ -17,7 +18,8 @@ import { authActions } from 'store/auth/actions'
 
 const RegisterForm = ({
   values,
-  handleChange
+  handleChange,
+  t
 }) => (
   <FormikForm>
     <Form>
@@ -29,7 +31,7 @@ const RegisterForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="Name"
+            placeholder={ t('components.forms.signUp.name') }
             type="text"
             id="name"
             name="name"
@@ -49,7 +51,7 @@ const RegisterForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="Email"
+            placeholder={ t('components.forms.signUp.email') }
             type="email"
             id="email"
             name="email"
@@ -69,7 +71,7 @@ const RegisterForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="Password"
+            placeholder={ t('components.forms.signUp.password') }
             type="password"
             autoComplete="off"
             id="password"
@@ -90,7 +92,7 @@ const RegisterForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="Password Confirmation"
+            placeholder={ t('components.forms.signUp.password2') }
             type="password"
             autoComplete="off"
             id="passwordConfirm"
@@ -109,7 +111,7 @@ const RegisterForm = ({
           color="primary"
           type="submit"
         >
-          Create account
+          { t('components.forms.signUp.submit') }
         </Button>
       </div>
     </Form>
@@ -130,7 +132,7 @@ const RegisterFormFormik = withFormik({
   handleSubmit(values, { props }) {
     props.register(values.email, values.name, values.password, values.passwordConfirm)
   }
-})(RegisterForm)
+})(withTranslation()(RegisterForm))
 
 const mapDispatchToProps = (dispatch) => ({
   register: (email, name, password, passwordConfirm) => dispatch(authActions.register(email, name, password, passwordConfirm))

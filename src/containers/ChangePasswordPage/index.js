@@ -1,5 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import { withTranslation } from 'react-i18next'
 import ChangePasswordForm from 'components/Forms/ChangePasswordForm/ChangePasswordForm'
 
 import {
@@ -10,7 +11,7 @@ import {
   Col
 } from 'reactstrap'
 
-export const ChangePasswordPage = () => (
+export const ChangePasswordPage = ({ t }) => (
   <>
     <Helmet
       titleTemplate="Change Password"
@@ -26,10 +27,10 @@ export const ChangePasswordPage = () => (
             <Card className="bg-secondary shadow border-0">
               <CardBody className="px-lg-5 py-lg-5">
                 <div className="text-center text-muted mb-4">
-                  <small>Change password</small>
+                  <small>{ t('views.changepasswordpage.headline') }</small>
                 </div>
                 <div className="text-center text-muted mb-4">
-                  <small>You can change your password only when you registered via email. If you registered via Google or Facebook you can't change your password. You can check your provider in your account information</small>
+                  <small>{ t('views.changepasswordpage.text') }</small>
                 </div>
                 <ChangePasswordForm />
               </CardBody>
@@ -41,4 +42,4 @@ export const ChangePasswordPage = () => (
   </>
 )
 
-export default ChangePasswordPage
+export default withTranslation()(ChangePasswordPage)

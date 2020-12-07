@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import { Button, Card, Container, Row, Col } from 'reactstrap'
 import { authActions } from 'store/auth/actions'
@@ -30,13 +31,14 @@ class AccountPage extends Component {
     this.props.getProfile()
   }
   render() {
+    const { t } = this.props
     return (
       <>
         <Helmet
-          titleTemplate="My Account"
-          defaultTitle="My Account"
+          titleTemplate={ t('views.accountpage.myAccount') }
+          defaultTitle={ t('views.accountpage.myAccount') }
         >
-          <meta name="description" content="My Account" />
+          <meta name="description" content={ t('views.accountpage.myAccount') } />
         </Helmet>
         <div className="profile-page">
           <section className="section-profile-cover section-shaped my-0">
@@ -91,7 +93,7 @@ class AccountPage extends Component {
                               to="/account/change-password"
                               size="sm"
                             >
-                              Ch. Password
+                              { t('views.accountpage.changePassword') }
                             </Button>
                             <Button
                               className="float-right"
@@ -99,7 +101,9 @@ class AccountPage extends Component {
                               onClick={this.toggle}
                               size="sm"
                             >
-                              { this.state.showTrainings ? 'Hide trainings' : 'Show trainings' }
+                              { this.state.showTrainings
+                              ? t('views.accountpage.hideTrainings')
+                              : t('views.accountpage.showTrainings') }
                             </Button>
                           </div>
                         </Col>
@@ -107,22 +111,22 @@ class AccountPage extends Component {
                           <div className="card-profile-stats d-flex justify-content-center">
                             { this.props.userInfo && <div>
                               <span className="heading">{ this.props.userInfo.followersLength }</span>
-                              <span className="description">Followers</span>
+                              <span className="description">{ t('views.accountpage.followers') }</span>
                             </div> }
                             { this.props.userInfo.following && <div>
                               <span className="heading">{ this.props.userInfo.following.length }</span>
-                              <span className="description">Following</span>
+                              <span className="description">{ t('views.accountpage.following') }</span>
                             </div> }
                             { this.props.userInfo.trainings && <div>
                               <span className="heading">{ this.props.userInfo.trainings.length }</span>
-                              <span className="description">Trainings</span>
+                              <span className="description">{ t('views.accountpage.trainings') }</span>
                             </div> }
                           </div>
                         </Col>
                       </Row>
                       <div className="mt-4">
                         <div className="text-center mb-1">
-                          <span className="description">Provider: </span>
+                          <span className="description">{ t('views.accountpage.provider') } </span>
                           <span><i className={`fa fa-${this.props.userInfo.provider}`}/></span>
                         </div>
                         <div className="text-center">
@@ -132,7 +136,7 @@ class AccountPage extends Component {
                             type="button"
                             onClick={() => this.toggleModal("changeAvatarModal")}
                           >
-                            Edit avatar
+                            { t('views.accountpage.editAvatar') }
                           </Button>
                           <Button
                             color="default"
@@ -141,7 +145,7 @@ class AccountPage extends Component {
                             type="button"
                             onClick={() => this.props.resetAvatar()}
                           >
-                            Reset avatar
+                            { t('views.accountpage.resetAvatar') }
                           </Button>
                         </div>
                       </div>
@@ -183,7 +187,7 @@ class AccountPage extends Component {
                                 size="sm"
                                 onClick={() => this.toggleModal("editAccountModal")}
                               >
-                                Edit Profile
+                                { t('views.accountpage.editProfile') }
                               </Button>
                             </div>
                           </>
@@ -226,4 +230,4 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(authActions.logout())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountPage)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(AccountPage))

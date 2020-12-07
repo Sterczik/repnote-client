@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withTranslation } from 'react-i18next'
 import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
 import validationSchema from './validationSchema'
 
@@ -17,9 +18,8 @@ import { authActions } from 'store/auth/actions'
 
 const LoginForm = ({
   values,
-  errors,
-  touched,
-  handleChange
+  handleChange,
+  t
 }) => (
   <FormikForm>
     <Form>
@@ -31,7 +31,7 @@ const LoginForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="Email"
+            placeholder={ t('components.forms.signIn.email') }
             type="email"
             id="email"
             name="email"
@@ -51,7 +51,7 @@ const LoginForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="Password"
+            placeholder={ t('components.forms.signIn.password') }
             type="password"
             id="password"
             name="password"
@@ -69,7 +69,7 @@ const LoginForm = ({
           color="primary"
           type="submit"
         >
-          Sign in
+          { t('components.forms.signIn.submit') }
         </Button>
       </div>
     </Form>
@@ -87,7 +87,7 @@ const LoginFormFormik = withFormik({
   handleSubmit(values, { props }) {
     props.login(values.email, values.password)
   }
-})(LoginForm)
+})(withTranslation()(LoginForm))
 
 const mapDispatchToProps = (dispatch) => ({
   login: (email, password) => dispatch(authActions.login(email, password))

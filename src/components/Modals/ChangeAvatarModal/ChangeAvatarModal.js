@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withTranslation } from 'react-i18next'
 import { Formik, Field } from 'formik'
 import {
   Button,
@@ -14,6 +15,7 @@ class ChangeAvatarModal extends Component {
   }
 
   render() {
+    const { t } = this.props
     return (
       <Modal
         className="modal-dialog-centered"
@@ -45,7 +47,7 @@ class ChangeAvatarModal extends Component {
               <Form onSubmit={handleSubmit}>
                 <div className="modal-header">
                   <h5 className="modal-title" id="changeAvatarLabel">
-                    Change your avatar
+                    { t('components.modals.changeAvatarModal.header') }
                   </h5>
                   <button
                     aria-label="Close"
@@ -58,12 +60,12 @@ class ChangeAvatarModal extends Component {
                   </button>
                 </div>
                 <div className="modal-body">
-                  <h6 className="display-6">Max size: 100 kB</h6>
-                  <h6 className="display-6">Available formats: jpg, jpeg, png</h6>
+                  <h6 className="display-6">{ t('components.modals.changeAvatarModal.maxSize') } 100 kB</h6>
+                  <h6 className="display-6">{ t('components.modals.changeAvatarModal.formats') } jpg, jpeg, png</h6>
                   <Field
                     name="file"
                     component={CustomImageInput}
-                    title="Select a file"
+                    title={ t('components.modals.changeAvatarModal.select') }
                     setFieldValue={setFieldValue}
                     errorMessage={errors["file"] ? errors["file"] : undefined}
                     touched={touched["file"]}
@@ -78,14 +80,14 @@ class ChangeAvatarModal extends Component {
                     type="button"
                     onClick={() => this.props.toggleModal("changeAvatarModal")}
                   >
-                    Close
+                    { t('components.modals.changeAvatarModal.close') }
                   </Button>
                   <Button
                     color="primary"
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    Upload image
+                    { t('components.modals.changeAvatarModal.submit') }
                   </Button>
                 </div>
               </Form>
@@ -97,4 +99,4 @@ class ChangeAvatarModal extends Component {
   }
 }
 
-export default ChangeAvatarModal
+export default withTranslation()(ChangeAvatarModal)

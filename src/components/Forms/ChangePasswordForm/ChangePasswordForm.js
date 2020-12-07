@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withTranslation } from 'react-i18next'
 import { withFormik, Form as FormikForm, ErrorMessage } from 'formik'
 import validationSchema from './validationSchema'
 
@@ -17,9 +18,8 @@ import { authActions } from 'store/auth/actions'
 
 const ChangePasswordForm = ({
   values,
-  errors,
-  touched,
-  handleChange
+  handleChange,
+  t
 }) => (
   <FormikForm>
     <Form>
@@ -31,7 +31,7 @@ const ChangePasswordForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="Old password"
+            placeholder={ t('components.forms.changePassword.old') }
             type="password"
             id="oldPassword"
             name="oldPassword"
@@ -51,7 +51,7 @@ const ChangePasswordForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="New password"
+            placeholder={ t('components.forms.changePassword.new') }
             type="password"
             id="newPassword"
             name="newPassword"
@@ -71,7 +71,7 @@ const ChangePasswordForm = ({
             </InputGroupText>
           </InputGroupAddon>
           <Input
-            placeholder="New password"
+            placeholder={ t('components.forms.changePassword.new2') }
             type="password"
             id="newPasswordConfirm"
             name="newPasswordConfirm"
@@ -89,7 +89,7 @@ const ChangePasswordForm = ({
           color="primary"
           type="submit"
         >
-          Submit
+          { t('global.buttons.submit') }
         </Button>
       </div>
     </Form>
@@ -108,7 +108,7 @@ const ChangePasswordFormFormik = withFormik({
   handleSubmit(values, { props }) {
     props.changePassword(values.oldPassword, values.newPassword, values.newPasswordConfirm)
   }
-})(ChangePasswordForm)
+})(withTranslation()(ChangePasswordForm))
 
 const mapDispatchToProps = (dispatch) => ({
   changePassword: (oldPassword, newPassword, newPasswordConfirm) => dispatch(authActions.changePassword(oldPassword, newPassword, newPasswordConfirm))

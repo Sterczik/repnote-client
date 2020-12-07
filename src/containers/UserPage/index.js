@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
+import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import { Button, Card, Container, Row, Col } from 'reactstrap'
 import { getUserProfile, followUser } from 'store/global/actions'
@@ -21,13 +22,14 @@ class UserPage extends Component {
     this.props.getUserProfile(slug)
   }
   render() {
+    const { t } = this.props
     return (
       <>
         <Helmet
-          titleTemplate="User"
-          defaultTitle="User"
+          titleTemplate={ t('views.accountpage.userAccount') }
+          defaultTitle={ t('views.accountpage.userAccount') }
         >
-          <meta name="description" content="User" />
+          <meta name="description" content={ t('views.accountpage.userAccount') } />
         </Helmet>
         <div className="profile-page">
           <section className="section-profile-cover section-shaped my-0">
@@ -85,7 +87,7 @@ class UserPage extends Component {
                                 color="primary"
                                 size="sm"
                               >
-                                Follow
+                                { t('views.accountpage.follow') }
                               </Button>
                             ) : (
                               <Button
@@ -94,7 +96,7 @@ class UserPage extends Component {
                                 color="danger"
                                 size="sm"
                               >
-                                Unfollow
+                                { t('views.accountpage.unfollow') }
                               </Button>
                             )
                             : null }
@@ -104,7 +106,9 @@ class UserPage extends Component {
                               onClick={this.toggle}
                               size="sm"
                             >
-                              { this.state.showTrainings ? 'Hide trainings' : 'Show trainings' }
+                              { this.state.showTrainings
+                              ? t('views.accountpage.hideTrainings')
+                              : t('views.accountpage.showTrainings') }
                             </Button>
                           </div>
                         </Col>
@@ -112,15 +116,15 @@ class UserPage extends Component {
                           <div className="card-profile-stats d-flex justify-content-center">
                             { this.props.userProfile && <div>
                               <span className="heading">{ this.props.userProfile.followersLength }</span>
-                              <span className="description">Followers</span>
+                              <span className="description">{ t('views.accountpage.followers') }</span>
                             </div> }
                             { this.props.userProfile.following && <div>
                               <span className="heading">{ this.props.userProfile.following.length }</span>
-                              <span className="description">Following</span>
+                              <span className="description">{ t('views.accountpage.following') }</span>
                             </div> }
                             { this.props.userProfile.trainings && <div>
                               <span className="heading">{ this.props.userProfile.trainings.length }</span>
-                              <span className="description">Trainings</span>
+                              <span className="description">{ t('views.accountpage.trainings') }</span>
                             </div> }
                           </div>
                         </Col>
@@ -181,4 +185,4 @@ const mapDispatchToProps = (dispatch) => ({
   followUser: (id, follow) => dispatch(followUser(id, follow))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(UserPage))

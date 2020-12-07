@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
 import Google from 'components/SocialLogin/Google'
 import Facebook from 'components/SocialLogin/Facebook'
 import LoginForm from 'components/Forms/LoginForm/LoginForm'
@@ -14,7 +15,7 @@ import {
   Col
 } from 'reactstrap'
 
-export const LoginPage = () => (
+export const LoginPage = ({ t }) => (
   <>
     <Helmet
       titleTemplate="Login"
@@ -30,7 +31,7 @@ export const LoginPage = () => (
             <Card className="bg-secondary shadow border-0">
               <CardHeader className="bg-white pb-5">
                 <div className="text-muted text-center mb-3">
-                  <small>Sign in with</small>
+                  <small>{ t('views.loginpage.signInSocial') }</small>
                 </div>
                 <div className="social-btn-wrapper text-center">
                   <Facebook />
@@ -39,7 +40,7 @@ export const LoginPage = () => (
               </CardHeader>
               <CardBody className="px-lg-5 py-lg-5">
                 <div className="text-center text-muted mb-4">
-                  <small>Or sign in with credentials</small>
+                  <small>{ t('views.loginpage.signInEmail') }</small>
                 </div>
                 <LoginForm />
               </CardBody>
@@ -47,7 +48,7 @@ export const LoginPage = () => (
             <Row className="mt-3">
               <Col xs="6">
                 <Link className="text-white" to="/auth/register">
-                  <small>Create new account</small>
+                  <small>{ t('views.loginpage.signUp') }</small>
                 </Link>
               </Col>
             </Row>
@@ -58,4 +59,4 @@ export const LoginPage = () => (
   </>
 )
 
-export default LoginPage
+export default withTranslation()(LoginPage)

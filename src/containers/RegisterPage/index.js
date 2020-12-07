@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
 import Google from 'components/SocialLogin/Google'
 import Facebook from 'components/SocialLogin/Facebook'
 import RegisterForm from 'components/Forms/RegisterForm/RegisterForm'
@@ -14,7 +15,7 @@ import {
   Col
 } from 'reactstrap'
 
-export const RegisterPage = () => (
+export const RegisterPage = ({ t }) => (
   <>
     <Helmet
       titleTemplate="Register"
@@ -30,7 +31,7 @@ export const RegisterPage = () => (
             <Card className="bg-secondary shadow border-0">
               <CardHeader className="bg-white pb-5">
                 <div className="text-muted text-center mb-3">
-                  <small>Sign up with</small>
+                  <small>{ t('views.registerpage.signUpSocial') }</small>
                 </div>
                 <div className="social-btn-wrapper text-center">
                   <Facebook />
@@ -39,7 +40,7 @@ export const RegisterPage = () => (
               </CardHeader>
               <CardBody className="px-lg-5 py-lg-5">
                 <div className="text-center text-muted mb-4">
-                  <small>Or sign up with credentials</small>
+                  <small>{ t('views.registerpage.signUpEmail') }</small>
                 </div>
                 <RegisterForm />
               </CardBody>
@@ -47,7 +48,7 @@ export const RegisterPage = () => (
             <Row className="mt-3">
               <Col xs="6">
                 <Link className="text-white" to="/auth/login">
-                  <small>Sign in</small>
+                  <small>{ t('views.registerpage.signIn') }</small>
                 </Link>
               </Col>
             </Row>
@@ -58,4 +59,4 @@ export const RegisterPage = () => (
   </>
 )
 
-export default RegisterPage
+export default withTranslation()(RegisterPage)

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withTranslation } from 'react-i18next'
 
 import {
   Input,
@@ -27,6 +28,7 @@ class Sort extends Component {
   }
 
   render() {
+    const { t } = this.props
     return (
       <InputGroup className="input-group-alternative mb-3">
         <InputGroupAddon addonType="prepend">
@@ -41,8 +43,8 @@ class Sort extends Component {
           onChange={this.handleChange}
           className="form-control-alternative"
         >
-          <option value="1">Newest</option>
-          <option value="2">Most likes</option>
+          <option value="1">{ t('components.toolbar.sort.newest') }</option>
+          <option value="2">{ t('components.toolbar.sort.likes') }</option>
         </Input>
       </InputGroup>
     )
@@ -57,4 +59,4 @@ const mapDispatchToProps = (dispatch) => ({
   getTrainings: () => dispatch(getTrainings())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sort)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Sort))

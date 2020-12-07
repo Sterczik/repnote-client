@@ -111,7 +111,11 @@ class TrainingShow extends Component {
                         <span className="description">{ t('components.training.likes') }</span>
                       </div> }
                       { this.props.trainingData.training.isOwner && <div>
-                        <span className="heading">{ this.props.trainingData.training.private ? 'Private' : 'Public' }</span>
+                        <span className="heading">
+                          { this.props.trainingData.training.private
+                          ? t('components.training.private')
+                          : t('components.training.public') }
+                        </span>
                         <span className="description">Status</span>
                       </div> }
                     </div>

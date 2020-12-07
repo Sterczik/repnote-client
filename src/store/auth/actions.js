@@ -1,3 +1,4 @@
+import i18n from 'i18next'
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
 import { ServiceUsers } from 'services/users/users'
 import { history } from 'helpers/history'
@@ -64,7 +65,7 @@ function register(email, name, password, passwordConfirm) {
       .catch((error) => {
         dispatch(registerFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }
@@ -113,7 +114,7 @@ function login(email, password) {
       .catch((error) => {
         dispatch(loginFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }
@@ -149,7 +150,7 @@ function refreshToken(dispatch, refreshToken) {
           accessToken: data.token.token,
           refreshToken: data.token.refreshToken
         }) : Promise.reject({
-          message: 'Could not refresh token'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.refreshToken')
         })
     })
     .catch((e) => {
@@ -210,7 +211,7 @@ function socialLogin(response, provider) {
       .catch((error) => {
         dispatch(socialLoginFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }
@@ -251,7 +252,7 @@ function changePassword(oldPassword, newPassword, newPasswordConfirm) {
       .catch((error) => {
         dispatch(changePasswordFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }

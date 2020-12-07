@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
+import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import {
   Container,
@@ -22,13 +23,14 @@ class TrainingsPage extends Component {
   }
 
   render() {
+    const { t } = this.props
     return (
       <>
         <Helmet
-          titleTemplate="All trainings"
-          defaultTitle="All trainings"
+          titleTemplate={ t('views.trainingspage.helmet.text') }
+          defaultTitle={ t('views.trainingspage.helmet.text') }
         >
-          <meta name="description" content="All trainings" />
+          <meta name="description" content={ t('views.trainingspage.helmet.text') } />
         </Helmet>
         <section className="section pb-4 pt-5">
           <Container>
@@ -74,4 +76,4 @@ const mapDispatchToProps = (dispatch) => ({
   getTrainings: () => dispatch(getTrainings())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrainingsPage)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(TrainingsPage))

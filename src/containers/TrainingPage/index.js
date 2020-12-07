@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
+import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import TrainingShow from 'components/Training/variants/TrainingShow'
 import TrainingShowLoading from 'components/Training/loading/TrainingShowLoading'
@@ -26,13 +27,14 @@ class TrainingPage extends Component {
   }
 
   render() {
+    const { t } = this.props
     return (
       <>
         <Helmet
-          titleTemplate="Training"
-          defaultTitle="Training"
+          titleTemplate={ t('views.trainingpage.helmet.text') }
+          defaultTitle={ t('views.trainingpage.helmet.text') }
         >
-          <meta name="description" content="Training" />
+          <meta name="description" content={ t('views.trainingpage.helmet.text') } />
         </Helmet>
         <main className="training-page">
 
@@ -78,4 +80,4 @@ const mapDispatchToProps = (dispatch) => ({
   cloneTraining: (id) => dispatch(cloneTraining(id)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrainingPage)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(TrainingPage))

@@ -14,10 +14,10 @@ import {
 export const ChangePasswordPage = ({ t }) => (
   <>
     <Helmet
-      titleTemplate="Change Password"
-      defaultTitle="Change Password"
+      titleTemplate={ t('views.changepasswordpage.helmet.text') }
+      defaultTitle={ t('views.changepasswordpage.helmet.text') }
     >
-      <meta name="description" content="Change Password" />
+      <meta name="description" content={ t('views.changepasswordpage.helmet.text') } />
     </Helmet>
     <section className="section section-shaped section-lg">
       <div className="shape shape-style-1 bg-gradient-info"></div>

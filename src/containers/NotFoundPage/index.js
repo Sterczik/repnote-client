@@ -12,10 +12,10 @@ import {
 export const NotFoundPage = ({ t }) => (
   <>
     <Helmet
-        titleTemplate="Page not found"
-        defaultTitle="Page not found"
-      >
-        <meta name="description" content="Page not found" />
+      titleTemplate={ t('views.notfoundpage.helmet.text') }
+      defaultTitle={ t('views.notfoundpage.helmet.text') }
+    >
+      <meta name="description" content={ t('views.notfoundpage.helmet.text') } />
     </Helmet>
     <div className="position-relative">
       <section className="section section-shaped section-lg">

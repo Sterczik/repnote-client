@@ -1,3 +1,4 @@
+import i18n from 'i18next'
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
 import { ServiceUsers } from 'services/users/users'
 import { trainingsConstants } from './constants'
@@ -50,7 +51,7 @@ export function getTrainings (
         ServiceUsers.handleResponse(error)
         dispatch(getTrainingsFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }

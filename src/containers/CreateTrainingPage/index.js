@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
+import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation'
 
@@ -137,13 +138,14 @@ class CreateTrainingPage extends Component {
   }
 
   render() {
+    const { t } = this.props
     return (
       <>
         <Helmet
-          titleTemplate="Create training"
-          defaultTitle="Create training"
+          titleTemplate={ t('views.createtrainingpage.helmet.text') }
+          defaultTitle={ t('views.createtrainingpage.helmet.text') }
         >
-          <meta name="description" content="Create training" />
+          <meta name="description" content={ t('views.createtrainingpage.helmet.text') } />
         </Helmet>
         <main>
           <section className="section section-shaped section-lg">
@@ -478,4 +480,4 @@ const mapDispatchToProps = (dispatch) => ({
   createTraining: (training) => dispatch(createTraining(training))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTrainingPage)
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(CreateTrainingPage))

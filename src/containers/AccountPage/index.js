@@ -35,10 +35,10 @@ class AccountPage extends Component {
     return (
       <>
         <Helmet
-          titleTemplate={ t('views.accountpage.myAccount') }
-          defaultTitle={ t('views.accountpage.myAccount') }
+          titleTemplate={ t('views.accountpage.helmet.text') }
+          defaultTitle={ t('views.accountpage.helmet.text') }
         >
-          <meta name="description" content={ t('views.accountpage.myAccount') } />
+          <meta name="description" content={ t('views.accountpage.helmet.text') } />
         </Helmet>
         <div className="profile-page">
           <section className="section-profile-cover section-shaped my-0">

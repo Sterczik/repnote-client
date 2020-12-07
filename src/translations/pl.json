@@ -1,7 +1,11 @@
 {
   "global": {
     "errors": {
-      "internalServerError": "Coś poszło nie tak"
+      "internalServerError": "Coś poszło nie tak",
+      "refreshToken": "Problem z odnowieniem uwierzytelnienia"
+    },
+    "messages": {
+      "removeTraining": "Usunąłeś swój trening pomyślnie."
     },
     "buttons": {
       "submit": "Zatwierdź",
@@ -141,34 +145,51 @@
       "contactForm": {
         "headline": "Chcesz się skontaktować?",
         "text": "Twoja opinia jest dla nas ważna."
+      },
+      "helmet": {
+        "text": "RepNote - Twórz swoje treningi"
       }
     },
     "contactpage": {
       "contactForm": {
         "headline": "Chcesz się skontaktować?",
         "text": "Twoja opinia jest dla nas ważna."
+      },
+      "helmet": {
+        "text": "Kontakt"
       }
     },
     "changepasswordpage": {
       "headline": "Zmień swoje hasło",
-      "text": "TEXT"
+      "text": "Możesz zmienić swoje hasło, kiedy Twoje konto zarejestrowane zostało za pomocą adresu email. Jeśli konto zostało zarejestrowane poprzez serwisy Google lub Facebook, nie możesz zmienić swojego hasła. Typ konta możesz sprawdzić w informacjach swojego konta.",
+      "helmet": {
+        "text": "Zmień hasło"
+      }
     },
     "loginpage": {
       "signInSocial": "Zaloguj się za pomocą",
       "signInEmail": "albo za podaniem:",
-      "signUp": "Utwórz nowe konto"
+      "signUp": "Utwórz nowe konto",
+      "helmet": {
+        "text": "Zaloguj się"
+      }
     },
     "registerpage": {
       "signUpSocial": "Zarejestruj się za pomocą",
       "signUpEmail": "albo za podaniem:",
-      "signIn": "Zaloguj się"
+      "signIn": "Zaloguj się",
+      "helmet": {
+        "text": "Zarejestruj się"
+      }
     },
     "notfoundpage": {
       "headline": "Strony nie znaleziono!",
-      "back": "Powrót do strony głównej"
+      "back": "Powrót do strony głównej",
+      "helmet": {
+        "text": "404 - Strony nie znaleziono"
+      }
     },
     "accountpage": {
-      "myAccount": "Moje konto",
       "userAccount": "Konto użytkownika",
       "changePassword": "Zmień hasło",
       "hideTrainings": "Ukryj treningi",
@@ -181,7 +202,30 @@
       "provider": "Rodzaj konta:",
       "editAvatar": "Edytuj zdjęcie",
       "resetAvatar": "Usuń zdjęcie",
-      "editProfile": "Edytuj konto"
+      "editProfile": "Edytuj konto",
+      "helmet": {
+        "text": "Moje konto"
+      }
+    },
+    "trainingpage": {
+      "helmet": {
+        "text": "Trening RepNote"
+      }
+    },
+    "trainingspage": {
+      "helmet": {
+        "text": "Treningi RepNote"
+      }
+    },
+    "createtrainingpage": {
+      "helmet": {
+        "text": "Stwórz trening"
+      }
+    },
+    "edittrainingpage": {
+      "helmet": {
+        "text": "Edytuj trening"
+      }
     }
   }
 }

@@ -20,10 +20,10 @@ class HomePage extends Component {
     return (
       <>
         <Helmet
-          titleTemplate="RepNote - Create your trainings"
-          defaultTitle="RepNote - Create your trainings"
+          titleTemplate={ t('views.homepage.helmet.text') }
+          defaultTitle={ t('views.homepage.helmet.text') }
         >
-          <meta name="description" content="RepNote - Create your trainings" />
+          <meta name="description" content={ t('views.homepage.helmet.text') } />
         </Helmet>
         <div className="position-relative">
           <section className="section section-lg section-shaped">
@@ -64,9 +64,7 @@ class HomePage extends Component {
                         to="/landing/contact"
                         tag={Link}
                       >
-                        <span className="btn-inner--text">
-                          { t('views.homepage.contact') }
-                        </span>
+                        <span className="btn-inner--text">{ t('views.homepage.contact') }</span>
                       </Button>
                     </div>
                   </Col>
@@ -97,9 +95,7 @@ class HomePage extends Component {
               <Col className="order-lg-1" lg="8">
                 <div className="pr-lg-5">
                   <h3>{ t('views.homepage.features.headline') }</h3>
-                  <p className="lead">
-                    { t('views.homepage.features.text') }
-                  </p>
+                  <p className="lead">{ t('views.homepage.features.text') }</p>
                 </div>
               </Col>
             </Row>

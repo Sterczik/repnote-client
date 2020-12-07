@@ -14,7 +14,9 @@ class SimpleFooter extends Component {
   render() {
     const { t, i18n } = this.props
     const changeLanguage = lng => {
-      i18n.changeLanguage(lng)
+      localStorage.setItem('lng', lng)
+      // i18n.changeLanguage(lng)
+      window.location.reload()
     }
     return (
       <>

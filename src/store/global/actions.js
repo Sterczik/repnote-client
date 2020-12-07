@@ -1,3 +1,4 @@
+import i18n from 'i18next'
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
 import { globalConstants } from './constants'
 import { ServiceTrainingCategories } from 'services/trainingCategories/trainingCategories'
@@ -117,6 +118,9 @@ export function getUserProfile(slug) {
       })
       .catch(() => {
         dispatch(getUserProfileFailure())
+        dispatch(snackbar.show({
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
+        }))
       })
   }
 }
@@ -148,7 +152,7 @@ export function followUser(id, follow) {
         ServiceUsers.handleResponse(error)
         dispatch(followUserFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }
@@ -181,13 +185,13 @@ export function sendContactMessage(message) {
         const data = res.data
         dispatch(sendContactMessageSuccess(data))
         dispatch(snackbar.show({
-          message: data.message
+          message: i18n.getResource(i18n.language, 'translation', 'components.forms.contact.success')
         }))
       })
       .catch((error) => {
         dispatch(sendContactMessageFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }

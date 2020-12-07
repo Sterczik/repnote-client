@@ -1,3 +1,4 @@
+import i18n from 'i18next'
 import { snackbarActions as snackbar } from 'material-ui-snackbar-redux'
 import { history } from 'helpers/history'
 import { trainingConstants } from './constants'
@@ -36,7 +37,7 @@ export function getTraining(id) {
         } else {
           dispatch(getTrainingFailure())
           dispatch(snackbar.show({
-            message: 'Something went wrong!'
+            message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
           }))
         }
         return false
@@ -78,7 +79,7 @@ export function editTraining(trainingData, id) {
       .catch((error) => {
         dispatch(editTrainingFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }
@@ -108,13 +109,13 @@ export function removeTraining(id) {
         dispatch(removeTrainingSuccess(training))
         history.push('/account')
         dispatch(snackbar.show({
-          message: 'You successfully removed your Training.'
+          message: i18n.getResource(i18n.language, 'translation', 'global.messages.removeTraining')
         }))
       })
       .catch((error) => {
         dispatch(removeTrainingFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }
@@ -146,7 +147,7 @@ export function switchTrainingStatus(id) {
       .catch((error) => {
         dispatch(switchTrainingStatusFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }
@@ -184,7 +185,7 @@ export function createTraining(trainingData) {
       .catch((error) => {
         dispatch(createTrainingFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }
@@ -216,7 +217,7 @@ export function likeTraining(id, like) {
       .catch((error) => {
         dispatch(likeTrainingFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }
@@ -250,7 +251,7 @@ export function cloneTraining(id) {
       .catch((error) => {
         dispatch(cloneTrainingFailure(error))
         dispatch(snackbar.show({
-          message: 'Something went wrong!'
+          message: i18n.getResource(i18n.language, 'translation', 'global.errors.internalServerError')
         }))
       })
   }

@@ -12,12 +12,14 @@ const resources = {
   }
 }
 
+const lng = localStorage.getItem('lng') || 'pl'
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'pl',
-    fallbackLng: 'en',
+    lng: lng,
+    fallbackLng: lng === 'pl' ? 'en' : 'pl',
     interpolation: {
       escapeValue: false
     }

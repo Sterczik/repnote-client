@@ -1,7 +1,11 @@
 {
   "global": {
     "errors": {
-      "internalServerError": "Something went wrong!"
+      "internalServerError": "Something went wrong!",
+      "refreshToken": "An issue with authorization occured"
+    },
+    "messages": {
+      "removeTraining": "You successfully removed your Training."
     },
     "buttons": {
       "submit": "Submit",
@@ -141,34 +145,51 @@
       "contactForm": {
         "headline": "Want to contact?",
         "text": "Your feedback is very important to us."
+      },
+      "helmet": {
+        "text": "RepNote - Create your trainings"
       }
     },
     "contactpage": {
       "contactForm": {
         "headline": "Want to contact?",
         "text": "Your feedback is very important to us."
+      },
+      "helmet": {
+        "text": "Contact"
       }
     },
     "changepasswordpage": {
       "headline": "Change your password",
-      "text": "You can change your password only when you registered via email. If you registered via Google or Facebook you can't change your password. You can check your provider in your account information."
+      "text": "You can change your password only when you registered via email. If you registered via Google or Facebook you can't change your password. You can check your provider in your account information.",
+      "helmet": {
+        "text": "Change Password"
+      }
     },
     "loginpage": {
       "signInSocial": "Sign in with",
       "signInEmail": "Or sign in with credentials",
-      "signUp": "Create new account"
+      "signUp": "Create new account",
+      "helmet": {
+        "text": "Sign in"
+      }
     },
     "registerpage": {
       "signUpSocial": "Sign up with",
       "signUpEmail": "Or sign up with credentials",
-      "signIn": "Sign in"
+      "signIn": "Sign in",
+      "helmet": {
+        "text": "Sign up"
+      }
     },
     "notfoundpage": {
       "headline": "Page not found!",
-      "back": "Go to homepage"
+      "back": "Go to homepage",
+      "helmet": {
+        "text": "404 - Page not found"
+      }
     },
     "accountpage": {
-      "myAccount": "My Account",
       "userAccount": "User Account",
       "changePassword": "Ch. Password",
       "hideTrainings": "Hide trainings",
@@ -181,7 +202,30 @@
       "provider": "Provider:",
       "editAvatar": "Edit avatar",
       "resetAvatar": "Reset avatar",
-      "editProfile": "Edit profile"
+      "editProfile": "Edit profile",
+      "helmet": {
+        "text": "My Account"
+      }
+    },
+    "trainingpage": {
+      "helmet": {
+        "text": "RepNote training"
+      }
+    },
+    "trainingspage": {
+      "helmet": {
+        "text": "RepNote trainings"
+      }
+    },
+    "createtrainingpage": {
+      "helmet": {
+        "text": "Create training"
+      }
+    },
+    "edittrainingpage": {
+      "helmet": {
+        "text": "Edit training"
+      }
     }
   }
 }

@@ -1,22 +1,44 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withTranslation } from 'react-i18next'
 
 import {
-  setTrainingCategoryFilter
+  Button
+} from 'reactstrap'
+
+import {
+  getTrainings,
+  clearFilters
 } from 'store/trainings/actions'
 
 class ClearFilters extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    this.props.clearFilters()
+    this.props.getTrainings()
+  }
+
   render() {
-    const { t } = this.props
     return (
-      <button>X</button>
+      <Button
+        className="btn-neutral btn-icon ml-1"
+        color="default"
+        onClick={this.handleClick}
+      >
+        <i className="fa fa-close" />
+      </Button>
     )
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setTrainingCategoryFilter: (value) => dispatch(setTrainingCategoryFilter(value))
+  getTrainings: () => dispatch(getTrainings()),
+  clearFilters: () => dispatch(clearFilters())
 })
 
-export default connect(undefined, mapDispatchToProps)(withTranslation()(ClearFilters))
+export default connect(undefined, mapDispatchToProps)(ClearFilters)

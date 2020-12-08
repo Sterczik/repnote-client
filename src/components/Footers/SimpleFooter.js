@@ -1,29 +1,34 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { withTranslation } from 'react-i18next'
 import {
-  NavItem,
-  NavLink,
-  Nav,
   Container,
   Row,
-  Col
+  Col,
+  Input,
+  InputGroup
 } from 'reactstrap'
 
 class SimpleFooter extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(e) {
+    const { value } = e.target
+    localStorage.setItem('lng', value)
+    window.location.reload()
+  }
+
   render() {
-    const { t, i18n } = this.props
-    const changeLanguage = lng => {
-      localStorage.setItem('lng', lng)
-      // i18n.changeLanguage(lng)
-      window.location.reload()
-    }
+    const lng = localStorage.getItem('lng') ? localStorage.getItem('lng') : 'pl'
     return (
       <>
         <footer className="footer footer-dark">
           <Container>
             <Row className="align-items-center justify-content-between">
-              <Col xs="7">
+              <Col xs="8">
                 <div className="copyright">
                   © 2020{" "}
                   <a
@@ -35,19 +40,19 @@ class SimpleFooter extends Component {
                   </a>
                 </div>
               </Col>
-              <Col xs="5">
-                <Nav className="nav-footer justify-content-end">
-                  <button onClick={() => changeLanguage('en')}>en</button>
-                  <button onClick={() => changeLanguage('pl')}>pl</button>
-                  <NavItem>
-                    <NavLink
-                      to="/landing/contact"
-                      tag={Link}
-                    >
-                      { t('components.footer.contact') }
-                    </NavLink>
-                  </NavItem>
-                </Nav>
+              <Col xs="4">
+                <InputGroup className="input-group-alternative">
+                  <Input
+                    type="select"
+                    name="lng"
+                    value={lng}
+                    onChange={this.handleChange}
+                    className="form-control-alternative"
+                  >
+                    <option value="en">EN</option>
+                    <option value="pl">PL</option>
+                  </Input>
+                </InputGroup>
               </Col>
             </Row>
           </Container>
@@ -57,4 +62,4 @@ class SimpleFooter extends Component {
   }
 }
 
-export default withTranslation()(SimpleFooter)
+export default SimpleFooter

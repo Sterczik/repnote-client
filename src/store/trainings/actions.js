@@ -6,7 +6,7 @@ import { ServiceTrainings } from 'services/trainings/trainings'
 
 export function getTrainings (
     page = localStorage.getItem('listing_page') ? localStorage.getItem('listing_page') : '1',
-    perPage = localStorage.getItem('listing_perPage') ? localStorage.getItem('listing_perPage') : '24',
+    perPage = localStorage.getItem('listing_perPage') ? localStorage.getItem('listing_perPage') : '12',
     sort = localStorage.getItem('listing_sort') ? localStorage.getItem('listing_sort') : '1',
     search = localStorage.getItem('listing_search') ? localStorage.getItem('listing_search') : '',
     categoryFilter = localStorage.getItem('listing_categoryFilter') ? localStorage.getItem('listing_categoryFilter') : '0',
@@ -99,5 +99,17 @@ export function setPage(value) {
   return {
     type: trainingsConstants.SET_PAGE,
     value
+  }
+}
+
+export function clearFilters() {
+  localStorage.setItem('listing_perPage', '12')
+  localStorage.setItem('listing_search', '')
+  localStorage.setItem('listing_sort', '1')
+  localStorage.setItem('listing_categoryFilter', '0')
+  localStorage.setItem('listing_advancementLevelFilter', '0')
+
+  return {
+    type: trainingsConstants.CLEAR_FILTERS
   }
 }

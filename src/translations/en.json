@@ -5,7 +5,9 @@
       "refreshToken": "An issue with authorization occured"
     },
     "messages": {
-      "removeTraining": "You successfully removed your Training."
+      "removeTraining": "You successfully removed your Training",
+      "register": "You successfully registered",
+      "changePassword": "You changed your password successfully"
     },
     "buttons": {
       "submit": "Submit",

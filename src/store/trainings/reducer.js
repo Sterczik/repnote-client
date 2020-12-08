@@ -80,6 +80,16 @@ export default (state = trainingsReducerDefaultState, action) => {
         ...state,
         page: action.value
       }
+    // Clear Filters
+    case trainingsConstants.CLEAR_FILTERS:
+      return {
+        ...state,
+        perPage: defaults.perPage,
+        search: defaults.search,
+        sort: defaults.sort,
+        activeTrainingCategoryFilter: defaults.categoryFilter,
+        activeTrainingAdvancementLevelFilter: defaults.advancementLevelFilter
+      }
     // Default
     default:
       return state

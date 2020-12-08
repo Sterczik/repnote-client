@@ -5,7 +5,9 @@
       "refreshToken": "Problem z odnowieniem uwierzytelnienia"
     },
     "messages": {
-      "removeTraining": "Usunąłeś swój trening pomyślnie."
+      "removeTraining": "Usunąłeś swój trening pomyślnie",
+      "register": "Zarejestrowałeś się pomyślnie",
+      "changePassword": "Pomyślnie zmieniłeś swoje hasło"
     },
     "buttons": {
       "submit": "Zatwierdź",

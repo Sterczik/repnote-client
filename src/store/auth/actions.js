@@ -55,7 +55,7 @@ function register(email, name, password, passwordConfirm) {
         if (data.success) {
           dispatch(registerSuccess())
           dispatch(snackbar.show({
-            message: data.message
+            message: i18n.getResource(i18n.language, 'translation', 'global.messages.register')
           }))
           history.push('/landing')
         } else {
@@ -240,7 +240,7 @@ function changePassword(oldPassword, newPassword, newPasswordConfirm) {
           dispatch(changePasswordSuccess())
           history.push('/account')
           dispatch(snackbar.show({
-            message: data.message
+            message: i18n.getResource(i18n.language, 'translation', 'global.messages.changePassword')
           }))
         } else {
           dispatch(changePasswordFailure())

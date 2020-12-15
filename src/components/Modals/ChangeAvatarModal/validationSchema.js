@@ -1,11 +1,12 @@
 import * as Yup from 'yup'
+import i18n from 'i18next'
 
 const avatarSize = 100 * 1024
 const avatarFormats = ['image/jpg', 'image/jpeg', 'image/png']
 
 export default Yup.object().shape({
   file: Yup.mixed()
-    .required('A file is required')
-    .test('fileSize', 'File Size is too large', value => value.size <= avatarSize)
-    .test('fileFormat', 'Unsupported File Format', value => avatarFormats.includes(value.type))
+    .required(i18n.getResource(i18n.language, 'translation', 'components.modals.changeAvatarModal.avatarValidation.required'))
+    .test('fileSize', i18n.getResource(i18n.language, 'translation', 'components.modals.changeAvatarModal.avatarValidation.size'), value => value.size <= avatarSize)
+    .test('fileFormat', i18n.getResource(i18n.language, 'translation', 'components.modals.changeAvatarModal.avatarValidation.format'), value => avatarFormats.includes(value.type))
 })

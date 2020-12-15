@@ -65,7 +65,7 @@ const EditAccountModal = (props) => {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Name"
+                      placeholder={ props.t('components.modals.editAccountModal.name') }
                       type="text"
                       id="name"
                       name="name"
@@ -86,7 +86,7 @@ const EditAccountModal = (props) => {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Description"
+                      placeholder={ props.t('components.modals.editAccountModal.description') }
                       type="textarea"
                       id="description"
                       name="description"

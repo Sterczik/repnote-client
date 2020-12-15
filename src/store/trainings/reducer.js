@@ -85,7 +85,6 @@ export default (state = trainingsReducerDefaultState, action) => {
       return {
         ...state,
         perPage: defaults.perPage,
-        search: defaults.search,
         sort: defaults.sort,
         activeTrainingCategoryFilter: defaults.categoryFilter,
         activeTrainingAdvancementLevelFilter: defaults.advancementLevelFilter

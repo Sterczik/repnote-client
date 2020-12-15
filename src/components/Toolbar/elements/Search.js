@@ -24,6 +24,7 @@ class Search extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.clearSearch = this.clearSearch.bind(this)
   }
 
   handleChange(e) {
@@ -35,6 +36,15 @@ class Search extends Component {
 
   handleSearch() {
     this.props.setSearch(this.state.search)
+    this.props.getTrainings()
+  }
+
+  clearSearch() {
+    const value = ''
+    this.setState({
+      search: value
+    })
+    this.props.setSearch(value)
     this.props.getTrainings()
   }
 
@@ -54,6 +64,10 @@ class Search extends Component {
           <InputGroupText
             onClick={e => this.handleSearch()}>
             <i className="fa fa-search" />
+          </InputGroupText>
+          <InputGroupText
+            onClick={this.clearSearch}>
+            <i className="fa fa-close" />
           </InputGroupText>
         </InputGroupAddon>
       </InputGroup>

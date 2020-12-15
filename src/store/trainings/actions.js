@@ -104,7 +104,6 @@ export function setPage(value) {
 
 export function clearFilters() {
   localStorage.setItem('listing_perPage', '12')
-  localStorage.setItem('listing_search', '')
   localStorage.setItem('listing_sort', '1')
   localStorage.setItem('listing_categoryFilter', '0')
   localStorage.setItem('listing_advancementLevelFilter', '0')

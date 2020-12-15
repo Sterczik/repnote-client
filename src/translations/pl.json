@@ -38,25 +38,72 @@
         "textarea": "Napisz wiadomość...",
         "submit": "Wyślij wiadomość",
         "nameValidation": {
-          "required": "Wpisz swoje imię"
+          "required": "Wpisz swoje imię",
+          "min": "Pole musi zawierać co najmniej 3 znaki",
+          "max": "Pole musi zawierać maksymalnie 40 znaków"
+        },
+        "emailValidation": {
+          "required": "Wpisz swój adres email",
+          "email": "Wpisz prawidłowy adres email",
+          "max": "Pole musi zawierać maksymalnie 50 znaków"
+        },
+        "messageValidation": {
+          "required": "Napisz wiadomość",
+          "min": "Wiadomość musi zawierać co najmniej 10 znaków",
+          "max": "Wiadomość musi zawierać maksymalnie 1000 znaków"
         }
       },
       "changePassword": {
         "old": "Stare hasło",
         "new": "Nowe hasło",
-        "new2": "Powtórz nowe hasło"
+        "new2": "Powtórz nowe hasło",
+        "passwordValidation": {
+          "required": "Wpisz swoje hasło",
+          "min": "Pole musi zawierać co najmniej 6 znaków",
+          "max": "Pole musi zawierać maksymalnie 30 znaków",
+          "matches": "Pole musi zawierać co najmniej jedną cyfrę, jedną wielką oraz małą literę",
+          "confirm": "Hasła się nie zgadzają"
+        }
       },
       "signUp": {
         "name": "Imię",
         "email": "Email",
         "password": "Hasło",
         "password2": "Powtórz hasło",
-        "submit": "Utwórz konto"
+        "submit": "Utwórz konto",
+        "emailValidation": {
+          "enter": "Wpisz swój adres email",
+          "required": "Wpisz swój adres email",
+          "email": "Wpisz prawidłowy adres email"
+        },
+        "nameValidation": {
+          "required": "Wpisz swoje imię",
+          "min": "Pole musi zawierać co najmniej 3 znaki",
+          "max": "Pole musi zawierać maksymalnie 30 znaków"
+        },
+        "passwordValidation": {
+          "required": "Wpisz swoje hasło",
+          "min": "Pole musi zawierać co najmniej 6 znaków",
+          "max": "Pole musi zawierać maksymalnie 30 znaków",
+          "matches": "Pole musi zawierać co najmniej jedną cyfrę, jedną wielką oraz małą literę",
+          "confirm": "Hasła się nie zgadzają"
+        }
       },
       "signIn": {
         "email": "Email",
         "password": "Hasło",
-        "submit": "Zaloguj się"
+        "submit": "Zaloguj się",
+        "emailValidation": {
+          "enter": "Wpisz swój adres email",
+          "required": "Wpisz swój adres email",
+          "email": "Wpisz prawidłowy adres email"
+        },
+        "passwordValidation": {
+          "required": "Wpisz swoje hasło",
+          "min": "Pole musi zawierać co najmniej 6 znaków",
+          "max": "Pole musi zawierać maksymalnie 30 znaków",
+          "matches": "Pole musi zawierać co najmniej jedną cyfrę, jedną wielką oraz małą literę"
+        }
       }
     },
     "toolbar": {
@@ -105,12 +152,24 @@
         "formats": "Dostępne formaty zdjęcia:",
         "select": "Wybierz plik",
         "close": "Zamknij",
-        "submit": "Wyślij zdjęcie"
+        "submit": "Wyślij zdjęcie",
+        "avatarValidation": {
+          "required": "Zdjęcie jest wymagane",
+          "size": "Rozmiar zdjęcia jest zbyt duży",
+          "format": "Niewspierany format zdjęcia"
+        }
       },
       "editAccountModal": {
         "header": "Edytuj konto",
         "close": "Zamknij",
-        "submit": "Zapisz zmiany"
+        "submit": "Zapisz zmiany",
+        "name": "Imię",
+        "description": "Opis",
+        "nameValidation": {
+          "required": "Wpisz swoje imię",
+          "min": "Pole musi zawierać co najmniej 3 znaki",
+          "max": "Pole musi zawierać maksymalnie 30 znaków"
+        }
       },
       "removeTrainingModal": {
         "header": "Na pewno?",

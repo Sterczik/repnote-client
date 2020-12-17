@@ -284,8 +284,63 @@
       }
     },
     "edittrainingpage": {
+      "headline": "Edit training",
       "helmet": {
         "text": "Edit training"
+      }
+    },
+    "createedittrainingpage": {
+      "information": "Basic information",
+      "subtrainingsExercises": "Subtrainings & Exercises",
+      "noSubtrainings": "No subtrainings yet",
+      "noExercises": "No exercises yet",
+      "addSubtraining": "Add subtraining",
+      "removeSubtraining": "Remove subtraining",
+      "submit": "Save training",
+      "addExercise": "Add exercise",
+      "addRound": "Add round",
+      "oneExercise": "Exercise",
+      "training": {
+        "name": {
+          "label": "Training name *",
+          "required": "Training name is required"
+        },
+        "category": {
+          "label": "Training category *"
+        },
+        "advancement": {
+          "label": "Advancement Level *"
+        },
+        "days": {
+          "label": "Training days weekly *"
+        },
+        "description": {
+          "label": "Training description *",
+          "required": "Training description is required"
+        },
+        "goal": {
+          "label": "Training goal *",
+          "required": "Training goal is required"
+        },
+        "status": {
+          "label": "Training status *"
+        }
+      },
+      "subtraining": {
+        "label": "Subtraining name",
+        "required": "Subtraining name is required"
+      },
+      "exercise": {
+        "label": "Exercise name *",
+        "required": "Exercise name is required"
+      },
+      "round": {
+        "weight": "Weight (kg)",
+        "reps": "Reps",
+        "weightLabel": "Round weight (kg) *",
+        "weightRequired": "Round weight is required",
+        "repsLabel": "Round reps *",
+        "repsRequired": "Reps value is required"
       }
     }
   }

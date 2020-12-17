@@ -58,18 +58,19 @@ class CustomImageInput extends Component {
     const { name } = this.props.field
 
     return (
-      <div>
+      <div className="custom-file">
         <input
           id={name}
           name={name}
           type="file"
           onChange={this.handleImageChange}
           ref={this.fileUpload}
+          className="custom-file-input"
         />
-        <p>
+        <label className="custom-file-label" htmlFor={name}>
           {title}
-        </p>
-        <div onClick={this.showFileUpload}>
+        </label>
+        <div className="custom-file-image" onClick={this.showFileUpload}>
           {this.showPreloadImage()}
         </div>
       </div>

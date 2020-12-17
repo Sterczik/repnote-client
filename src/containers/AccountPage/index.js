@@ -32,14 +32,18 @@ class AccountPage extends Component {
   }
   render() {
     const { t } = this.props
+    const helmetContent = t('views.accountpage.helmet.text')
     return (
       <>
         <Helmet
-          titleTemplate={ t('views.accountpage.helmet.text') }
-          defaultTitle={ t('views.accountpage.helmet.text') }
-        >
-          <meta name="description" content={ t('views.accountpage.helmet.text') } />
-        </Helmet>
+          title={ helmetContent }
+          meta={[
+            {
+              name: 'description',
+              content: helmetContent,
+            },
+          ]}
+        />
         <div className="profile-page">
           <section className="section-profile-cover section-shaped my-0">
             <div className="shape shape-style-1 bg-gradient-info"></div>

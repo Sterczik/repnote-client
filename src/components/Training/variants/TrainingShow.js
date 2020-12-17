@@ -180,16 +180,18 @@ class TrainingShow extends Component {
                       </Row>
                       { subtraining.exercises.map((exercise) => (
                         <Row className="mb-3 text-center" key={exercise.id}>
-                          <Col lg="12">
+                          <Col xs="12" lg="6" className="d-flex flex-column justify-content-center">
                             <h5>{ exercise.name }</h5>
-                            <Badge color="primary" pill className="mr-1 mb-3">
-                              { exercise.category.name }
-                            </Badge>
-                            <Badge color="primary" pill className="mb-3">
-                              { t('components.training.rounds') }: { exercise.rounds.length }
-                            </Badge>
+                            <div>
+                              <Badge color="primary" pill className="mr-1 mb-3">
+                                { exercise.category.name }
+                              </Badge>
+                              <Badge color="primary" pill className="mb-3">
+                                { t('components.training.rounds') }: { exercise.rounds.length }
+                              </Badge>
+                            </div>
                           </Col>
-                          <Col lg="12">
+                          <Col xs="12" lg="6">
                             <table className="table table-sm table-borderless table-center table-300">
                               <thead>
                                 <tr>

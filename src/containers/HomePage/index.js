@@ -17,14 +17,18 @@ import ContactForm from 'components/Forms/ContactForm/ContactForm'
 class HomePage extends Component {
   render() {
     const { t } = this.props
+    const helmetContent = t('views.homepage.helmet.text')
     return (
       <>
         <Helmet
-          titleTemplate={ t('views.homepage.helmet.text') }
-          defaultTitle={ t('views.homepage.helmet.text') }
-        >
-          <meta name="description" content={ t('views.homepage.helmet.text') } />
-        </Helmet>
+          title={ helmetContent }
+          meta={[
+            {
+              name: 'description',
+              content: helmetContent,
+            },
+          ]}
+        />
         <div className="position-relative">
           <section className="section section-lg section-shaped">
             <div className="shape shape-style-1 bg-gradient-info">

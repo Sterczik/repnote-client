@@ -139,14 +139,18 @@ class CreateTrainingPage extends Component {
 
   render() {
     const { t } = this.props
+    const helmetContent = t('views.createtrainingpage.helmet.text')
     return (
       <>
         <Helmet
-          titleTemplate={ t('views.createtrainingpage.helmet.text') }
-          defaultTitle={ t('views.createtrainingpage.helmet.text') }
-        >
-          <meta name="description" content={ t('views.createtrainingpage.helmet.text') } />
-        </Helmet>
+          title={ helmetContent }
+          meta={[
+            {
+              name: 'description',
+              content: helmetContent,
+            },
+          ]}
+        />
         <main>
           <section className="section section-shaped section-lg">
             <Container>

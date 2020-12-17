@@ -13,11 +13,14 @@ import ContactForm from 'components/Forms/ContactForm/ContactForm'
 export const ContactPage = ({ t }) => (
   <>
     <Helmet
-      titleTemplate={ t('views.contactpage.helmet.text') }
-      defaultTitle={ t('views.contactpage.helmet.text') }
-    >
-      <meta name="description" content={ t('views.contactpage.helmet.text') } />
-    </Helmet>
+      title={ t('views.contactpage.helmet.text') }
+      meta={[
+        {
+          name: 'description',
+          content: t('views.contactpage.helmet.text'),
+        },
+      ]}
+    />
     <div className="position-relative">
       <section className="section section-lg section-shaped">
         <div className="shape shape-style-1 bg-gradient-info">

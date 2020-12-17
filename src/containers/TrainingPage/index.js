@@ -28,14 +28,18 @@ class TrainingPage extends Component {
 
   render() {
     const { t } = this.props
+    const helmetContent = t('views.trainingpage.helmet.text')
     return (
       <>
         <Helmet
-          titleTemplate={ t('views.trainingpage.helmet.text') }
-          defaultTitle={ t('views.trainingpage.helmet.text') }
-        >
-          <meta name="description" content={ t('views.trainingpage.helmet.text') } />
-        </Helmet>
+          title={ helmetContent }
+          meta={[
+            {
+              name: 'description',
+              content: helmetContent,
+            },
+          ]}
+        />
         <main className="training-page">
 
           { !this.props.trainingData.isLoaded ? (

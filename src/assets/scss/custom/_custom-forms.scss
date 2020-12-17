@@ -184,3 +184,13 @@
         transition: $input-transition;
     }
 }
+
+.custom-file {
+    height: auto;
+
+    .custom-file-image {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+    }
+}

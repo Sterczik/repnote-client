@@ -23,14 +23,18 @@ class UserPage extends Component {
   }
   render() {
     const { t } = this.props
+    const helmetContent = t('views.accountpage.userAccount')
     return (
       <>
         <Helmet
-          titleTemplate={ t('views.accountpage.userAccount') }
-          defaultTitle={ t('views.accountpage.userAccount') }
-        >
-          <meta name="description" content={ t('views.accountpage.userAccount') } />
-        </Helmet>
+          title={ helmetContent }
+          meta={[
+            {
+              name: 'description',
+              content: helmetContent,
+            },
+          ]}
+        />
         <div className="profile-page">
           <section className="section-profile-cover section-shaped my-0">
             <div className="shape shape-style-1 bg-gradient-info"></div>

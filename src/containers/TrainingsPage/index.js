@@ -24,14 +24,18 @@ class TrainingsPage extends Component {
 
   render() {
     const { t } = this.props
+    const helmetContent = t('views.trainingspage.helmet.text')
     return (
       <>
         <Helmet
-          titleTemplate={ t('views.trainingspage.helmet.text') }
-          defaultTitle={ t('views.trainingspage.helmet.text') }
-        >
-          <meta name="description" content={ t('views.trainingspage.helmet.text') } />
-        </Helmet>
+          title={ helmetContent }
+          meta={[
+            {
+              name: 'description',
+              content: helmetContent,
+            },
+          ]}
+        />
         <section className="section pb-4 pt-5">
           <Container>
             <Toolbar />

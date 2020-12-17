@@ -18,11 +18,14 @@ import {
 export const RegisterPage = ({ t }) => (
   <>
     <Helmet
-      titleTemplate={ t('views.registerpage.helmet.text') }
-      defaultTitle={ t('views.registerpage.helmet.text') }
-    >
-      <meta name="description" content={ t('views.registerpage.helmet.text') } />
-    </Helmet>
+      title={ t('views.registerpage.helmet.text') }
+      meta={[
+        {
+          name: 'description',
+          content: t('views.registerpage.helmet.text'),
+        },
+      ]}
+    />
     <section className="section section-shaped section-lg">
       <div className="shape shape-style-1 bg-gradient-info"></div>
       <Container className="pt-lg-md">

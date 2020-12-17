@@ -284,8 +284,63 @@
       }
     },
     "edittrainingpage": {
+      "headline": "Edycja treningu",
       "helmet": {
         "text": "Edytuj trening"
+      }
+    },
+    "createedittrainingpage": {
+      "information": "Podstawowe informacje",
+      "subtrainingsExercises": "Podtreningi i ćwiczenia",
+      "noSubtrainings": "Brak podtreningów",
+      "noExercises": "Brak ćwiczeń",
+      "addSubtraining": "Dodaj podtrening",
+      "removeSubtraining": "Usuń podtrening",
+      "submit": "Zapisz trening",
+      "addExercise": "Dodaj ćwiczenie",
+      "addRound": "Dodaj serię",
+      "oneExercise": "Ćwiczenie",
+      "training": {
+        "name": {
+          "label": "Nazwa treningu *",
+          "required": "Nazwa treningu jest wymagana"
+        },
+        "category": {
+          "label": "Kategoria treningu *"
+        },
+        "advancement": {
+          "label": "Poziom zaawansowania *"
+        },
+        "days": {
+          "label": "Liczba dni treningowych (w tygodniu) *"
+        },
+        "description": {
+          "label": "Opis treningu *",
+          "required": "Opis treningu jest wymagany"
+        },
+        "goal": {
+          "label": "Cel treiningu *",
+          "required": "Cel treningu jest wymagany"
+        },
+        "status": {
+          "label": "Status treningu *"
+        }
+      },
+      "subtraining": {
+        "label": "Nazwa podtreningu",
+        "required": "Nazwa podtreningu jest wymagana"
+      },
+      "exercise": {
+        "label": "Nazwa ćwiczenia *",
+        "required": "Nazwa ćwiczenia jest wymagana"
+      },
+      "round": {
+        "weight": "Waga (kg)",
+        "reps": "Powtórzenia",
+        "weightLabel": "Obciążenie (kg) *",
+        "weightRequired": "Obciążenie jest wymagane",
+        "repsLabel": "Liczba powtórzeń *",
+        "repsRequired": "Liczba powtórzeń jest wymagana"
       }
     }
   }

@@ -126,9 +126,9 @@ export function switchTrainingStatus(id) {
     type: trainingConstants.SWITCH_TRAINING_STATUS_IN_PROCESS
   })
 
-  const switchTrainingStatusSuccess = (training) => ({
+  const switchTrainingStatusSuccess = (status) => ({
     type: trainingConstants.SWITCH_TRAINING_STATUS_SUCCESS,
-    training
+    private: status.private
   })
 
   const switchTrainingStatusFailure = (error) => ({
@@ -141,8 +141,8 @@ export function switchTrainingStatus(id) {
 
     ServiceTrainings.switchTrainingStatus(id)
       .then((res) => {
-        const training = res.data
-        dispatch(switchTrainingStatusSuccess(training))
+        const status = res.data
+        dispatch(switchTrainingStatusSuccess(status))
       })
       .catch((error) => {
         dispatch(switchTrainingStatusFailure(error))

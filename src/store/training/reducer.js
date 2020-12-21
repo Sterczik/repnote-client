@@ -56,7 +56,7 @@ export default (state = trainingReducerDefaultState, action) => {
         ...state,
         training: {
           ...state.training,
-          private: action.training.private
+          private: action.private
         }
       }
     case trainingConstants.SWITCH_TRAINING_STATUS_FAILURE:

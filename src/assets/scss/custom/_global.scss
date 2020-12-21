@@ -224,6 +224,17 @@ body {
     }
 }
 
-.height-30 {
+.height-28 {
     height: 28px;
+}
+
+.height-44 {
+    height: 44px;
+}
+
+.custom-draggable {
+    &-item {
+        border: 1px solid #f5f5f5;
+        padding: 10px;
+    }
 }

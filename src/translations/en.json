@@ -279,6 +279,7 @@
       }
     },
     "createtrainingpage": {
+      "headline": "Create training",
       "helmet": {
         "text": "Create training"
       }

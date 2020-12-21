@@ -50,17 +50,12 @@ function register(email, name, password, passwordConfirm) {
     dispatch(registerInProcess({ email }))
 
     ServiceUsers.register(email, name, password, passwordConfirm)
-      .then((response) => {
-        const { data } = response
-        if (data.success) {
-          dispatch(registerSuccess())
-          dispatch(snackbar.show({
-            message: i18n.getResource(i18n.language, 'translation', 'global.messages.register')
-          }))
-          history.push('/landing')
-        } else {
-          dispatch(registerFailure())
-        }
+      .then(() => {
+        dispatch(registerSuccess())
+        dispatch(snackbar.show({
+          message: i18n.getResource(i18n.language, 'translation', 'global.messages.register')
+        }))
+        history.push('/landing')
       })
       .catch((error) => {
         dispatch(registerFailure(error))
@@ -93,22 +88,15 @@ function login(email, password) {
     ServiceUsers.login(email, password)
       .then((response) => {
         const { data } = response
-        if (data.success) {
-          if (data.token.token && data.token.refreshToken) {
-            localStorage.setItem('token', String(data.token.token))
-            localStorage.setItem('refreshToken', data.token.refreshToken)
+        if (data.token.token && data.token.refreshToken) {
+          localStorage.setItem('token', String(data.token.token))
+          localStorage.setItem('refreshToken', data.token.refreshToken)
 
-            dispatch(loginSuccess({
-              accessToken: data.token.token,
-              refreshToken: data.token.refreshToken
-            }))
-            history.push('/trainings')
-          }
-        } else {
-          dispatch(loginFailure())
-          dispatch(snackbar.show({
-            message: data.errors.message
+          dispatch(loginSuccess({
+            accessToken: data.token.token,
+            refreshToken: data.token.refreshToken
           }))
+          history.push('/trainings')
         }
       })
       .catch((error) => {
@@ -191,22 +179,15 @@ function socialLogin(response, provider) {
     ServiceUsers.socialLogin(token, provider)
       .then((response) => {
         const { data } = response
-        if (data.success) {
-          if (data.token.token) {
-            localStorage.setItem('token', data.token.token)
-            localStorage.setItem('refreshToken', data.token.refreshToken)
-          }
-          dispatch(socialLoginSuccess({
-            accessToken: data.token.token,
-            refreshToken: data.token.refreshToken
-          }))
-          history.push('/trainings')
-        } else {
-          dispatch(socialLoginFailure())
-          dispatch(snackbar.show({
-            message: data.errors.message
-          }))
+        if (data.token.token) {
+          localStorage.setItem('token', data.token.token)
+          localStorage.setItem('refreshToken', data.token.refreshToken)
         }
+        dispatch(socialLoginSuccess({
+          accessToken: data.token.token,
+          refreshToken: data.token.refreshToken
+        }))
+        history.push('/trainings')
       })
       .catch((error) => {
         dispatch(socialLoginFailure(error))
@@ -234,20 +215,12 @@ function changePassword(oldPassword, newPassword, newPasswordConfirm) {
     dispatch(changePasswordInProcess())
 
     ServiceUsers.changePassword(oldPassword, newPassword, newPasswordConfirm)
-      .then((response) => {
-        const { data } = response
-        if (data.success) {
-          dispatch(changePasswordSuccess())
-          history.push('/account')
-          dispatch(snackbar.show({
-            message: i18n.getResource(i18n.language, 'translation', 'global.messages.changePassword')
-          }))
-        } else {
-          dispatch(changePasswordFailure())
-          dispatch(snackbar.show({
-            message: data.errors.message
-          }))
-        }
+      .then(() => {
+        dispatch(changePasswordSuccess())
+        history.push('/account')
+        dispatch(snackbar.show({
+          message: i18n.getResource(i18n.language, 'translation', 'global.messages.changePassword')
+        }))
       })
       .catch((error) => {
         dispatch(changePasswordFailure(error))

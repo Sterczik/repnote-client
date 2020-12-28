@@ -26,7 +26,7 @@ class ClearFilters extends Component {
   render() {
     return (
       <Button
-        className="btn-neutral btn-icon ml-1"
+        className="btn-neutral btn-icon"
         color="default"
         onClick={this.handleClick}
       >

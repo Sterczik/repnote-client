@@ -301,6 +301,7 @@
       "addExercise": "Dodaj ćwiczenie",
       "addRound": "Dodaj serię",
       "oneExercise": "Ćwiczenie",
+      "oneSubtraining": "Podtrening",
       "training": {
         "name": {
           "label": "Nazwa treningu *",

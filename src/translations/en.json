@@ -301,6 +301,7 @@
       "addExercise": "Add exercise",
       "addRound": "Add round",
       "oneExercise": "Exercise",
+      "oneSubtraining": "Subtraining",
       "training": {
         "name": {
           "label": "Training name *",

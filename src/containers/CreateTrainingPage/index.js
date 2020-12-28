@@ -348,200 +348,201 @@ class CreateTrainingPage extends Component {
                           <DragDropContext onDragEnd={this.onDragEnd}>
                             { this.state.subtrainings.map((subtraining, index) => (
                               <>
-                                <div className="mb-4">
-                                <Row key={index}>
-                                  <Col xs="2" className="d-flex align-items-center">
-                                    <Button size="sm" id="tooltipAddExercise" className="btn-icon btn-tooltip" color="info" type="button" onClick={() => this.addExercise(index)} disabled={subtraining.exercises.length >= 10 ? true : false}>
-                                      <span className="btn-inner--icon">
-                                        <i className="ni ni-fat-add" />
-                                      </span>
-                                    </Button>
-                                    <UncontrolledTooltip
-                                      delay={0}
-                                      placement="top"
-                                      target="tooltipAddExercise"
-                                    >
-                                      { t('views.createedittrainingpage.addExercise') }
-                                    </UncontrolledTooltip>
-                                  </Col>
-                                  <Col xs="8" className="align-items-center my-2">
-                                    <AvGroup className="mb-0">
-                                      <AvInput
-                                        placeholder={ t('views.createedittrainingpage.subtraining.label') }
-                                        type="text"
-                                        name={`subtraining-${index}`}
-                                        value={subtraining.name}
-                                        onChange={e => this.handleChangeSubtraining(index, e, 'name')}
-                                        className="form-control-alternative height-28 py-0"
-                                      />
-                                    </AvGroup>
-                                  </Col>
-                                  <Col xs="2" className="d-flex align-items-center justify-content-end">
-                                    <Button size="sm" id="tooltipRemoveSubtraining" className="btn-icon btn-tooltip" color="danger" type="button" onClick={() => this.removeSubtraining(index)}>
-                                      <span className="btn-inner--icon">
-                                        <i className="ni ni-fat-remove" />
-                                      </span>
-                                    </Button>
-                                    <UncontrolledTooltip
-                                      delay={0}
-                                      placement="top"
-                                      target="tooltipRemoveSubtraining"
-                                    >
-                                      { t('views.createedittrainingpage.removeSubtraining') }
-                                    </UncontrolledTooltip>
-                                  </Col>
-                                </Row>
-                                <Row>
-                                  <Col xs="12">
-                                    <Droppable
-                                      droppableId={String(index)}
-                                    >
-                                      {(provided, snapshot) => (
-                                        <div {...provided.droppableProps}
-                                          ref={provided.innerRef}
-                                          style={getListStyle(snapshot.isDraggingOver)}
-                                        >
-                                          {
-                                            subtraining.exercises.length === 0 ? (
-                                              <Row>
-                                                <Col>
-                                                  <h5 className="display-5">{ t('views.createedittrainingpage.noExercises') }</h5>
-                                                </Col>
-                                              </Row>
-                                            ) : (
-                                              subtraining.exercises.map((exercise, indexExercise) => (
-                                                <Draggable
-                                                  key={indexExercise}
-                                                  draggableId={`${index}_${indexExercise}`}
-                                                  index={indexExercise}
-                                                >
-                                                  {(provided, snapshot) => (
-                                                    <div ref={provided.innerRef}
-                                                      {...provided.draggableProps}
-                                                      {...provided.dragHandleProps}
-                                                      className="pt-3 custom-draggable-item"
-                                                      style={getItemStyle(
-                                                        snapshot.isDragging,
-                                                        provided.draggableProps.style
-                                                      )}
-                                                    >
-                                                      <Row key={indexExercise}>
-                                                        <Col md="6">
-                                                          <Row className="pb-3">
-                                                            <Col md="12">
-                                                              <Button size="sm" className="btn-icon" color="danger" type="button" onClick={() => this.removeExercise(index, indexExercise)}>
-                                                                <span className="btn-inner--icon">
-                                                                  <i className="ni ni-fat-remove" />
-                                                                </span>
-                                                              </Button>
-                                                              <span className="pl-2">{ t('views.createedittrainingpage.oneExercise') } {indexExercise + 1}</span>
-                                                            </Col>
-                                                          </Row>
-                                                          <Row>
-                                                            <Col md="12">
-                                                              <AvGroup>
-                                                                <AvInput
-                                                                  placeholder={ t('views.createedittrainingpage.exercise.label') }
-                                                                  type="text"
-                                                                  name={`exercise-${index}-${indexExercise}`}
-                                                                  value={exercise.name}
-                                                                  onChange={e => this.handleChangeExercise(index, indexExercise, e, 'name')}
-                                                                  required
+                                <div className="mb-5">
+                                  <h5 className="display-5">{ t('views.createedittrainingpage.oneSubtraining') } {index + 1}</h5>
+                                  <Row key={index}>
+                                    <Col xs="2" className="d-flex align-items-center">
+                                      <Button size="sm" id="tooltipAddExercise" className="btn-icon btn-tooltip" color="info" type="button" onClick={() => this.addExercise(index)} disabled={subtraining.exercises.length >= 10 ? true : false}>
+                                        <span className="btn-inner--icon">
+                                          <i className="ni ni-fat-add" />
+                                        </span>
+                                      </Button>
+                                      <UncontrolledTooltip
+                                        delay={0}
+                                        placement="top"
+                                        target="tooltipAddExercise"
+                                      >
+                                        { t('views.createedittrainingpage.addExercise') }
+                                      </UncontrolledTooltip>
+                                    </Col>
+                                    <Col xs="8" className="align-items-center my-2">
+                                      <AvGroup className="mb-0">
+                                        <AvInput
+                                          placeholder={ t('views.createedittrainingpage.subtraining.label') }
+                                          type="text"
+                                          name={`subtraining-${index}`}
+                                          value={subtraining.name}
+                                          onChange={e => this.handleChangeSubtraining(index, e, 'name')}
+                                          className="form-control-alternative height-28 py-0"
+                                        />
+                                      </AvGroup>
+                                    </Col>
+                                    <Col xs="2" className="d-flex align-items-center justify-content-end">
+                                      <Button size="sm" id="tooltipRemoveSubtraining" className="btn-icon btn-tooltip" color="danger" type="button" onClick={() => this.removeSubtraining(index)}>
+                                        <span className="btn-inner--icon">
+                                          <i className="ni ni-fat-remove" />
+                                        </span>
+                                      </Button>
+                                      <UncontrolledTooltip
+                                        delay={0}
+                                        placement="top"
+                                        target="tooltipRemoveSubtraining"
+                                      >
+                                        { t('views.createedittrainingpage.removeSubtraining') }
+                                      </UncontrolledTooltip>
+                                    </Col>
+                                  </Row>
+                                  <Row>
+                                    <Col xs="12">
+                                      <Droppable
+                                        droppableId={String(index)}
+                                      >
+                                        {(provided, snapshot) => (
+                                          <div {...provided.droppableProps}
+                                            ref={provided.innerRef}
+                                            style={getListStyle(snapshot.isDraggingOver)}
+                                          >
+                                            {
+                                              subtraining.exercises.length === 0 ? (
+                                                <Row>
+                                                  <Col>
+                                                    <h5 className="display-5">{ t('views.createedittrainingpage.noExercises') }</h5>
+                                                  </Col>
+                                                </Row>
+                                              ) : (
+                                                subtraining.exercises.map((exercise, indexExercise) => (
+                                                  <Draggable
+                                                    key={indexExercise}
+                                                    draggableId={`${index}_${indexExercise}`}
+                                                    index={indexExercise}
+                                                  >
+                                                    {(provided, snapshot) => (
+                                                      <div ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        className="pt-3 custom-draggable-item"
+                                                        style={getItemStyle(
+                                                          snapshot.isDragging,
+                                                          provided.draggableProps.style
+                                                        )}
+                                                      >
+                                                        <Row key={indexExercise}>
+                                                          <Col md="6">
+                                                            <Row className="pb-3">
+                                                              <Col md="12">
+                                                                <Button size="sm" className="btn-icon" color="danger" type="button" onClick={() => this.removeExercise(index, indexExercise)}>
+                                                                  <span className="btn-inner--icon">
+                                                                    <i className="ni ni-fat-remove" />
+                                                                  </span>
+                                                                </Button>
+                                                                <span className="pl-2">{ t('views.createedittrainingpage.oneExercise') } {indexExercise + 1}</span>
+                                                              </Col>
+                                                            </Row>
+                                                            <Row>
+                                                              <Col md="12">
+                                                                <AvGroup>
+                                                                  <AvInput
+                                                                    placeholder={ t('views.createedittrainingpage.exercise.label') }
+                                                                    type="text"
+                                                                    name={`exercise-${index}-${indexExercise}`}
+                                                                    value={exercise.name}
+                                                                    onChange={e => this.handleChangeExercise(index, indexExercise, e, 'name')}
+                                                                    required
+                                                                    className="form-control-alternative height-28 py-0"
+                                                                  />
+                                                                  <AvFeedback>{ t('views.createedittrainingpage.exercise.required') }</AvFeedback>
+                                                                </AvGroup>
+                                                              </Col>
+                                                              <Col md="12">
+                                                                <AvField
+                                                                  type="select"
+                                                                  value={exercise.category_id}
+                                                                  onChange={e => this.handleChangeExercise(index, indexExercise, e, 'category')}
+                                                                  name="exercise_category"
                                                                   className="form-control-alternative height-28 py-0"
-                                                                />
-                                                                <AvFeedback>{ t('views.createedittrainingpage.exercise.required') }</AvFeedback>
-                                                              </AvGroup>
-                                                            </Col>
-                                                            <Col md="12">
-                                                              <AvField
-                                                                type="select"
-                                                                value={exercise.category_id}
-                                                                onChange={e => this.handleChangeExercise(index, indexExercise, e, 'category')}
-                                                                name="exercise_category"
-                                                                className="form-control-alternative height-28 py-0"
-                                                              >
-                                                                { this.props.exerciseCategories.map((exerciseCategory) => (
-                                                                  <option key={exerciseCategory.id} value={Number(exerciseCategory.id)}>{ exerciseCategory.name }</option>
-                                                                )) }
-                                                              </AvField>
-                                                            </Col>
-                                                          </Row>
-                                                        </Col>
-                                                        <Col md="6">
-                                                          <Row className="pb-3 height-44">
-                                                            <Col xs="5">
-                                                              { t('views.createedittrainingpage.round.weight') }
-                                                            </Col>
-                                                            <Col xs="5">
-                                                              { t('views.createedittrainingpage.round.reps') }
-                                                            </Col>
-                                                          </Row>
-                                                          <div>
-                                                            {
-                                                              exercise.rounds.length === 0 ? (
-                                                                null
-                                                              ) : (
-                                                                exercise.rounds.map((round, indexRound) => (
-                                                                  <div key={indexRound}>
-                                                                    <Row>
-                                                                      <Col xs="5">
-                                                                        <AvGroup>
-                                                                          <AvInput
-                                                                            placeholder={ t('views.createedittrainingpage.round.weightLabel') }
-                                                                            type="number"
-                                                                            name={`round-${index}-${indexExercise}-${indexRound}-weight`}
-                                                                            value={round.weight !== 0 ? round.weight : '0'}
-                                                                            onChange={e => this.handleChangeRound(index, indexExercise, indexRound, e, 'weight')}
-                                                                            required
-                                                                            className="form-control-alternative height-28 py-0"
-                                                                          />
-                                                                          <AvFeedback>{ t('views.createedittrainingpage.round.weightRequired') }</AvFeedback>
-                                                                        </AvGroup>
-                                                                      </Col>
-                                                                      <Col xs="5">
-                                                                        <AvGroup>
-                                                                          <AvInput
-                                                                            placeholder={ t('views.createedittrainingpage.round.repsLabel') }
-                                                                            type="number"
-                                                                            name={`round-${index}-${indexExercise}-${indexRound}-reps`}
-                                                                            value={round.reps !== 0 ? 
-                                                                            round.reps : '0'}
-                                                                            onChange={e => this.handleChangeRound(index, indexExercise, indexRound, e, 'reps')}
-                                                                            required
-                                                                            className="form-control-alternative height-28 py-0"
-                                                                          />
-                                                                          <AvFeedback>{ t('views.createedittrainingpage.round.repsRequired') }</AvFeedback>
-                                                                        </AvGroup>
-                                                                      </Col>
-                                                                      <Col xs="2" className="mb-3">
-                                                                        <Button size="sm" className="btn-icon" color="danger" type="button" onClick={() => this.removeRound(index, indexExercise, indexRound)}>
-                                                                          <span className="btn-inner--icon">
-                                                                            <i className="ni ni-fat-remove" />
-                                                                          </span>
-                                                                        </Button>
-                                                                      </Col>
-                                                                    </Row>
-                                                                  </div>
-                                                                ))
-                                                              )
-                                                            }
-                                                            <div className="mb-3">
-                                                              <Button type="button" size="sm" color="default" onClick={() => this.addRound(index, indexExercise)} disabled={exercise.rounds.length >= 20 ? true : false}>{ t('views.createedittrainingpage.addRound') }</Button>
+                                                                >
+                                                                  { this.props.exerciseCategories.map((exerciseCategory) => (
+                                                                    <option key={exerciseCategory.id} value={Number(exerciseCategory.id)}>{ exerciseCategory.name }</option>
+                                                                  )) }
+                                                                </AvField>
+                                                              </Col>
+                                                            </Row>
+                                                          </Col>
+                                                          <Col md="6">
+                                                            <Row className="pb-3 height-44">
+                                                              <Col xs="5">
+                                                                { t('views.createedittrainingpage.round.weight') }
+                                                              </Col>
+                                                              <Col xs="5">
+                                                                { t('views.createedittrainingpage.round.reps') }
+                                                              </Col>
+                                                            </Row>
+                                                            <div>
+                                                              {
+                                                                exercise.rounds.length === 0 ? (
+                                                                  null
+                                                                ) : (
+                                                                  exercise.rounds.map((round, indexRound) => (
+                                                                    <div key={indexRound}>
+                                                                      <Row>
+                                                                        <Col xs="5">
+                                                                          <AvGroup>
+                                                                            <AvInput
+                                                                              placeholder={ t('views.createedittrainingpage.round.weightLabel') }
+                                                                              type="number"
+                                                                              name={`round-${index}-${indexExercise}-${indexRound}-weight`}
+                                                                              value={round.weight !== 0 ? round.weight : '0'}
+                                                                              onChange={e => this.handleChangeRound(index, indexExercise, indexRound, e, 'weight')}
+                                                                              required
+                                                                              className="form-control-alternative height-28 py-0"
+                                                                            />
+                                                                            <AvFeedback>{ t('views.createedittrainingpage.round.weightRequired') }</AvFeedback>
+                                                                          </AvGroup>
+                                                                        </Col>
+                                                                        <Col xs="5">
+                                                                          <AvGroup>
+                                                                            <AvInput
+                                                                              placeholder={ t('views.createedittrainingpage.round.repsLabel') }
+                                                                              type="number"
+                                                                              name={`round-${index}-${indexExercise}-${indexRound}-reps`}
+                                                                              value={round.reps !== 0 ? 
+                                                                              round.reps : '0'}
+                                                                              onChange={e => this.handleChangeRound(index, indexExercise, indexRound, e, 'reps')}
+                                                                              required
+                                                                              className="form-control-alternative height-28 py-0"
+                                                                            />
+                                                                            <AvFeedback>{ t('views.createedittrainingpage.round.repsRequired') }</AvFeedback>
+                                                                          </AvGroup>
+                                                                        </Col>
+                                                                        <Col xs="2" className="mb-3">
+                                                                          <Button size="sm" className="btn-icon" color="danger" type="button" onClick={() => this.removeRound(index, indexExercise, indexRound)}>
+                                                                            <span className="btn-inner--icon">
+                                                                              <i className="ni ni-fat-remove" />
+                                                                            </span>
+                                                                          </Button>
+                                                                        </Col>
+                                                                      </Row>
+                                                                    </div>
+                                                                  ))
+                                                                )
+                                                              }
+                                                              <div className="mb-3">
+                                                                <Button type="button" size="sm" color="default" onClick={() => this.addRound(index, indexExercise)} disabled={exercise.rounds.length >= 20 ? true : false}>{ t('views.createedittrainingpage.addRound') }</Button>
+                                                              </div>
                                                             </div>
-                                                          </div>
-                                                        </Col>
-                                                      </Row>
-                                                    </div>
-                                                  )}
-                                                </Draggable>
-                                              ))
-                                            )
-                                          }
-                                          {provided.placeholder}
-                                        </div>
-                                      )}
-                                    </Droppable>
-                                  </Col>
+                                                          </Col>
+                                                        </Row>
+                                                      </div>
+                                                    )}
+                                                  </Draggable>
+                                                ))
+                                              )
+                                            }
+                                            {provided.placeholder}
+                                          </div>
+                                        )}
+                                      </Droppable>
+                                    </Col>
                                   </Row>
                                 </div>
                               </>

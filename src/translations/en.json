@@ -276,7 +276,8 @@
     "trainingspage": {
       "helmet": {
         "text": "RepNote trainings"
-      }
+      },
+      "noTrainings": "No trainings"
     },
     "createtrainingpage": {
       "headline": "Create training",

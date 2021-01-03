@@ -19,7 +19,7 @@
     "navbar": {
       "home": "Strona główna",
       "trainings": "Treningi",
-      "contact": "Skontaktuj się",
+      "contact": "Kontakt",
       "createTraining": "Stwórz trening",
       "account": "Moje konto",
       "changePassword": "Zmień hasło",
@@ -28,7 +28,7 @@
       "register": "Zarejestruj się"
     },
     "footer": {
-      "contact": "Skontaktuj się"
+      "contact": "Kontakt"
     },
     "forms": {
       "contact": {
@@ -276,7 +276,8 @@
     "trainingspage": {
       "helmet": {
         "text": "Treningi RepNote"
-      }
+      },
+      "noTrainings": "Brak treningów do wyświetlenia"
     },
     "createtrainingpage": {
       "headline": "Stwórz trening",

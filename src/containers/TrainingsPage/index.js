@@ -43,7 +43,7 @@ class TrainingsPage extends Component {
             <Row className="justify-content-center">
             {
               this.props.trainings && this.props.trainings.data && this.props.trainings.data.length === 0 ? (
-                <h2 className="display-2">No trainings</h2>
+                <h2 className="display-2">{ t('views.trainingspage.noTrainings') }</h2>
               ) : (
                 <Col lg="12">
                   <Row className="row-grid">

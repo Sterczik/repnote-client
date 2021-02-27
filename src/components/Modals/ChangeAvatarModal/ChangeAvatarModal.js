@@ -24,13 +24,15 @@ class ChangeAvatarModal extends Component {
       >
         <Formik
           initialValues={{
-            file: undefined
+            file: null
           }}
           validationSchema={validationSchema}
           validateOnBlur={true}
           onSubmit={(values, actions) => {
-            this.props.changeAvatar(values.file)
-            this.props.toggleModal('changeAvatarModal')
+            if (values.file) {
+              this.props.changeAvatar(values.file)
+              this.props.toggleModal('changeAvatarModal')
+            }
           }}
         >
           { (formikProps) => {
@@ -38,6 +40,7 @@ class ChangeAvatarModal extends Component {
               errors,
               touched,
               isSubmitting,
+              isValid,
               handleBlur,
               handleSubmit,
               setFieldValue
@@ -60,7 +63,7 @@ class ChangeAvatarModal extends Component {
                   </button>
                 </div>
                 <div className="modal-body">
-                  <h6 className="display-6">{ t('components.modals.changeAvatarModal.maxSize') } 100 kB</h6>
+                  <h6 className="display-6">{ t('components.modals.changeAvatarModal.maxSize') } 1 MB</h6>
                   <h6 className="display-6">{ t('components.modals.changeAvatarModal.formats') } jpg, jpeg, png</h6>
                   <Field
                     name="file"
@@ -85,7 +88,7 @@ class ChangeAvatarModal extends Component {
                   <Button
                     color="primary"
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !isValid}
                   >
                     { t('components.modals.changeAvatarModal.submit') }
                   </Button>

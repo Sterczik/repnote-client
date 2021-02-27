@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 import i18n from 'i18next'
 
-const avatarSize = 100 * 1024
+const avatarSize = 1024 * 1024
 const avatarFormats = ['image/jpg', 'image/jpeg', 'image/png']
 
 export default Yup.object().shape({
